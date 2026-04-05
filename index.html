@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spreakr — Email in your language. Send in theirs.</title>
+<meta name="description" content="The world's first multilingual AI email command centre. Dictate in Afrikaans, Yoruba, Farsi, Hindi — send professionally in any language.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0D0F14;--bg2:#0F1420;--bg3:#13161E;--accent:#4F7FFF;--accent2:#3D6AE8;--border:#1E2330;--text:#E8EAF0;--muted:#8B95A1;--red:#FF4F4F;--green:#4FFF9F;--amber:#FFB84F;--font:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.logo{font-size:24px;font-weight:800;letter-spacing:-0.5px}
+.logo .spr{color:var(--accent)}.logo .eakr{color:#fff}
+.nav-links{display:flex;gap:36px;font-size:14px;color:var(--muted)}
+.nav-links a:hover{color:#fff;transition:color 0.2s}
+.nav-cta{background:var(--accent);color:#fff;padding:10px 24px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:background 0.2s;display:inline-block}
+.nav-cta:hover{background:var(--accent2)}
+.hero{background:var(--bg);padding:120px 40px 100px;text-align:center;border-bottom:1px solid var(--border)}
+.hero-badge{display:inline-block;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:7px 18px;font-size:13px;color:var(--accent);margin-bottom:36px;letter-spacing:0.5px}
+.hero h1{font-size:clamp(40px,6vw,80px);font-weight:800;line-height:1.05;letter-spacing:-3px;margin-bottom:28px;max-width:900px;margin-left:auto;margin-right:auto}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero-sub{font-size:20px;color:var(--muted);max-width:560px;margin:0 auto 48px;line-height:1.7}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:72px}
+.btn-primary{background:var(--accent);color:#fff;padding:16px 36px;border-radius:8px;font-size:17px;font-weight:700;cursor:pointer;border:none;transition:background 0.2s;display:inline-block}
+.btn-primary:hover{background:var(--accent2)}
+.btn-secondary{background:transparent;color:var(--text);padding:16px 36px;border-radius:8px;font-size:17px;font-weight:600;cursor:pointer;border:1px solid var(--border);transition:all 0.2s;display:inline-block}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.lang-float{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:760px;margin:0 auto}
+.lang-pill{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:9px 18px;font-size:13px;display:flex;align-items:center;gap:8px;opacity:0;animation:floatIn 0.5s ease forwards}
+@keyframes floatIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.stats{background:var(--bg2);border-bottom:1px solid var(--border)}
+.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);background:var(--border);gap:1px;max-width:1200px;margin:0 auto}
+.stat{background:var(--bg2);padding:28px 24px;text-align:center}
+.stat-num{font-size:40px;font-weight:800;color:var(--accent);letter-spacing:-2px}
+.stat-label{font-size:13px;color:var(--muted);margin-top:6px}
+.section{padding:100px 40px;border-bottom:1px solid var(--border)}
+.container{max-width:1200px;margin:0 auto}
+.section-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.section-title{font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-1.5px;margin-bottom:20px;line-height:1.1}
+.section-sub{font-size:17px;color:var(--muted);max-width:540px;line-height:1.75}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:56px;border-radius:12px;overflow:hidden}
+.feature-card{background:var(--bg3);padding:36px;position:relative;transition:background 0.2s}
+.feature-card:hover{background:#141820}
+.feature-icon{font-size:32px;margin-bottom:22px}
+.feature-title{font-size:20px;font-weight:700;margin-bottom:12px;letter-spacing:-0.3px}
+.feature-desc{font-size:14px;color:var(--muted);line-height:1.75}
+.feature-tag{display:inline-block;margin-top:18px;font-size:11px;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:4px 10px;color:var(--accent);letter-spacing:0.5px}
+.feature-accent{position:absolute;top:0;left:0;width:3px;height:100%}
+.big-feature{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+.big-feature.reverse{direction:rtl}.big-feature.reverse>*{direction:ltr}
+.mock{background:var(--bg3);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.mock-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 18px;display:flex;align-items:center;gap:8px}
+.mock-dot{width:10px;height:10px;border-radius:50%}
+.mock-title{font-size:12px;color:var(--muted);margin-left:4px}
+.mock-body{padding:20px}
+.mock-email{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:14px;margin-bottom:10px}
+.mock-badge{display:inline-block;padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600;margin-bottom:8px}
+.badge-red{background:#FF4F4F22;color:var(--red)}
+.badge-amber{background:#FFB84F22;color:var(--amber)}
+.badge-blue{background:#4F7FFF22;color:var(--accent)}
+.mock-extract{font-size:12px;color:#C8D0DC;font-style:italic;border-left:2px solid var(--accent);padding-left:10px;margin-top:8px}
+.mock-score{font-size:11px;color:var(--muted);margin-top:4px}
+.tl-bar{display:flex;align-items:center;margin:16px 0}
+.tl-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+.tl-line{flex:1;height:2px;background:var(--border)}
+.tl-line.active{background:var(--accent)}
+.verdict{background:#FF4F4F15;border:1px solid #FF4F4F33;border-radius:6px;padding:12px 16px;margin-bottom:12px;font-size:13px}
+.lang-showcase{background:var(--bg2);padding:100px 40px;border-bottom:1px solid var(--border)}
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:56px;max-width:1200px;margin-left:auto;margin-right:auto}
+.lang-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:18px;transition:border-color 0.2s}
+.lang-card:hover{border-color:var(--accent)}
+.lang-flag{font-size:26px;margin-bottom:10px}
+.lang-name{font-size:14px;font-weight:700;margin-bottom:6px}
+.lang-btns{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.lang-btn{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:3px 9px;font-size:11px;color:var(--muted)}
+.rtl-note{font-size:10px;color:var(--amber);margin-top:6px}
+.viral{padding:100px 40px;border-bottom:1px solid var(--border)}
+.viral-mock{max-width:620px;margin:48px auto 0;background:var(--bg3);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.viral-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:18px 22px}
+.viral-body{padding:28px 22px}
+.viral-footer{background:var(--bg);border-top:1px solid var(--border);padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+.viral-cta{background:var(--accent);color:#fff;padding:7px 16px;border-radius:5px;font-size:12px;font-weight:700}
+.lang-detected{font-size:11px;color:var(--green);display:flex;align-items:center;gap:6px}
+.pricing{background:var(--bg2);padding:100px 40px;border-bottom:1px solid var(--border)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:56px;max-width:1000px;margin-left:auto;margin-right:auto;border-radius:12px;overflow:hidden}
+.price-card{background:var(--bg3);padding:36px}
+.price-card.featured{background:#0F1830;border-top:3px solid var(--accent)}
+.price-tier{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.price-amount{font-size:44px;font-weight:800;letter-spacing:-2px;margin-bottom:4px}
+.price-period{font-size:13px;color:var(--muted);margin-bottom:24px}
+.price-features{list-style:none}
+.price-features li{font-size:14px;color:var(--muted);padding:7px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.check{color:var(--green);font-weight:700}
+.price-btn{display:block;text-align:center;margin-top:28px;padding:13px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;border:1px solid var(--border);color:var(--text);transition:all 0.2s}
+.price-btn:hover{border-color:var(--accent);color:var(--accent)}
+.price-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.price-btn.primary:hover{background:var(--accent2)}
+.affiliate{padding:100px 40px;border-bottom:1px solid var(--border)}
+.aff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;max-width:1000px;margin-left:auto;margin-right:auto}
+.aff-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:32px;text-align:center}
+.aff-num{font-size:48px;font-weight:800;color:var(--accent);letter-spacing:-2px;margin-bottom:8px}
+.aff-label{font-size:14px;color:var(--muted)}
+.earn-calc{max-width:600px;margin:48px auto 0;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:32px}
+.earn-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);font-size:15px}
+.earn-row:last-child{border-bottom:none;font-weight:700;font-size:17px;color:var(--accent)}
+.cta-section{padding:120px 40px;text-align:center;border-bottom:1px solid var(--border)}
+.cta-section h2{font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-2px;margin-bottom:20px;line-height:1.1}
+.cta-section p{font-size:20px;color:var(--muted);margin-bottom:48px}
+footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--border)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto}
+.footer-brand p{font-size:13px;color:var(--muted);margin-top:14px;max-width:240px;line-height:1.7}
+.footer-col h4{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.footer-col a{display:block;font-size:13px;color:var(--muted);margin-bottom:12px;transition:color 0.2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid var(--border);margin-top:48px;padding-top:28px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin-left:auto;margin-right:auto;font-size:12px;color:var(--muted)}
+@media(max-width:768px){
+.features-grid,.big-feature,.big-feature.reverse,.pricing-grid,.aff-grid{grid-template-columns:1fr;direction:ltr}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.footer-grid{grid-template-columns:1fr 1fr}
+.nav-links{display:none}
+.hero h1{letter-spacing:-1px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span class="spr">Spr</span><span class="eakr">eakr</span></div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#languages">Languages</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#affiliate">Earn with us</a>
+  </div>
+  <a href="https://app.spreakr.com" class="nav-cta">Start free trial</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">🌍 Now supporting 90+ languages</div>
+  <h1>Email in <em>your</em> language.<br>Send in <em>theirs.</em></h1>
+  <p class="hero-sub">The world's first multilingual AI email command centre. Dictate in Afrikaans, Yoruba, Farsi, Hindi — send professionally in any language.</p>
+  <div class="hero-btns">
+    <a href="https://app.spreakr.com" class="btn-primary">Start free — 7 days</a>
+    <a href="#features" class="btn-secondary">See features →</a>
+  </div>
+  <div class="lang-float" id="langFloat"></div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">90+</div><div class="stat-label">Languages supported</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Email providers unified</div></div>
+    <div class="stat"><div class="stat-num">R7</div><div class="stat-label">Forensic search · 300 emails</div></div>
+    <div class="stat"><div class="stat-num">45s</div><div class="stat-label">Full inbox AI analysis</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Competitors who do this</div></div>
+  </div>
+</div>
+
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-label">Features</div>
+    <div class="section-title">Everything your inbox<br>was missing.</div>
+    <p class="section-sub">Built for the multilingual professional. Every feature designed around voice, language, and intelligence.</p>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-accent" style="background:var(--accent)"></div><div class="feature-icon">🎙</div><div class="feature-title">Voice dictation in 90+ languages</div><div class="feature-desc">Dictate emails naturally in your mother tongue. Spreakr transcribes, professionalises, and sends in the recipient's language automatically.</div><div class="feature-tag">ElevenLabs Scribe</div></div>
+      <div class="feature-card"><div class="feature-accent" style="background:var(--red)"></div><div class="feature-icon">⚖️</div><div class="feature-title">Deep forensic email search</div><div class="feature-desc">Ask any question in plain language. GPT-4.1 reads every email in full and returns exact evidence, quotes, and relevance scores. Built for legal professionals.</div><div class="feature-tag">GPT-4.1 · 1M context</div></div>
+      <div class="feature-card"><div class="feature-accent" style="background:var(--green)"></div><div class="feature-icon">⚡</div><div class="feature-title">Thread Intelligence</div><div class="feature-desc">One click reveals a full intelligence briefing on any email chain. Timeline, sentiment arc, commitment tracking, and a one-line verdict.</div><div class="feature-tag">D3.js visualisation</div></div>
+      <div class="feature-card"><div class="feature-accent" style="background:var(--amber)"></div><div class="feature-icon">📧</div><div class="feature-title">Gmail + Outlook unified</div><div class="feature-desc">One inbox. Both accounts. Colour flagging, folder management, and AI features work identically across Gmail labels and Outlook folders.</div><div class="feature-tag">OAuth · No passwords stored</div></div>
+      <div class="feature-card"><div class="feature-accent" style="background:var(--accent)"></div><div class="feature-icon">🌐</div><div class="feature-title">Full UI in your language</div><div class="feature-desc">Every button, label, and message renders in your chosen language. Arabic and Persian flip the entire layout to right-to-left automatically.</div><div class="feature-tag">i18n · RTL support</div></div>
+      <div class="feature-card"><div class="feature-accent" style="background:var(--red)"></div><div class="feature-icon">📤</div><div class="feature-title">Viral language bridge</div><div class="feature-desc">Every sent email includes a "View in your language" link. Recipients see your email translated into their browser language — and discover Spreakr.</div><div class="feature-tag">Built-in growth engine</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="big-feature">
+      <div>
+        <div class="section-label">Deep Search</div>
+        <div class="section-title">Find anything.<br>Even what wasn't said.</div>
+        <p style="color:var(--muted);line-height:1.75;margin-bottom:28px;font-size:16px">Ask a question in plain language. GPT-4.1 reads every email in full. It finds explicit matches, implied meaning, tone shifts, admissions, and omissions. Built for attorneys doing discovery and executives in disputes.</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span>Natural language questions — no keywords needed</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span>Finds admissions, omissions, and tone shifts</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span>Exact evidence quotes with significance ratings</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span>Export full findings report as PDF</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span>R7.96 to analyse 300 emails in full</div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-bar"><div class="mock-dot" style="background:#FF4F4F"></div><div class="mock-dot" style="background:#FFB84F"></div><div class="mock-dot" style="background:#4FFF9F"></div><span class="mock-title">⚡ AI Search Results · 4 relevant · 296 not relevant</span></div>
+        <div class="mock-body">
+          <div class="mock-email"><div class="mock-badge badge-red">🔴 Strong evidence · 94/100</div><div style="font-size:13px;font-weight:600">John Smith · 14 Mar 2024</div><div style="font-size:12px;color:var(--muted)">Re: Trust Distribution</div><div class="mock-extract">"I decided to transfer the funds to my personal account temporarily..."</div><div class="mock-score">Admission · High significance</div></div>
+          <div class="mock-email"><div class="mock-badge badge-amber">🟡 Possible evidence · 71/100</div><div style="font-size:13px;font-weight:600">John Smith · 2 Mar 2024</div><div style="font-size:12px;color:var(--muted)">Re: Beneficiary Meeting</div><div class="mock-extract">"I thought it best to delay until after my holiday..."</div><div class="mock-score">Deflection · Medium significance</div></div>
+          <div class="mock-email"><div class="mock-badge badge-blue">🔵 Indirect relevance · 43/100</div><div style="font-size:13px;font-weight:600">Legal Team · 28 Feb 2024</div><div style="font-size:12px;color:var(--muted)">Trust Administration Update</div><div class="mock-score">Cross-reference with email #12</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="big-feature reverse">
+      <div>
+        <div class="section-label">Thread Intelligence</div>
+        <div class="section-title">40 emails.<br>One briefing.<br>3 seconds.</div>
+        <p style="color:var(--muted);line-height:1.75;margin-bottom:28px;font-size:16px">Open any email chain and get a complete intelligence report. Timeline, sentiment arc, commitment tracking, who's dragging their feet, and a one-line verdict at the top.</p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span>Horizontal timeline with sentiment-coloured nodes</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span>Force-directed participant relationship graph</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span>Sentiment arc showing tone over time</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span>Every commitment extracted and tracked</div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span>Export intelligence report as PDF</div>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="mock-bar"><div class="mock-dot" style="background:#FF4F4F"></div><div class="mock-dot" style="background:#FFB84F"></div><div class="mock-dot" style="background:#4FFF9F"></div><span class="mock-title">⚡ Thread Intelligence</span></div>
+        <div class="mock-body">
+          <div class="verdict"><strong>⚠ Waiting on John. Invoice overdue 4 days. Tone deteriorating.</strong></div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:8px">Timeline · 8 messages · 3 participants</div>
+          <div class="tl-bar">
+            <div class="tl-dot" style="background:#4FFF9F22;border:2px solid var(--green);color:var(--green)">1</div>
+            <div class="tl-line active"></div>
+            <div class="tl-dot" style="background:#4FFF9F22;border:2px solid var(--green);color:var(--green)">2</div>
+            <div class="tl-line active"></div>
+            <div class="tl-dot" style="background:#FFB84F22;border:2px solid var(--amber);color:var(--amber)">3</div>
+            <div class="tl-line"></div>
+            <div class="tl-dot" style="background:#FF4F4F22;border:2px solid var(--red);color:var(--red)">4</div>
+            <div class="tl-line"></div>
+            <div class="tl-dot" style="background:#FF4F4F22;border:2px solid var(--red);color:var(--red)">★</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px"><div style="font-size:11px;color:var(--muted)">Commitment</div><div style="font-size:13px;margin-top:4px">Invoice by Friday <span style="color:var(--red);font-size:11px">OVERDUE</span></div></div>
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px"><div style="font-size:11px;color:var(--muted)">Thread health</div><div style="font-size:13px;margin-top:4px;color:var(--amber)">⚠ 62 · At Risk</div></div>
+          </div>
+          <div style="margin-top:10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px"><div style="font-size:11px;color:var(--muted);margin-bottom:6px">Actions required</div><div style="font-size:12px;color:var(--red)">• Follow up on overdue invoice · HIGH</div><div style="font-size:12px;color:var(--amber);margin-top:4px">• Schedule escalation call · MEDIUM</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lang-showcase" id="languages">
+  <div style="text-align:center">
+    <div class="section-label" style="text-align:center">90+ Languages</div>
+    <div class="section-title" style="text-align:center;max-width:640px;margin:0 auto 16px">The same three buttons.<br>Every language on earth.</div>
+    <p style="color:var(--muted);text-align:center;max-width:520px;margin:0 auto;font-size:16px">Compose · Reply · Send — in every language your users speak. RTL layouts switch automatically for Arabic, Persian, and Urdu.</p>
+  </div>
+  <div class="lang-grid">
+    <div class="lang-card"><div class="lang-flag">🇿🇦</div><div class="lang-name">Afrikaans</div><div class="lang-btns"><span class="lang-btn">Skryf</span><span class="lang-btn">Antwoord</span><span class="lang-btn">Stuur</span></div></div>
+    <div class="lang-card"><div class="lang-flag">🇸🇦</div><div class="lang-name">العربية</div><div class="lang-btns"><span class="lang-btn">إنشاء</span><span class="lang-btn">رد</span><span class="lang-btn">إرسال</span></div><div class="rtl-note">↰ RTL layout</div></div>
+    <div class="lang-card"><div class="lang-flag">🇮🇷</div><div class="lang-name">فارسی</div><div class="lang-btns"><span class="lang-btn">نوشتن</span><span class="lang-btn">پاسخ</span><span class="lang-btn">ارسال</span></div><div class="rtl-note">↰ RTL layout</div></div>
+    <div class="lang-card"><div class="lang-flag">🇮🇳</div><div class="lang-name">हिंदी</div><div class="lang-btns"><span class="lang-btn">लिखें</span><span class="lang-btn">उत्तर</span><span class="lang-btn">भेजें</span></div></div>
+    <div class="lang-card"><div class="lang-flag">🇳🇬</div><div class="lang-name">Yorùbá</div><div class="lang-btns"><span class="lang-btn">Kọ</span><span class="lang-btn">Dahun</span><span class="lang-btn">Firanṣẹ</span></div></div>
+    <div class="lang-card"><div class="lang-flag">🇳🇬</div><div class="lang-name">Hausa</div><div class="lang-btns"><span class="lang-btn">Rubuta</span><span class="lang-btn">Amsa</span><span class="lang-btn">Aika</span></div></div>
+    <div class="lang-card"><div class="lang-flag">🇫🇷</div><div class="lang-name">Français</div><div class="lang-btns"><span class="lang-btn">Composer</span><span class="lang-btn">Répondre</span><span class="lang-btn">Envoyer</span></div></div>
+    <div class="lang-card"><div class="lang-flag">🇧🇷</div><div class="lang-name">Português</div><div class="lang-btns"><span class="lang-btn">Escrever</span><span class="lang-btn">Responder</span><span class="lang-btn">Enviar</span></div></div>
+    <div class="lang-card"><div class="lang-flag">🇨🇳</div><div class="lang-name">中文</div><div class="lang-btns"><span class="lang-btn">撰写</span><span class="lang-btn">回复</span><span class="lang-btn">发送</span></div></div>
+    <div class="lang-card"><div class="lang-flag">🇵🇰</div><div class="lang-name">اردو</div><div class="lang-btns"><span class="lang-btn">لکھیں</span><span class="lang-btn">جواب</span><span class="lang-btn">بھیجیں</span></div><div class="rtl-note">↰ RTL layout</div></div>
+    <div class="lang-card"><div class="lang-flag">🇰🇪</div><div class="lang-name">Swahili</div><div class="lang-btns"><span class="lang-btn">Tunga</span><span class="lang-btn">Jibu</span><span class="lang-btn">Tuma</span></div></div>
+    <div class="lang-card"><div class="lang-flag">🇯🇵</div><div class="lang-name">日本語</div><div class="lang-btns"><span class="lang-btn">作成</span><span class="lang-btn">返信</span><span class="lang-btn">送信</span></div></div>
+    <div class="lang-card"><div class="lang-flag">🇩🇪</div><div class="lang-name">Deutsch</div><div class="lang-btns"><span class="lang-btn">Verfassen</span><span class="lang-btn">Antworten</span><span class="lang-btn">Senden</span></div></div>
+    <div class="lang-card"><div class="lang-flag">🇷🇺</div><div class="lang-name">Русский</div><div class="lang-btns"><span class="lang-btn">Написать</span><span class="lang-btn">Ответить</span><span class="lang-btn">Отправить</span></div></div>
+    <div class="lang-card"><div class="lang-flag">🇰🇷</div><div class="lang-name">한국어</div><div class="lang-btns"><span class="lang-btn">작성</span><span class="lang-btn">답장</span><span class="lang-btn">보내기</span></div></div>
+    <div class="lang-card"><div class="lang-flag">🇳🇬</div><div class="lang-name">Igbo</div><div class="lang-btns"><span class="lang-btn">Dere</span><span class="lang-btn">Zaghachi</span><span class="lang-btn">Zipu</span></div></div>
+  </div>
+</section>
+
+<section class="viral">
+  <div class="container" style="text-align:center">
+    <div class="section-label">Growth Engine</div>
+    <div class="section-title">Every email you send<br>is a product demo.</div>
+    <p class="section-sub" style="margin:0 auto;font-size:16px">A subtle footer link lets recipients view your email in their own language — and discover Spreakr. Your users market for you automatically.</p>
+    <div class="viral-mock">
+      <div class="viral-header">
+        <div style="font-size:13px;font-weight:600">Re: Q2 Proposal — Pieter Skein Prokureurs</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">From: chris@spreakr.com · To: supplier@delhi.in</div>
+      </div>
+      <div class="viral-body">
+        <p style="font-size:14px;color:var(--muted);line-height:1.8">Dear Mr Sharma,<br><br>Thank you for your proposal regarding the Q2 supply agreement. We are pleased to confirm our interest and would like to proceed with the following terms...</p>
+      </div>
+      <div class="viral-footer">
+        <div>
+          <div style="font-size:11px;color:var(--muted)">Sent via <strong style="color:var(--accent)">Spreakr</strong></div>
+          <div class="lang-detected"><span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block"></span>Hindi detected · Viewing in हिंदी</div>
+        </div>
+        <div class="viral-cta">Try Spreakr free →</div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:20px">100 users × 20 emails/day = 2,000 qualified impressions daily. Zero ad spend.</p>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="container" style="text-align:center">
+    <div class="section-label">Pricing</div>
+    <div class="section-title">Simple, transparent pricing.</div>
+    <p class="section-sub" style="margin:0 auto">AI search costs billed per use. Your plan includes a monthly credit — heavy users only pay for what they use beyond that.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Trial</div>
+        <div class="price-amount">Free</div>
+        <div class="price-period">7 days · no card required</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span>Gmail + Outlook unified</li>
+          <li><span class="check">✓</span>Voice dictation</li>
+          <li><span class="check">✓</span>AI draft reply</li>
+          <li><span class="check">✓</span>R2 AI search credit</li>
+          <li><span class="check">✓</span>3 languages</li>
+        </ul>
+        <a href="https://app.spreakr.com" class="price-btn">Start free trial</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">Pro</div>
+        <div class="price-amount">R299<span style="font-size:20px;font-weight:400">/mo</span></div>
+        <div class="price-period">~$16 USD · billed monthly</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span>Everything in Trial</li>
+          <li><span class="check">✓</span>Thread Intelligence</li>
+          <li><span class="check">✓</span>Deep Search</li>
+          <li><span class="check">✓</span>R20 AI search credit</li>
+          <li><span class="check">✓</span>20 languages</li>
+          <li><span class="check">✓</span>Move to folder</li>
+          <li><span class="check">✓</span>Viral footer link</li>
+        </ul>
+        <a href="https://app.spreakr.com" class="price-btn primary">Get started</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Executive</div>
+        <div class="price-amount">R599<span style="font-size:20px;font-weight:400">/mo</span></div>
+        <div class="price-period">~$32 USD · billed monthly</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span>Everything in Pro</li>
+          <li><span class="check">✓</span>R100 AI search credit</li>
+          <li><span class="check">✓</span>All 90+ languages</li>
+          <li><span class="check">✓</span>Legal terminology packs</li>
+          <li><span class="check">✓</span>PDF export reports</li>
+          <li><span class="check">✓</span>Priority support</li>
+          <li><span class="check">✓</span>Team settings</li>
+        </ul>
+        <a href="mailto:chris@spreakr.com" class="price-btn">Contact us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="affiliate" id="affiliate">
+  <div class="container" style="text-align:center">
+    <div class="section-label">Affiliate Program</div>
+    <div class="section-title">Earn recurring income.<br>Work from anywhere.</div>
+    <p class="section-sub" style="margin:0 auto;font-size:16px">Get a unique code. Share it with professionals in your network. Earn 30% of every subscription — every month — for as long as they stay subscribed.</p>
+    <div class="aff-grid">
+      <div class="aff-card"><div class="aff-num">30%</div><div class="aff-label">Recurring monthly commission</div></div>
+      <div class="aff-card"><div class="aff-num">R89</div><div class="aff-label">Earned per Pro subscriber per month</div></div>
+      <div class="aff-card"><div class="aff-num">∞</div><div class="aff-label">No cap on referrals or earnings</div></div>
+    </div>
+    <div class="earn-calc">
+      <div style="font-size:16px;font-weight:700;margin-bottom:20px;text-align:left">Example monthly earnings</div>
+      <div class="earn-row"><span>10 Pro subscribers</span><span style="color:var(--accent)">R897/month</span></div>
+      <div class="earn-row"><span>25 Pro subscribers</span><span style="color:var(--accent)">R2,243/month</span></div>
+      <div class="earn-row"><span>50 Pro subscribers</span><span style="color:var(--accent)">R4,485/month</span></div>
+      <div class="earn-row"><span>100 Pro subscribers</span><span style="color:var(--accent)">R8,970/month</span></div>
+    </div>
+    <div style="margin-top:48px">
+      <a href="mailto:chris@spreakr.com?subject=Affiliate Program" class="btn-primary">Apply to become an affiliate</a>
+      <p style="font-size:13px;color:var(--muted);margin-top:16px">Open to professionals globally · Paid monthly via PayPal · No experience required</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>The inbox built for<br><span style="color:var(--accent)">everyone else.</span></h2>
+    <p>Superhuman owns English. You own the world.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="https://app.spreakr.com" class="btn-primary" style="font-size:18px;padding:18px 40px">Start free — 7 days</a>
+      <a href="mailto:chris@spreakr.com?subject=Demo Request" class="btn-secondary" style="font-size:18px;padding:18px 40px">Book a demo</a>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-top:24px">No credit card required · Cancel anytime · POPIA compliant · Built in South Africa 🇿🇦</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo"><span class="spr">Spr</span><span class="eakr">eakr</span></div>
+      <p>The world's first multilingual AI email command centre. Email in your language. Send in theirs.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <a href="#features">Features</a>
+      <a href="#features">Deep Search</a>
+      <a href="#features">Thread Intelligence</a>
+      <a href="#languages">Languages</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="mailto:chris@spreakr.com">About</a>
+      <a href="mailto:chris@spreakr.com">Contact</a>
+      <a href="#affiliate">Affiliate Program</a>
+      <a href="mailto:chris@spreakr.com">Press</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">POPIA Compliance</a>
+      <a href="#">Security</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Spreakr. Built in South Africa. 🇿🇦</span>
+    <span>spreakr.com</span>
+  </div>
+</footer>
+
+<script>
+const langs=[
+  {flag:'🇿🇦',name:'Afrikaans',d:0},{flag:'🇸🇦',name:'العربية',d:100},
+  {flag:'🇮🇷',name:'فارسی',d:200},{flag:'🇮🇳',name:'हिंदी',d:300},
+  {flag:'🇳🇬',name:'Yorùbá',d:400},{flag:'🇳🇬',name:'Hausa',d:500},
+  {flag:'🇫🇷',name:'Français',d:600},{flag:'🇧🇷',name:'Português',d:700},
+  {flag:'🇨🇳',name:'中文',d:800},{flag:'🇩🇪',name:'Deutsch',d:900},
+  {flag:'🇰🇪',name:'Swahili',d:1000},{flag:'🇯🇵',name:'日本語',d:1100},
+  {flag:'🇷🇺',name:'Русский',d:1200},{flag:'🇰🇷',name:'한국어',d:1300},
+  {flag:'🇳🇱',name:'Nederlands',d:1400},{flag:'🇹🇷',name:'Türkçe',d:1500},
+];
+const c=document.getElementById('langFloat');
+langs.forEach(l=>{
+  const el=document.createElement('div');
+  el.className='lang-pill';
+  el.style.animationDelay=l.d+'ms';
+  el.innerHTML='<span>'+l.flag+'</span><span>'+l.name+'</span>';
+  c.appendChild(el);
+});
+</script>
+</body>
+</html>
