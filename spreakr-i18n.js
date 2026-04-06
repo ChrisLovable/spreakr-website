@@ -17,7 +17,7 @@
     es: 'es',
     sw: 'ke',
   };
-
+  
   const LANG_LIST = [
     { code: 'en', name: 'English' },
     { code: 'af', name: 'Afrikaans' },
