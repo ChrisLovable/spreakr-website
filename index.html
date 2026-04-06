@@ -14,7 +14,8 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.6}
 a{color:inherit;text-decoration:none}
 nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-.logo{font-size:24px;font-weight:800;letter-spacing:-0.5px}
+.logo{font-size:24px;font-weight:800;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px}
+.logo img{width:28px;height:28px;object-fit:contain;display:block}
 .logo .spr{color:var(--accent)}.logo .eakr{color:#fff}
 .nav-links{display:flex;gap:36px;font-size:14px;color:var(--muted)}
 .nav-links a:hover{color:#fff;transition:color 0.2s}
@@ -42,7 +43,8 @@ nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;di
 .lang-float{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:760px;margin:0 auto;position:relative;z-index:5;pointer-events:auto}
 .site-flag-img{display:inline-block;vertical-align:middle;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.12);object-fit:cover}
 .site-flag-fallback{display:none;align-items:center;justify-content:center;min-width:24px;font-size:14px;line-height:1}
-.lang-pill{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:9px 18px;font-size:13px;display:flex;align-items:center;gap:8px;opacity:1;animation:floatIn 0.5s ease forwards;position:relative;z-index:6;pointer-events:auto;cursor:pointer}
+.lang-pill{background:#11192A;border:1px solid #2A3750;border-radius:20px;padding:10px 18px;font-size:14px;font-weight:600;color:#DCE5F6;display:flex;align-items:center;gap:8px;opacity:1;animation:floatIn 0.5s ease forwards;position:relative;z-index:6;pointer-events:auto;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.25)}
+.lang-pill:hover{border-color:#4F7FFF;background:#14213A;color:#FFFFFF}
 @keyframes floatIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .stats{background:var(--bg2);border-bottom:1px solid var(--border)}
 .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);background:var(--border);gap:1px;max-width:1200px;margin:0 auto}
@@ -147,7 +149,7 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
 <body>
 
 <nav>
-  <div class="logo"><span class="spr">Spr</span><span class="eakr">eakr</span></div>
+  <div class="logo"><img src="./weblogo.jpg" alt="Spreakr logo"><span class="spr">Spr</span><span class="eakr">eakr</span></div>
   <div class="nav-links">
     <a href="#features" data-i18n="nav_features">Features</a>
     <a href="#languages" data-i18n="nav_languages">Languages</a>
@@ -543,9 +545,9 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
 
 <section class="pricing" id="pricing">
   <div class="container" style="text-align:center">
-    <div class="section-label">Pricing</div>
-    <div class="section-title">Built for professionals.<br>Priced for the world.</div>
-    <p class="section-sub" style="margin:0 auto">Pricing adapts to your location — professionals in Lagos, Dubai, Mumbai, and Cape Town all pay a fair local rate. Start free. No card required.</p>
+    <div class="section-label" data-i18n="pricing_label">Pricing</div>
+    <div class="section-title" data-i18n="pricing_title">Built for professionals.<br>Priced for the world.</div>
+    <p class="section-sub" style="margin:0 auto" data-i18n="pricing_sub">Pricing adapts to your location — professionals in Lagos, Dubai, Mumbai, and Cape Town all pay a fair local rate. Start free. No card required.</p>
 
     <!-- Location pricing note -->
     <div style="display:inline-flex;align-items:center;gap:10px;margin:28px auto 48px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 20px;font-size:13px;color:var(--muted)">
@@ -558,133 +560,131 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
 
       <!-- Trial -->
       <div class="price-card">
-        <div class="price-tier">Trial</div>
-        <div class="price-amount">Free</div>
-        <div class="price-period">7 days · no card required</div>
+        <div class="price-tier" data-i18n="tier1_name">Trial</div>
+        <div class="price-amount" data-i18n="tier1_price">Free</div>
+        <div class="price-period" data-i18n="tier1_period">7 days · no card required</div>
         <ul class="price-features">
-          <li><span class="check">✓</span>All email providers</li>
-          <li><span class="check">✓</span>Voice dictation</li>
-          <li><span class="check">✓</span>AI draft reply</li>
-          <li><span class="check">✓</span>AI Search</li>
-          <li><span class="check">✓</span>Thread Intelligence</li>
-          <li><span class="check">✓</span>Move to folder</li>
-          <li><span class="check">✓</span>20+ languages</li>
-          <li><span class="check">✓</span>500 emails per provider</li>
-          <li><span style="color:var(--border)">—</span><span style="color:var(--muted)">Load All emails</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier1_f1">Gmail + Outlook unified</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier1_f2">Voice dictation</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier1_f3">AI draft reply</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier1_f4">R2 AI search credit</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier1_f5">3 languages</span></li>
+          <li><span style="color:var(--border)">—</span><span style="color:var(--muted)" id="pricing-loadall-plan1">Load All emails</span></li>
         </ul>
-        <a href="https://app.spreakr.com" class="price-btn">Start free trial</a>
+        <a href="https://app.spreakr.com" class="price-btn" data-i18n="tier1_btn">Start free trial</a>
       </div>
 
       <!-- Pro -->
       <div class="price-card featured">
-        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:4px 14px;border-radius:0 0 6px 6px;text-transform:uppercase">Most Popular</div>
-        <div class="price-tier" style="margin-top:16px">Pro</div>
+        <div id="pricing-most-popular" style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:4px 14px;border-radius:0 0 6px 6px;text-transform:uppercase">Most Popular</div>
+        <div class="price-tier" style="margin-top:16px" data-i18n="tier2_name">Pro</div>
         <div class="price-amount">R349<span style="font-size:20px;font-weight:400">/mo</span></div>
-        <div class="price-period">~$19 USD · billed monthly</div>
+        <div class="price-period" data-i18n="tier2_period">~$19 USD · billed monthly</div>
         <ul class="price-features">
-          <li><span class="check">✓</span>Everything in Trial</li>
-          <li><span class="check">✓</span>Larger AI search quota</li>
-          <li><span class="check">✓</span>Priority processing</li>
-          <li><span class="check">✓</span>500 emails per provider</li>
-          <li><span class="check">✓</span>Extended email history</li>
-          <li><span class="check">✓</span>Team collaboration tools</li>
-          <li><span style="color:var(--border)">—</span><span style="color:var(--muted)">Load All emails</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier2_f1">Everything in Trial</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier2_f2">Thread Intelligence</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier2_f3">Deep Search</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier2_f4">R20 AI search credit</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier2_f5">20 languages</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier2_f6">Move to folder</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier2_f7">Viral footer link</span></li>
         </ul>
-        <a href="https://app.spreakr.com" class="price-btn primary">Get started</a>
+        <a href="https://app.spreakr.com" class="price-btn primary" data-i18n="tier2_btn">Get started</a>
       </div>
 
       <!-- Executive -->
       <div class="price-card">
-        <div class="price-tier">Executive</div>
+        <div class="price-tier" data-i18n="tier3_name">Executive</div>
         <div class="price-amount">R549<span style="font-size:20px;font-weight:400">/mo</span></div>
-        <div class="price-period">~$30 USD · billed monthly</div>
+        <div class="price-period" data-i18n="tier3_period">~$30 USD · billed monthly</div>
         <ul class="price-features">
-          <li><span class="check">✓</span>Everything in Pro</li>
-          <li><span class="check">✓</span>2,000 emails per provider</li>
-          <li><span class="check">✓</span>Load All (up to 8,000/provider)</li>
-          <li><span class="check">✓</span>All languages (as released)</li>
-          <li><span class="check">✓</span>R100 AI monthly credit</li>
-          <li><span class="check">✓</span>Priority support</li>
+          <li><span class="check">✓</span><span data-i18n="tier3_f1">Everything in Pro</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier3_f2">R100 AI search credit</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier3_f3">All languages (as released)</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier3_f4">Legal terminology packs</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier3_f5">PDF export reports</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier3_f6">Priority support</span></li>
+          <li><span class="check">✓</span><span data-i18n="tier3_f7">Team settings</span></li>
         </ul>
-        <a href="mailto:chris@spreakr.com" class="price-btn">Contact us</a>
+        <a href="mailto:chris@spreakr.com" class="price-btn" data-i18n="tier3_btn">Contact us</a>
       </div>
     </div>
 
     <!-- Feature comparison table -->
     <div style="max-width:800px;margin:0 auto;background:var(--bg3);border:1px solid var(--border);border-radius:12px;overflow:hidden">
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;background:var(--bg2);padding:14px 20px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)">
-        <div style="text-align:left">Feature</div>
-        <div>Trial</div>
+        <div style="text-align:left" data-i18n="features_label">Feature</div>
+        <div data-i18n="tier1_name">Trial</div>
         <div style="color:var(--accent)">Pro</div>
-        <div>Executive</div>
+        <div data-i18n="tier3_name">Executive</div>
       </div>
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center">
-        <div style="text-align:left;color:var(--muted)">Voice dictation</div>
+        <div style="text-align:left;color:var(--muted)" data-i18n="tier1_f2">Voice dictation</div>
         <div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div>
       </div>
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center;background:var(--bg2)">
-        <div style="text-align:left;color:var(--muted)">AI draft reply</div>
+        <div style="text-align:left;color:var(--muted)" data-i18n="tier1_f3">AI draft reply</div>
         <div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div>
       </div>
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center">
-        <div style="text-align:left;color:var(--muted)">AI Search</div>
+        <div style="text-align:left;color:var(--muted)" data-i18n="tier2_f3">AI Search</div>
         <div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div>
       </div>
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center;background:var(--bg2)">
-        <div style="text-align:left;color:var(--muted)">Thread Intelligence</div>
+        <div style="text-align:left;color:var(--muted)" data-i18n="tier2_f2">Thread Intelligence</div>
         <div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div>
       </div>
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center">
-        <div style="text-align:left;color:var(--muted)">Emails loaded per provider</div>
+        <div style="text-align:left;color:var(--muted)" id="pricing-emails-provider">Emails loaded per provider</div>
         <div style="color:var(--green)">500</div><div style="color:var(--green)">500</div><div style="color:var(--green)">2,000</div>
       </div>
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center;background:var(--bg2)">
-        <div style="text-align:left;color:var(--muted)">Languages</div>
+        <div style="text-align:left;color:var(--muted)" data-i18n="nav_languages">Languages</div>
         <div style="color:var(--green)">20+</div><div style="color:var(--green)">20+</div><div style="color:var(--green)">20+</div>
       </div>
 
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center;background:var(--bg2)">
-        <div style="text-align:left;color:var(--muted)">Load All emails</div>
+        <div style="text-align:left;color:var(--muted)" id="pricing-loadall-row">Load All emails</div>
         <div style="color:var(--muted)">—</div><div style="color:var(--muted)">—</div><div style="color:var(--green)">✓</div>
       </div>
     </div>
 
-    <p style="font-size:12px;color:var(--muted);margin-top:24px">Annual plans available · Cancel anytime</p>
+    <p style="font-size:12px;color:var(--muted);margin-top:24px" id="pricing-annual-note">Annual plans available · Cancel anytime</p>
   </div>
 </section>
 
 <section class="affiliate" id="affiliate">
   <div class="container" style="text-align:center">
-    <div class="section-label">Affiliate Program</div>
-    <div class="section-title" style="max-width:700px;margin:0 auto 20px">Share Spreakr your way.<br>Earn <span style="color:var(--accent)">30%</span> every month. Forever.</div>
-    <p class="section-sub" style="margin:0 auto 48px;font-size:17px">No rules. No quotas. No complicated structure. Just share Spreakr however you naturally connect with people — and earn 30% of every subscription, every single month, for as long as they stay.</p>
+    <div class="section-label" data-i18n="aff_label">Affiliate Program</div>
+    <div class="section-title" style="max-width:700px;margin:0 auto 20px" data-i18n="aff_title">Share Spreakr your way.<br>Earn <span style="color:var(--accent)">30%</span> every month. Forever.</div>
+    <p class="section-sub" style="margin:0 auto 48px;font-size:17px" data-i18n="aff_sub">No rules. No quotas. No complicated structure. Just share Spreakr however you naturally connect with people — and earn 30% of every subscription, every single month, for as long as they stay.</p>
 
     <!-- How to share cards -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto 56px">
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:24px;text-align:left">
         <div style="font-size:28px;margin-bottom:12px">👥</div>
-        <div style="font-size:14px;font-weight:700;margin-bottom:8px">Your personal network</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.6">Attorneys, accountants, executives, business owners — if they send emails, they need Spreakr. One WhatsApp message to the right person earns you passive income for years.</div>
+        <div id="aff-card1-title" style="font-size:14px;font-weight:700;margin-bottom:8px">Your personal network</div>
+        <div id="aff-card1-desc" style="font-size:13px;color:var(--muted);line-height:1.6">Attorneys, accountants, executives, business owners — if they send emails, they need Spreakr. One WhatsApp message to the right person earns you passive income for years.</div>
       </div>
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:24px;text-align:left">
         <div style="font-size:28px;margin-bottom:12px">📱</div>
-        <div style="font-size:14px;font-weight:700;margin-bottom:8px">Social media & content</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.6">Post a demo video on LinkedIn, TikTok, or YouTube. Show people sending an email in Afrikaans that arrives in perfect Japanese. The product sells itself — you just need the clip.</div>
+        <div id="aff-card2-title" style="font-size:14px;font-weight:700;margin-bottom:8px">Social media & content</div>
+        <div id="aff-card2-desc" style="font-size:13px;color:var(--muted);line-height:1.6">Post a demo video on LinkedIn, TikTok, or YouTube. Show people sending an email in Afrikaans that arrives in perfect Japanese. The product sells itself — you just need the clip.</div>
       </div>
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:24px;text-align:left">
         <div style="font-size:28px;margin-bottom:12px">🎙️</div>
-        <div style="font-size:14px;font-weight:700;margin-bottom:8px">Podcasts, blogs & communities</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.6">Run a newsletter, podcast, or industry group? Drop your affiliate link. Reach professionals in law, finance, healthcare, or diaspora communities who send global emails daily.</div>
+        <div id="aff-card3-title" style="font-size:14px;font-weight:700;margin-bottom:8px">Podcasts, blogs & communities</div>
+        <div id="aff-card3-desc" style="font-size:13px;color:var(--muted);line-height:1.6">Run a newsletter, podcast, or industry group? Drop your affiliate link. Reach professionals in law, finance, healthcare, or diaspora communities who send global emails daily.</div>
       </div>
     </div>
 
     <!-- Interactive earnings calculator -->
     <div style="max-width:680px;margin:0 auto;background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:36px 40px">
-      <div style="font-size:20px;font-weight:800;letter-spacing:-0.5px;margin-bottom:28px">💰 What could <em style="color:var(--accent);font-style:normal">you</em> earn?</div>
+      <div id="aff-calc-title" style="font-size:20px;font-weight:800;letter-spacing:-0.5px;margin-bottom:28px">💰 What could <em style="color:var(--accent);font-style:normal">you</em> earn?</div>
 
       <!-- Country selector -->
       <div style="margin-bottom:24px;text-align:left">
-        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:8px">Your subscribers are mainly based in</label>
+        <label id="aff-country-label" style="font-size:13px;color:var(--muted);display:block;margin-bottom:8px">Your subscribers are mainly based in</label>
         <select id="aff-country" style="width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:8px;font-size:14px;outline:none;cursor:pointer">
           <option value="349" data-currency="R" data-country="South Africa">🇿🇦 South Africa — R349/mo Pro</option>
           <option value="19" data-currency="$" data-country="USA / Global">🌍 USA / Global — $19/mo Pro</option>
@@ -703,27 +703,27 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
       <!-- Subscribers slider -->
       <div style="margin-bottom:28px;text-align:left">
         <div style="display:flex;justify-content:space-between;margin-bottom:10px">
-          <label style="font-size:13px;color:var(--muted)">Number of Pro subscribers you refer</label>
+          <label id="aff-subs-label" style="font-size:13px;color:var(--muted)">Number of Pro subscribers you refer</label>
           <span id="aff-sub-count" style="font-size:16px;font-weight:800;color:var(--accent)">25</span>
         </div>
         <input type="range" id="aff-slider" min="1" max="500" value="25" style="width:100%;accent-color:var(--accent);height:5px;cursor:pointer">
         <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:6px">
-          <span>1 subscriber</span><span>500 subscribers</span>
+          <span id="aff-min-subs">1 subscriber</span><span id="aff-max-subs">500 subscribers</span>
         </div>
       </div>
 
       <!-- Results -->
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
         <div style="background:var(--bg2);border-radius:8px;padding:16px;text-align:center">
-          <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Per month</div>
+          <div id="aff-per-month-label" style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Per month</div>
           <div id="aff-month" style="font-size:22px;font-weight:800;color:var(--green);letter-spacing:-1px">R2,618</div>
         </div>
         <div style="background:var(--bg2);border-radius:8px;padding:16px;text-align:center">
-          <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Per year</div>
+          <div id="aff-per-year-label" style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Per year</div>
           <div id="aff-year" style="font-size:22px;font-weight:800;color:var(--green);letter-spacing:-1px">R31,410</div>
         </div>
         <div style="background:#0A1628;border:1px solid var(--accent);border-radius:8px;padding:16px;text-align:center">
-          <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Per subscriber</div>
+          <div id="aff-per-subscriber-label" style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Per subscriber</div>
           <div id="aff-per" style="font-size:22px;font-weight:800;color:var(--accent);letter-spacing:-1px">R104.70</div>
         </div>
       </div>
@@ -734,8 +734,8 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
       </div>
 
       <div style="margin-top:28px">
-        <a href="mailto:chris@spreakr.com?subject=Affiliate Program Application" class="btn-primary" style="width:100%;display:block;text-align:center;padding:14px">Apply to become an affiliate →</a>
-        <p style="font-size:12px;color:var(--muted);margin-top:12px">Free to join · No minimum referrals · Paid monthly via PayPal · Available globally</p>
+        <a href="mailto:chris@spreakr.com?subject=Affiliate Program Application" class="btn-primary" style="width:100%;display:block;text-align:center;padding:14px" data-i18n="aff_btn">Apply to become an affiliate →</a>
+        <p id="aff-join-note" style="font-size:12px;color:var(--muted);margin-top:12px">Free to join · No minimum referrals · Paid monthly via PayPal · Available globally</p>
       </div>
     </div>
   </div>
@@ -767,13 +767,17 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
     document.getElementById('aff-month').textContent = fmt(monthly, currency);
     document.getElementById('aff-year').textContent  = fmt(yearly,  currency);
     document.getElementById('aff-per').textContent   = fmt(commission, currency);
-    document.getElementById('aff-note').innerHTML =
-      subs + ' people sign up once → you earn <strong style="color:var(--text)">' +
-      fmt(monthly, currency) + ' every month</strong> without doing anything more.';
+    var lang = document.documentElement.getAttribute('lang') || 'en';
+    var t = (window.AFFILIATE_EXTRA_I18N && window.AFFILIATE_EXTRA_I18N[lang]) || (window.AFFILIATE_EXTRA_I18N && window.AFFILIATE_EXTRA_I18N.en);
+    var noteTpl = (t && t.noteTpl) || '{subs} people sign up once → you earn <strong style="color:var(--text)">{monthly} every month</strong> without doing anything more.';
+    document.getElementById('aff-note').innerHTML = noteTpl
+      .replace('{subs}', String(subs))
+      .replace('{monthly}', fmt(monthly, currency));
   }
 
   slider.addEventListener('input', update);
   country.addEventListener('change', update);
+  window.refreshAffiliateCalc = update;
   update();
 })();
 </script>
@@ -832,7 +836,7 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
 const LOCALES = {
 en:{dir:'ltr',name:'English',flag:'🇬🇧',nav_features:'Features',nav_languages:'Languages',nav_pricing:'Pricing',nav_earn:'Earn with us',nav_cta:'Start free trial',hero_badge:'🌍 Now supporting 20+ languages',hero_h1_1:'Email in your language.',hero_h1_2:'Send in theirs.',hero_sub:"The world's first multilingual AI email command centre. Dictate in Afrikaans, Yoruba, Farsi, Hindi — send professionally in any language.",hero_cta_primary:'Start free — 7 days',hero_cta_secondary:'See features →',stat_1:'Languages supported',stat_2:'Email providers unified',stat_3:'Forensic search · 300 emails',stat_4:'Full inbox AI analysis',stat_5:'Competitors who do this',features_label:'Features',features_title:'Everything your inbox was missing.',features_sub:'Built for the multilingual professional. Every feature designed around voice, language, and intelligence.',f1_title:'Voice dictation in 20+ languages',f1_desc:"Dictate emails naturally in your mother tongue. Spreakr transcribes, professionalises, and sends in the recipient's language automatically.",f2_title:'Deep forensic email search',f2_desc:'Ask any question in plain language. GPT-4.1 reads every email in full and returns exact evidence, quotes, and relevance scores.',f3_title:'Thread Intelligence',f3_desc:'One click reveals a full intelligence briefing on any email chain. Timeline, sentiment arc, commitment tracking, and a one-line verdict.',f4_title:'Gmail + Outlook unified',f4_desc:'One inbox. Both accounts. Colour flagging, folder management, and AI features work identically across Gmail and Outlook.',f5_title:'Full UI in your language',f5_desc:'Every button, label, and message renders in your chosen language. Arabic and Persian flip the entire layout to right-to-left automatically.',f6_title:'Viral language bridge',f6_desc:'Every sent email includes a "View in your language" link. Recipients see your email in their language — and discover Spreakr.',ds_label:'Deep Search',ds_title:"Find anything. Even what wasn't said.",ds_desc:'Ask a question in plain language. GPT-4.1 reads every email in full. It finds explicit matches, implied meaning, tone shifts, admissions, and omissions.',ds_p1:'Natural language questions — no keywords needed',ds_p2:'Finds admissions, omissions, and tone shifts',ds_p3:'Exact evidence quotes with significance ratings',ds_p4:'Export full findings report as PDF',ds_p5:'R7.96 to analyse 300 emails in full',lang_label:'20+ Languages',lang_title:'The same three buttons. Every language on earth.',lang_sub:'Compose · Reply · Send — in every language your users speak. RTL layouts switch automatically for Arabic, Persian, and Urdu.',viral_label:'Growth Engine',viral_title:'Every email you send is a product demo.',viral_sub:'A subtle footer link lets recipients view your email in their own language — and discover Spreakr. Your users market for you automatically.',viral_cta:'Try Spreakr free →',viral_note:'100 users × 20 emails/day = 2,000 qualified impressions daily. Zero ad spend.',pricing_label:'Pricing',pricing_title:'Simple, transparent pricing.',pricing_sub:'AI search costs billed per use. Your plan includes a monthly credit.',tier1_name:'Trial',tier1_price:'Free',tier1_period:'7 days · no card required',tier1_f1:'Gmail + Outlook unified',tier1_f2:'Voice dictation',tier1_f3:'AI draft reply',tier1_f4:'R2 AI search credit',tier1_f5:'3 languages',tier1_btn:'Start free trial',tier2_name:'Pro',tier2_period:'~$16 USD · billed monthly',tier2_f1:'Everything in Trial',tier2_f2:'Thread Intelligence',tier2_f3:'Deep Search',tier2_f4:'R20 AI search credit',tier2_f5:'20 languages',tier2_f6:'Move to folder',tier2_f7:'Viral footer link',tier2_btn:'Get started',tier3_name:'Executive',tier3_period:'~$32 USD · billed monthly',tier3_f1:'Everything in Pro',tier3_f2:'R100 AI search credit',tier3_f3:'All languages (as released)',tier3_f4:'Legal terminology packs',tier3_f5:'PDF export reports',tier3_f6:'Priority support',tier3_f7:'Team settings',tier3_btn:'Contact us',aff_label:'Affiliate Program',aff_title:'Earn recurring income. Work from anywhere.',aff_sub:'Get a unique code. Share it with professionals in your network. Earn 30% of every subscription every month.',aff_s1:'Recurring monthly commission',aff_s2:'Earned per Pro subscriber per month',aff_s3:'No cap on referrals or earnings',aff_calc_title:'Example monthly earnings',aff_r1:'10 Pro subscribers',aff_r2:'25 Pro subscribers',aff_r3:'50 Pro subscribers',aff_r4:'100 Pro subscribers',aff_btn:'Apply to become an affiliate',aff_note:'Open to professionals globally · Paid monthly via PayPal · No experience required',cta_title:'The inbox built for everyone else.',cta_sub:'Other tools own English. With Spreakr, you own the world.',cta_btn1:'Start free — 7 days',cta_btn2:'Book a demo',cta_note:'No credit card required · Cancel anytime · POPIA compliant · Built in South Africa 🇿🇦',footer_tagline:"The world's first multilingual AI email command centre. Email in your language. Send in theirs.",footer_product:'Product',footer_company:'Company',footer_about:'About',footer_contact:'Contact',footer_affiliate:'Affiliate Program',footer_press:'Press',footer_legal:'Legal',footer_privacy:'Privacy Policy',footer_popia:'POPIA Compliance',footer_security:'Security',footer_terms:'Terms of Service'},
 
-af:{dir:'ltr',name:'Afrikaans',flag:'🇿🇦',nav_features:'Kenmerke',nav_languages:'Tale',nav_pricing:'Pryse',nav_earn:'Verdien saam',nav_cta:'Begin gratis proef',hero_badge:'🌍 Ondersteun nou 20+ tale',hero_h1_1:'E-pos in jou taal.',hero_h1_2:'Stuur in hulle s\'n.',hero_sub:'Die wêreld se eerste meertalige KI e-pos sentrum. Dikteer in Afrikaans, Yoruba, Farsi, Hindi — stuur professioneel in enige taal.',hero_cta_primary:'Begin gratis — 7 dae',hero_cta_secondary:'Sien kenmerke →',stat_1:'Tale ondersteun',stat_2:'E-pos verskaffers verenig',stat_3:'Forensiese soektog · 300 e-posse',stat_4:'Volledige KI-analise',stat_5:'Mededingers wat dit doen',features_label:'Kenmerke',features_title:'Alles wat jou inkassie gemis het.',features_sub:'Gebou vir die meertalige professionele persoon.',f1_title:'Stemdiksie in 20+ tale',f1_desc:'Dikteer e-posse in jou moedertaal. Spreakr skryf oor en stuur in die ontvanger se taal.',f2_title:'Diep forensiese e-possoektog',f2_desc:'Vra enige vraag in gewone taal. GPT-4.1 lees elke e-pos volledig.',f3_title:'Draad-intelligensie',f3_desc:'Een klik onthul \'n volledige intelligensie-verslag oor enige e-posketting.',f4_title:'Gmail + Outlook verenig',f4_desc:'Een inkassie. Beide rekeninge.',f5_title:'Volledige koppelvlak in jou taal',f5_desc:'Elke knoppie en boodskap vertoon in jou gekose taal.',f6_title:'Virale taalbrug',f6_desc:'Elke gestuurde e-pos sluit \'n "Bekyk in jou taal"-skakel in.',ds_label:'Diep Soektog',ds_title:'Vind enigiets. Selfs wat nie gesê is nie.',ds_desc:'Vra \'n vraag in gewone taal. GPT-4.1 lees elke e-pos volledig.',ds_p1:'Natuurlike taalvrae — geen sleutelwoorde nodig',ds_p2:'Vind toelating, weglatings en toonverskuiwings',ds_p3:'Presiese bewyshale met betekenisgradering',ds_p4:'Voer volledige bevindingsverslag uit as PDF',ds_p5:'R7.96 om 300 e-posse volledig te ontleed',lang_label:'20+ Tale',lang_title:'Dieselfde drie knoppies. Elke taal op aarde.',lang_sub:'Stel op · Antwoord · Stuur — in elke taal.',viral_label:'Groeienjin',viral_title:'Elke e-pos wat jy stuur is \'n produkdemo.',viral_sub:'\'n Subtiele voetnotskakel laat ontvangers jou e-pos in hul eie taal sien.',viral_cta:'Probeer Spreakr gratis →',viral_note:'100 gebruikers × 20 e-posse/dag = 2,000 indrukke daagliks.',pricing_label:'Pryse',pricing_title:'Eenvoudige, deursigtige pryse.',pricing_sub:'KI-soektoggelde word per gebruik gehef.',tier1_name:'Proef',tier1_price:'Gratis',tier1_period:'7 dae · geen kaart nodig',tier1_f1:'Gmail + Outlook verenig',tier1_f2:'Stemdiksie',tier1_f3:'KI konsepantwoord',tier1_f4:'R2 KI soektoggeld',tier1_f5:'3 tale',tier1_btn:'Begin gratis proef',tier2_name:'Pro',tier2_period:'~$16 USD · maandeliks',tier2_f1:'Alles in Proef',tier2_f2:'Draad-intelligensie',tier2_f3:'Diep Soektog',tier2_f4:'R20 KI soektoggeld',tier2_f5:'20 tale',tier2_f6:'Skuif na vouer',tier2_f7:'Virale voetnota skakel',tier2_btn:'Begin nou',tier3_name:'Uitvoerend',tier3_period:'~$32 USD · maandeliks',tier3_f1:'Alles in Pro',tier3_f2:'R100 KI soektoggeld',tier3_f3:'Alle 20+ tale',tier3_f4:'Regsterminologiepakke',tier3_f5:'PDF uitvoerverslae',tier3_f6:'Prioriteit ondersteuning',tier3_f7:'Spaninstellings',tier3_btn:'Kontak ons',aff_label:'Filiaalprogram',aff_title:'Verdien herhalende inkomste. Werk van oral.',aff_sub:'Kry \'n unieke kode. Deel dit. Verdien 30% van elke intekening elke maand.',aff_s1:'Herhalende maandelikse kommissie',aff_s2:'Verdien per Pro-intekenaar per maand',aff_s3:'Geen maksimum op verwysings',aff_calc_title:'Voorbeeldmaandelikse verdienste',aff_r1:'10 Pro intekenare',aff_r2:'25 Pro intekenare',aff_r3:'50 Pro intekenare',aff_r4:'100 Pro intekenare',aff_btn:'Aansoek doen as filiaal',aff_note:'Oop vir professionele persone wêreldwyd · Betaal maandeliks via PayPal',cta_title:'Die inkassie gebou vir almal anders.',cta_sub:'Ander instrumente besit Engels. Met Spreakr besit jy die wêreld.',cta_btn1:'Begin gratis — 7 dae',cta_btn2:'Bespreek \'n demo',cta_note:'Geen kredietkaart nodig · Kanselleer enige tyd · POPIA-voldoen',footer_tagline:"Die wêreld se eerste meertalige KI e-pos sentrum.",footer_product:'Produk',footer_company:'Maatskappy',footer_about:'Oor ons',footer_contact:'Kontak',footer_affiliate:'Filiaalprogram',footer_press:'Pers',footer_legal:'Regs',footer_privacy:'Privaatheidsbeleid',footer_popia:'POPIA Nakoming',footer_security:'Sekuriteit',footer_terms:'Diensvoorwaardes'},
+af:{dir:'ltr',name:'Afrikaans',flag:'🇿🇦',nav_features:'Kenmerke',nav_languages:'Tale',nav_pricing:'Pryse',nav_earn:'Verdien saam',nav_cta:'Begin gratis proef',hero_badge:'🌍 Ondersteun nou 20+ tale',hero_h1_1:'E-pos in jou taal.',hero_h1_2:'Stuur in hulle s\'n.',hero_sub:'Die wêreld se eerste meertalige KI e-pos sentrum. Dikteer in Afrikaans, Yoruba, Farsi, Hindi — stuur professioneel in enige taal.',hero_cta_primary:'Begin gratis — 7 dae',hero_cta_secondary:'Sien kenmerke →',stat_1:'Tale ondersteun',stat_2:'E-pos verskaffers verenig',stat_3:'Forensiese soektog · 300 e-posse',stat_4:'Volledige KI-analise',stat_5:'Mededingers wat dit doen',features_label:'Kenmerke',features_title:'Alles wat jou inboks gemis het.',features_sub:'Gebou vir die meertalige professionele persoon.',f1_title:'Stemdiksie in 20+ tale',f1_desc:'Dikteer e-posse in jou moedertaal. Spreakr skryf oor en stuur in die ontvanger se taal.',f2_title:'Diep forensiese e-possoektog',f2_desc:'Vra enige vraag in gewone taal. GPT-4.1 lees elke e-pos volledig.',f3_title:'Draad-intelligensie',f3_desc:'Een klik onthul \'n volledige intelligensie-verslag oor enige e-posketting.',f4_title:'Gmail + Outlook verenig',f4_desc:'Een inkassie. Beide rekeninge.',f5_title:'Volledige koppelvlak in jou taal',f5_desc:'Elke knoppie en boodskap vertoon in jou gekose taal.',f6_title:'Virale taalbrug',f6_desc:'Elke gestuurde e-pos sluit \'n "Bekyk in jou taal"-skakel in.',ds_label:'Diep Soektog',ds_title:'Vind enigiets. Selfs wat nie gesê is nie.',ds_desc:'Vra \'n vraag in gewone taal. GPT-4.1 lees elke e-pos volledig.',ds_p1:'Natuurlike taalvrae — geen sleutelwoorde nodig',ds_p2:'Vind toelating, weglatings en toonverskuiwings',ds_p3:'Presiese bewyshale met betekenisgradering',ds_p4:'Voer volledige bevindingsverslag uit as PDF',ds_p5:'R7.96 om 300 e-posse volledig te ontleed',lang_label:'20+ Tale',lang_title:'Dieselfde drie knoppies. Elke taal op aarde.',lang_sub:'Stel op · Antwoord · Stuur — in elke taal.',viral_label:'Groeienjin',viral_title:'Elke e-pos wat jy stuur is \'n produkdemo.',viral_sub:'\'n Subtiele voetnotskakel laat ontvangers jou e-pos in hul eie taal sien.',viral_cta:'Probeer Spreakr gratis →',viral_note:'100 gebruikers × 20 e-posse/dag = 2,000 indrukke daagliks.',pricing_label:'Pryse',pricing_title:'Eenvoudige, deursigtige pryse.',pricing_sub:'KI-soektoggelde word per gebruik gehef.',tier1_name:'Proef',tier1_price:'Gratis',tier1_period:'7 dae · geen kaart nodig',tier1_f1:'Gmail + Outlook verenig',tier1_f2:'Stemdiksie',tier1_f3:'KI konsepantwoord',tier1_f4:'R2 KI soektoggeld',tier1_f5:'3 tale',tier1_btn:'Begin gratis proef',tier2_name:'Pro',tier2_period:'~$16 USD · maandeliks',tier2_f1:'Alles in Proef',tier2_f2:'Draad-intelligensie',tier2_f3:'Diep Soektog',tier2_f4:'R20 KI soektoggeld',tier2_f5:'20 tale',tier2_f6:'Skuif na vouer',tier2_f7:'Virale voetnota skakel',tier2_btn:'Begin nou',tier3_name:'Uitvoerend',tier3_period:'~$32 USD · maandeliks',tier3_f1:'Alles in Pro',tier3_f2:'R100 KI soektoggeld',tier3_f3:'Alle 20+ tale',tier3_f4:'Regsterminologiepakke',tier3_f5:'PDF uitvoerverslae',tier3_f6:'Prioriteit ondersteuning',tier3_f7:'Spaninstellings',tier3_btn:'Kontak ons',aff_label:'Filiaalprogram',aff_title:'Verdien herhalende inkomste. Werk van oral.',aff_sub:'Kry \'n unieke kode. Deel dit. Verdien 30% van elke intekening elke maand.',aff_s1:'Herhalende maandelikse kommissie',aff_s2:'Verdien per Pro-intekenaar per maand',aff_s3:'Geen maksimum op verwysings',aff_calc_title:'Voorbeeldmaandelikse verdienste',aff_r1:'10 Pro intekenare',aff_r2:'25 Pro intekenare',aff_r3:'50 Pro intekenare',aff_r4:'100 Pro intekenare',aff_btn:'Aansoek doen as filiaal',aff_note:'Oop vir professionele persone wêreldwyd · Betaal maandeliks via PayPal',cta_title:'Die inkassie gebou vir almal anders.',cta_sub:'Ander instrumente besit Engels. Met Spreakr besit jy die wêreld.',cta_btn1:'Begin gratis — 7 dae',cta_btn2:'Bespreek \'n demo',cta_note:'Geen kredietkaart nodig · Kanselleer enige tyd · POPIA-voldoen',footer_tagline:"Die wêreld se eerste meertalige KI e-pos sentrum.",footer_product:'Produk',footer_company:'Maatskappy',footer_about:'Oor ons',footer_contact:'Kontak',footer_affiliate:'Filiaalprogram',footer_press:'Pers',footer_legal:'Regs',footer_privacy:'Privaatheidsbeleid',footer_popia:'POPIA Nakoming',footer_security:'Sekuriteit',footer_terms:'Diensvoorwaardes'},
 
 ar:{dir:'rtl',name:'العربية',flag:'🇸🇦',nav_features:'الميزات',nav_languages:'اللغات',nav_pricing:'الأسعار',nav_earn:'اكسب معنا',nav_cta:'ابدأ تجربة مجانية',hero_badge:'🌍 يدعم الآن أكثر من 90 لغة',hero_h1_1:'البريد الإلكتروني بلغتك.',hero_h1_2:'أرسل بلغتهم.',hero_sub:'أول مركز بريد إلكتروني بالذكاء الاصطناعي متعدد اللغات في العالم.',hero_cta_primary:'ابدأ مجاناً — 7 أيام',hero_cta_secondary:'انظر الميزات →',stat_1:'لغة مدعومة',stat_2:'مزودي البريد الإلكتروني',stat_3:'بحث جنائي · 300 رسالة',stat_4:'تحليل صندوق البريد الكامل',stat_5:'منافسون يفعلون هذا',features_label:'الميزات',features_title:'كل ما افتقده صندوق بريدك.',features_sub:'مبني للمحترف متعدد اللغات.',f1_title:'إملاء صوتي بأكثر من 90 لغة',f1_desc:'أملي رسائل البريد الإلكتروني بلغتك الأم. يقوم Spreakr بالنسخ والإرسال باللغة المناسبة.',f2_title:'بحث جنائي عميق في البريد الإلكتروني',f2_desc:'اطرح أي سؤال بلغة عادية. يقرأ GPT-4.1 كل رسالة بريد إلكتروني بالكامل.',f3_title:'ذكاء المحادثة',f3_desc:'نقرة واحدة تكشف تقرير استخباراتي كامل عن أي سلسلة بريد إلكتروني.',f4_title:'Gmail + Outlook موحد',f4_desc:'صندوق بريد واحد. كلا الحسابين.',f5_title:'واجهة كاملة بلغتك',f5_desc:'كل زر ورسالة تظهر بلغتك المختارة. العربية والفارسية تقلب التخطيط تلقائياً.',f6_title:'جسر اللغة الفيروسي',f6_desc:'كل بريد إلكتروني مرسل يتضمن رابط "عرض بلغتك".',ds_label:'البحث العميق',ds_title:'ابحث عن أي شيء. حتى ما لم يُقَل.',ds_desc:'اطرح سؤالاً بلغة عادية. يقرأ GPT-4.1 كل رسالة بالكامل.',ds_p1:'أسئلة بلغة طبيعية — لا حاجة لكلمات مفتاحية',ds_p2:'يجد الاعترافات والإغفالات وتحولات النبرة',ds_p3:'اقتباسات أدلة دقيقة مع تقييمات الأهمية',ds_p4:'تصدير تقرير نتائج كامل كـ PDF',ds_p5:'R7.96 لتحليل 300 رسالة بريد إلكتروني',lang_label:'أكثر من 90 لغة',lang_title:'نفس الأزرار الثلاثة. كل لغات الأرض.',lang_sub:'إنشاء · رد · إرسال — بكل لغة.',viral_label:'محرك النمو',viral_title:'كل بريد إلكتروني ترسله هو عرض للمنتج.',viral_sub:'رابط في التذييل يتيح للمستلمين رؤية بريدك بلغتهم.',viral_cta:'جرب Spreakr مجاناً →',viral_note:'100 مستخدم × 20 بريد/يوم = 2,000 انطباع يومياً.',pricing_label:'الأسعار',pricing_title:'أسعار بسيطة وشفافة.',pricing_sub:'تكاليف البحث بالذكاء الاصطناعي تُحصَّل لكل استخدام.',tier1_name:'تجريبي',tier1_price:'مجاني',tier1_period:'7 أيام · لا بطاقة مطلوبة',tier1_f1:'Gmail + Outlook موحد',tier1_f2:'إملاء صوتي',tier1_f3:'مسودة رد بالذكاء الاصطناعي',tier1_f4:'رصيد بحث R2',tier1_f5:'3 لغات',tier1_btn:'ابدأ تجربة مجانية',tier2_name:'Pro',tier2_period:'~16$ · شهرياً',tier2_f1:'كل شيء في التجريبي',tier2_f2:'ذكاء المحادثة',tier2_f3:'البحث العميق',tier2_f4:'رصيد بحث R20',tier2_f5:'20 لغة',tier2_f6:'نقل إلى مجلد',tier2_f7:'رابط تذييل فيروسي',tier2_btn:'ابدأ الآن',tier3_name:'تنفيذي',tier3_period:'~32$ · شهرياً',tier3_f1:'كل شيء في Pro',tier3_f2:'رصيد بحث R100',tier3_f3:'جميع اللغات 20+',tier3_f4:'حزم مصطلحات قانونية',tier3_f5:'تصدير تقارير PDF',tier3_f6:'دعم أولوية',tier3_f7:'إعدادات الفريق',tier3_btn:'اتصل بنا',aff_label:'برنامج الشراكة',aff_title:'اكسب دخلاً متكرراً. اعمل من أي مكان.',aff_sub:'احصل على كود فريد. شاركه. اكسب 30% من كل اشتراك كل شهر.',aff_s1:'عمولة شهرية متكررة',aff_s2:'مكتسب لكل مشترك Pro شهرياً',aff_s3:'لا حد للإحالات أو الأرباح',aff_calc_title:'أمثلة على الأرباح الشهرية',aff_r1:'10 مشتركين Pro',aff_r2:'25 مشتركاً Pro',aff_r3:'50 مشتركاً Pro',aff_r4:'100 مشترك Pro',aff_btn:'تقدم لتصبح شريكاً',aff_note:'مفتوح للمحترفين عالمياً · يُدفع شهرياً عبر PayPal',cta_title:'صندوق البريد المبني لكل الآخرين.',cta_sub:'الأدوات الأخرى تمتلك الإنجليزية. مع Spreakr، أنت تمتلك العالم.',cta_btn1:'ابدأ مجاناً — 7 أيام',cta_btn2:'احجز عرضاً توضيحياً',cta_note:'لا بطاقة ائتمان مطلوبة · ألغِ في أي وقت · متوافق مع POPIA',footer_tagline:'أول مركز بريد إلكتروني بالذكاء الاصطناعي متعدد اللغات في العالم.',footer_product:'المنتج',footer_company:'الشركة',footer_about:'عن Spreakr',footer_contact:'اتصل بنا',footer_affiliate:'برنامج الشراكة',footer_press:'الصحافة',footer_legal:'قانوني',footer_privacy:'سياسة الخصوصية',footer_popia:'الامتثال لـ POPIA',footer_security:'الأمان',footer_terms:'شروط الخدمة'},
 
@@ -1040,7 +1044,69 @@ applyTranslations = function(lang) {
   oldApply(lang);
   var label = document.getElementById('langBtnLabel');
   if (label) label.innerHTML = flagMarkup(lang) + '<span>' + lang.toUpperCase() + '</span>';
+  applyPricingExtras(lang);
+  applyAffiliateExtras(lang);
 };
+
+const PRICING_EXTRA_I18N = {
+  en:{popular:'Most Popular',emailsProvider:'Emails loaded per provider',loadAll:'Load All emails',annual:'Annual plans available · Cancel anytime'},
+  af:{popular:'Gewildste',emailsProvider:'E-posse gelaai per verskaffer',loadAll:'Laai alle e-posse',annual:'Jaarplanne beskikbaar · Kanselleer enige tyd'},
+  ar:{popular:'الأكثر شعبية',emailsProvider:'الرسائل المحمّلة لكل مزوّد',loadAll:'تحميل كل الرسائل',annual:'خطط سنوية متاحة · إلغاء في أي وقت'},
+  fa:{popular:'محبوب‌ترین',emailsProvider:'ایمیل‌های بارگذاری‌شده برای هر سرویس',loadAll:'بارگذاری همه ایمیل‌ها',annual:'پلن سالانه موجود است · لغو در هر زمان'},
+  hi:{popular:'सबसे लोकप्रिय',emailsProvider:'प्रति प्रदाता लोड किए गए ईमेल',loadAll:'सभी ईमेल लोड करें',annual:'वार्षिक प्लान उपलब्ध · कभी भी रद्द करें'},
+  yo:{popular:'Tí ó gbajúgbajà jù',emailsProvider:'Ìmèlì tí a kó sórí olùpèsè kọọkan',loadAll:'Kó gbogbo ìmèlì',annual:'Àwọn ètò ọdún wà · Fagilé nígbàkúgbà'},
+  fr:{popular:'Le plus populaire',emailsProvider:'Emails chargés par fournisseur',loadAll:'Charger tous les emails',annual:'Forfaits annuels disponibles · Annulez à tout moment'},
+  de:{popular:'Am beliebtesten',emailsProvider:'Geladene E-Mails pro Anbieter',loadAll:'Alle E-Mails laden',annual:'Jahrespläne verfügbar · Jederzeit kündbar'},
+  pt:{popular:'Mais popular',emailsProvider:'Emails carregados por provedor',loadAll:'Carregar todos os emails',annual:'Planos anuais disponíveis · Cancele quando quiser'},
+  es:{popular:'Más popular',emailsProvider:'Emails cargados por proveedor',loadAll:'Cargar todos los emails',annual:'Planes anuales disponibles · Cancela cuando quieras'},
+  sw:{popular:'Maarufu zaidi',emailsProvider:'Barua pepe zilizopakiwa kwa kila mtoa huduma',loadAll:'Pakia barua pepe zote',annual:'Mipango ya mwaka inapatikana · Ghairi wakati wowote'}
+};
+function applyPricingExtras(lang){
+  var t = PRICING_EXTRA_I18N[lang] || PRICING_EXTRA_I18N.en;
+  var mp = document.getElementById('pricing-most-popular');
+  var ep = document.getElementById('pricing-emails-provider');
+  var l1 = document.getElementById('pricing-loadall-plan1');
+  var lr = document.getElementById('pricing-loadall-row');
+  var an = document.getElementById('pricing-annual-note');
+  if (mp) mp.textContent = t.popular;
+  if (ep) ep.textContent = t.emailsProvider;
+  if (l1) l1.textContent = t.loadAll;
+  if (lr) lr.textContent = t.loadAll;
+  if (an) an.textContent = t.annual;
+}
+
+window.AFFILIATE_EXTRA_I18N = {
+  en:{card1Title:'Your personal network',card1Desc:'Attorneys, accountants, executives, business owners — if they send emails, they need Spreakr. One WhatsApp message to the right person earns you passive income for years.',card2Title:'Social media & content',card2Desc:'Post a demo video on LinkedIn, TikTok, or YouTube. Show people sending an email in Afrikaans that arrives in perfect Japanese. The product sells itself — you just need the clip.',card3Title:'Podcasts, blogs & communities',card3Desc:'Run a newsletter, podcast, or industry group? Drop your affiliate link. Reach professionals in law, finance, healthcare, or diaspora communities who send global emails daily.',calcTitle:'💰 What could <em style="color:var(--accent);font-style:normal">you</em> earn?',countryLabel:'Your subscribers are mainly based in',subsLabel:'Number of Pro subscribers you refer',minSubs:'1 subscriber',maxSubs:'500 subscribers',perMonth:'Per month',perYear:'Per year',perSubscriber:'Per subscriber',joinNote:'Free to join · No minimum referrals · Paid monthly via PayPal · Available globally',noteTpl:'{subs} people sign up once → you earn <strong style="color:var(--text)">{monthly} every month</strong> without doing anything more.'},
+  af:{card1Title:'Jou persoonlike netwerk',card1Desc:'Prokureurs, rekenmeesters, bestuurders en sake-eienaars — as hulle e-pos stuur, het hulle Spreakr nodig.',card2Title:'Sosiale media en inhoud',card2Desc:'Plaas ’n demo-video op LinkedIn, TikTok of YouTube. Die produk verkoop homself.',card3Title:'Podsendings, blogs en gemeenskappe',card3Desc:'Het jy ’n nuusbrief, podsending of groep? Deel jou geaffilieerde skakel en bereik professionele mense.',calcTitle:'💰 Wat kan <em style="color:var(--accent);font-style:normal">jy</em> verdien?',countryLabel:'Jou intekenare is meestal gebaseer in',subsLabel:'Aantal Pro-intekenare wat jy verwys',minSubs:'1 intekenaar',maxSubs:'500 intekenare',perMonth:'Per maand',perYear:'Per jaar',perSubscriber:'Per intekenaar',joinNote:'Gratis om aan te sluit · Geen minimum verwysings · Maandeliks via PayPal betaal · Wêreldwyd beskikbaar',noteTpl:'{subs} mense teken een keer op → jy verdien <strong style="color:var(--text)">{monthly} elke maand</strong> sonder ekstra werk.'},
+  ar:{card1Title:'شبكتك الشخصية',card1Desc:'المحامون والمحاسبون والمديرون وأصحاب الأعمال يحتاجون Spreakr إذا كانوا يرسلون بريدًا إلكترونيًا.',card2Title:'وسائل التواصل والمحتوى',card2Desc:'انشر فيديو توضيحيًا على LinkedIn أو TikTok أو YouTube. المنتج يبيع نفسه.',card3Title:'البودكاست والمدونات والمجتمعات',card3Desc:'هل لديك نشرة أو بودكاست أو مجتمع؟ شارك رابطك التابع للوصول إلى محترفين أكثر.',calcTitle:'💰 كم يمكن أن <em style="color:var(--accent);font-style:normal">تكسب</em>؟',countryLabel:'المشتركون لديك موجودون غالبًا في',subsLabel:'عدد مشتركي Pro الذين أحلتهم',minSubs:'مشترك واحد',maxSubs:'500 مشترك',perMonth:'شهريًا',perYear:'سنويًا',perSubscriber:'لكل مشترك',joinNote:'الانضمام مجاني · لا حد أدنى للإحالات · الدفع شهريًا عبر PayPal · متاح عالميًا',noteTpl:'يسجل {subs} أشخاص مرة واحدة ← تربح <strong style="color:var(--text)">{monthly} كل شهر</strong> دون عمل إضافي.'},
+  fa:{card1Title:'شبکه شخصی شما',card1Desc:'اگر وکلا، حسابداران و مدیران ایمیل می‌فرستند، به Spreakr نیاز دارند.',card2Title:'شبکه‌های اجتماعی و محتوا',card2Desc:'یک ویدئوی دمو در LinkedIn یا TikTok یا YouTube منتشر کنید. محصول خودش را می‌فروشد.',card3Title:'پادکست، وبلاگ و کامیونیتی',card3Desc:'خبرنامه یا پادکست دارید؟ لینک همکاری را منتشر کنید و به حرفه‌ای‌ها برسید.',calcTitle:'💰 چقدر می‌توانی <em style="color:var(--accent);font-style:normal">درآمد</em> داشته باشی؟',countryLabel:'مشترکان شما عمدتاً در این منطقه هستند',subsLabel:'تعداد مشترک‌های Pro که معرفی می‌کنید',minSubs:'1 مشترک',maxSubs:'500 مشترک',perMonth:'در ماه',perYear:'در سال',perSubscriber:'به ازای هر مشترک',joinNote:'عضویت رایگان · بدون حداقل ارجاع · پرداخت ماهانه با PayPal · در دسترس جهانی',noteTpl:'{subs} نفر یک‌بار ثبت‌نام می‌کنند ← شما <strong style="color:var(--text)">{monthly} در هر ماه</strong> درآمد دارید.'},
+  hi:{card1Title:'आपका निजी नेटवर्क',card1Desc:'वकील, अकाउंटेंट, एग्जीक्यूटिव और बिज़नेस मालिक — जो ईमेल भेजते हैं, उन्हें Spreakr चाहिए।',card2Title:'सोशल मीडिया और कंटेंट',card2Desc:'LinkedIn, TikTok या YouTube पर डेमो वीडियो डालें। प्रोडक्ट खुद बिकता है।',card3Title:'पॉडकास्ट, ब्लॉग और समुदाय',card3Desc:'न्यूज़लेटर, पॉडकास्ट या कम्युनिटी चलाते हैं? अपना एफिलिएट लिंक शेयर करें।',calcTitle:'💰 आप कितना <em style="color:var(--accent);font-style:normal">कमा</em> सकते हैं?',countryLabel:'आपके सब्सक्राइबर मुख्य रूप से यहाँ आधारित हैं',subsLabel:'आपने जितने Pro सब्सक्राइबर रेफर किए',minSubs:'1 सब्सक्राइबर',maxSubs:'500 सब्सक्राइबर',perMonth:'प्रति माह',perYear:'प्रति वर्ष',perSubscriber:'प्रति सब्सक्राइबर',joinNote:'शामिल होना मुफ्त · न्यूनतम रेफरल नहीं · PayPal से मासिक भुगतान · विश्वभर में उपलब्ध',noteTpl:'{subs} लोग एक बार साइन अप करते हैं → आप <strong style="color:var(--text)">{monthly} हर महीने</strong> कमाते हैं।'},
+  yo:{card1Title:'Nẹ́tíwọ́ọ̀kì tirẹ',card1Desc:'Àwọn amòfin, akántántì àti olóṣèlú-òwò tó ń fi ìmèlì ránṣẹ́ nílò Spreakr.',card2Title:'Sósíàlì mídíà àti kọ́ńtẹ́ńtì',card2Desc:'Fi fídíò àfihàn sí LinkedIn, TikTok tàbí YouTube. Ọja náà máa ta ara rẹ̀.',card3Title:'Pọ́ọ̀díkásì, búlógì àti àwùjọ',card3Desc:'Ṣe o ní newsletter tàbí podcast? Pín link affiliate rẹ kí o dé ọdọ awọn amọ̀ja.',calcTitle:'💰 Kí ni ìwọ lè <em style="color:var(--accent);font-style:normal">jèrè</em>?',countryLabel:'Ọ̀pọ̀ àwọn alabapin rẹ wà ní',subsLabel:'Nọ́ńbà àwọn alabapin Pro tí o tọ́ka sí',minSubs:'Alabapin 1',maxSubs:'Alabapin 500',perMonth:'Ní oṣù',perYear:'Ní ọdún',perSubscriber:'Fún alabapin kọọkan',joinNote:'Ọfẹ lati darapọ · Ko si iye to kere fun referral · San oṣooṣu nipasẹ PayPal · Wa kaakiri agbaye',noteTpl:'{subs} ènìyàn forúkọsílẹ lẹ́ẹ̀kan → o ń rí <strong style="color:var(--text)">{monthly} ní gbogbo oṣù</strong>.'},
+  fr:{card1Title:'Votre réseau personnel',card1Desc:'Avocats, comptables, dirigeants, entrepreneurs : s’ils envoient des emails, ils ont besoin de Spreakr.',card2Title:'Réseaux sociaux et contenu',card2Desc:'Publiez une démo sur LinkedIn, TikTok ou YouTube. Le produit se vend tout seul.',card3Title:'Podcasts, blogs et communautés',card3Desc:'Vous avez une newsletter, un podcast ou une communauté ? Partagez votre lien affilié.',calcTitle:'💰 Que pouvez-<em style="color:var(--accent);font-style:normal">vous</em> gagner ?',countryLabel:'Vos abonnés sont principalement basés en',subsLabel:'Nombre d’abonnés Pro que vous parrainez',minSubs:'1 abonné',maxSubs:'500 abonnés',perMonth:'Par mois',perYear:'Par an',perSubscriber:'Par abonné',joinNote:'Inscription gratuite · Aucun minimum de parrainages · Paiement mensuel via PayPal · Disponible dans le monde entier',noteTpl:'{subs} personnes s’inscrivent une fois → vous gagnez <strong style="color:var(--text)">{monthly} chaque mois</strong> sans effort supplémentaire.'},
+  de:{card1Title:'Ihr persönliches Netzwerk',card1Desc:'Anwälte, Buchhalter, Führungskräfte und Unternehmer brauchen Spreakr, wenn sie E-Mails senden.',card2Title:'Social Media und Content',card2Desc:'Veröffentlichen Sie ein Demo-Video auf LinkedIn, TikTok oder YouTube. Das Produkt verkauft sich selbst.',card3Title:'Podcasts, Blogs und Communities',card3Desc:'Sie haben einen Newsletter, Podcast oder eine Community? Teilen Sie Ihren Affiliate-Link.',calcTitle:'💰 Was können <em style="color:var(--accent);font-style:normal">Sie</em> verdienen?',countryLabel:'Ihre Abonnenten sind hauptsächlich in',subsLabel:'Anzahl der von Ihnen geworbenen Pro-Abonnenten',minSubs:'1 Abonnent',maxSubs:'500 Abonnenten',perMonth:'Pro Monat',perYear:'Pro Jahr',perSubscriber:'Pro Abonnent',joinNote:'Kostenlose Teilnahme · Keine Mindestanzahl an Empfehlungen · Monatliche Auszahlung via PayPal · Weltweit verfügbar',noteTpl:'{subs} Personen melden sich einmal an → Sie verdienen <strong style="color:var(--text)">{monthly} jeden Monat</strong> ohne zusätzlichen Aufwand.'},
+  pt:{card1Title:'Sua rede pessoal',card1Desc:'Advogados, contadores, executivos e donos de negócios — se enviam email, precisam do Spreakr.',card2Title:'Mídias sociais e conteúdo',card2Desc:'Publique um vídeo demo no LinkedIn, TikTok ou YouTube. O produto se vende sozinho.',card3Title:'Podcasts, blogs e comunidades',card3Desc:'Tem newsletter, podcast ou comunidade? Compartilhe seu link de afiliado.',calcTitle:'💰 Quanto <em style="color:var(--accent);font-style:normal">você</em> pode ganhar?',countryLabel:'Seus assinantes estão principalmente em',subsLabel:'Número de assinantes Pro que você indica',minSubs:'1 assinante',maxSubs:'500 assinantes',perMonth:'Por mês',perYear:'Por ano',perSubscriber:'Por assinante',joinNote:'Grátis para entrar · Sem mínimo de indicações · Pagamento mensal via PayPal · Disponível globalmente',noteTpl:'{subs} pessoas se cadastram uma vez → você ganha <strong style="color:var(--text)">{monthly} todo mês</strong> sem trabalho extra.'},
+  es:{card1Title:'Tu red personal',card1Desc:'Abogados, contadores, ejecutivos y dueños de negocio: si envían emails, necesitan Spreakr.',card2Title:'Redes sociales y contenido',card2Desc:'Publica un video demo en LinkedIn, TikTok o YouTube. El producto se vende solo.',card3Title:'Podcasts, blogs y comunidades',card3Desc:'¿Tienes newsletter, podcast o comunidad? Comparte tu enlace de afiliado.',calcTitle:'💰 ¿Cuánto puedes <em style="color:var(--accent);font-style:normal">ganar</em>?',countryLabel:'Tus suscriptores están principalmente en',subsLabel:'Número de suscriptores Pro que refieres',minSubs:'1 suscriptor',maxSubs:'500 suscriptores',perMonth:'Por mes',perYear:'Por año',perSubscriber:'Por suscriptor',joinNote:'Unirse es gratis · Sin mínimo de referidos · Pago mensual vía PayPal · Disponible globalmente',noteTpl:'{subs} personas se registran una vez → ganas <strong style="color:var(--text)">{monthly} cada mes</strong> sin hacer nada más.'},
+  sw:{card1Title:'Mtandao wako binafsi',card1Desc:'Mawakili, wahasibu, watendaji na wamiliki wa biashara wanahitaji Spreakr wanapotuma barua pepe.',card2Title:'Mitandao ya kijamii na maudhui',card2Desc:'Chapisha video ya majaribio kwenye LinkedIn, TikTok au YouTube. Bidhaa inajiuza yenyewe.',card3Title:'Podikasti, blogu na jamii',card3Desc:'Una jarida, podikasti au jamii? Shiriki kiungo chako cha ushirika.',calcTitle:'💰 Unaweza <em style="color:var(--accent);font-style:normal">kupata</em> kiasi gani?',countryLabel:'Wafuasi wako wako hasa nchini',subsLabel:'Idadi ya waliojisajili Pro unaowarejelea',minSubs:'Mfuasi 1',maxSubs:'Wafuasi 500',perMonth:'Kwa mwezi',perYear:'Kwa mwaka',perSubscriber:'Kwa kila mfuasi',joinNote:'Kujiunga ni bure · Hakuna kiwango cha chini cha rufaa · Malipo kila mwezi kupitia PayPal · Inapatikana duniani kote',noteTpl:'Watu {subs} wanajiandikisha mara moja → unapata <strong style="color:var(--text)">{monthly} kila mwezi</strong> bila kazi ya ziada.'}
+};
+function applyAffiliateExtras(lang){
+  var t = window.AFFILIATE_EXTRA_I18N[lang] || window.AFFILIATE_EXTRA_I18N.en;
+  var map = {
+    'aff-card1-title': t.card1Title, 'aff-card1-desc': t.card1Desc,
+    'aff-card2-title': t.card2Title, 'aff-card2-desc': t.card2Desc,
+    'aff-card3-title': t.card3Title, 'aff-card3-desc': t.card3Desc,
+    'aff-calc-title': t.calcTitle, 'aff-country-label': t.countryLabel,
+    'aff-subs-label': t.subsLabel, 'aff-min-subs': t.minSubs, 'aff-max-subs': t.maxSubs,
+    'aff-per-month-label': t.perMonth, 'aff-per-year-label': t.perYear,
+    'aff-per-subscriber-label': t.perSubscriber, 'aff-join-note': t.joinNote
+  };
+  Object.keys(map).forEach(function(id){
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (id === 'aff-calc-title') el.innerHTML = map[id];
+    else el.textContent = map[id];
+  });
+  if (window.refreshAffiliateCalc) window.refreshAffiliateCalc();
+}
 
 buildDropdown();
 applyTranslations(detectLanguage());
