@@ -39,8 +39,10 @@ nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;di
 .btn-primary:hover{background:var(--accent2)}
 .btn-secondary{background:transparent;color:var(--text);padding:16px 36px;border-radius:8px;font-size:17px;font-weight:600;cursor:pointer;border:1px solid var(--border);transition:all 0.2s;display:inline-block}
 .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
-.lang-float{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:760px;margin:0 auto}
-.lang-pill{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:9px 18px;font-size:13px;display:flex;align-items:center;gap:8px;opacity:0;animation:floatIn 0.5s ease forwards}
+.lang-float{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:760px;margin:0 auto;position:relative;z-index:5;pointer-events:auto}
+.site-flag-img{display:inline-block;vertical-align:middle;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.12);object-fit:cover}
+.site-flag-fallback{display:none;align-items:center;justify-content:center;min-width:24px;font-size:14px;line-height:1}
+.lang-pill{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:9px 18px;font-size:13px;display:flex;align-items:center;gap:8px;opacity:0;animation:floatIn 0.5s ease forwards;position:relative;z-index:6;pointer-events:auto;cursor:pointer}
 @keyframes floatIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .stats{background:var(--bg2);border-bottom:1px solid var(--border)}
 .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);background:var(--border);gap:1px;max-width:1200px;margin:0 auto}
@@ -154,7 +156,7 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
   </div>
   <div class="nav-right">
     <div class="lang-switcher">
-      <button class="lang-btn" id="langBtn">🌐 <span id="langBtnLabel">EN</span></button>
+      <button class="lang-btn" id="langBtn"><span id="langBtnLabel">EN</span></button>
       <div class="lang-dropdown" id="langDropdown"></div>
     </div>
     <a href="https://app.spreakr.com" class="nav-cta" data-i18n="nav_cta">Start free trial</a>
@@ -163,19 +165,7 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
 
 <section class="hero" style="padding-top:48px">
   <!-- Language flags strip -->
-  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:720px;margin:0 auto 32px">
-    <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted)">🇿🇦 <span>Afrikaans</span></div>
-    <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted)">🇸🇦 <span>العربية</span></div>
-    <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted)">🇩🇪 <span>Deutsch</span></div>
-    <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted)">🇬🇧 <span>English</span></div>
-    <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted)">🇪🇸 <span>Español</span></div>
-    <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted)">🇮🇷 <span>فارسی</span></div>
-    <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted)">🇫🇷 <span>Français</span></div>
-    <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted)">🇮🇳 <span>हिंदी</span></div>
-    <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted)">🇧🇷 <span>Português</span></div>
-    <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted)">🇰🇪 <span>Swahili</span></div>
-    <div style="display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted)">🇳🇬 <span>Yorùbá</span></div>
-  </div>
+  <div class="lang-float" id="langFloat"></div>
 
   <h1 style="margin-top:0;margin-bottom:16px"><em data-i18n="hero_h1_1">Speak freely in your language.</em><br><em data-i18n="hero_h1_2">Formulated professionally. Send in theirs.</em></h1>
   <p class="hero-sub" data-i18n="hero_sub" style="margin-bottom:40px">The world's first multilingual, multi-platform unified intelligent email command centre — all your accounts in a single view, powered by the world's most powerful AI. Built for professionals who think and work globally.</p>
@@ -429,7 +419,6 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
     <a href="https://app.spreakr.com" class="btn-primary" data-i18n="hero_cta_primary">Start free — 7 days</a>
     <a href="#features" class="btn-secondary" data-i18n="hero_cta_secondary">See features →</a>
   </div>
-  <div class="lang-float" id="langFloat"></div>
 </section>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -975,7 +964,7 @@ function buildDropdown() {
     const opt = document.createElement('div');
     opt.className = 'lang-option';
     opt.dataset.lang = l.code;
-    opt.innerHTML = '<span>' + l.flag + '</span><span>' + l.name + '</span>';
+    opt.innerHTML = flagMarkup(l.code) + '<span>' + l.name + '</span>';
     opt.addEventListener('click', () => {
       applyTranslations(l.code);
       dd.classList.remove('open');
@@ -996,35 +985,65 @@ document.addEventListener('click', () => {
 // ============================================================
 // FLOATING LANGUAGE PILLS — clickable to switch language
 // ============================================================
+const FLAG_CC = {
+  en:'gb',af:'za',ar:'sa',fa:'ir',hi:'in',yo:'ng',fr:'fr',de:'de',pt:'br',es:'es',sw:'ke'
+};
+const FLAG_EMOJI = {
+  en:'🇬🇧',af:'🇿🇦',ar:'🇸🇦',fa:'🇮🇷',hi:'🇮🇳',yo:'🇳🇬',fr:'🇫🇷',de:'🇩🇪',pt:'🇧🇷',es:'🇪🇸',sw:'🇰🇪'
+};
+function flagMarkup(code){
+  var cc = FLAG_CC[code] || 'un';
+  var emoji = FLAG_EMOJI[code] || '🏳️';
+  return '<img class="site-flag-img" src="https://flagcdn.com/24x18/'+cc+'.png" width="24" height="18" alt="" loading="lazy" decoding="async" onerror="this.style.display=\\'none\\';if(this.nextElementSibling){this.nextElementSibling.style.display=\\'inline-flex\\';}"><span class="site-flag-fallback" aria-hidden="true">'+emoji+'</span>';
+}
 const PILLS = [
-  {flag:'🇿🇦',name:'Afrikaans',code:'af',d:0},
-  {flag:'🇸🇦',name:'العربية',code:'ar',d:100},
-  {flag:'🇮🇷',name:'فارسی',code:'fa',d:200},
-  {flag:'🇮🇳',name:'हिंदी',code:'hi',d:300},
-  {flag:'🇳🇬',name:'Yorùbá',code:'yo',d:400},
-  {flag:'🇳🇬',name:'Hausa',code:'ha',d:500},
-  {flag:'🇫🇷',name:'Français',code:'fr',d:600},
-  {flag:'🇧🇷',name:'Português',code:'pt',d:700},
-  {flag:'🇨🇳',name:'中文',code:'zh',d:800},
-  {flag:'🇩🇪',name:'Deutsch',code:'de',d:900},
-  {flag:'🇰🇪',name:'Swahili',code:'sw',d:1000},
-  {flag:'🇯🇵',name:'日本語',code:'ja',d:1100},
-  {flag:'🇷🇺',name:'Русский',code:'ru',d:1200},
-  {flag:'🇰🇷',name:'한국어',code:'ko',d:1300},
-  {flag:'🇳🇱',name:'Nederlands',code:'nl',d:1400},
-  {flag:'🇹🇷',name:'Türkçe',code:'tr',d:1500},
+  {name:'Afrikaans',code:'af',d:0},
+  {name:'العربية',code:'ar',d:100},
+  {name:'فارسی',code:'fa',d:200},
+  {name:'हिंदी',code:'hi',d:300},
+  {name:'Yorùbá',code:'yo',d:400},
+  {name:'Français',code:'fr',d:600},
+  {name:'Português',code:'pt',d:700},
+  {name:'Deutsch',code:'de',d:900},
+  {name:'Swahili',code:'sw',d:1000},
+  {name:'English',code:'en',d:1100},
+  {name:'Español',code:'es',d:1200}
 ];
 const c = document.getElementById('langFloat');
 PILLS.forEach(l => {
-  const el = document.createElement('div');
+  const el = document.createElement('button');
+  el.type = 'button';
   el.className = 'lang-pill';
   el.style.animationDelay = l.d + 'ms';
   el.style.cursor = LOCALES[l.code] ? 'pointer' : 'default';
-  el.innerHTML = '<span>' + l.flag + '</span><span>' + l.name + '</span>';
+  el.innerHTML = flagMarkup(l.code) + '<span>' + l.name + '</span>';
   if (LOCALES[l.code]) {
     el.title = 'View site in ' + l.name;
     el.addEventListener('click', () => {
       applyTranslations(l.code);
       window.scrollTo({top: 0, behavior: 'smooth'});
     });
-    e
+    el.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        applyTranslations(l.code);
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      }
+    });
+  }
+  c.appendChild(el);
+});
+
+document.getElementById('langBtnLabel').innerHTML = flagMarkup('en') + '<span>EN</span>';
+const oldApply = applyTranslations;
+applyTranslations = function(lang) {
+  oldApply(lang);
+  var label = document.getElementById('langBtnLabel');
+  if (label) label.innerHTML = flagMarkup(lang) + '<span>' + lang.toUpperCase() + '</span>';
+};
+
+buildDropdown();
+applyTranslations(detectLanguage());
+</script>
+</body>
+</html>
