@@ -31,7 +31,7 @@ nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;di
 .lang-option.active{color:var(--accent)}
 .hero{background:var(--bg);padding:120px 40px 100px;text-align:center;border-bottom:1px solid var(--border)}
 .hero-badge{display:inline-block;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:7px 18px;font-size:13px;color:var(--accent);margin-bottom:36px;letter-spacing:0.5px}
-.hero h1{font-size:clamp(34px,5.2vw,68px);font-weight:800;line-height:1.05;letter-spacing:-3px;margin-bottom:28px;max-width:900px;margin-left:auto;margin-right:auto}
+.hero h1{font-size:clamp(30px,4.6vw,58px);font-weight:800;line-height:1.07;letter-spacing:-2px;margin-bottom:28px;max-width:900px;margin-left:auto;margin-right:auto}
 .hero h1 em{color:var(--accent);font-style:normal}
 .hero-sub{font-size:20px;color:var(--muted);max-width:560px;margin:0 auto 48px;line-height:1.7}
 .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:72px}
@@ -170,7 +170,7 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
 <section class="hero" style="padding-top:48px">
   <!-- Language flags strip -->
   <div class="lang-top-row">
-    <img class="hero-logo" src="./weblogo.jpg" alt="Spreakr logo">
+    <img class="hero-logo" src="/public/weblogo.jpg" onerror="this.onerror=null;this.src='/weblogo.jpg';" alt="Spreakr logo">
     <div class="lang-float" id="langFloat"></div>
   </div>
 
@@ -1143,27 +1143,29 @@ window.HERO_CALC_I18N = {
   sw:{title:'<span style="color:var(--accent)">Utaokoa muda</span> kiasi gani kwa <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?',emails:'Barua pepe kwa siku',team:'Ukubwa wa timu',perDay:'Kwa siku · kwa mtu',perMonth:'Kwa mwezi · kwa mtu',teamMonth:'Timu nzima · kwa mwezi',speakPrefix:'Kuongea ni',speakSuffix:'haraka kuliko kuandika · Utafiti wa Stanford HCI ·',breakdown:'Tazama uchambuzi kamili ↓',person:'mtu',people:'watu',min:'dak',hrs:'saa',workdays:'siku za kazi'}
 };
 const HERO_MESSAGE_LINES = {
-  en:{l1:'Speak in English.',l2:'Automatically intelligent and professionally formulated.',l3:'Send in any language.',note:'No need to EVER touch your keyboard again when it comes to your emails'},
-  af:{l1:'Praat in Afrikaans.',l2:'Outomaties intelligent en professioneel geformuleer.',l3:'Stuur in enige taal.',note:'Jy hoef NOOIT weer aan jou sleutelbord te raak wanneer dit by jou e-posse kom nie'},
-  ar:{l1:'تحدث بالعربية.',l2:'مصاغ تلقائيا بذكاء وبأسلوب احترافي.',l3:'أرسل بأي لغة.',note:'لا حاجة أبدا للمس لوحة المفاتيح مرة أخرى عندما يتعلق الأمر برسائلك الإلكترونية'},
-  fa:{l1:'به فارسی صحبت کنید.',l2:'به صورت خودکار هوشمند و حرفه‌ای تنظیم می‌شود.',l3:'به هر زبانی ارسال کنید.',note:'دیگر هرگز نیازی نیست برای ایمیل‌هایتان به صفحه‌کلید دست بزنید'},
-  hi:{l1:'हिंदी में बोलें।',l2:'स्वचालित रूप से बुद्धिमान और पेशेवर रूप से तैयार।',l3:'किसी भी भाषा में भेजें।',note:'आपको अपने ईमेल के लिए फिर कभी कीबोर्ड छूने की जरूरत नहीं'},
-  yo:{l1:'Soro ni Yorùbá.',l2:'Lọ́na aifọwọyi, ọlọ́gbọn ati ti a ṣe ní ọ̀nà amọja.',l3:'Fi ranṣẹ ní èdè kankan.',note:'Ko si iwulo lati fi ọwọ kan keyboard rẹ laelae mọ nigbati o ba de awọn imeeli rẹ'},
-  fr:{l1:'Parlez en français.',l2:'Formulé automatiquement avec intelligence et professionnalisme.',l3:'Envoyez dans toute langue.',note:'Plus besoin de toucher votre clavier quand il s agit de vos emails'},
-  de:{l1:'Sprechen Sie auf Deutsch.',l2:'Automatisch intelligent und professionell formuliert.',l3:'In jeder Sprache senden.',note:'Sie muessen Ihre Tastatur fuer Ihre E-Mails nie wieder anfassen'},
-  pt:{l1:'Fale em português.',l2:'Formulado automaticamente com inteligência e profissionalismo.',l3:'Envie em qualquer idioma.',note:'Nao precisa NUNCA mais tocar no teclado quando se trata dos seus emails'},
-  es:{l1:'Habla en español.',l2:'Formulado automáticamente con inteligencia y profesionalismo.',l3:'Envía en cualquier idioma.',note:'No necesitas volver a tocar el teclado cuando se trata de tus emails'},
-  sw:{l1:'Ongea kwa Kiswahili.',l2:'Imeandaliwa kiotomatiki kwa akili na weledi.',l3:'Tuma kwa lugha yoyote.',note:'Huhitaji tena kugusa kibodi yako linapokuja suala la barua pepe zako'}
+  en:{l1:'Speak in English.',l2:'Automatically intelligent and professionally formulated.',l3:'Send in any language.',sub:'Every language. Every inbox. One intelligent command centre. Speak naturally. Write professionally. Translate instantly. Summarize in seconds. Search intelligently. Manage every email account and every language from one powerful platform.',note:'No need to EVER touch your keyboard again when it comes to your emails'},
+  af:{l1:'Praat in Afrikaans.',l2:'Outomaties intelligent en professioneel geformuleer.',l3:'Stuur in enige taal.',sub:'Elke taal. Elke inkassie. Een intelligente bevelsentrum. Praat natuurlik. Skryf professioneel. Vertaal onmiddellik. Som in sekondes op. Soek intelligent. Bestuur elke e-posrekening en elke taal vanaf een kragtige platform.',note:'Jy hoef NOOIT weer aan jou sleutelbord te raak wanneer dit by jou e-posse kom nie'},
+  ar:{l1:'تحدث بالعربية.',l2:'مصاغ تلقائيا بذكاء وبأسلوب احترافي.',l3:'أرسل بأي لغة.',sub:'كل لغة. كل صندوق بريد. مركز أوامر ذكي واحد. تحدث بطبيعية. اكتب باحترافية. ترجم فورا. لخّص خلال ثوان. ابحث بذكاء. أدر كل حساب بريد وكل لغة من منصة واحدة قوية.',note:'لا حاجة أبدا للمس لوحة المفاتيح مرة أخرى عندما يتعلق الأمر برسائلك الإلكترونية'},
+  fa:{l1:'به فارسی صحبت کنید.',l2:'به صورت خودکار هوشمند و حرفه‌ای تنظیم می‌شود.',l3:'به هر زبانی ارسال کنید.',sub:'هر زبان. هر صندوق ورودی. یک مرکز فرمان هوشمند. طبیعی صحبت کنید. حرفه‌ای بنویسید. فوری ترجمه کنید. در چند ثانیه خلاصه کنید. هوشمندانه جستجو کنید. همه حساب‌های ایمیل و همه زبان‌ها را از یک پلتفرم قدرتمند مدیریت کنید.',note:'دیگر هرگز نیازی نیست برای ایمیل‌هایتان به صفحه‌کلید دست بزنید'},
+  hi:{l1:'हिंदी में बोलें।',l2:'स्वचालित रूप से बुद्धिमान और पेशेवर रूप से तैयार।',l3:'किसी भी भाषा में भेजें।',sub:'हर भाषा। हर इनबॉक्स। एक इंटेलिजेंट कमांड सेंटर। स्वाभाविक बोलें। पेशेवर लिखें। तुरंत अनुवाद करें। सेकंडों में सारांश बनाएं। समझदारी से खोजें। एक शक्तिशाली प्लेटफ़ॉर्म से हर ईमेल अकाउंट और हर भाषा को मैनेज करें।',note:'आपको अपने ईमेल के लिए फिर कभी कीबोर्ड छूने की जरूरत नहीं'},
+  yo:{l1:'Soro ni Yorùbá.',l2:'Lọ́na aifọwọyi, ọlọ́gbọn ati ti a ṣe ní ọ̀nà amọja.',l3:'Fi ranṣẹ ní èdè kankan.',sub:'Gbogbo ede. Gbogbo inbox. Ile-aṣẹ ọlọgbọn kan. Sọ nipa ti ara. Kọ ni ọna amọja. Túmọ lẹsẹkẹsẹ. Ṣoki ni aaya. Wa ni ọlọgbọn. Ṣakoso gbogbo iroyin imeeli ati gbogbo ede lati ori pẹpẹ alagbara kan.',note:'Ko si iwulo lati fi ọwọ kan keyboard rẹ laelae mọ nigbati o ba de awọn imeeli rẹ'},
+  fr:{l1:'Parlez en français.',l2:'Formulé automatiquement avec intelligence et professionnalisme.',l3:'Envoyez dans toute langue.',sub:'Chaque langue. Chaque boîte de réception. Un seul centre de commande intelligent. Parlez naturellement. Écrivez professionnellement. Traduisez instantanément. Résumez en quelques secondes. Recherchez intelligemment. Gérez chaque compte email et chaque langue depuis une plateforme puissante.',note:'Plus besoin de toucher votre clavier quand il s agit de vos emails'},
+  de:{l1:'Sprechen Sie auf Deutsch.',l2:'Automatisch intelligent und professionell formuliert.',l3:'In jeder Sprache senden.',sub:'Jede Sprache. Jeder Posteingang. Ein intelligentes Kommandozentrum. Sprechen Sie natürlich. Schreiben Sie professionell. Übersetzen Sie sofort. Fassen Sie in Sekunden zusammen. Suchen Sie intelligent. Verwalten Sie jedes E-Mail-Konto und jede Sprache über eine leistungsstarke Plattform.',note:'Sie muessen Ihre Tastatur fuer Ihre E-Mails nie wieder anfassen'},
+  pt:{l1:'Fale em português.',l2:'Formulado automaticamente com inteligência e profissionalismo.',l3:'Envie em qualquer idioma.',sub:'Todos os idiomas. Todas as caixas de entrada. Um centro de comando inteligente. Fale naturalmente. Escreva profissionalmente. Traduza instantaneamente. Resuma em segundos. Pesquise com inteligência. Gerencie todas as contas de email e todos os idiomas em uma única plataforma poderosa.',note:'Nao precisa NUNCA mais tocar no teclado quando se trata dos seus emails'},
+  es:{l1:'Habla en español.',l2:'Formulado automáticamente con inteligencia y profesionalismo.',l3:'Envía en cualquier idioma.',sub:'Cada idioma. Cada bandeja de entrada. Un centro de comando inteligente. Habla de forma natural. Escribe de forma profesional. Traduce al instante. Resume en segundos. Busca inteligentemente. Gestiona cada cuenta de email y cada idioma desde una sola plataforma potente.',note:'No necesitas volver a tocar el teclado cuando se trata de tus emails'},
+  sw:{l1:'Ongea kwa Kiswahili.',l2:'Imeandaliwa kiotomatiki kwa akili na weledi.',l3:'Tuma kwa lugha yoyote.',sub:'Kila lugha. Kila kisanduku pokezi. Kituo kimoja cha amri chenye akili. Ongea kwa kawaida. Andika kitaalamu. Tafsiri papo hapo. Fupisha ndani ya sekunde. Tafuta kwa akili. Dhibiti kila akaunti ya barua pepe na kila lugha kutoka jukwaa moja lenye nguvu.',note:'Huhitaji tena kugusa kibodi yako linapokuja suala la barua pepe zako'}
 };
 function applyHeroMessageLines(lang){
   var t = HERO_MESSAGE_LINES[lang] || HERO_MESSAGE_LINES.en;
   var l1 = document.querySelector('[data-i18n=\"hero_h1_1\"]');
   var l2 = document.querySelector('[data-i18n=\"hero_h1_2\"]');
   var l3 = document.querySelector('[data-i18n=\"hero_h1_3\"]');
+  var sub = document.querySelector('[data-i18n=\"hero_sub\"]');
   var note = document.getElementById('hero-keyboard-note');
   if (l1) l1.textContent = t.l1;
   if (l2) l2.textContent = t.l2;
   if (l3) l3.textContent = t.l3;
+  if (sub) sub.textContent = t.sub || HERO_MESSAGE_LINES.en.sub;
   if (note) note.textContent = t.note || HERO_MESSAGE_LINES.en.note;
 }
 function applyAffiliateExtras(lang){
