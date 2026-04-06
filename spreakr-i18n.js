@@ -1,1294 +1,52 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const LOCALES = {
-    en: {
-      dir: 'ltr',
-      name: 'English',
-      flag: '🇬🇧',
-      nav_features: 'Features',
-      nav_languages: 'Languages',
-      nav_pricing: 'Pricing',
-      nav_earn: 'Earn with us',
-      nav_cta: 'Start free trial',
-      hero_badge: '🌍 Now supporting 90+ languages',
-      hero_h1_1: 'Email in your language.',
-      hero_h1_2: 'Send in theirs.',
-      hero_sub: "The world's first multilingual AI email command centre. Dictate in Afrikaans, Yoruba, Farsi, Hindi — send professionally in any language.",
-      hero_cta_primary: 'Start free — 7 days',
-      hero_cta_secondary: 'See features →',
-      stat_1: 'Languages supported',
-      stat_2: 'Email providers unified',
-      stat_3: 'Forensic search · 300 emails',
-      stat_4: 'Full inbox AI analysis',
-      stat_5: 'Competitors who do this',
-      features_label: 'Features',
-      features_title: 'Everything your inbox was missing.',
-      features_sub: 'Built for the multilingual professional. Every feature designed around voice, language, and intelligence.',
-      f1_title: 'Voice dictation in 90+ languages',
-      f1_desc: "Dictate emails naturally in your mother tongue. Spreakr transcribes, professionalises, and sends in the recipient's language automatically.",
-      f2_title: 'Deep forensic email search',
-      f2_desc: 'Ask any question in plain language. GPT-4.1 reads every email in full and returns exact evidence, quotes, and relevance scores.',
-      f3_title: 'Thread Intelligence',
-      f3_desc: 'One click reveals a full intelligence briefing on any email chain. Timeline, sentiment arc, commitment tracking, and a one-line verdict.',
-      f4_title: 'Gmail + Outlook unified',
-      f4_desc: 'One inbox. Both accounts. Colour flagging, folder management, and AI features work identically across Gmail and Outlook.',
-      f5_title: 'Full UI in your language',
-      f5_desc: 'Every button, label, and message renders in your chosen language. Arabic and Persian flip the entire layout to right-to-left automatically.',
-      f6_title: 'Viral language bridge',
-      f6_desc: 'Every sent email includes a "View in your language" link. Recipients see your email in their language — and discover Spreakr.',
-      ds_label: 'Deep Search',
-      ds_title: "Find anything. Even what wasn't said.",
-      ds_desc: 'Ask a question in plain language. GPT-4.1 reads every email in full. It finds explicit matches, implied meaning, tone shifts, admissions, and omissions.',
-      ds_p1: 'Natural language questions — no keywords needed',
-      ds_p2: 'Finds admissions, omissions, and tone shifts',
-      ds_p3: 'Exact evidence quotes with significance ratings',
-      ds_p4: 'Export full findings report as PDF',
-      ds_p5: 'R7.96 to analyse 300 emails in full',
-      lang_label: '90+ Languages',
-      lang_title: 'The same three buttons. Every language on earth.',
-      lang_sub: 'Compose · Reply · Send — in every language your users speak. RTL layouts switch automatically for Arabic, Persian, and Urdu.',
-      viral_label: 'Growth Engine',
-      viral_title: 'Every email you send is a product demo.',
-      viral_sub: 'A subtle footer link lets recipients view your email in their own language — and discover Spreakr. Your users market for you automatically.',
-      viral_cta: 'Try Spreakr free →',
-      viral_note: '100 users × 20 emails/day = 2,000 qualified impressions daily. Zero ad spend.',
-      pricing_label: 'Pricing',
-      pricing_title: 'Simple, transparent pricing.',
-      pricing_sub: 'AI search costs billed per use. Your plan includes a monthly credit.',
-      tier1_name: 'Trial',
-      tier1_price: 'Free',
-      tier1_period: '7 days · no card required',
-      tier1_f1: 'Gmail + Outlook unified',
-      tier1_f2: 'Voice dictation',
-      tier1_f3: 'AI draft reply',
-      tier1_f4: 'R2 AI search credit',
-      tier1_f5: '3 languages',
-      tier1_btn: 'Start free trial',
-      tier2_name: 'Pro',
-      tier2_period: '~$16 USD · billed monthly',
-      tier2_f1: 'Everything in Trial',
-      tier2_f2: 'Thread Intelligence',
-      tier2_f3: 'Deep Search',
-      tier2_f4: 'R20 AI search credit',
-      tier2_f5: '20 languages',
-      tier2_f6: 'Move to folder',
-      tier2_f7: 'Viral footer link',
-      tier2_btn: 'Get started',
-      tier3_name: 'Executive',
-      tier3_period: '~$32 USD · billed monthly',
-      tier3_f1: 'Everything in Pro',
-      tier3_f2: 'R100 AI search credit',
-      tier3_f3: 'All 90+ languages',
-      tier3_f4: 'Legal terminology packs',
-      tier3_f5: 'PDF export reports',
-      tier3_f6: 'Priority support',
-      tier3_f7: 'Team settings',
-      tier3_btn: 'Contact us',
-      aff_label: 'Affiliate Program',
-      aff_title: 'Earn recurring income. Work from anywhere.',
-      aff_sub: 'Get a unique code. Share it with professionals in your network. Earn 30% of every subscription every month.',
-      aff_s1: 'Recurring monthly commission',
-      aff_s2: 'Earned per Pro subscriber per month',
-      aff_s3: 'No cap on referrals or earnings',
-      aff_calc_title: 'Example monthly earnings',
-      aff_r1: '10 Pro subscribers',
-      aff_r2: '25 Pro subscribers',
-      aff_r3: '50 Pro subscribers',
-      aff_r4: '100 Pro subscribers',
-      aff_btn: 'Apply to become an affiliate',
-      aff_note: 'Open to professionals globally · Paid monthly via PayPal · No experience required',
-      cta_title: 'The inbox built for everyone else.',
-      cta_sub: 'Superhuman owns English. You own the world.',
-      cta_btn1: 'Start free — 7 days',
-      cta_btn2: 'Book a demo',
-      cta_note: 'No credit card required · Cancel anytime · POPIA compliant · Built in South Africa 🇿🇦',
-      footer_tagline: "The world's first multilingual AI email command centre. Email in your language. Send in theirs.",
-      footer_product: 'Product',
-      footer_company: 'Company',
-      footer_about: 'About',
-      footer_contact: 'Contact',
-      footer_affiliate: 'Affiliate Program',
-      footer_press: 'Press',
-      footer_legal: 'Legal',
-      footer_privacy: 'Privacy Policy',
-      footer_popia: 'POPIA Compliance',
-      footer_security: 'Security',
-      footer_terms: 'Terms of Service'
-    },
-
-    af: {
-      dir: 'ltr',
-      name: 'Afrikaans',
-      flag: '🇿🇦',
-      nav_features: 'Kenmerke',
-      nav_languages: 'Tale',
-      nav_pricing: 'Pryse',
-      nav_earn: 'Verdien saam',
-      nav_cta: 'Begin gratis proef',
-      hero_badge: '🌍 Ondersteun nou 90+ tale',
-      hero_h1_1: 'E-pos in jou taal.',
-      hero_h1_2: "Stuur in hulle s’n.",
-      hero_sub: 'Die wêreld se eerste meertalige KI e-pos sentrum. Dikteer in Afrikaans, Yoruba, Farsi, Hindi — stuur professioneel in enige taal.',
-      hero_cta_primary: 'Begin gratis — 7 dae',
-      hero_cta_secondary: 'Sien kenmerke →',
-      stat_1: 'Tale ondersteun',
-      stat_2: 'E-pos verskaffers verenig',
-      stat_3: 'Forensiese soektog · 300 e-posse',
-      stat_4: 'Volledige KI-analise',
-      stat_5: 'Mededingers wat dit doen',
-      features_label: 'Kenmerke',
-      features_title: 'Alles wat jou inkassie gemis het.',
-      features_sub: 'Gebou vir die meertalige professionele persoon.',
-      f1_title: 'Stemdiksie in 90+ tale',
-      f1_desc: 'Dikteer e-posse in jou moedertaal. Spreakr skryf oor en stuur in die ontvanger se taal.',
-      f2_title: 'Diep forensiese e-possoektog',
-      f2_desc: 'Vra enige vraag in gewone taal. GPT-4.1 lees elke e-pos volledig.',
-      f3_title: 'Draad-intelligensie',
-      f3_desc: "Een klik onthul ’n volledige intelligensie-verslag oor enige e-posketting.",
-      f4_title: 'Gmail + Outlook verenig',
-      f4_desc: 'Een inkassie. Beide rekeninge.',
-      f5_title: 'Volledige koppelvlak in jou taal',
-      f5_desc: 'Elke knoppie en boodskap vertoon in jou gekose taal.',
-      f6_title: 'Virale taalbrug',
-      f6_desc: 'Elke gestuurde e-pos sluit ’n "Bekyk in jou taal"-skakel in.',
-      ds_label: 'Diep Soektog',
-      ds_title: 'Vind enigiets. Selfs wat nie gesê is nie.',
-      ds_desc: "Vra ’n vraag in gewone taal. GPT-4.1 lees elke e-pos volledig.",
-      ds_p1: 'Natuurlike taalvrae — geen sleutelwoorde nodig',
-      ds_p2: 'Vind toelating, weglatings en toonverskuiwings',
-      ds_p3: 'Presiese bewyshale met betekenisgradering',
-      ds_p4: 'Voer volledige bevindingsverslag uit as PDF',
-      ds_p5: 'R7.96 om 300 e-posse volledig te ontleed',
-      lang_label: '90+ Tale',
-      lang_title: 'Dieselfde drie knoppies. Elke taal op aarde.',
-      lang_sub: 'Stel op · Antwoord · Stuur — in elke taal.',
-      viral_label: 'Groeienjin',
-      viral_title: "Elke e-pos wat jy stuur is ’n produkdemo.",
-      viral_sub: "’n Subtiele voetnotskakel laat ontvangers jou e-pos in hul eie taal sien.",
-      viral_cta: 'Probeer Spreakr gratis →',
-      viral_note: '100 gebruikers × 20 e-posse/dag = 2,000 indrukke daagliks.',
-      pricing_label: 'Pryse',
-      pricing_title: 'Eenvoudige, deursigtige pryse.',
-      pricing_sub: 'KI-soektoggelde word per gebruik gehef.',
-      tier1_name: 'Proef',
-      tier1_price: 'Gratis',
-      tier1_period: '7 dae · geen kaart nodig',
-      tier1_f1: 'Gmail + Outlook verenig',
-      tier1_f2: 'Stemdiksie',
-      tier1_f3: 'KI konsepantwoord',
-      tier1_f4: 'R2 KI soektoggeld',
-      tier1_f5: '3 tale',
-      tier1_btn: 'Begin gratis proef',
-      tier2_name: 'Pro',
-      tier2_period: '~$16 USD · maandeliks',
-      tier2_f1: 'Alles in Proef',
-      tier2_f2: 'Draad-intelligensie',
-      tier2_f3: 'Diep Soektog',
-      tier2_f4: 'R20 KI soektoggeld',
-      tier2_f5: '20 tale',
-      tier2_f6: 'Skuif na vouer',
-      tier2_f7: 'Virale voetnota skakel',
-      tier2_btn: 'Begin nou',
-      tier3_name: 'Uitvoerend',
-      tier3_period: '~$32 USD · maandeliks',
-      tier3_f1: 'Alles in Pro',
-      tier3_f2: 'R100 KI soektoggeld',
-      tier3_f3: 'Alle 90+ tale',
-      tier3_f4: 'Regsterminologiepakke',
-      tier3_f5: 'PDF uitvoerverslae',
-      tier3_f6: 'Prioriteit ondersteuning',
-      tier3_f7: 'Spaninstellings',
-      tier3_btn: 'Kontak ons',
-      aff_label: 'Filiaalprogram',
-      aff_title: 'Verdien herhalende inkomste. Werk van oral.',
-      aff_sub: "Kry ’n unieke kode. Deel dit. Verdien 30% van elke intekening elke maand.",
-      aff_s1: 'Herhalende maandelikse kommissie',
-      aff_s2: 'Verdien per Pro-intekenaar per maand',
-      aff_s3: 'Geen maksimum op verwysings',
-      aff_calc_title: 'Voorbeeldmaandelikse verdienste',
-      aff_r1: '10 Pro intekenare',
-      aff_r2: '25 Pro intekenare',
-      aff_r3: '50 Pro intekenare',
-      aff_r4: '100 Pro intekenare',
-      aff_btn: 'Aansoek doen as filiaal',
-      aff_note: 'Oop vir professionele persone wêreldwyd · Betaal maandeliks via PayPal',
-      cta_title: 'Die inkassie gebou vir almal anders.',
-      cta_sub: 'Superhuman besit Engels. Jy besit die wêreld.',
-      cta_btn1: 'Begin gratis — 7 dae',
-      cta_btn2: "Bespreek ’n demo",
-      cta_note: 'Geen kredietkaart nodig · Kanselleer enige tyd · POPIA-voldoen',
-      footer_tagline: 'Die wêreld se eerste meertalige KI e-pos sentrum.',
-      footer_product: 'Produk',
-      footer_company: 'Maatskappy',
-      footer_about: 'Oor ons',
-      footer_contact: 'Kontak',
-      footer_affiliate: 'Filiaalprogram',
-      footer_press: 'Pers',
-      footer_legal: 'Regs',
-      footer_privacy: 'Privaatheidsbeleid',
-      footer_popia: 'POPIA Nakoming',
-      footer_security: 'Sekuriteit',
-      footer_terms: 'Diensvoorwaardes'
-    },
-
-    ar: {
-      dir: 'rtl',
-      name: 'العربية',
-      flag: '🇸🇦',
-      nav_features: 'الميزات',
-      nav_languages: 'اللغات',
-      nav_pricing: 'الأسعار',
-      nav_earn: 'اكسب معنا',
-      nav_cta: 'ابدأ تجربة مجانية',
-      hero_badge: '🌍 يدعم الآن أكثر من 90 لغة',
-      hero_h1_1: 'البريد الإلكتروني بلغتك.',
-      hero_h1_2: 'أرسل بلغتهم.',
-      hero_sub: 'أول مركز بريد إلكتروني بالذكاء الاصطناعي متعدد اللغات في العالم.',
-      hero_cta_primary: 'ابدأ مجاناً — 7 أيام',
-      hero_cta_secondary: 'انظر الميزات →',
-      stat_1: 'لغة مدعومة',
-      stat_2: 'مزودي البريد الإلكتروني',
-      stat_3: 'بحث جنائي · 300 رسالة',
-      stat_4: 'تحليل صندوق البريد الكامل',
-      stat_5: 'منافسون يفعلون هذا',
-      features_label: 'الميزات',
-      features_title: 'كل ما افتقده صندوق بريدك.',
-      features_sub: 'مبني للمحترف متعدد اللغات.',
-      f1_title: 'إملاء صوتي بأكثر من 90 لغة',
-      f1_desc: 'أملي رسائل البريد الإلكتروني بلغتك الأم. يقوم Spreakr بالنسخ والإرسال باللغة المناسبة.',
-      f2_title: 'بحث جنائي عميق في البريد الإلكتروني',
-      f2_desc: 'اطرح أي سؤال بلغة عادية. يقرأ GPT-4.1 كل رسالة بريد إلكتروني بالكامل.',
-      f3_title: 'ذكاء المحادثة',
-      f3_desc: 'نقرة واحدة تكشف تقريراً استخباراتياً كاملاً عن أي سلسلة بريد إلكتروني.',
-      f4_title: 'Gmail + Outlook موحد',
-      f4_desc: 'صندوق بريد واحد. كلا الحسابين.',
-      f5_title: 'واجهة كاملة بلغتك',
-      f5_desc: 'كل زر ورسالة تظهر بلغتك المختارة. العربية والفارسية تقلب التخطيط تلقائياً.',
-      f6_title: 'جسر اللغة الفيروسي',
-      f6_desc: 'كل بريد إلكتروني مرسل يتضمن رابط "عرض بلغتك".',
-      ds_label: 'البحث العميق',
-      ds_title: 'ابحث عن أي شيء. حتى ما لم يُقَل.',
-      ds_desc: 'اطرح سؤالاً بلغة عادية. يقرأ GPT-4.1 كل رسالة بالكامل.',
-      ds_p1: 'أسئلة بلغة طبيعية — لا حاجة لكلمات مفتاحية',
-      ds_p2: 'يجد الاعترافات والإغفالات وتحولات النبرة',
-      ds_p3: 'اقتباسات أدلة دقيقة مع تقييمات الأهمية',
-      ds_p4: 'تصدير تقرير نتائج كامل كـ PDF',
-      ds_p5: 'R7.96 لتحليل 300 رسالة بريد إلكتروني',
-      lang_label: 'أكثر من 90 لغة',
-      lang_title: 'نفس الأزرار الثلاثة. كل لغات الأرض.',
-      lang_sub: 'إنشاء · رد · إرسال — بكل لغة.',
-      viral_label: 'محرك النمو',
-      viral_title: 'كل بريد إلكتروني ترسله هو عرض للمنتج.',
-      viral_sub: 'رابط في التذييل يتيح للمستلمين رؤية بريدك بلغتهم.',
-      viral_cta: 'جرب Spreakr مجاناً →',
-      viral_note: '100 مستخدم × 20 بريد/يوم = 2,000 انطباع يومياً.',
-      pricing_label: 'الأسعار',
-      pricing_title: 'أسعار بسيطة وشفافة.',
-      pricing_sub: 'تكاليف البحث بالذكاء الاصطناعي تُحصَّل لكل استخدام.',
-      tier1_name: 'تجريبي',
-      tier1_price: 'مجاني',
-      tier1_period: '7 أيام · لا بطاقة مطلوبة',
-      tier1_f1: 'Gmail + Outlook موحد',
-      tier1_f2: 'إملاء صوتي',
-      tier1_f3: 'مسودة رد بالذكاء الاصطناعي',
-      tier1_f4: 'رصيد بحث R2',
-      tier1_f5: '3 لغات',
-      tier1_btn: 'ابدأ تجربة مجانية',
-      tier2_name: 'Pro',
-      tier2_period: '~16$ · شهرياً',
-      tier2_f1: 'كل شيء في التجريبي',
-      tier2_f2: 'ذكاء المحادثة',
-      tier2_f3: 'البحث العميق',
-      tier2_f4: 'رصيد بحث R20',
-      tier2_f5: '20 لغة',
-      tier2_f6: 'نقل إلى مجلد',
-      tier2_f7: 'رابط تذييل فيروسي',
-      tier2_btn: 'ابدأ الآن',
-      tier3_name: 'تنفيذي',
-      tier3_period: '~32$ · شهرياً',
-      tier3_f1: 'كل شيء في Pro',
-      tier3_f2: 'رصيد بحث R100',
-      tier3_f3: 'جميع اللغات 90+',
-      tier3_f4: 'حزم مصطلحات قانونية',
-      tier3_f5: 'تصدير تقارير PDF',
-      tier3_f6: 'دعم أولوية',
-      tier3_f7: 'إعدادات الفريق',
-      tier3_btn: 'اتصل بنا',
-      aff_label: 'برنامج الشراكة',
-      aff_title: 'اكسب دخلاً متكرراً. اعمل من أي مكان.',
-      aff_sub: 'احصل على كود فريد. شاركه. اكسب 30% من كل اشتراك كل شهر.',
-      aff_s1: 'عمولة شهرية متكررة',
-      aff_s2: 'مكتسب لكل مشترك Pro شهرياً',
-      aff_s3: 'لا حد للإحالات أو الأرباح',
-      aff_calc_title: 'أمثلة على الأرباح الشهرية',
-      aff_r1: '10 مشتركين Pro',
-      aff_r2: '25 مشتركاً Pro',
-      aff_r3: '50 مشتركاً Pro',
-      aff_r4: '100 مشترك Pro',
-      aff_btn: 'تقدم لتصبح شريكاً',
-      aff_note: 'مفتوح للمحترفين عالمياً · يُدفع شهرياً عبر PayPal',
-      cta_title: 'صندوق البريد المبني لكل الآخرين.',
-      cta_sub: 'Superhuman يمتلك الإنجليزية. أنت تمتلك العالم.',
-      cta_btn1: 'ابدأ مجاناً — 7 أيام',
-      cta_btn2: 'احجز عرضاً توضيحياً',
-      cta_note: 'لا بطاقة ائتمان مطلوبة · ألغِ في أي وقت · متوافق مع POPIA',
-      footer_tagline: 'أول مركز بريد إلكتروني بالذكاء الاصطناعي متعدد اللغات في العالم.',
-      footer_product: 'المنتج',
-      footer_company: 'الشركة',
-      footer_about: 'عن Spreakr',
-      footer_contact: 'اتصل بنا',
-      footer_affiliate: 'برنامج الشراكة',
-      footer_press: 'الصحافة',
-      footer_legal: 'قانوني',
-      footer_privacy: 'سياسة الخصوصية',
-      footer_popia: 'الامتثال لـ POPIA',
-      footer_security: 'الأمان',
-      footer_terms: 'شروط الخدمة'
-    },
-
-    fa: {
-      dir: 'rtl',
-      name: 'فارسی',
-      flag: '🇮🇷',
-      nav_features: 'ویژگی‌ها',
-      nav_languages: 'زبان‌ها',
-      nav_pricing: 'قیمت‌ها',
-      nav_earn: 'با ما درآمد کسب کنید',
-      nav_cta: 'شروع آزمایش رایگان',
-      hero_badge: '🌍 اکنون از بیش از ۹۰ زبان پشتیبانی می‌شود',
-      hero_h1_1: 'ایمیل به زبان شما.',
-      hero_h1_2: 'ارسال به زبان آن‌ها.',
-      hero_sub: 'اولین مرکز ایمیل هوش مصنوعی چندزبانه جهان.',
-      hero_cta_primary: 'شروع رایگان — ۷ روز',
-      hero_cta_secondary: 'مشاهده ویژگی‌ها →',
-      stat_1: 'زبان پشتیبانی شده',
-      stat_2: 'ارائه‌دهنده ایمیل یکپارچه',
-      stat_3: 'جستجوی قضایی · ۳۰۰ ایمیل',
-      stat_4: 'تحلیل کامل صندوق ورودی',
-      stat_5: 'رقبایی که این را انجام می‌دهند',
-      features_label: 'ویژگی‌ها',
-      features_title: 'همه چیزی که صندوق ورودی شما نداشت.',
-      features_sub: 'برای متخصص چندزبانه ساخته شده.',
-      f1_title: 'دیکته صوتی به بیش از ۹۰ زبان',
-      f1_desc: 'ایمیل‌ها را به زبان مادری خود دیکته کنید. Spreakr رونویسی کرده و به زبان گیرنده ارسال می‌کند.',
-      f2_title: 'جستجوی قضایی عمیق ایمیل',
-      f2_desc: 'هر سوالی را به زبان ساده بپرسید. GPT-4.1 هر ایمیل را کامل می‌خواند.',
-      f3_title: 'هوش موضوع',
-      f3_desc: 'با یک کلیک گزارش کامل اطلاعاتی از هر زنجیره ایمیل دریافت کنید.',
-      f4_title: 'Gmail + Outlook یکپارچه',
-      f4_desc: 'یک صندوق ورودی. هر دو حساب.',
-      f5_title: 'رابط کاربری کامل به زبان شما',
-      f5_desc: 'هر دکمه و پیام به زبان انتخابی شما نمایش داده می‌شود.',
-      f6_title: 'پل زبانی ویروسی',
-      f6_desc: 'هر ایمیل ارسالی شامل لینک "مشاهده به زبان شما" است.',
-      ds_label: 'جستجوی عمیق',
-      ds_title: 'هر چیزی را پیدا کنید. حتی آنچه گفته نشده.',
-      ds_desc: 'سوالی به زبان ساده بپرسید. GPT-4.1 هر ایمیل را کامل می‌خواند.',
-      ds_p1: 'سوالات به زبان طبیعی — نیازی به کلیدواژه نیست',
-      ds_p2: 'اعترافات، حذفیات و تغییر لحن را پیدا می‌کند',
-      ds_p3: 'نقل‌قول‌های دقیق با رتبه‌بندی اهمیت',
-      ds_p4: 'صدور گزارش کامل به صورت PDF',
-      ds_p5: 'R7.96 برای تحلیل ۳۰۰ ایمیل',
-      lang_label: 'بیش از ۹۰ زبان',
-      lang_title: 'همان سه دکمه. هر زبانی روی زمین.',
-      lang_sub: 'نوشتن · پاسخ · ارسال — به هر زبانی.',
-      viral_label: 'موتور رشد',
-      viral_title: 'هر ایمیلی که ارسال می‌کنید یک دمو محصول است.',
-      viral_sub: 'یک لینک در پاورقی به گیرندگان اجازه می‌دهد ایمیل شما را به زبان خودشان ببینند.',
-      viral_cta: 'Spreakr را رایگان امتحان کنید →',
-      viral_note: '۱۰۰ کاربر × ۲۰ ایمیل/روز = ۲,۰۰۰ نمایش روزانه.',
-      pricing_label: 'قیمت‌ها',
-      pricing_title: 'قیمت‌گذاری ساده و شفاف.',
-      pricing_sub: 'هزینه‌های جستجوی هوش مصنوعی به ازای هر استفاده محاسبه می‌شود.',
-      tier1_name: 'آزمایشی',
-      tier1_price: 'رایگان',
-      tier1_period: '۷ روز · بدون نیاز به کارت',
-      tier1_f1: 'Gmail + Outlook یکپارچه',
-      tier1_f2: 'دیکته صوتی',
-      tier1_f3: 'پاسخ پیش‌نویس هوش مصنوعی',
-      tier1_f4: 'اعتبار جستجو R2',
-      tier1_f5: '۳ زبان',
-      tier1_btn: 'شروع آزمایش رایگان',
-      tier2_name: 'Pro',
-      tier2_period: '~$16 · ماهانه',
-      tier2_f1: 'همه چیز در آزمایشی',
-      tier2_f2: 'هوش موضوع',
-      tier2_f3: 'جستجوی عمیق',
-      tier2_f4: 'اعتبار جستجو R20',
-      tier2_f5: '۲۰ زبان',
-      tier2_f6: 'انتقال به پوشه',
-      tier2_f7: 'لینک پاورقی ویروسی',
-      tier2_btn: 'شروع کنید',
-      tier3_name: 'اجرایی',
-      tier3_period: '~$32 · ماهانه',
-      tier3_f1: 'همه چیز در Pro',
-      tier3_f2: 'اعتبار جستجو R100',
-      tier3_f3: 'تمام ۹۰+ زبان',
-      tier3_f4: 'بسته‌های اصطلاحات حقوقی',
-      tier3_f5: 'صدور گزارش PDF',
-      tier3_f6: 'پشتیبانی اولویت‌دار',
-      tier3_f7: 'تنظیمات تیم',
-      tier3_btn: 'تماس با ما',
-      aff_label: 'برنامه همکاری در فروش',
-      aff_title: 'درآمد مکرر کسب کنید. از هر جایی کار کنید.',
-      aff_sub: 'یک کد منحصر به فرد دریافت کنید. آن را به اشتراک بگذارید. ماهانه ۳۰٪ از هر اشتراک کسب کنید.',
-      aff_s1: 'کمیسیون ماهانه مکرر',
-      aff_s2: 'درآمد به ازای هر مشترک Pro در ماه',
-      aff_s3: 'بدون محدودیت در معرفی‌ها',
-      aff_calc_title: 'نمونه درآمد ماهانه',
-      aff_r1: '۱۰ مشترک Pro',
-      aff_r2: '۲۵ مشترک Pro',
-      aff_r3: '۵۰ مشترک Pro',
-      aff_r4: '۱۰۰ مشترک Pro',
-      aff_btn: 'درخواست همکاری',
-      aff_note: 'برای متخصصان در سراسر جهان · پرداخت ماهانه از طریق PayPal',
-      cta_title: 'صندوق ورودی ساخته شده برای همه دیگران.',
-      cta_sub: 'Superhuman انگلیسی را دارد. شما دنیا را دارید.',
-      cta_btn1: 'رایگان شروع کنید — ۷ روز',
-      cta_btn2: 'رزرو دمو',
-      cta_note: 'بدون نیاز به کارت اعتباری · هر زمان لغو کنید',
-      footer_tagline: 'اولین مرکز ایمیل هوش مصنوعی چندزبانه جهان.',
-      footer_product: 'محصول',
-      footer_company: 'شرکت',
-      footer_about: 'درباره ما',
-      footer_contact: 'تماس',
-      footer_affiliate: 'برنامه همکاری',
-      footer_press: 'مطبوعات',
-      footer_legal: 'حقوقی',
-      footer_privacy: 'سیاست حریم خصوصی',
-      footer_popia: 'رعایت POPIA',
-      footer_security: 'امنیت',
-      footer_terms: 'شرایط خدمات'
-    },
-
-    fr: {
-      dir: 'ltr',
-      name: 'Français',
-      flag: '🇫🇷',
-      nav_features: 'Fonctionnalités',
-      nav_languages: 'Langues',
-      nav_pricing: 'Tarifs',
-      nav_earn: 'Gagnez avec nous',
-      nav_cta: 'Essai gratuit',
-      hero_badge: '🌍 Plus de 90 langues supportées',
-      hero_h1_1: 'Email dans votre langue.',
-      hero_h1_2: 'Envoyez dans la leur.',
-      hero_sub: "Le premier centre d'email IA multilingue au monde. Dictez en afrikaans, yoruba, farsi, hindi — envoyez professionnellement dans n'importe quelle langue.",
-      hero_cta_primary: 'Commencer gratuitement — 7 jours',
-      hero_cta_secondary: 'Voir les fonctionnalités →',
-      stat_1: 'Langues supportées',
-      stat_2: "Fournisseurs d'email unifiés",
-      stat_3: 'Recherche légale · 300 emails',
-      stat_4: 'Analyse complète de la boîte de réception',
-      stat_5: 'Concurrents qui font cela',
-      features_label: 'Fonctionnalités',
-      features_title: 'Tout ce qui manquait à votre boîte de réception.',
-      features_sub: 'Conçu pour le professionnel multilingue.',
-      f1_title: 'Dictée vocale en 90+ langues',
-      f1_desc: 'Dictez des emails dans votre langue maternelle. Spreakr transcrit et envoie dans la langue du destinataire.',
-      f2_title: 'Recherche légale approfondie',
-      f2_desc: "Posez n'importe quelle question en langage naturel. GPT-4.1 lit chaque email en entier.",
-      f3_title: 'Intelligence de fil de discussion',
-      f3_desc: "Un clic révèle un rapport complet sur n'importe quelle chaîne d'emails.",
-      f4_title: 'Gmail + Outlook unifiés',
-      f4_desc: 'Une boîte de réception. Les deux comptes.',
-      f5_title: 'Interface complète dans votre langue',
-      f5_desc: "Chaque bouton et message s'affiche dans votre langue choisie.",
-      f6_title: 'Pont linguistique viral',
-      f6_desc: 'Chaque email envoyé inclut un lien "Voir dans votre langue".',
-      ds_label: 'Recherche Approfondie',
-      ds_title: "Trouvez n'importe quoi. Même ce qui n'a pas été dit.",
-      ds_desc: 'Posez une question en langage naturel. GPT-4.1 lit chaque email en entier.',
-      ds_p1: 'Questions en langage naturel — pas de mots-clés nécessaires',
-      ds_p2: 'Trouve aveux, omissions et changements de ton',
-      ds_p3: 'Citations exactes avec évaluations de signification',
-      ds_p4: 'Exporter le rapport complet en PDF',
-      ds_p5: 'R7.96 pour analyser 300 emails',
-      lang_label: '90+ Langues',
-      lang_title: 'Les mêmes trois boutons. Toutes les langues du monde.',
-      lang_sub: 'Composer · Répondre · Envoyer — dans chaque langue.',
-      viral_label: 'Moteur de Croissance',
-      viral_title: 'Chaque email que vous envoyez est une démo du produit.',
-      viral_sub: 'Un lien en pied de page permet aux destinataires de voir votre email dans leur langue.',
-      viral_cta: 'Essayer Spreakr gratuitement →',
-      viral_note: '100 utilisateurs × 20 emails/jour = 2 000 impressions quotidiennes.',
-      pricing_label: 'Tarifs',
-      pricing_title: 'Tarification simple et transparente.',
-      pricing_sub: "Les coûts de recherche IA sont facturés à l'utilisation.",
-      tier1_name: 'Essai',
-      tier1_price: 'Gratuit',
-      tier1_period: '7 jours · sans carte',
-      tier1_f1: 'Gmail + Outlook unifiés',
-      tier1_f2: 'Dictée vocale',
-      tier1_f3: 'Brouillon IA',
-      tier1_f4: 'Crédit de recherche R2',
-      tier1_f5: '3 langues',
-      tier1_btn: "Commencer l'essai gratuit",
-      tier2_name: 'Pro',
-      tier2_period: '~16$ USD · mensuel',
-      tier2_f1: 'Tout dans Essai',
-      tier2_f2: 'Intelligence de fil',
-      tier2_f3: 'Recherche approfondie',
-      tier2_f4: 'Crédit de recherche R20',
-      tier2_f5: '20 langues',
-      tier2_f6: 'Déplacer vers dossier',
-      tier2_f7: 'Lien pied de page viral',
-      tier2_btn: 'Commencer',
-      tier3_name: 'Exécutif',
-      tier3_period: '~32$ USD · mensuel',
-      tier3_f1: 'Tout dans Pro',
-      tier3_f2: 'Crédit de recherche R100',
-      tier3_f3: 'Toutes les 90+ langues',
-      tier3_f4: 'Packs terminologie juridique',
-      tier3_f5: 'Rapports PDF',
-      tier3_f6: 'Support prioritaire',
-      tier3_f7: "Paramètres d'équipe",
-      tier3_btn: 'Nous contacter',
-      aff_label: "Programme d'Affiliation",
-      aff_title: 'Gagnez des revenus récurrents. Travaillez de partout.',
-      aff_sub: 'Obtenez un code unique. Partagez-le. Gagnez 30% de chaque abonnement chaque mois.',
-      aff_s1: 'Commission mensuelle récurrente',
-      aff_s2: 'Gagné par abonné Pro par mois',
-      aff_s3: 'Aucune limite sur les références',
-      aff_calc_title: 'Exemples de revenus mensuels',
-      aff_r1: '10 abonnés Pro',
-      aff_r2: '25 abonnés Pro',
-      aff_r3: '50 abonnés Pro',
-      aff_r4: '100 abonnés Pro',
-      aff_btn: 'Devenir affilié',
-      aff_note: 'Ouvert aux professionnels mondiaux · Payé mensuellement via PayPal',
-      cta_title: 'La boîte de réception pour tous les autres.',
-      cta_sub: "Superhuman possède l'anglais. Vous possédez le monde.",
-      cta_btn1: 'Commencer gratuitement — 7 jours',
-      cta_btn2: 'Réserver une démo',
-      cta_note: 'Aucune carte de crédit requise · Annulez à tout moment',
-      footer_tagline: "Le premier centre d'email IA multilingue au monde.",
-      footer_product: 'Produit',
-      footer_company: 'Entreprise',
-      footer_about: 'À propos',
-      footer_contact: 'Contact',
-      footer_affiliate: "Programme d'affiliation",
-      footer_press: 'Presse',
-      footer_legal: 'Légal',
-      footer_privacy: 'Politique de confidentialité',
-      footer_popia: 'Conformité POPIA',
-      footer_security: 'Sécurité',
-      footer_terms: "Conditions d'utilisation"
-    },
-
-    hi: {
-      dir: 'ltr',
-      name: 'हिंदी',
-      flag: '🇮🇳',
-      nav_features: 'विशेषताएं',
-      nav_languages: 'भाषाएं',
-      nav_pricing: 'मूल्य निर्धारण',
-      nav_earn: 'हमारे साथ कमाएं',
-      nav_cta: 'मुफ्त परीक्षण शुरू करें',
-      hero_badge: '🌍 अब 90+ भाषाओं का समर्थन',
-      hero_h1_1: 'अपनी भाषा में ईमेल।',
-      hero_h1_2: 'उनकी भाषा में भेजें।',
-      hero_sub: 'दुनिया का पहला बहुभाषी AI ईमेल केंद्र।',
-      hero_cta_primary: 'मुफ्त शुरू करें — 7 दिन',
-      hero_cta_secondary: 'विशेषताएं देखें →',
-      stat_1: 'भाषाएं समर्थित',
-      stat_2: 'ईमेल प्रदाता एकीकृत',
-      stat_3: 'फोरेंसिक खोज · 300 ईमेल',
-      stat_4: 'पूर्ण इनबॉक्स AI विश्लेषण',
-      stat_5: 'प्रतिस्पर्धी जो यह करते हैं',
-      features_label: 'विशेषताएं',
-      features_title: 'वह सब कुछ जो आपके इनबॉक्स में नहीं था।',
-      features_sub: 'बहुभाषी पेशेवर के लिए बनाया गया।',
-      f1_title: '90+ भाषाओं में वॉइस डिक्टेशन',
-      f1_desc: 'अपनी मातृभाषा में ईमेल डिक्टेट करें। Spreakr ट्रांस्क्राइब करता है और प्राप्तकर्ता की भाषा में भेजता है।',
-      f2_title: 'गहरी फोरेंसिक ईमेल खोज',
-      f2_desc: 'सामान्य भाषा में कोई भी प्रश्न पूछें। GPT-4.1 हर ईमेल पूरी तरह पढ़ता है।',
-      f3_title: 'थ्रेड इंटेलिजेंस',
-      f3_desc: 'एक क्लिक में किसी भी ईमेल चेन का पूरा इंटेलिजेंस रिपोर्ट।',
-      f4_title: 'Gmail + Outlook एकीकृत',
-      f4_desc: 'एक इनबॉक्स। दोनों खाते।',
-      f5_title: 'आपकी भाषा में पूर्ण UI',
-      f5_desc: 'हर बटन और संदेश आपकी चुनी हुई भाषा में प्रदर्शित होता है।',
-      f6_title: 'वायरल भाषा पुल',
-      f6_desc: 'हर भेजे गए ईमेल में "अपनी भाषा में देखें" लिंक शामिल है।',
-      ds_label: 'गहरी खोज',
-      ds_title: 'कुछ भी खोजें। जो नहीं कहा गया वह भी।',
-      ds_desc: 'सामान्य भाषा में प्रश्न पूछें। GPT-4.1 हर ईमेल पूरी तरह पढ़ता है।',
-      ds_p1: 'प्राकृतिक भाषा प्रश्न — कोई कीवर्ड नहीं चाहिए',
-      ds_p2: 'स्वीकारोक्ति, चूक और टोन बदलाव खोजता है',
-      ds_p3: 'महत्व रेटिंग के साथ सटीक साक्ष्य उद्धरण',
-      ds_p4: 'पूर्ण निष्कर्ष रिपोर्ट PDF के रूप में निर्यात करें',
-      ds_p5: '300 ईमेल का विश्लेषण R7.96 में',
-      lang_label: '90+ भाषाएं',
-      lang_title: 'वही तीन बटन। पृथ्वी की हर भाषा।',
-      lang_sub: 'लिखें · उत्तर दें · भेजें — हर भाषा में।',
-      viral_label: 'विकास इंजन',
-      viral_title: 'आपका हर भेजा ईमेल एक उत्पाद प्रदर्शन है।',
-      viral_sub: 'एक सूक्ष्म फुटर लिंक प्राप्तकर्ताओं को उनकी भाषा में आपका ईमेल देखने देता है।',
-      viral_cta: 'Spreakr मुफ्त आज़माएं →',
-      viral_note: '100 उपयोगकर्ता × 20 ईमेल/दिन = 2,000 दैनिक इंप्रेशन।',
-      pricing_label: 'मूल्य निर्धारण',
-      pricing_title: 'सरल, पारदर्शी मूल्य निर्धारण।',
-      pricing_sub: 'AI खोज लागत प्रति उपयोग बिल की जाती है।',
-      tier1_name: 'परीक्षण',
-      tier1_price: 'मुफ्त',
-      tier1_period: '7 दिन · कोई कार्ड नहीं',
-      tier1_f1: 'Gmail + Outlook एकीकृत',
-      tier1_f2: 'वॉइस डिक्टेशन',
-      tier1_f3: 'AI ड्राफ्ट उत्तर',
-      tier1_f4: 'R2 AI खोज क्रेडिट',
-      tier1_f5: '3 भाषाएं',
-      tier1_btn: 'मुफ्त परीक्षण शुरू करें',
-      tier2_name: 'Pro',
-      tier2_period: '~$16 USD · मासिक',
-      tier2_f1: 'परीक्षण में सब कुछ',
-      tier2_f2: 'थ्रेड इंटेलिजेंस',
-      tier2_f3: 'गहरी खोज',
-      tier2_f4: 'R20 AI खोज क्रेडिट',
-      tier2_f5: '20 भाषाएं',
-      tier2_f6: 'फोल्डर में ले जाएं',
-      tier2_f7: 'वायरल फुटर लिंक',
-      tier2_btn: 'शुरू करें',
-      tier3_name: 'कार्यकारी',
-      tier3_period: '~$32 USD · मासिक',
-      tier3_f1: 'Pro में सब कुछ',
-      tier3_f2: 'R100 AI खोज क्रेडिट',
-      tier3_f3: 'सभी 90+ भाषाएं',
-      tier3_f4: 'कानूनी शब्दावली पैक',
-      tier3_f5: 'PDF निर्यात रिपोर्ट',
-      tier3_f6: 'प्राथमिकता समर्थन',
-      tier3_f7: 'टीम सेटिंग्स',
-      tier3_btn: 'हमसे संपर्क करें',
-      aff_label: 'संबद्ध कार्यक्रम',
-      aff_title: 'आवर्ती आय अर्जित करें। कहीं से भी काम करें।',
-      aff_sub: 'एक अनूठा कोड प्राप्त करें। इसे साझा करें। हर महीने हर सदस्यता का 30% कमाएं।',
-      aff_s1: 'आवर्ती मासिक कमीशन',
-      aff_s2: 'प्रति Pro सदस्य प्रति माह अर्जित',
-      aff_s3: 'रेफरल या कमाई पर कोई सीमा नहीं',
-      aff_calc_title: 'मासिक कमाई के उदाहरण',
-      aff_r1: '10 Pro सदस्य',
-      aff_r2: '25 Pro सदस्य',
-      aff_r3: '50 Pro सदस्य',
-      aff_r4: '100 Pro सदस्य',
-      aff_btn: 'संबद्ध बनने के लिए आवेदन करें',
-      aff_note: 'विश्व स्तर पर पेशेवरों के लिए खुला · PayPal के माध्यम से मासिक भुगतान',
-      cta_title: 'सभी दूसरों के लिए बना इनबॉक्स।',
-      cta_sub: 'Superhuman के पास अंग्रेजी है। आपके पास दुनिया है।',
-      cta_btn1: 'मुफ्त शुरू करें — 7 दिन',
-      cta_btn2: 'डेमो बुक करें',
-      cta_note: 'कोई क्रेडिट कार्ड आवश्यक नहीं · कभी भी रद्द करें',
-      footer_tagline: 'दुनिया का पहला बहुभाषी AI ईमेल केंद्र।',
-      footer_product: 'उत्पाद',
-      footer_company: 'कंपनी',
-      footer_about: 'हमारे बारे में',
-      footer_contact: 'संपर्क',
-      footer_affiliate: 'संबद्ध कार्यक्रम',
-      footer_press: 'प्रेस',
-      footer_legal: 'कानूनी',
-      footer_privacy: 'गोपनीयता नीति',
-      footer_popia: 'POPIA अनुपालन',
-      footer_security: 'सुरक्षा',
-      footer_terms: 'सेवा की शर्तें'
-    },
-
-    yo: {
-      dir: 'ltr',
-      name: 'Yorùbá',
-      flag: '🇳🇬',
-      nav_features: 'Àwọn Ẹ̀yà',
-      nav_languages: 'Àwọn Èdè',
-      nav_pricing: 'Iye Owó',
-      nav_earn: 'Jèrè pẹ̀lú wa',
-      nav_cta: 'Bẹ̀rẹ̀ Ìdánwò Ọfẹ',
-      hero_badge: '🌍 Àtìlẹyìn fún 90+ èdè',
-      hero_h1_1: 'Ìmẹ́ẹ̀lì ní èdè rẹ.',
-      hero_h1_2: 'Rán ní ti wọn.',
-      hero_sub: 'Àkọ́kọ́ àárọ̀ ìmẹ́ẹ̀lì AI olùjúmọ̀ èdè lágbàáyé.',
-      hero_cta_primary: 'Bẹ̀rẹ̀ Ọfẹ — 7 Ọjọ́',
-      hero_cta_secondary: 'Wo àwọn ẹ̀yà →',
-      stat_1: 'Àwọn èdè tí a ṣàtìlẹyìn',
-      stat_2: 'Àwọn olùpèsè ìmẹ́ẹ̀lì',
-      stat_3: 'Àwárí ìdájọ́ · 300 ìmẹ́ẹ̀lì',
-      stat_4: 'Ìtúpalẹ̀ AI kikun',
-      stat_5: 'Àwọn olùdíjú tí ń ṣe èyí',
-      features_label: 'Àwọn Ẹ̀yà',
-      features_title: 'Gbogbo ohun tí apo ìmẹ́ẹ̀lì rẹ padánù.',
-      features_sub: 'A kọ́ fún oníṣẹ̀ olùjúmọ̀ èdè.',
-      f1_title: 'Ìpèsè ohùn ní 90+ èdè',
-      f1_desc: 'Pèsè ìmẹ́ẹ̀lì ní èdè ìbílẹ̀ rẹ. Spreakr ṣe gbèsè àti ránṣẹ́ ní èdè olùgbà.',
-      f2_title: 'Àwárí ìdájọ́ ìmẹ́ẹ̀lì jíjinlẹ̀',
-      f2_desc: 'Béèrè ìbéèrè èyíkéyìí ní ède àdánidá. GPT-4.1 ka gbogbo ìmẹ́ẹ̀lì.',
-      f3_title: 'Ọgbọ́n Okùn',
-      f3_desc: 'Tẹ kan ṣé ìjábọ̀ ọgbọ́n kikun fún sókè ìmẹ́ẹ̀lì.',
-      f4_title: 'Gmail + Outlook papọ̀',
-      f4_desc: 'Apo ìmẹ́ẹ̀lì kan. Àwọn àkọọlẹ méjì.',
-      f5_title: 'UI kikun ní èdè rẹ',
-      f5_desc: 'Gbogbo bọtìnnì àti ìfiranṣẹ́ hàn ní èdè rẹ.',
-      f6_title: 'Afárá Èdè Ajakaye',
-      f6_desc: 'Gbogbo ìmẹ́ẹ̀lì tí a ránṣẹ́ ní ìjápọ̀ "Wo ní èdè rẹ".',
-      ds_label: 'Àwárí Jíjinlẹ̀',
-      ds_title: 'Rí ohunkóhun. Pàápàá ohun tí a kò sọ.',
-      ds_desc: 'Béèrè ìbéèrè ní ède àdánidá. GPT-4.1 ka gbogbo ìmẹ́ẹ̀lì.',
-      ds_p1: 'Àwọn ìbéèrè ède àdánidá — kò sí ìdánimọ̀ kọ́kọ́rọ́ tó nílò',
-      ds_p2: 'Rí àwọn ìjẹ́wọ́, àdínkù àti ìyípadà ohùn',
-      ds_p3: 'Àwọn ìtọ́kasí ẹ̀rí gangan pẹ̀lú ìsopọ̀ àárọ̀',
-      ds_p4: 'Ì tẹ ìjábọ̀ nínú PDF',
-      ds_p5: 'R7.96 láti ṣe ìtúpalẹ̀ 300 ìmẹ́ẹ̀lì',
-      lang_label: '90+ Èdè',
-      lang_title: 'Bọtìnnì kanna mẹ́ta. Gbogbo èdè lórí ilẹ̀.',
-      lang_sub: 'Kọ · Dáhùn · Ránṣẹ́ — ní gbogbo èdè.',
-      viral_label: 'Ẹ̀rọ Ìdàgbàsókè',
-      viral_title: 'Gbogbo ìmẹ́ẹ̀lì tí o ránṣẹ́ jẹ́ ìfihàn ọjà.',
-      viral_sub: 'Ìjápọ̀ ìsàlẹ̀ ìwé gba àwọn olùgbà wo ìmẹ́ẹ̀lì rẹ ní èdè wọn.',
-      viral_cta: 'Gbìyànjú Spreakr Ọfẹ →',
-      viral_note: '100 olùmúlò × 20 ìmẹ́ẹ̀lì/ọjọ́ = 2,000 ìfihàn ojoojúmọ́.',
-      pricing_label: 'Iye Owó',
-      pricing_title: 'Iye owó tó rọrùn àti tí o ṣẹ́kun.',
-      pricing_sub: 'Àwọn ìdiyèlẹ̀ àwárí AI ni a san fún ìlò kọ̀ọ̀kan.',
-      tier1_name: 'Ìdánwò',
-      tier1_price: 'Ọfẹ',
-      tier1_period: '7 ọjọ́ · kò sí kárùnù',
-      tier1_f1: 'Gmail + Outlook papọ̀',
-      tier1_f2: 'Ìpèsè ohùn',
-      tier1_f3: 'Ìdáhùn AI',
-      tier1_f4: 'R2 kírédítì àwárí',
-      tier1_f5: '3 èdè',
-      tier1_btn: 'Bẹ̀rẹ̀ Ìdánwò Ọfẹ',
-      tier2_name: 'Pro',
-      tier2_period: '~$16 USD · oṣùnṣù',
-      tier2_f1: 'Gbogbo nínú Ìdánwò',
-      tier2_f2: 'Ọgbọ́n Okùn',
-      tier2_f3: 'Àwárí Jíjinlẹ̀',
-      tier2_f4: 'R20 kírédítì àwárí',
-      tier2_f5: '20 èdè',
-      tier2_f6: 'Gbépadà sí àpò',
-      tier2_f7: 'Ìjápọ̀ ìsàlẹ̀ ajakaye',
-      tier2_btn: 'Bẹ̀rẹ̀',
-      tier3_name: 'Alásọtẹ́lẹ̀',
-      tier3_period: '~$32 USD · oṣùnṣù',
-      tier3_f1: 'Gbogbo nínú Pro',
-      tier3_f2: 'R100 kírédítì àwárí',
-      tier3_f3: 'Gbogbo 90+ èdè',
-      tier3_f4: 'Àwọn àpò ọ̀rọ̀ òfin',
-      tier3_f5: 'Àwọn ìjábọ̀ PDF',
-      tier3_f6: 'Àtìlẹyìn àkọ́kọ́',
-      tier3_f7: 'Àwọn ètò ẹgbẹ́',
-      tier3_btn: 'Kàn sí wa',
-      aff_label: 'Ètò Àjọṣepọ̀',
-      aff_title: 'Jèrè ọrọ̀ tó tún máa ń bọ̀. Ṣiṣẹ́ láti ibi èyíkéyìí.',
-      aff_sub: 'Gba kóòdù àkànṣe kan. Pín rẹ. Jèrè 30% nínú gbogbo ìforúkọsílẹ̀ lóṣù kọ̀ọ̀kan.',
-      aff_s1: 'Ẹ̀san oṣùnṣù tó tún máa ń bọ̀',
-      aff_s2: 'Jèrè fún olórúkọ Pro kọ̀ọ̀kan lóṣù',
-      aff_s3: 'Kò sí ààlà lórí àwọn ìtọ́kasí',
-      aff_calc_title: 'Àwọn àpẹẹrẹ ọrọ̀ oṣùnṣù',
-      aff_r1: '10 olórúkọ Pro',
-      aff_r2: '25 olórúkọ Pro',
-      aff_r3: '50 olórúkọ Pro',
-      aff_r4: '100 olórúkọ Pro',
-      aff_btn: 'Bẹ̀rẹ̀ ohun èlò àjọṣepọ̀',
-      aff_note: 'Ṣí fún àwọn oníṣẹ̀ àgbáyé · Sanpé lóṣù nipasẹ PayPal',
-      cta_title: 'Apo ìmẹ́ẹ̀lì tí a kọ́ fún gbogbo àwọn míràn.',
-      cta_sub: 'Superhuman ní Gẹ̀ẹ́sì. Ìwọ ní àgbáyé.',
-      cta_btn1: 'Bẹ̀rẹ̀ Ọfẹ — 7 Ọjọ́',
-      cta_btn2: 'Ṣètò Ìfihàn',
-      cta_note: 'Kò sí kárùnù · Fagilé nígbàkúgbà',
-      footer_tagline: 'Àkọ́kọ́ àárọ̀ ìmẹ́ẹ̀lì AI olùjúmọ̀ èdè lágbàáyé.',
-      footer_product: 'Ọjà',
-      footer_company: 'Ilé-iṣẹ́',
-      footer_about: 'Nípa wa',
-      footer_contact: 'Kàn sí wa',
-      footer_affiliate: 'Ètò àjọṣepọ̀',
-      footer_press: 'Ìròyìn',
-      footer_legal: 'Òfin',
-      footer_privacy: 'Ìlànà Àṣírí',
-      footer_popia: 'POPIA Ìbẹ̀wẹ̀',
-      footer_security: 'Ààbò',
-      footer_terms: 'Àwọn Ìpèsè Iṣẹ́'
-    },
-
-    de: {
-      dir: 'ltr',
-      name: 'Deutsch',
-      flag: '🇩🇪',
-      nav_features: 'Funktionen',
-      nav_languages: 'Sprachen',
-      nav_pricing: 'Preise',
-      nav_earn: 'Mit uns verdienen',
-      nav_cta: 'Kostenlose Testversion',
-      hero_badge: '🌍 Jetzt über 90 Sprachen unterstützt',
-      hero_h1_1: 'E-Mail in Ihrer Sprache.',
-      hero_h1_2: 'Senden Sie in ihrer.',
-      hero_sub: 'Das erste mehrsprachige KI-E-Mail-Zentrum der Welt.',
-      hero_cta_primary: 'Kostenlos starten — 7 Tage',
-      hero_cta_secondary: 'Funktionen ansehen →',
-      stat_1: 'Unterstützte Sprachen',
-      stat_2: 'E-Mail-Anbieter vereint',
-      stat_3: 'Forensische Suche · 300 E-Mails',
-      stat_4: 'Vollständige KI-Analyse',
-      stat_5: 'Konkurrenten die das tun',
-      features_label: 'Funktionen',
-      features_title: 'Alles, was Ihrem Posteingang fehlte.',
-      features_sub: 'Für den mehrsprachigen Fachmann gebaut.',
-      f1_title: 'Sprachdiktat in 90+ Sprachen',
-      f1_desc: 'Diktieren Sie E-Mails in Ihrer Muttersprache. Spreakr transkribiert und sendet in der Sprache des Empfängers.',
-      f2_title: 'Tiefe forensische E-Mail-Suche',
-      f2_desc: 'Stellen Sie jede Frage in einfacher Sprache. GPT-4.1 liest jede E-Mail vollständig.',
-      f3_title: 'Thread-Intelligenz',
-      f3_desc: 'Ein Klick enthüllt einen vollständigen Geheimdienstbericht über jede E-Mail-Kette.',
-      f4_title: 'Gmail + Outlook vereint',
-      f4_desc: 'Ein Posteingang. Beide Konten.',
-      f5_title: 'Vollständige Benutzeroberfläche in Ihrer Sprache',
-      f5_desc: 'Jede Schaltfläche und Nachricht wird in Ihrer gewählten Sprache angezeigt.',
-      f6_title: 'Viraler Sprachbrücke',
-      f6_desc: 'Jede gesendete E-Mail enthält einen "In Ihrer Sprache anzeigen"-Link.',
-      ds_label: 'Tiefe Suche',
-      ds_title: 'Finden Sie alles. Sogar was nicht gesagt wurde.',
-      ds_desc: 'Stellen Sie eine Frage in einfacher Sprache. GPT-4.1 liest jede E-Mail vollständig.',
-      ds_p1: 'Natürlichsprachliche Fragen — keine Schlüsselwörter nötig',
-      ds_p2: 'Findet Geständnisse, Auslassungen und Tonverschiebungen',
-      ds_p3: 'Genaue Beweiszitate mit Bedeutungsbewertungen',
-      ds_p4: 'Vollständigen Bericht als PDF exportieren',
-      ds_p5: 'R7.96 für die Analyse von 300 E-Mails',
-      lang_label: '90+ Sprachen',
-      lang_title: 'Die gleichen drei Schaltflächen. Jede Sprache der Welt.',
-      lang_sub: 'Verfassen · Antworten · Senden — in jeder Sprache.',
-      viral_label: 'Wachstumsmotor',
-      viral_title: 'Jede E-Mail die Sie senden ist eine Produktdemo.',
-      viral_sub: 'Ein subtiler Fußnoten-Link ermöglicht es Empfängern, Ihre E-Mail in ihrer Sprache zu sehen.',
-      viral_cta: 'Spreakr kostenlos testen →',
-      viral_note: '100 Nutzer × 20 E-Mails/Tag = 2.000 tägliche Impressionen.',
-      pricing_label: 'Preise',
-      pricing_title: 'Einfache, transparente Preisgestaltung.',
-      pricing_sub: 'KI-Suchkosten werden pro Nutzung berechnet.',
-      tier1_name: 'Test',
-      tier1_price: 'Kostenlos',
-      tier1_period: '7 Tage · keine Karte erforderlich',
-      tier1_f1: 'Gmail + Outlook vereint',
-      tier1_f2: 'Sprachdiktat',
-      tier1_f3: 'KI-Antwortentwurf',
-      tier1_f4: 'R2 KI-Suchguthaben',
-      tier1_f5: '3 Sprachen',
-      tier1_btn: 'Kostenlose Testversion starten',
-      tier2_name: 'Pro',
-      tier2_period: '~16$ USD · monatlich',
-      tier2_f1: 'Alles im Test',
-      tier2_f2: 'Thread-Intelligenz',
-      tier2_f3: 'Tiefe Suche',
-      tier2_f4: 'R20 KI-Suchguthaben',
-      tier2_f5: '20 Sprachen',
-      tier2_f6: 'In Ordner verschieben',
-      tier2_f7: 'Viraler Fußnoten-Link',
-      tier2_btn: 'Loslegen',
-      tier3_name: 'Executive',
-      tier3_period: '~32$ USD · monatlich',
-      tier3_f1: 'Alles in Pro',
-      tier3_f2: 'R100 KI-Suchguthaben',
-      tier3_f3: 'Alle 90+ Sprachen',
-      tier3_f4: 'Rechtsterminologiepakete',
-      tier3_f5: 'PDF-Exportberichte',
-      tier3_f6: 'Prioritätssupport',
-      tier3_f7: 'Teameinstellungen',
-      tier3_btn: 'Kontaktieren Sie uns',
-      aff_label: 'Partnerprogramm',
-      aff_title: 'Verdienen Sie wiederkehrendes Einkommen. Arbeiten Sie von überall.',
-      aff_sub: 'Erhalten Sie einen einzigartigen Code. Teilen Sie ihn. Verdienen Sie monatlich 30% jedes Abonnements.',
-      aff_s1: 'Wiederkehrende monatliche Provision',
-      aff_s2: 'Verdient pro Pro-Abonnent pro Monat',
-      aff_s3: 'Keine Obergrenze für Empfehlungen',
-      aff_calc_title: 'Beispiele monatlicher Einnahmen',
-      aff_r1: '10 Pro-Abonnenten',
-      aff_r2: '25 Pro-Abonnenten',
-      aff_r3: '50 Pro-Abonnenten',
-      aff_r4: '100 Pro-Abonnenten',
-      aff_btn: 'Als Partner bewerben',
-      aff_note: 'Offen für Fachleute weltweit · Monatlich per PayPal bezahlt',
-      cta_title: 'Der Posteingang für alle anderen.',
-      cta_sub: 'Superhuman besitzt Englisch. Sie besitzen die Welt.',
-      cta_btn1: 'Kostenlos starten — 7 Tage',
-      cta_btn2: 'Demo buchen',
-      cta_note: 'Keine Kreditkarte erforderlich · Jederzeit kündigen',
-      footer_tagline: 'Das erste mehrsprachige KI-E-Mail-Zentrum der Welt.',
-      footer_product: 'Produkt',
-      footer_company: 'Unternehmen',
-      footer_about: 'Über uns',
-      footer_contact: 'Kontakt',
-      footer_affiliate: 'Partnerprogramm',
-      footer_press: 'Presse',
-      footer_legal: 'Rechtliches',
-      footer_privacy: 'Datenschutzrichtlinie',
-      footer_popia: 'POPIA-Konformität',
-      footer_security: 'Sicherheit',
-      footer_terms: 'Nutzungsbedingungen'
-    },
-
-    pt: {
-      dir: 'ltr',
-      name: 'Português',
-      flag: '🇧🇷',
-      nav_features: 'Recursos',
-      nav_languages: 'Idiomas',
-      nav_pricing: 'Preços',
-      nav_earn: 'Ganhe conosco',
-      nav_cta: 'Iniciar teste gratuito',
-      hero_badge: '🌍 Agora suportando 90+ idiomas',
-      hero_h1_1: 'E-mail no seu idioma.',
-      hero_h1_2: 'Envie no idioma deles.',
-      hero_sub: 'O primeiro centro de e-mail com IA multilíngue do mundo.',
-      hero_cta_primary: 'Começar grátis — 7 dias',
-      hero_cta_secondary: 'Ver recursos →',
-      stat_1: 'Idiomas suportados',
-      stat_2: 'Provedores de e-mail unificados',
-      stat_3: 'Busca forense · 300 e-mails',
-      stat_4: 'Análise completa da caixa de entrada',
-      stat_5: 'Concorrentes que fazem isso',
-      features_label: 'Recursos',
-      features_title: 'Tudo que sua caixa de entrada estava perdendo.',
-      features_sub: 'Construído para o profissional multilíngue.',
-      f1_title: 'Ditado por voz em 90+ idiomas',
-      f1_desc: 'Dite e-mails na sua língua materna. O Spreakr transcreve e envia no idioma do destinatário.',
-      f2_title: 'Busca forense profunda de e-mails',
-      f2_desc: 'Faça qualquer pergunta em linguagem natural. O GPT-4.1 lê cada e-mail completamente.',
-      f3_title: 'Inteligência de Thread',
-      f3_desc: 'Um clique revela um relatório completo sobre qualquer cadeia de e-mails.',
-      f4_title: 'Gmail + Outlook unificados',
-      f4_desc: 'Uma caixa de entrada. Ambas as contas.',
-      f5_title: 'Interface completa no seu idioma',
-      f5_desc: 'Cada botão e mensagem é exibido no seu idioma escolhido.',
-      f6_title: 'Ponte de idioma viral',
-      f6_desc: 'Cada e-mail enviado inclui um link "Ver no seu idioma".',
-      ds_label: 'Busca Profunda',
-      ds_title: 'Encontre qualquer coisa. Até o que não foi dito.',
-      ds_desc: 'Faça uma pergunta em linguagem natural. O GPT-4.1 lê cada e-mail completamente.',
-      ds_p1: 'Perguntas em linguagem natural — sem palavras-chave necessárias',
-      ds_p2: 'Encontra confissões, omissões e mudanças de tom',
-      ds_p3: 'Citações exatas de evidências com classificações de importância',
-      ds_p4: 'Exportar relatório completo como PDF',
-      ds_p5: 'R7.96 para analisar 300 e-mails',
-      lang_label: '90+ Idiomas',
-      lang_title: 'Os mesmos três botões. Todos os idiomas da Terra.',
-      lang_sub: 'Compor · Responder · Enviar — em cada idioma.',
-      viral_label: 'Motor de Crescimento',
-      viral_title: 'Cada e-mail que você envia é uma demonstração do produto.',
-      viral_sub: 'Um link sutil no rodapé permite que os destinatários vejam seu e-mail no idioma deles.',
-      viral_cta: 'Experimente o Spreakr grátis →',
-      viral_note: '100 usuários × 20 e-mails/dia = 2.000 impressões diárias.',
-      pricing_label: 'Preços',
-      pricing_title: 'Preços simples e transparentes.',
-      pricing_sub: 'Os custos de busca com IA são cobrados por uso.',
-      tier1_name: 'Teste',
-      tier1_price: 'Grátis',
-      tier1_period: '7 dias · sem cartão',
-      tier1_f1: 'Gmail + Outlook unificados',
-      tier1_f2: 'Ditado por voz',
-      tier1_f3: 'Rascunho de resposta IA',
-      tier1_f4: 'Crédito de busca R2',
-      tier1_f5: '3 idiomas',
-      tier1_btn: 'Iniciar teste gratuito',
-      tier2_name: 'Pro',
-      tier2_period: '~$16 USD · mensal',
-      tier2_f1: 'Tudo no Teste',
-      tier2_f2: 'Inteligência de Thread',
-      tier2_f3: 'Busca Profunda',
-      tier2_f4: 'Crédito de busca R20',
-      tier2_f5: '20 idiomas',
-      tier2_f6: 'Mover para pasta',
-      tier2_f7: 'Link de rodapé viral',
-      tier2_btn: 'Começar',
-      tier3_name: 'Executivo',
-      tier3_period: '~$32 USD · mensal',
-      tier3_f1: 'Tudo no Pro',
-      tier3_f2: 'Crédito de busca R100',
-      tier3_f3: 'Todos os 90+ idiomas',
-      tier3_f4: 'Pacotes de terminologia jurídica',
-      tier3_f5: 'Relatórios de exportação PDF',
-      tier3_f6: 'Suporte prioritário',
-      tier3_f7: 'Configurações de equipe',
-      tier3_btn: 'Contate-nos',
-      aff_label: 'Programa de Afiliados',
-      aff_title: 'Ganhe renda recorrente. Trabalhe de qualquer lugar.',
-      aff_sub: 'Obtenha um código único. Compartilhe-o. Ganhe 30% de cada assinatura todo mês.',
-      aff_s1: 'Comissão mensal recorrente',
-      aff_s2: 'Ganho por assinante Pro por mês',
-      aff_s3: 'Sem limite em indicações ou ganhos',
-      aff_calc_title: 'Exemplos de ganhos mensais',
-      aff_r1: '10 assinantes Pro',
-      aff_r2: '25 assinantes Pro',
-      aff_r3: '50 assinantes Pro',
-      aff_r4: '100 assinantes Pro',
-      aff_btn: 'Candidatar-se como afiliado',
-      aff_note: 'Aberto a profissionais globalmente · Pago mensalmente via PayPal',
-      cta_title: 'A caixa de entrada construída para todos os outros.',
-      cta_sub: 'O Superhuman tem o inglês. Você tem o mundo.',
-      cta_btn1: 'Começar grátis — 7 dias',
-      cta_btn2: 'Agendar uma demo',
-      cta_note: 'Sem cartão de crédito necessário · Cancele a qualquer momento',
-      footer_tagline: 'O primeiro centro de e-mail com IA multilíngue do mundo.',
-      footer_product: 'Produto',
-      footer_company: 'Empresa',
-      footer_about: 'Sobre nós',
-      footer_contact: 'Contato',
-      footer_affiliate: 'Programa de afiliados',
-      footer_press: 'Imprensa',
-      footer_legal: 'Legal',
-      footer_privacy: 'Política de privacidade',
-      footer_popia: 'Conformidade POPIA',
-      footer_security: 'Segurança',
-      footer_terms: 'Termos de serviço'
-    },
-
-    es: {
-      dir: 'ltr',
-      name: 'Español',
-      flag: '🇪🇸',
-      nav_features: 'Características',
-      nav_languages: 'Idiomas',
-      nav_pricing: 'Precios',
-      nav_earn: 'Gana con nosotros',
-      nav_cta: 'Prueba gratuita',
-      hero_badge: '🌍 Ahora con soporte para 90+ idiomas',
-      hero_h1_1: 'Email en tu idioma.',
-      hero_h1_2: 'Envía en el suyo.',
-      hero_sub: 'El primer centro de email con IA multilingüe del mundo.',
-      hero_cta_primary: 'Comenzar gratis — 7 días',
-      hero_cta_secondary: 'Ver características →',
-      stat_1: 'Idiomas soportados',
-      stat_2: 'Proveedores de email unificados',
-      stat_3: 'Búsqueda forense · 300 emails',
-      stat_4: 'Análisis completo de bandeja de entrada',
-      stat_5: 'Competidores que hacen esto',
-      features_label: 'Características',
-      features_title: 'Todo lo que le faltaba a tu bandeja de entrada.',
-      features_sub: 'Construido para el profesional multilingüe.',
-      f1_title: 'Dictado por voz en 90+ idiomas',
-      f1_desc: 'Dicta emails en tu lengua materna. Spreakr transcribe y envía en el idioma del destinatario.',
-      f2_title: 'Búsqueda forense profunda de email',
-      f2_desc: 'Haz cualquier pregunta en lenguaje natural. GPT-4.1 lee cada email completo.',
-      f3_title: 'Inteligencia de Hilo',
-      f3_desc: 'Un clic revela un informe completo sobre cualquier cadena de emails.',
-      f4_title: 'Gmail + Outlook unificados',
-      f4_desc: 'Una bandeja de entrada. Ambas cuentas.',
-      f5_title: 'Interfaz completa en tu idioma',
-      f5_desc: 'Cada botón y mensaje se muestra en tu idioma elegido.',
-      f6_title: 'Puente de idioma viral',
-      f6_desc: 'Cada email enviado incluye un enlace "Ver en tu idioma".',
-      ds_label: 'Búsqueda Profunda',
-      ds_title: 'Encuentra cualquier cosa. Incluso lo que no se dijo.',
-      ds_desc: 'Haz una pregunta en lenguaje natural. GPT-4.1 lee cada email completo.',
-      ds_p1: 'Preguntas en lenguaje natural — sin palabras clave necesarias',
-      ds_p2: 'Encuentra confesiones, omisiones y cambios de tono',
-      ds_p3: 'Citas de evidencia exactas con calificaciones de importancia',
-      ds_p4: 'Exportar informe completo como PDF',
-      ds_p5: 'R7.96 para analizar 300 emails',
-      lang_label: '90+ Idiomas',
-      lang_title: 'Los mismos tres botones. Todos los idiomas de la Tierra.',
-      lang_sub: 'Redactar · Responder · Enviar — en cada idioma.',
-      viral_label: 'Motor de Crecimiento',
-      viral_title: 'Cada email que envías es una demo del producto.',
-      viral_sub: 'Un enlace sutil en el pie de página permite a los destinatarios ver tu email en su idioma.',
-      viral_cta: 'Prueba Spreakr gratis →',
-      viral_note: '100 usuarios × 20 emails/día = 2.000 impresiones diarias.',
-      pricing_label: 'Precios',
-      pricing_title: 'Precios simples y transparentes.',
-      pricing_sub: 'Los costos de búsqueda con IA se cobran por uso.',
-      tier1_name: 'Prueba',
-      tier1_price: 'Gratis',
-      tier1_period: '7 días · sin tarjeta',
-      tier1_f1: 'Gmail + Outlook unificados',
-      tier1_f2: 'Dictado por voz',
-      tier1_f3: 'Borrador de respuesta IA',
-      tier1_f4: 'Crédito de búsqueda R2',
-      tier1_f5: '3 idiomas',
-      tier1_btn: 'Iniciar prueba gratuita',
-      tier2_name: 'Pro',
-      tier2_period: '~$16 USD · mensual',
-      tier2_f1: 'Todo en Prueba',
-      tier2_f2: 'Inteligencia de Hilo',
-      tier2_f3: 'Búsqueda Profunda',
-      tier2_f4: 'Crédito de búsqueda R20',
-      tier2_f5: '20 idiomas',
-      tier2_f6: 'Mover a carpeta',
-      tier2_f7: 'Enlace de pie viral',
-      tier2_btn: 'Comenzar',
-      tier3_name: 'Ejecutivo',
-      tier3_period: '~$32 USD · mensual',
-      tier3_f1: 'Todo en Pro',
-      tier3_f2: 'Crédito de búsqueda R100',
-      tier3_f3: 'Todos los 90+ idiomas',
-      tier3_f4: 'Paquetes de terminología legal',
-      tier3_f5: 'Informes de exportación PDF',
-      tier3_f6: 'Soporte prioritario',
-      tier3_f7: 'Configuración de equipo',
-      tier3_btn: 'Contáctenos',
-      aff_label: 'Programa de Afiliados',
-      aff_title: 'Gana ingresos recurrentes. Trabaja desde cualquier lugar.',
-      aff_sub: 'Obtén un código único. Compártelo. Gana el 30% de cada suscripción cada mes.',
-      aff_s1: 'Comisión mensual recurrente',
-      aff_s2: 'Ganado por suscriptor Pro por mes',
-      aff_s3: 'Sin límite en referencias o ganancias',
-      aff_calc_title: 'Ejemplos de ganancias mensuales',
-      aff_r1: '10 suscriptores Pro',
-      aff_r2: '25 suscriptores Pro',
-      aff_r3: '50 suscriptores Pro',
-      aff_r4: '100 suscriptores Pro',
-      aff_btn: 'Solicitar ser afiliado',
-      aff_note: 'Abierto a profesionales globalmente · Pago mensual vía PayPal',
-      cta_title: 'La bandeja de entrada construida para todos los demás.',
-      cta_sub: 'Superhuman tiene el inglés. Tú tienes el mundo.',
-      cta_btn1: 'Comenzar gratis — 7 días',
-      cta_btn2: 'Reservar una demo',
-      cta_note: 'Sin tarjeta de crédito · Cancela en cualquier momento',
-      footer_tagline: 'El primer centro de email con IA multilingüe del mundo.',
-      footer_product: 'Producto',
-      footer_company: 'Empresa',
-      footer_about: 'Acerca de',
-      footer_contact: 'Contacto',
-      footer_affiliate: 'Programa de afiliados',
-      footer_press: 'Prensa',
-      footer_legal: 'Legal',
-      footer_privacy: 'Política de privacidad',
-      footer_popia: 'Cumplimiento POPIA',
-      footer_security: 'Seguridad',
-      footer_terms: 'Términos de servicio'
-    },
-
-    sw: {
-      dir: 'ltr',
-      name: 'Swahili',
-      flag: '🇰🇪',
-      nav_features: 'Vipengele',
-      nav_languages: 'Lugha',
-      nav_pricing: 'Bei',
-      nav_earn: 'Pata pesa nasi',
-      nav_cta: 'Anza Jaribio la Bure',
-      hero_badge: '🌍 Sasa inasaidia lugha 90+',
-      hero_h1_1: 'Barua pepe kwa lugha yako.',
-      hero_h1_2: 'Tuma kwa lugha yao.',
-      hero_sub: 'Kituo cha kwanza cha barua pepe cha AI chenye lugha nyingi duniani.',
-      hero_cta_primary: 'Anza Bure — Siku 7',
-      hero_cta_secondary: 'Tazama vipengele →',
-      stat_1: 'Lugha zinazosaidiwa',
-      stat_2: 'Watoa huduma wa barua pepe',
-      stat_3: 'Utafutaji wa kisheria · barua pepe 300',
-      stat_4: 'Uchambuzi kamili wa kisanduku',
-      stat_5: 'Washindani wanaofanya hivi',
-      features_label: 'Vipengele',
-      features_title: 'Kila kitu ambacho kisanduku chako cha barua pepe kilikosekana.',
-      features_sub: 'Imejengwa kwa mtaalamu wa lugha nyingi.',
-      f1_title: 'Uandishi wa sauti katika lugha 90+',
-      f1_desc: 'Andika barua pepe kwa lugha yako ya mama. Spreakr inabadilisha na kutuma kwa lugha ya mpokeaji.',
-      f2_title: 'Utafutaji wa kisheria wa kina wa barua pepe',
-      f2_desc: 'Uliza swali lolote kwa lugha ya kawaida. GPT-4.1 inasoma kila barua pepe kikamilifu.',
-      f3_title: 'Akili ya Uzi',
-      f3_desc: 'Bonyeza moja inafunua ripoti kamili ya kijasusi kwa mnyororo wowote wa barua pepe.',
-      f4_title: 'Gmail + Outlook pamoja',
-      f4_desc: 'Kisanduku kimoja. Akaunti zote mbili.',
-      f5_title: 'Kiolesura kamili kwa lugha yako',
-      f5_desc: 'Kila kitufe na ujumbe unaonyeshwa kwa lugha yako uliyochagua.',
-      f6_title: 'Daraja la lugha la virusi',
-      f6_desc: 'Kila barua pepe inayotumwa ina kiungo cha "Tazama kwa lugha yako".',
-      ds_label: 'Utafutaji wa Kina',
-      ds_title: 'Pata chochote. Hata kilichosemwa.',
-      ds_desc: 'Uliza swali kwa lugha ya kawaida. GPT-4.1 inasoma kila barua pepe kikamilifu.',
-      ds_p1: 'Maswali ya lugha ya asili — hakuna maneno muhimu yanayohitajika',
-      ds_p2: 'Inapata makubaliano, ukosefu na mabadiliko ya sauti',
-      ds_p3: 'Manukuu sahihi ya ushahidi na tathmini za umuhimu',
-      ds_p4: 'Hamisha ripoti kamili kama PDF',
-      ds_p5: 'R7.96 kuchambua barua pepe 300',
-      lang_label: 'Lugha 90+',
-      lang_title: 'Vitufe vile vile vitatu. Kila lugha duniani.',
-      lang_sub: 'Tunga · Jibu · Tuma — kwa kila lugha.',
-      viral_label: 'Injini ya Ukuaji',
-      viral_title: 'Kila barua pepe unayotuma ni onyesho la bidhaa.',
-      viral_sub: 'Kiungo kidogo cha chini ya ukurasa huruhusu wapokeaji kuona barua pepe yako kwa lugha yao.',
-      viral_cta: 'Jaribu Spreakr Bure →',
-      viral_note: 'Watumiaji 100 × barua pepe 20/siku = maonyesho 2,000 kila siku.',
-      pricing_label: 'Bei',
-      pricing_title: 'Bei rahisi na wazi.',
-      pricing_sub: 'Gharama za utafutaji wa AI zinabaki kwa kila matumizi.',
-      tier1_name: 'Jaribio',
-      tier1_price: 'Bure',
-      tier1_period: 'Siku 7 · hakuna kadi',
-      tier1_f1: 'Gmail + Outlook pamoja',
-      tier1_f2: 'Uandishi wa sauti',
-      tier1_f3: 'Jibu la rasimu la AI',
-      tier1_f4: 'Mkopo wa utafutaji R2',
-      tier1_f5: 'Lugha 3',
-      tier1_btn: 'Anza Jaribio la Bure',
-      tier2_name: 'Pro',
-      tier2_period: '~$16 USD · kila mwezi',
-      tier2_f1: 'Kila kitu katika Jaribio',
-      tier2_f2: 'Akili ya Uzi',
-      tier2_f3: 'Utafutaji wa Kina',
-      tier2_f4: 'Mkopo wa utafutaji R20',
-      tier2_f5: 'Lugha 20',
-      tier2_f6: 'Hamisha kwenye folda',
-      tier2_f7: 'Kiungo cha chini cha virusi',
-      tier2_btn: 'Anza',
-      tier3_name: 'Mtendaji',
-      tier3_period: '~$32 USD · kila mwezi',
-      tier3_f1: 'Kila kitu katika Pro',
-      tier3_f2: 'Mkopo wa utafutaji R100',
-      tier3_f3: 'Lugha zote 90+',
-      tier3_f4: 'Vifurushi vya istilahi za kisheria',
-      tier3_f5: 'Ripoti za usafirishaji wa PDF',
-      tier3_f6: 'Msaada wa kipaumbele',
-      tier3_f7: 'Mipangilio ya timu',
-      tier3_btn: 'Wasiliana nasi',
-      aff_label: 'Programu ya Washirika',
-      aff_title: 'Pata mapato yanayorudiwa. Fanya kazi kutoka mahali popote.',
-      aff_sub: 'Pata msimbo wa kipekee. Ushirikishe. Pata 30% ya kila usajili kila mwezi.',
-      aff_s1: 'Tume inayorudiwa ya kila mwezi',
-      aff_s2: 'Inayopatikana kwa kila mwanachama wa Pro kwa mwezi',
-      aff_s3: 'Hakuna kikomo kwenye rufaa au mapato',
-      aff_calc_title: 'Mifano ya mapato ya kila mwezi',
-      aff_r1: 'Wanachama wa Pro 10',
-      aff_r2: 'Wanachama wa Pro 25',
-      aff_r3: 'Wanachama wa Pro 50',
-      aff_r4: 'Wanachama wa Pro 100',
-      aff_btn: 'Omba kuwa mshirika',
-      aff_note: 'Wazi kwa wataalamu duniani kote · Analipwa kila mwezi kupitia PayPal',
-      cta_title: 'Kisanduku kilichojengwa kwa wengine wote.',
-      cta_sub: 'Superhuman ina Kiingereza. Wewe una ulimwengu.',
-      cta_btn1: 'Anza Bure — Siku 7',
-      cta_btn2: 'Weka nafasi ya onyesho',
-      cta_note: 'Hakuna kadi ya mkopo inayohitajika · Ghairi wakati wowote',
-      footer_tagline: 'Kituo cha kwanza cha barua pepe cha AI chenye lugha nyingi duniani.',
-      footer_product: 'Bidhaa',
-      footer_company: 'Kampuni',
-      footer_about: 'Kuhusu sisi',
-      footer_contact: 'Wasiliana',
-      footer_affiliate: 'Programu ya washirika',
-      footer_press: 'Vyombo vya habari',
-      footer_legal: 'Kisheria',
-      footer_privacy: 'Sera ya Faragha',
-      footer_popia: 'Kufuata POPIA',
-      footer_security: 'Usalama',
-      footer_terms: 'Masharti ya Huduma'
-    }
+/**
+ * Spreakr marketing landing — language switcher + flag pills.
+ * Depends on: /marketing-site-locales.js (sets window.MARKETING_LOCALES)
+ */
+(function () {
+  const LOCALES = window.MARKETING_LOCALES || {};
+  const FLAG_CC = {
+    en: 'gb',
+    af: 'za',
+    ar: 'sa',
+    fa: 'ir',
+    hi: 'in',
+    yo: 'ng',
+    fr: 'fr',
+    de: 'de',
+    pt: 'br',
+    es: 'es',
+    sw: 'ke',
   };
 
   const LANG_LIST = [
-    { code: 'en', flag: '🇬🇧', name: 'English' },
-    { code: 'af', flag: '🇿🇦', name: 'Afrikaans' },
-    { code: 'ar', flag: '🇸🇦', name: 'العربية' },
-    { code: 'fa', flag: '🇮🇷', name: 'فارسی' },
-    { code: 'hi', flag: '🇮🇳', name: 'हिंदी' },
-    { code: 'yo', flag: '🇳🇬', name: 'Yorùbá' },
-    { code: 'fr', flag: '🇫🇷', name: 'Français' },
-    { code: 'de', flag: '🇩🇪', name: 'Deutsch' },
-    { code: 'pt', flag: '🇧🇷', name: 'Português' },
-    { code: 'es', flag: '🇪🇸', name: 'Español' },
-    { code: 'sw', flag: '🇰🇪', name: 'Swahili' }
+    { code: 'en', name: 'English' },
+    { code: 'af', name: 'Afrikaans' },
+    { code: 'ar', name: 'العربية' },
+    { code: 'fa', name: 'فارسی' },
+    { code: 'hi', name: 'हिंदी' },
+    { code: 'yo', name: 'Yorùbá' },
+    { code: 'fr', name: 'Français' },
+    { code: 'de', name: 'Deutsch' },
+    { code: 'pt', name: 'Português' },
+    { code: 'es', name: 'Español' },
+    { code: 'sw', name: 'Swahili' },
   ];
 
-  const COUNTRY_LANG = {
-    ZA: 'af', NG: 'yo', IR: 'fa', IN: 'hi', FR: 'fr', DE: 'de',
-    BR: 'pt', ES: 'es', MX: 'es', AR: 'es', CO: 'es',
-    SA: 'ar', AE: 'ar', EG: 'ar', MA: 'ar',
-    KE: 'sw', TZ: 'sw', UG: 'sw'
-  };
+  function flagImg(code) {
+    const cc = FLAG_CC[code] || 'un';
+    const src = `https://flagcdn.com/24x18/${cc}.png`;
+    return `<img class="site-flag-img" src="${src}" width="24" height="18" alt="" loading="lazy" decoding="async">`;
+  }
+
+  function t(locale, key) {
+    if (locale && locale[key] != null) return locale[key];
+    const en = LOCALES.en || {};
+    return en[key] != null ? en[key] : '';
+  }
 
   function applyTranslations(lang) {
     const locale = LOCALES[lang] || LOCALES.en;
+    if (!locale) return;
 
     document.documentElement.setAttribute('dir', locale.dir || 'ltr');
     document.documentElement.setAttribute('lang', lang);
@@ -1298,7 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const link = document.createElement('link');
         link.id = 'rtl-font';
         link.rel = 'stylesheet';
-        link.href = 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap';
+        link.href =
+          'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap';
         document.head.appendChild(link);
       }
       document.body.style.fontFamily = "'Cairo', sans-serif";
@@ -1307,41 +66,62 @@ document.addEventListener('DOMContentLoaded', () => {
         const link = document.createElement('link');
         link.id = 'deva-font';
         link.rel = 'stylesheet';
-        link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap';
+        link.href =
+          'https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap';
         document.head.appendChild(link);
       }
       document.body.style.fontFamily = "'Noto Sans Devanagari', 'DM Sans', sans-serif";
     } else {
-      document.body.style.fontFamily = "'DM Sans', system-ui, sans-serif";
+      document.body.style.fontFamily = '';
     }
 
-    document.querySelectorAll('[data-i18n]').forEach(el => {
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
       const key = el.getAttribute('data-i18n');
-      if (locale[key]) el.textContent = locale[key];
+      const val = t(locale, key);
+      if (val) el.textContent = val;
     });
 
     const btnLabel = document.getElementById('langBtnLabel');
-    if (btnLabel) btnLabel.textContent = lang.toUpperCase();
+    if (btnLabel) {
+      btnLabel.innerHTML = `${flagImg(lang)}<span>${lang.toUpperCase()}</span>`;
+    }
 
-    document.querySelectorAll('.lang-option').forEach(el => {
+    document.querySelectorAll('.lang-option').forEach((el) => {
       el.classList.toggle('active', el.dataset.lang === lang);
     });
 
-    localStorage.setItem('spreakr_lang', lang);
+    localStorage.setItem('spreakr_marketing_lang', lang);
   }
 
   function detectLanguage() {
-    const saved = localStorage.getItem('spreakr_lang');
+    const saved = localStorage.getItem('spreakr_marketing_lang');
     if (saved && LOCALES[saved]) return saved;
-
-    const browser = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
+    const browser = (navigator.language || '').split('-')[0];
     if (LOCALES[browser]) return browser;
 
+    const COUNTRY_LANG = {
+      ZA: 'af',
+      NG: 'yo',
+      IR: 'fa',
+      IN: 'hi',
+      FR: 'fr',
+      DE: 'de',
+      BR: 'pt',
+      ES: 'es',
+      MX: 'es',
+      SA: 'ar',
+      AE: 'ar',
+      EG: 'ar',
+      MA: 'ar',
+      KE: 'sw',
+      TZ: 'sw',
+      UG: 'sw',
+    };
     fetch('https://ipapi.co/json/')
-      .then(r => r.json())
-      .then(d => {
-        const lang = COUNTRY_LANG[d.country_code];
-        if (lang && LOCALES[lang]) applyTranslations(lang);
+      .then((r) => r.json())
+      .then((d) => {
+        const guess = COUNTRY_LANG[d.country_code];
+        if (guess && LOCALES[guess]) applyTranslations(guess);
       })
       .catch(() => {});
 
@@ -1351,79 +131,166 @@ document.addEventListener('DOMContentLoaded', () => {
   function buildDropdown() {
     const dd = document.getElementById('langDropdown');
     if (!dd) return;
-
     dd.innerHTML = '';
-    LANG_LIST.forEach(l => {
-      const opt = document.createElement('div');
+    LANG_LIST.forEach((l) => {
+      const opt = document.createElement('button');
+      opt.type = 'button';
       opt.className = 'lang-option';
       opt.dataset.lang = l.code;
-      opt.innerHTML = `<span>${l.flag}</span><span>${l.name}</span>`;
-      opt.addEventListener('click', () => {
+      opt.innerHTML = `${flagImg(l.code)}<span>${l.name}</span>`;
+      opt.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         applyTranslations(l.code);
         dd.classList.remove('open');
+        const lb = document.getElementById('langBtn');
+        if (lb) lb.setAttribute('aria-expanded', 'false');
       });
       dd.appendChild(opt);
     });
   }
 
-  const langBtn = document.getElementById('langBtn');
-  if (langBtn) {
-    langBtn.addEventListener('click', e => {
-      e.stopPropagation();
-      document.getElementById('langDropdown')?.classList.toggle('open');
-    });
-  }
-
-  document.addEventListener('click', () => {
-    document.getElementById('langDropdown')?.classList.remove('open');
-  });
-
-  const PILLS = [
-    { flag: '🇿🇦', name: 'Afrikaans', code: 'af', d: 0 },
-    { flag: '🇸🇦', name: 'العربية', code: 'ar', d: 100 },
-    { flag: '🇮🇷', name: 'فارسی', code: 'fa', d: 200 },
-    { flag: '🇮🇳', name: 'हिंदी', code: 'hi', d: 300 },
-    { flag: '🇳🇬', name: 'Yorùbá', code: 'yo', d: 400 },
-    { flag: '🇫🇷', name: 'Français', code: 'fr', d: 500 },
-    { flag: '🇧🇷', name: 'Português', code: 'pt', d: 600 },
-    { flag: '🇩🇪', name: 'Deutsch', code: 'de', d: 700 },
-    { flag: '🇪🇸', name: 'Español', code: 'es', d: 800 },
-    { flag: '🇰🇪', name: 'Swahili', code: 'sw', d: 900 },
-    { flag: '🇬🇧', name: 'English', code: 'en', d: 1000 }
-  ];
-
-  const c = document.getElementById('langFloat');
-  if (c) {
+  function buildPills() {
+    const c = document.getElementById('langFloat');
+    if (!c) return;
     c.innerHTML = '';
-    PILLS.forEach(l => {
-      const el = document.createElement('div');
+    LANG_LIST.forEach((l, i) => {
+      const el = document.createElement('button');
+      el.type = 'button';
       el.className = 'lang-pill';
-      el.style.animationDelay = `${l.d}ms`;
-      el.style.cursor = 'pointer';
-      el.innerHTML = `<span>${l.flag}</span><span>${l.name}</span>`;
+      el.style.animationDelay = `${i * 80}ms`;
+      el.innerHTML = `${flagImg(l.code)}<span>${l.name}</span>`;
       el.title = `View site in ${l.name}`;
-
       el.addEventListener('click', () => {
         applyTranslations(l.code);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
-
-      el.addEventListener('mouseenter', () => {
-        el.style.borderColor = 'var(--accent)';
-        el.style.color = '#fff';
-        el.style.transform = 'translateY(-2px)';
-      });
-
-      el.addEventListener('mouseleave', () => {
-        el.style.borderColor = '';
-        el.style.color = '';
-        el.style.transform = '';
-      });
-
       c.appendChild(el);
     });
   }
 
-  buildDropdown();
-  applyTranslations(detectLanguage());
-});
+  function bindNav() {
+    const langBtn = document.getElementById('langBtn');
+    const dd = document.getElementById('langDropdown');
+    const switcher = document.querySelector('.lang-switcher');
+
+    if (langBtn && dd) {
+      langBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const open = !dd.classList.contains('open');
+        dd.classList.toggle('open', open);
+        langBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (switcher && switcher.contains(e.target)) return;
+      if (dd) {
+        dd.classList.remove('open');
+        if (langBtn) langBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  function initHeroSliders() {
+    const es = document.getElementById('h-emailSlider');
+    const ts = document.getElementById('h-teamSlider');
+    if (!es || !ts) return;
+
+    function setVal(id, subId, mins) {
+      const el = document.getElementById(id);
+      const sub = document.getElementById(subId);
+      if (!el) return;
+      if (mins < 60) {
+        el.textContent = `${Math.round(mins)} min`;
+        if (sub) sub.textContent = '';
+      } else {
+        const h = mins / 60;
+        el.textContent = `${h % 1 === 0 ? h : h.toFixed(1)} hrs`;
+        if (sub) {
+          if (h > 8) {
+            const days = h / 8;
+            sub.textContent = `(${days % 1 === 0 ? days : days.toFixed(1)} workdays)`;
+          } else sub.textContent = '';
+        }
+      }
+    }
+
+    function upd() {
+      const e = +es.value;
+      const t = +ts.value;
+      const day = e * 7.5;
+      const month = day * 22;
+      const ec = document.getElementById('h-emailCount');
+      const tc = document.getElementById('h-teamCount');
+      if (ec) ec.textContent = String(e);
+      if (tc) tc.textContent = t === 1 ? '1 person' : `${t} people`;
+      setVal('h-saveDay', 'h-saveDaySub', day);
+      setVal('h-saveMonth', 'h-saveMonthSub', month);
+      setVal('h-saveTeam', 'h-saveTeamSub', month * t);
+    }
+    es.addEventListener('input', upd);
+    ts.addEventListener('input', upd);
+    upd();
+  }
+
+  function initAffiliateCalc() {
+    const slider = document.getElementById('aff-slider');
+    const country = document.getElementById('aff-country');
+    if (!slider || !country) return;
+
+    function fmt(val, currency) {
+      const n = Math.round(val);
+      const s = n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      return currency + s;
+    }
+
+    function update() {
+      const subs = +slider.value;
+      const opt = country.options[country.selectedIndex];
+      const price = +opt.value;
+      const currency = opt.getAttribute('data-currency');
+      const commission = price * 0.3;
+      const monthly = commission * subs;
+      const yearly = monthly * 12;
+      const elSub = document.getElementById('aff-sub-count');
+      const elM = document.getElementById('aff-month');
+      const elY = document.getElementById('aff-year');
+      const elP = document.getElementById('aff-per');
+      const elNote = document.getElementById('aff-note');
+      if (elSub) elSub.textContent = String(subs);
+      if (elM) elM.textContent = fmt(monthly, currency);
+      if (elY) elY.textContent = fmt(yearly, currency);
+      if (elP) elP.textContent = fmt(commission, currency);
+      if (elNote) {
+        elNote.innerHTML = `${subs} people sign up once → you earn <strong style="color:var(--text)">${fmt(
+          monthly,
+          currency
+        )} every month</strong> without doing anything more.`;
+      }
+    }
+    slider.addEventListener('input', update);
+    country.addEventListener('change', update);
+    update();
+  }
+
+  function boot() {
+    if (!window.MARKETING_LOCALES) {
+      console.warn('[marketing-site] Missing MARKETING_LOCALES — load marketing-site-locales.js first');
+      return;
+    }
+    buildDropdown();
+    buildPills();
+    bindNav();
+    initHeroSliders();
+    initAffiliateCalc();
+    applyTranslations(detectLanguage());
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
