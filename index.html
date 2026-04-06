@@ -1,416 +1,182 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spreakr — Email in your language. Send in theirs.</title>
-<meta name="description" content="The world's first multilingual AI email command centre.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0D0F14;--bg2:#0F1420;--bg3:#13161E;--accent:#4F7FFF;--accent2:#3D6AE8;--border:#1E2330;--text:#E8EAF0;--muted:#8B95A1;--red:#FF4F4F;--green:#4FFF9F;--amber:#FFB84F;--font:'DM Sans',system-ui,sans-serif}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.6}
-a{color:inherit;text-decoration:none}
-nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-.logo{font-size:24px;font-weight:800;letter-spacing:-0.5px}
-.logo .spr{color:var(--accent)}.logo .eakr{color:#fff}
-.nav-links{display:flex;gap:36px;font-size:14px;color:var(--muted)}
-.nav-links a:hover{color:#fff;transition:color 0.2s}
-.nav-right{display:flex;align-items:center;gap:12px}
-.nav-cta{background:var(--accent);color:#fff;padding:10px 24px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:background 0.2s;display:inline-block}
-.nav-cta:hover{background:var(--accent2)}
-.lang-switcher{position:relative}
-.lang-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);padding:8px 14px;border-radius:6px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all 0.2s}
-.lang-btn:hover{border-color:var(--accent);color:#fff}
-.lang-dropdown{position:absolute;top:calc(100% + 8px);right:0;background:var(--bg3);border:1px solid var(--border);border-radius:8px;width:220px;max-height:360px;overflow-y:auto;z-index:200;display:none;box-shadow:0 8px 32px rgba(0,0,0,0.6);padding:4px 0}
-.lang-dropdown.open{display:block}
-.lang-option{padding:0;margin:0}
-.lang-option.active{color:var(--accent)}
-.hero{background:var(--bg);padding:120px 40px 100px;text-align:center;border-bottom:1px solid var(--border)}
-.lang-float{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:760px;margin:0 auto 24px}
-.site-flag-img{display:inline-block;vertical-align:middle;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.12);object-fit:cover}
-.lang-btn .site-flag-img{flex-shrink:0}
-button.lang-option{width:100%;text-align:left;background:transparent;border:0;padding:10px 14px;cursor:pointer;display:flex;align-items:center;gap:8px;color:inherit;font:inherit;font-size:13px}
-button.lang-option:hover{background:var(--bg2)}
-.lang-pill{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:9px 18px;font-size:13px;display:inline-flex;align-items:center;gap:8px;opacity:0;animation:floatIn 0.5s ease forwards;color:inherit;font:inherit;cursor:pointer}
-.lang-pill:hover{border-color:var(--accent);color:#fff}
-@keyframes floatIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.hero-badge{display:inline-block;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:7px 18px;font-size:13px;color:var(--accent);margin-bottom:36px;letter-spacing:0.5px}
-.hero h1{font-size:clamp(40px,6vw,80px);font-weight:800;line-height:1.05;letter-spacing:-3px;margin-bottom:28px;max-width:900px;margin-left:auto;margin-right:auto}
-.hero h1 em{color:var(--accent);font-style:normal}
-.hero-sub{font-size:20px;color:var(--muted);max-width:560px;margin:0 auto 48px;line-height:1.7}
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
-.btn-primary{background:var(--accent);color:#fff;padding:16px 36px;border-radius:8px;font-size:17px;font-weight:700;cursor:pointer;border:none;transition:background 0.2s;display:inline-block}
-.btn-primary:hover{background:var(--accent2)}
-.btn-secondary{background:transparent;color:var(--text);padding:16px 36px;border-radius:8px;font-size:17px;font-weight:600;cursor:pointer;border:1px solid var(--border);transition:all 0.2s;display:inline-block}
-.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
-.stats{background:var(--bg2);border-bottom:1px solid var(--border)}
-.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);background:var(--border);gap:1px;max-width:1200px;margin:0 auto}
-.stat{background:var(--bg2);padding:28px 24px;text-align:center}
-.stat-num{font-size:40px;font-weight:800;color:var(--accent);letter-spacing:-2px}
-.stat-label{font-size:13px;color:var(--muted);margin-top:6px}
-.section{padding:100px 40px;border-bottom:1px solid var(--border)}
-.container{max-width:1200px;margin:0 auto}
-.section-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
-.section-title{font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-1.5px;margin-bottom:20px;line-height:1.1}
-.section-sub{font-size:17px;color:var(--muted);max-width:540px;line-height:1.75}
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:56px;border-radius:12px;overflow:hidden}
-.feature-card{background:var(--bg3);padding:36px;position:relative;transition:background 0.2s}
-.feature-card:hover{background:#141820}
-.feature-icon{font-size:32px;margin-bottom:22px}
-.feature-title{font-size:20px;font-weight:700;margin-bottom:12px;letter-spacing:-0.3px}
-.feature-desc{font-size:14px;color:var(--muted);line-height:1.75}
-.feature-tag{display:inline-block;margin-top:18px;font-size:11px;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:4px 10px;color:var(--accent);letter-spacing:0.5px}
-.feature-accent{position:absolute;top:0;left:0;width:3px;height:100%}
-.big-feature{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
-.big-feature.reverse{direction:rtl}.big-feature.reverse>*{direction:ltr}
-.mock{background:var(--bg3);border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.mock-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 18px;display:flex;align-items:center;gap:8px}
-.mock-dot{width:10px;height:10px;border-radius:50%}
-.mock-title{font-size:12px;color:var(--muted);margin-left:4px}
-.mock-body{padding:20px}
-.mock-email{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:14px;margin-bottom:10px}
-.mock-badge{display:inline-block;padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600;margin-bottom:8px}
-.badge-red{background:#FF4F4F22;color:var(--red)}
-.badge-amber{background:#FFB84F22;color:var(--amber)}
-.badge-blue{background:#4F7FFF22;color:var(--accent)}
-.mock-extract{font-size:12px;color:#C8D0DC;font-style:italic;border-left:2px solid var(--accent);padding-left:10px;margin-top:8px}
-.mock-score{font-size:11px;color:var(--muted);margin-top:4px}
-.pricing{background:var(--bg2);padding:100px 40px;border-bottom:1px solid var(--border)}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:56px;max-width:1000px;margin-left:auto;margin-right:auto;border-radius:12px;overflow:hidden}
-.price-card{background:var(--bg3);padding:36px}
-.price-card.featured{background:#0F1830;border-top:3px solid var(--accent);position:relative}
-.price-tier{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-.price-amount{font-size:44px;font-weight:800;letter-spacing:-2px;margin-bottom:4px}
-.price-period{font-size:13px;color:var(--muted);margin-bottom:24px}
-.price-features{list-style:none}
-.price-features li{font-size:14px;color:var(--muted);padding:7px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
-.check{color:var(--green);font-weight:700}
-.price-btn{display:block;text-align:center;margin-top:28px;padding:13px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;border:1px solid var(--border);color:var(--text);transition:all 0.2s}
-.price-btn:hover{border-color:var(--accent);color:var(--accent)}
-.price-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-.price-btn.primary:hover{background:var(--accent2)}
-.affiliate{padding:100px 40px;border-bottom:1px solid var(--border)}
-.cta-section{padding:120px 40px;text-align:center;border-bottom:1px solid var(--border)}
-.cta-section h2{font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-2px;margin-bottom:20px;line-height:1.1}
-.cta-section p{font-size:20px;color:var(--muted);margin-bottom:48px}
-footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--border)}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto}
-.footer-brand p{font-size:13px;color:var(--muted);margin-top:14px;max-width:240px;line-height:1.7}
-.footer-col h4{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
-.footer-col a{display:block;font-size:13px;color:var(--muted);margin-bottom:12px;transition:color 0.2s}
-.footer-col a:hover{color:#fff}
-.footer-bottom{border-top:1px solid var(--border);margin-top:48px;padding-top:28px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin-left:auto;margin-right:auto;font-size:12px;color:var(--muted)}
-[dir="rtl"] .big-feature,.big-feature.reverse{direction:rtl}
-[dir="rtl"] .big-feature>*{direction:rtl}
-[dir="rtl"] .feature-accent{left:auto;right:0}
-[dir="rtl"] .mock-extract{border-left:none;border-right:2px solid var(--accent);padding-left:0;padding-right:10px}
-[dir="rtl"] .footer-grid{direction:rtl}
-@media(max-width:768px){
-.features-grid,.big-feature,.big-feature.reverse,.pricing-grid{grid-template-columns:1fr;direction:ltr}
-.stats-grid{grid-template-columns:repeat(2,1fr)}
-.footer-grid{grid-template-columns:1fr 1fr}
-.nav-links{display:none}
-.hero h1{letter-spacing:-1px}
-}
-</style>
-</head>
-<body>
-
-<nav>
-  <div class="logo"><span class="spr">Spr</span><span class="eakr">eakr</span></div>
-  <div class="nav-links">
-    <a href="#features" data-i18n="nav_features">Features</a>
-    <a href="#languages" data-i18n="nav_languages">Languages</a>
-    <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
-    <a href="#affiliate" data-i18n="nav_earn">Earn with us</a>
-  </div>
-  <div class="nav-right">
-    <div class="lang-switcher">
-      <button type="button" class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="langDropdown"><span id="langBtnLabel">EN</span></button>
-      <div class="lang-dropdown" id="langDropdown" role="listbox" aria-label="Language"></div>
-    </div>
-    <a href="https://app.spreakr.com" class="nav-cta" data-i18n="nav_cta">Start free trial</a>
-  </div>
-</nav>
-
-<section class="hero" style="padding-top:48px">
-  <div class="lang-float" id="langFloat" aria-label="Languages"></div>
-
-  <h1 style="margin-top:0;margin-bottom:16px"><em data-i18n="hero_h1_1">Speak freely in your language.</em><br><em data-i18n="hero_h1_2">Formulated professionally. Send in theirs.</em></h1>
-  <p class="hero-sub" data-i18n="hero_sub" style="margin-bottom:40px">The world's first multilingual, multi-platform unified intelligent email command centre — all your accounts in a single view, powered by the world's most powerful AI. Built for professionals who think and work globally.</p>
-
-  <div style="max-width:680px;margin:0 auto 16px;background:linear-gradient(135deg,#0F1A35,#0A1220);border:1px solid #2A3A5C;border-radius:12px;padding:18px 28px;display:flex;align-items:center;gap:16px">
-    <div style="font-size:28px;flex-shrink:0">🎓</div>
-    <div>
-      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#6B8FC4;margin-bottom:5px">Stanford University · Published Research</div>
-      <div style="font-size:14px;color:#E8EAF0;line-height:1.5">"Speech recognition is <strong style="color:var(--accent)">3× faster than typing</strong> — and 20% more accurate. We were quite surprised to find it was almost three times faster." — Prof. James Landay, Stanford CS</div>
-      <a href="https://hci.stanford.edu/research/speech/paper.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:11px;color:#6B8FC4;text-decoration:underline;letter-spacing:0.3px">Read the actual Stanford research paper →</a>
-    </div>
-  </div>
-
-  <div style="max-width:680px;margin:0 auto 52px;background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:36px 40px">
-    <div style="font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:20px;text-align:center"><span style="color:var(--accent)">How much time</span> will you save with <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px">
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:10px">
-          <span style="font-size:13px;color:var(--muted)">Emails per day</span>
-          <span id="h-emailCount" style="font-size:14px;font-weight:800;color:var(--accent)">10</span>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spreakr</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="app" class="app is-visible">
+      <div id="security-banner" class="security-banner hidden" role="alert" aria-live="polite"></div>
+      <div class="app__shell">
+      <aside class="sidebar">
+        <div class="sidebar__logo-wrap">
+          <span class="logo-text sidebar__logo-text">
+            <span style="color: #4f7fff">Spre</span><span style="color: #f0f2f8">akr</span>
+          </span>
+          <img
+            src="/LOGO.PNG"
+            width="40"
+            height="40"
+            alt=""
+            style="border-radius: 6px; object-fit: contain"
+          />
         </div>
-        <input type="range" id="h-emailSlider" min="2" max="50" value="10" style="width:100%;accent-color:var(--accent);height:5px;cursor:pointer">
-      </div>
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:10px">
-          <span style="font-size:13px;color:var(--muted)">Team size</span>
-          <span id="h-teamCount" style="font-size:14px;font-weight:800;color:var(--accent)">1 person</span>
+        <div class="accounts">
+          <div class="accounts__label">Accounts</div>
+          <button type="button" class="pill" id="pill-gmail" data-provider="gmail" aria-pressed="false">
+            <span class="pill__badge">G</span>
+            <span>Gmail</span>
+          </button>
+          <button type="button" class="pill" id="pill-outlook" data-provider="outlook" aria-pressed="false">
+            <span class="pill__badge">O</span>
+            <span>Outlook</span>
+          </button>
         </div>
-        <input type="range" id="h-teamSlider" min="1" max="100" value="1" style="width:100%;accent-color:var(--accent);height:5px;cursor:pointer">
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px">
-      <div style="background:var(--bg2);border-radius:8px;padding:16px;text-align:center">
-        <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Per day · per person</div>
-        <div id="h-saveDay" style="font-size:24px;font-weight:800;color:var(--green);letter-spacing:-1px">75 min</div><div id="h-saveDaySub" style="font-size:10px;color:var(--muted);margin-top:3px;min-height:14px"></div>
-      </div>
-      <div style="background:var(--bg2);border-radius:8px;padding:16px;text-align:center">
-        <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Per month · per person</div>
-        <div id="h-saveMonth" style="font-size:24px;font-weight:800;color:var(--green);letter-spacing:-1px">27 hrs</div><div id="h-saveMonthSub" style="font-size:10px;color:var(--muted);margin-top:3px;min-height:14px"></div>
-      </div>
-      <div style="background:#0A1628;border:1px solid var(--accent);border-radius:8px;padding:16px;text-align:center">
-        <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Whole team · per month</div>
-        <div id="h-saveTeam" style="font-size:24px;font-weight:800;color:var(--accent);letter-spacing:-1px">27 hrs</div><div id="h-saveTeamSub" style="font-size:10px;color:var(--accent);opacity:0.7;margin-top:3px;min-height:14px"></div>
-      </div>
-    </div>
-    <div style="text-align:center;font-size:13px;color:var(--muted)">
-      Speaking is <strong style="color:var(--text)">3× faster</strong> than typing · Stanford HCI Research ·
-      <a href="#productivity" style="color:var(--accent);text-decoration:underline">See full breakdown ↓</a>
-    </div>
-  </div>
-
-  <div style="max-width:1100px;margin:0 auto 52px;border-radius:12px;overflow:hidden;border:1px solid var(--border);box-shadow:0 32px 80px rgba(0,0,0,0.6)">
-    <div style="background:#0A0C10;padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)">
-      <div style="width:12px;height:12px;border-radius:50%;background:#FF5F57"></div>
-      <div style="width:12px;height:12px;border-radius:50%;background:#FEBC2E"></div>
-      <div style="width:12px;height:12px;border-radius:50%;background:#28C840"></div>
-      <div style="flex:1;text-align:center;font-size:12px;color:var(--muted)">app.spreakr.com</div>
-    </div>
-    <div style="display:grid;grid-template-columns:200px 1fr 1fr;height:480px;background:var(--bg)">
-      <div style="background:#0A0C10;border-right:1px solid var(--border);padding:16px 0;overflow:hidden">
-        <div style="padding:0 16px 16px;border-bottom:1px solid var(--border);margin-bottom:12px">
-          <div style="font-size:20px;font-weight:800"><span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span></div>
+        <nav class="nav">
+          <button type="button" class="nav__btn is-active" data-view="inbox">Inbox</button>
+          <button type="button" class="nav__btn" data-view="sent">Sent</button>
+          <button type="button" class="nav__btn" data-view="compose">Compose</button>
+        </nav>
+        <button type="button" class="sidebar__settings-btn icon-btn" id="btn-settings" title="Settings" aria-label="Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+            />
+          </svg>
+        </button>
+        <div class="sidebar__footer">
+          <div class="sidebar__user">
+            <div class="avatar" id="user-avatar" title="Account">?</div>
+            <div class="sidebar__user-meta">
+              <div class="sidebar__user-name mono" id="user-name">—</div>
+              <div class="sidebar__user-plan mono" id="user-plan">trial</div>
+            </div>
+          </div>
         </div>
-        <div style="padding:0 16px;font-size:12px;color:var(--muted)">📥 Inbox · multilingual preview</div>
-      </div>
-      <div style="border-right:1px solid var(--border);padding:12px;font-size:12px;color:var(--muted)">Email list · Arabic, Hindi, Portuguese…</div>
-      <div style="padding:16px;overflow:auto" dir="rtl">
-        <div style="font-size:15px;font-weight:700;margin-bottom:8px">موعد الاجتماع الأسبوعي</div>
-        <div style="font-size:12px;color:var(--accent)">🤖 AI Summary: Meeting attendance request.</div>
-        <p style="margin-top:12px;font-size:13px;color:#C8D0DC">السلام عليكم…</p>
-      </div>
-    </div>
-  </div>
+      </aside>
 
-  <div class="hero-btns">
-    <a href="https://app.spreakr.com" class="btn-primary" data-i18n="hero_cta_primary">Start free — 7 days</a>
-    <a href="#features" class="btn-secondary" data-i18n="hero_cta_secondary">See features →</a>
-  </div>
-</section>
-
-<div class="stats" id="productivity">
-  <div style="max-width:1200px;margin:0 auto;text-align:center;padding:32px 40px">
-    <div class="stat-num" style="font-size:64px;font-weight:800;color:var(--accent);letter-spacing:-3px">0</div>
-    <div class="stat-label" style="font-size:16px;margin-top:8px;color:var(--muted)">Competitors who do this</div>
-  </div>
-</div>
-
-<section class="section" id="features">
-  <div class="container">
-    <div class="section-label" data-i18n="features_label">Features</div>
-    <div class="section-title" data-i18n="features_title">Everything your inbox was missing.</div>
-    <p class="section-sub" data-i18n="features_sub">Built for the multilingual professional. Every feature designed around voice, language, and intelligence.</p>
-    <div class="features-grid">
-      <div class="feature-card"><div class="feature-accent" style="background:var(--accent)"></div><div class="feature-icon">🎙</div><div class="feature-title" data-i18n="f1_title">Voice dictation in 20 languages — and counting</div><div class="feature-desc" data-i18n="f1_desc">Dictate emails naturally in your mother tongue. Spreakr transcribes, professionalises, and sends in the recipient's language automatically.</div><div class="feature-tag">20 now · More coming · ElevenLabs Scribe</div></div>
-      <div class="feature-card"><div class="feature-accent" style="background:var(--red)"></div><div class="feature-icon">⚖️</div><div class="feature-title" data-i18n="f2_title">Deep forensic email search</div><div class="feature-desc" data-i18n="f2_desc">Ask any question in plain language. GPT-4.1 reads every email in full and returns exact evidence, quotes, and relevance scores.</div><div class="feature-tag">GPT-4.1 · 1M context</div></div>
-      <div class="feature-card"><div class="feature-accent" style="background:var(--green)"></div><div class="feature-icon">⚡</div><div class="feature-title" data-i18n="f3_title">Thread Intelligence</div><div class="feature-desc" data-i18n="f3_desc">One click reveals a fully interactive intelligence briefing — animated timeline, live participant relationship graph, sentiment arc, commitment tracker, and a one-line verdict at the top. Visual. Instant. Actionable.</div><div class="feature-tag">Interactive · D3.js · Visual Intelligence</div></div>
-      <div class="feature-card"><div class="feature-accent" style="background:var(--amber)"></div><div class="feature-icon">📧</div><div class="feature-title" data-i18n="f4_title">All accounts. One inbox.</div><div class="feature-desc" data-i18n="f4_desc">Gmail, Outlook, Yahoo, QQ Mail, 163 Mail — and more coming. Every account unified in a single intelligent view. Colour flagging, folder management, and AI features work identically across all providers. iCloud, Zoho, and Yandex on the roadmap.</div><div class="feature-tag">OAuth · IMAP · No passwords stored</div></div>
-      <div class="feature-card"><div class="feature-accent" style="background:var(--accent)"></div><div class="feature-icon">🌐</div><div class="feature-title" data-i18n="f5_title">Full UI in your language</div><div class="feature-desc" data-i18n="f5_desc">Every button, label, and message renders in your chosen language. Arabic and Persian flip the entire layout to right-to-left automatically.</div><div class="feature-tag">20 languages now · Every language coming soon</div></div>
-      <div class="feature-card"><div class="feature-accent" style="background:var(--red)"></div><div class="feature-icon">📤</div><div class="feature-title" data-i18n="f6_title">Viral language bridge</div><div class="feature-desc" data-i18n="f6_desc">Every sent email includes a "View in your language" link. Recipients see your email in their language — and discover Spreakr.</div><div class="feature-tag">Built-in growth engine</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="languages" style="background:var(--bg2)">
-  <div class="container">
-    <div class="big-feature">
-      <div>
-        <div class="section-label" data-i18n="ds_label">Deep Search</div>
-        <div class="section-title" data-i18n="ds_title">Find anything. Even what wasn't said.</div>
-        <p style="color:var(--muted);line-height:1.75;margin-bottom:28px;font-size:16px" data-i18n="ds_desc">Ask a question in plain language. GPT-4.1 reads every email in full. It finds explicit matches, implied meaning, tone shifts, admissions, and omissions. Built for attorneys doing discovery and executives in disputes.</p>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span><span data-i18n="ds_p1">Natural language questions — no keywords needed</span></div>
-          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span><span data-i18n="ds_p2">Finds admissions, omissions, and tone shifts</span></div>
-          <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span><span data-i18n="ds_p3">Exact evidence quotes with significance ratings</span></div>
+      <section class="panel-list">
+        <div class="search-wrap">
+          <input type="search" class="search" id="search-input" placeholder="Search inbox…" autocomplete="off" />
         </div>
+        <div class="email-list" id="email-list"></div>
+      </section>
+
+      <main class="panel-main">
+        <div id="thread-view" class="thread">
+          <div id="thread-empty" class="empty-hint">Select an email or open Compose.</div>
+          <div id="thread-content" class="hidden">
+            <div class="thread__hdr">
+              <div class="thread__subject" id="thread-subject"></div>
+              <div class="thread__row"><strong>From</strong><span id="thread-from"></span></div>
+              <div class="thread__row"><strong>To</strong><span id="thread-to"></span></div>
+            </div>
+            <div class="thread__body" id="thread-body"></div>
+          </div>
+        </div>
+
+        <div id="compose-fields" class="compose-fields hidden">
+          <div class="field">
+            <label for="compose-to">To</label>
+            <input type="text" id="compose-to" placeholder="name@company.co.za" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="compose-subject">Subject</label>
+            <input type="text" id="compose-subject" placeholder="Subject" autocomplete="off" />
+          </div>
+        </div>
+      </main>
       </div>
-      <div class="mock">
-        <div class="mock-bar"><div class="mock-dot" style="background:#FF4F4F"></div><div class="mock-dot" style="background:#FFB84F"></div><div class="mock-dot" style="background:#4FFF9F"></div><span class="mock-title">⚡ AI Search Results · 4 relevant</span></div>
-        <div class="mock-body">
-          <div class="mock-email"><div class="mock-badge badge-red">🔴 Strong evidence · 94/100</div><div style="font-size:13px;font-weight:600">John Smith · 14 Mar 2024</div><div style="font-size:12px;color:var(--muted)">Re: Trust Distribution</div><div class="mock-extract">"I decided to transfer the funds to my personal account temporarily..."</div><div class="mock-score">Admission · High significance</div></div>
-          <div class="mock-email"><div class="mock-badge badge-amber">🟡 Possible evidence · 71/100</div><div style="font-size:13px;font-weight:600">John Smith · 2 Mar 2024</div><div style="font-size:12px;color:var(--muted)">Re: Beneficiary Meeting</div><div class="mock-extract">"I thought it best to delay until after my holiday..."</div><div class="mock-score">Deflection · Medium significance</div></div>
+
+      <div id="ai-float-card" class="ai-float">
+        <div id="ai-float-drag" class="ai-float__drag" aria-label="Move panel" role="separator"></div>
+        <div class="ai-float__inner">
+          <div class="ai-area__label">
+            <select id="lang-select" class="lang-select" aria-label="Draft language">
+              <option value="af">Afrikaans</option>
+              <option value="en">English</option>
+              <option value="de">Deutsch</option>
+              <option value="hi">हिन्दी</option>
+              <option value="fr">Français</option>
+            </select>
+            <span id="ai-label-text">AI reply</span>
+          </div>
+          <textarea class="textarea-lg" id="reply-body" placeholder="Your message…"></textarea>
+          <div class="btn-row" id="btn-row-reply">
+            <button type="button" class="btn btn--mic" id="btn-dictate-reply">🎤 Dictate Reply</button>
+            <button type="button" class="btn btn--primary" id="btn-send-reply">✉ Send</button>
+            <button type="button" class="btn btn--danger" id="btn-discard-reply">Discard</button>
+          </div>
+          <div class="btn-row hidden" id="btn-row-compose">
+            <button type="button" class="btn btn--mic" id="btn-dictate-compose">🎤 Dictate</button>
+            <button type="button" class="btn btn--primary" id="btn-send-compose">✉ Send</button>
+          </div>
+          <p class="status-bar" id="status-bar"></p>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="pricing" id="pricing">
-  <div class="container" style="text-align:center">
-    <div class="section-label">Pricing</div>
-    <div class="section-title">Built for professionals.<br>Priced for the world.</div>
-    <p class="section-sub" style="margin:0 auto">Pricing adapts to your location — professionals in Lagos, Dubai, Mumbai, and Cape Town all pay a fair local rate. Start free. No card required.</p>
-    <div style="display:inline-flex;align-items:center;gap:10px;margin:28px auto 48px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 20px;font-size:13px;color:var(--muted)">
-      <span style="font-size:18px">🌍</span>
-      <span>Prices shown in ZAR · <strong style="color:var(--text)">Automatically adjusted for your country</strong> when you sign up</span>
-    </div>
-    <div class="pricing-grid" style="margin-bottom:48px">
-      <div class="price-card">
-        <div class="price-tier">Trial</div>
-        <div class="price-amount">Free</div>
-        <div class="price-period">7 days · no card required</div>
-        <ul class="price-features">
-          <li><span class="check">✓</span>All email providers</li>
-          <li><span class="check">✓</span>Voice dictation</li>
-          <li><span class="check">✓</span>AI draft reply</li>
-          <li><span class="check">✓</span>AI Search</li>
-          <li><span class="check">✓</span>Thread Intelligence</li>
-          <li><span class="check">✓</span>20+ languages</li>
-        </ul>
-        <a href="https://app.spreakr.com" class="price-btn">Start free trial</a>
-      </div>
-      <div class="price-card featured">
-        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:4px 14px;border-radius:0 0 6px 6px;text-transform:uppercase">Most Popular</div>
-        <div class="price-tier" style="margin-top:16px">Pro</div>
-        <div class="price-amount">R349<span style="font-size:20px;font-weight:400">/mo</span></div>
-        <div class="price-period">~$19 USD · billed monthly</div>
-        <ul class="price-features">
-          <li><span class="check">✓</span>Everything in Trial</li>
-          <li><span class="check">✓</span>Larger AI search quota</li>
-          <li><span class="check">✓</span>Priority processing</li>
-        </ul>
-        <a href="https://app.spreakr.com" class="price-btn primary">Get started</a>
-      </div>
-      <div class="price-card">
-        <div class="price-tier">Executive</div>
-        <div class="price-amount">R549<span style="font-size:20px;font-weight:400">/mo</span></div>
-        <div class="price-period">~$30 USD · billed monthly</div>
-        <ul class="price-features">
-          <li><span class="check">✓</span>Everything in Pro</li>
-          <li><span class="check">✓</span>Load All emails</li>
-          <li><span class="check">✓</span>Priority support</li>
-        </ul>
-        <a href="mailto:chris@spreakr.com" class="price-btn">Contact us</a>
-      </div>
-    </div>
-  </div>
-</section>
+    <div id="modal-settings" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal modal--wide">
+        <h3 id="modal-title">Settings</h3>
+        <p class="modal-muted">Connected mail accounts, language, and billing.</p>
 
-<section class="affiliate" id="affiliate">
-  <div class="container" style="text-align:center">
-    <div class="section-label">Affiliate Program</div>
-    <div class="section-title" style="max-width:700px;margin:0 auto 20px">Share Spreakr your way.<br>Earn <span style="color:var(--accent)">30%</span> every month. Forever.</div>
-    <p class="section-sub" style="margin:0 auto 48px;font-size:17px">No rules. No quotas. Just share Spreakr — and earn 30% of every subscription, every month, for as long as they stay.</p>
-    <div style="max-width:680px;margin:0 auto;background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:36px 40px">
-      <div style="font-size:20px;font-weight:800;letter-spacing:-0.5px;margin-bottom:28px">💰 What could <em style="color:var(--accent);font-style:normal">you</em> earn?</div>
-      <div style="margin-bottom:24px;text-align:left">
-        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:8px">Your subscribers are mainly based in</label>
-        <select id="aff-country" style="width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:8px;font-size:14px;outline:none;cursor:pointer">
-          <option value="349" data-currency="R" data-country="South Africa">🇿🇦 South Africa — R349/mo Pro</option>
-          <option value="19" data-currency="$" data-country="USA / Global">🌍 USA / Global — $19/mo Pro</option>
-          <option value="16" data-currency="£" data-country="United Kingdom">🇬🇧 United Kingdom — £16/mo Pro</option>
-          <option value="18" data-currency="€" data-country="Europe">🇪🇺 Europe — €18/mo Pro</option>
-          <option value="1599" data-currency="₹" data-country="India">🇮🇳 India — ₹1,599/mo Pro</option>
-          <option value="7500" data-currency="₦" data-country="Nigeria">🇳🇬 Nigeria — ₦7,500/mo Pro</option>
-          <option value="75" data-currency="AED" data-country="UAE">🇦🇪 UAE — AED 75/mo Pro</option>
-        </select>
-      </div>
-      <div style="margin-bottom:28px;text-align:left">
-        <div style="display:flex;justify-content:space-between;margin-bottom:10px">
-          <label style="font-size:13px;color:var(--muted)">Number of Pro subscribers you refer</label>
-          <span id="aff-sub-count" style="font-size:16px;font-weight:800;color:var(--accent)">25</span>
+        <div class="settings-block">
+          <h4 class="settings-block__title">Language</h4>
+          <p class="modal-muted">Saved to your profile immediately.</p>
+          <select id="settings-lang" class="settings-select">
+            <option value="af">Afrikaans</option>
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="hi">हिन्दी</option>
+            <option value="fr">Français</option>
+          </select>
         </div>
-        <input type="range" id="aff-slider" min="1" max="500" value="25" style="width:100%;accent-color:var(--accent);height:5px;cursor:pointer">
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
-        <div style="background:var(--bg2);border-radius:8px;padding:16px;text-align:center">
-          <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Per month</div>
-          <div id="aff-month" style="font-size:22px;font-weight:800;color:var(--green);letter-spacing:-1px">R2,618</div>
+
+        <div class="settings-block">
+          <h4 class="settings-block__title">Mail accounts</h4>
+          <ul id="settings-accounts" class="settings-accounts"></ul>
+          <div class="settings-connect">
+            <a class="btn btn--ghost btn--sm" href="/auth/google?mode=connect" id="link-connect-google">Connect Gmail</a>
+            <a class="btn btn--ghost btn--sm" href="/auth/microsoft?mode=connect" id="link-connect-microsoft">Connect Outlook</a>
+          </div>
         </div>
-        <div style="background:var(--bg2);border-radius:8px;padding:16px;text-align:center">
-          <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Per year</div>
-          <div id="aff-year" style="font-size:22px;font-weight:800;color:var(--green);letter-spacing:-1px">R31,410</div>
-        </div>
-        <div style="background:#0A1628;border:1px solid var(--accent);border-radius:8px;padding:16px;text-align:center">
-          <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Per subscriber</div>
-          <div id="aff-per" style="font-size:22px;font-weight:800;color:var(--accent);letter-spacing:-1px">R104.70</div>
+
+        <div class="modal__actions">
+          <button type="button" class="btn btn--ghost" id="modal-close">Close</button>
+          <button type="button" class="btn btn--danger" id="btn-logout">Log out</button>
         </div>
       </div>
-      <div id="aff-note" style="background:var(--bg2);border-radius:8px;padding:14px;font-size:13px;color:var(--muted);text-align:center;line-height:1.6"></div>
-      <div style="margin-top:28px">
-        <a href="mailto:chris@spreakr.com?subject=Affiliate%20Program%20Application" class="btn-primary" style="width:100%;display:block;text-align:center;padding:14px">Apply to become an affiliate →</a>
+    </div>
+
+    <div id="modal-upgrade" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="upgrade-title">
+      <div class="modal">
+        <h3 id="upgrade-title">Upgrade required</h3>
+        <p id="upgrade-message" class="modal-muted"></p>
+        <div class="modal__actions">
+          <button type="button" class="btn btn--ghost" id="upgrade-close">Close</button>
+          <a class="btn btn--primary" href="mailto:sales@spreakr.com?subject=Spreakr%20Pro">Contact sales</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="cta-section">
-  <div class="container">
-    <h2><span data-i18n="cta_title_1">The inbox built for</span> <span style="color:var(--accent)" data-i18n="cta_title_2">everyone else.</span></h2>
-    <p data-i18n="cta_sub">Other tools own English. With Spreakr, you own the world.</p>
-    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="https://app.spreakr.com" class="btn-primary" style="font-size:18px;padding:18px 40px" data-i18n="cta_btn1">Start free — 7 days</a>
-      <a href="mailto:chris@spreakr.com?subject=Book%20a%20demo" class="btn-secondary" style="font-size:18px;padding:18px 40px" data-i18n="cta_btn2">Book a demo</a>
+    <div
+      id="highlight-toolbar"
+      class="highlight-toolbar hidden"
+      role="toolbar"
+      aria-label="Highlight selection"
+      aria-hidden="true"
+    >
+      <button type="button" class="highlight-toolbar__circle" data-hl="red" title="Red highlight">🔴</button>
+      <button type="button" class="highlight-toolbar__circle" data-hl="amber" title="Amber highlight">🟡</button>
+      <button type="button" class="highlight-toolbar__circle" data-hl="green" title="Green highlight">🟢</button>
+      <button type="button" class="highlight-toolbar__clear" data-hl="clear" title="Clear highlight">✕</button>
     </div>
-    <p style="font-size:13px;color:var(--muted);margin-top:24px" data-i18n="cta_note">No credit card required · Cancel anytime · POPIA compliant · Built in South Africa 🇿🇦</p>
-  </div>
-</section>
 
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="logo"><span class="spr">Spr</span><span class="eakr">eakr</span></div>
-      <p data-i18n="footer_tagline">The world's first multilingual AI email command centre. Email in your language. Send in theirs.</p>
-    </div>
-    <div class="footer-col">
-      <h4 data-i18n="footer_product">Product</h4>
-      <a href="#features" data-i18n="nav_features">Features</a>
-      <a href="#languages" data-i18n="nav_languages">Languages</a>
-      <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
-    </div>
-    <div class="footer-col">
-      <h4 data-i18n="footer_company">Company</h4>
-      <a href="mailto:chris@spreakr.com" data-i18n="footer_about">About</a>
-      <a href="mailto:chris@spreakr.com" data-i18n="footer_contact">Contact</a>
-      <a href="#affiliate" data-i18n="footer_affiliate">Affiliate Program</a>
-      <a href="mailto:chris@spreakr.com?subject=Press" data-i18n="footer_press">Press</a>
-    </div>
-    <div class="footer-col">
-      <h4 data-i18n="footer_legal">Legal</h4>
-      <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
-      <a href="#" data-i18n="footer_popia">POPIA Compliance</a>
-      <a href="#" data-i18n="footer_security">Security</a>
-      <a href="#" data-i18n="footer_terms">Terms of Service</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Spreakr. Built in South Africa. 🇿🇦</span>
-    <span>spreakr.com</span>
-  </div>
-</footer>
-
-<script src="/marketing-site-locales.js"></script>
-<script src="/marketing-site.js"></script>
-</body>
+    <script src="/api.js"></script>
+    <script src="/app.js"></script>
+  </body>
 </html>
-
