@@ -16,7 +16,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 a{color:inherit;text-decoration:none}
 nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 .logo{font-size:24px;font-weight:800;letter-spacing:-0.5px;display:flex;align-items:center;gap:0}
-.logo .spr{color:var(--accent)}.logo .eakr{color:#fff}
+.logo .spr{color:#2d6bc4}.logo .eakr{color:#ffffff}
 .nav-links{display:flex;gap:36px;font-size:14px;color:var(--muted)}
 .nav-links a:hover{color:#fff;transition:color 0.2s}
 .nav-right{display:flex;align-items:center;gap:12px}
@@ -32,12 +32,44 @@ nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;di
 .lang-option.active{color:var(--accent)}
 .hero{background:var(--bg);padding:120px 40px 100px;text-align:center;border-bottom:1px solid var(--border)}
 .hero-badge{display:inline-block;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:7px 18px;font-size:13px;color:var(--accent);margin-bottom:36px;letter-spacing:0.5px}
-.hero h1{font-size:clamp(26px,4vw,50px);font-weight:800;line-height:1.08;letter-spacing:-1.5px;margin-bottom:28px;max-width:900px;margin-left:auto;margin-right:auto}
+.hero h1{font-size:clamp(28px,3.4vw,42px);font-weight:800;line-height:1.1;letter-spacing:-1px;margin-bottom:28px;max-width:900px;margin-left:auto;margin-right:auto}
 .hero h1 em{color:var(--accent);font-style:normal}
 .hero-sub{font-size:20px;color:var(--muted);max-width:560px;margin:0 auto 48px;line-height:1.7}
 .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:72px}
-.lang-top-row{display:flex;align-items:center;justify-content:center;gap:12px;max-width:900px;margin:0 auto 26px}
-.hero-logo{width:34px;height:34px;object-fit:contain;display:block;flex:0 0 auto}
+/* Launch banner — modal popup overlay */
+#launch-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:9990;backdrop-filter:blur(3px);opacity:0;transition:opacity .3s}
+.launch-banner{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-60%);max-width:680px;width:calc(100% - 40px);background:linear-gradient(135deg,#0a1628 0%,#0f1e3a 100%);border:1px solid #2a4a8a;border-radius:16px;padding:32px 36px 28px;align-items:flex-start;gap:18px;text-align:left;box-shadow:0 0 0 1px rgba(79,127,255,0.2),0 24px 64px rgba(0,0,0,0.6);z-index:9991;opacity:0;transition:opacity .35s,transform .35s;pointer-events:none}
+.launch-banner.launch-visible{opacity:1;transform:translate(-50%,-50%);pointer-events:auto}
+.launch-close{position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.45);font-size:18px;cursor:pointer;line-height:1;padding:3px 7px;border-radius:5px;transition:color .2s,background .2s}
+.launch-close:hover{color:#fff;background:rgba(255,255,255,0.12)}
+/* Referral discount banner */
+#ref-discount-bar{display:none;width:100%;background:linear-gradient(90deg,#1a3a1a,#0f2a0f);border-bottom:1px solid #2d6a2d;padding:12px 20px;text-align:center;position:sticky;top:0;z-index:9999}
+#ref-discount-bar .rdb-inner{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+#ref-discount-bar .rdb-badge{background:#22c55e;color:#000;font-size:11px;font-weight:800;letter-spacing:1px;padding:3px 10px;border-radius:999px;text-transform:uppercase}
+#ref-discount-bar .rdb-text{font-size:14px;color:#d1fae5;font-weight:500}
+#ref-discount-bar .rdb-code{background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);color:#86efac;font-family:monospace;font-size:13px;padding:2px 10px;border-radius:6px}
+#ref-discount-bar .rdb-close{background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.35);color:#86efac;font-size:12px;font-weight:700;letter-spacing:0.4px;cursor:pointer;margin-left:12px;padding:5px 14px;border-radius:999px;transition:background .2s,color .2s}
+#ref-discount-bar .rdb-close:hover{background:rgba(34,197,94,0.28);color:#fff}
+.launch-bell{font-size:26px;flex-shrink:0;margin-top:2px;animation:bellring 2.5s ease-in-out infinite}
+@keyframes bellring{0%,90%,100%{transform:rotate(0deg)}93%{transform:rotate(-12deg)}96%{transform:rotate(12deg)}99%{transform:rotate(-6deg)}}
+.launch-content{flex:1}
+.launch-tag{display:inline-block;background:#4F7FFF22;border:1px solid #4F7FFF55;color:var(--accent);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:10px}
+.launch-text{font-size:16px;color:var(--text);line-height:1.65;margin-bottom:14px}
+.launch-text strong{color:#fff}
+.launch-aff-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:10px 22px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.launch-aff-btn:hover{background:var(--accent2);transform:translateY(-1px)}
+.launch-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.launch-form input,.launch-form select{background:#0d1525;border:1px solid #2a3f6a;border-radius:6px;padding:10px 12px;font-size:14px;color:var(--text);font-family:var(--font);width:100%;outline:none;transition:border-color 0.2s}
+.launch-form input:focus,.launch-form select:focus{border-color:var(--accent)}
+.launch-form select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238B95A1' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+.launch-form select option{background:#0d1525}
+.launch-form-full{grid-column:1/-1}
+.launch-form-submit{grid-column:1/-1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.launch-msg{font-size:13px;padding:8px 12px;border-radius:6px;display:none}
+.launch-msg.success{background:#4FFF9F18;border:1px solid #4FFF9F44;color:#4FFF9F;display:block}
+.launch-msg.error{background:#FF4F4F18;border:1px solid #FF4F4F44;color:#FF4F4F;display:block}
+.lang-top-row{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;max-width:900px;margin:0 auto 26px}
+.hero-logo{width:340px;height:auto;object-fit:contain;display:block;flex:0 0 auto;border:2px solid rgba(220,225,235,0.55);border-radius:18px;padding:6px;background:rgba(255,255,255,0.04)}
 .hero-wordmark{font-size:30px;font-weight:800;letter-spacing:-0.5px;line-height:1;display:flex;align-items:center;white-space:nowrap}
 .btn-primary{background:var(--accent);color:#fff;padding:16px 36px;border-radius:8px;font-size:17px;font-weight:700;cursor:pointer;border:none;transition:background 0.2s;display:inline-block}
 .btn-primary:hover{background:var(--accent2)}
@@ -124,6 +156,16 @@ nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;di
 .earn-calc{max-width:600px;margin:48px auto 0;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:32px}
 .earn-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);font-size:15px}
 .earn-row:last-child{border-bottom:none;font-weight:700;font-size:17px;color:var(--accent)}
+.hero-pills-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:780px;margin:0 auto 40px}
+.hero-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(79,127,255,0.08);border:1px solid rgba(79,127,255,0.25);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;color:var(--text);white-space:nowrap}
+.convinced-section{padding:100px 40px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.convinced-header{text-align:center;margin-bottom:48px}
+.convinced-eyebrow{font-size:clamp(18px,2.5vw,28px);letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:800;display:block;margin-bottom:6px}
+.convinced-title{font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-1px;margin-top:10px;color:var(--text)}
+.convinced-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 28px}
+.convinced-item{display:flex;align-items:flex-start;gap:14px;font-size:17px;color:var(--text);line-height:1.55;padding:18px 20px;background:rgba(79,127,255,0.06);border:1px solid rgba(79,127,255,0.4);border-radius:10px;font-weight:500}
+.convinced-item.convinced-highlight{font-weight:700}
+.convinced-check{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;min-width:24px;background:#16a34a;color:#fff;font-size:15px;font-weight:900;border-radius:50%;flex-shrink:0;margin-top:1px;box-shadow:0 0 8px rgba(34,197,94,0.4)}
 .cta-section{padding:120px 40px;text-align:center;border-bottom:1px solid var(--border)}
 .cta-section h2{font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-2px;margin-bottom:20px;line-height:1.1}
 .cta-section p{font-size:20px;color:var(--muted);margin-bottom:48px}
@@ -142,15 +184,82 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
 [dir="rtl"] .footer-grid{direction:rtl}
 [dir="rtl"] input,[dir="rtl"] textarea{text-align:right}
 @media(max-width:768px){
-.features-grid,.big-feature,.big-feature.reverse,.pricing-grid,.aff-grid{grid-template-columns:1fr;direction:ltr}
-.stats-grid{grid-template-columns:repeat(2,1fr)}
-.footer-grid{grid-template-columns:1fr 1fr}
+/* Nav */
+nav{padding:0 20px;height:56px}
 .nav-links{display:none}
-.hero h1{letter-spacing:-1px}
+.nav-cta{padding:8px 16px;font-size:13px}
+
+/* Launch banner modal — mobile */
+.launch-banner{padding:22px 20px 20px;gap:12px}
+.launch-text{font-size:14px}
+.launch-bell{font-size:22px}
+
+/* Hero */
+.hero{padding:60px 20px 64px}
+.hero h1{font-size:clamp(26px,7vw,38px);letter-spacing:-0.5px;line-height:1.15}
+.hero-sub{font-size:16px;max-width:100%}
+.lang-top-row{gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.hero-logo{width:200px;height:auto}
+.lang-float{gap:8px;justify-content:center}
+.lang-pill{padding:8px 13px;font-size:13px}
+.hero-btns{flex-direction:column;align-items:center;gap:10px}
+.btn-primary,.btn-secondary{width:100%;max-width:320px;text-align:center;padding:14px 24px;font-size:16px}
+
+/* Stats */
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.stat{padding:20px 16px}
+.stat-num{font-size:32px}
+
+/* Sections */
+.section{padding:60px 20px}
+.lang-showcase{padding:60px 20px}
+.viral{padding:60px 20px}
+.pricing{padding:60px 20px}
+.affiliate{padding:60px 20px}
+.convinced-section{padding:64px 20px}
+.convinced-grid{grid-template-columns:1fr}
+.cta-section{padding:72px 20px}
+.section-title{font-size:clamp(26px,7vw,38px);letter-spacing:-1px}
+.cta-section h2{font-size:clamp(28px,8vw,44px);letter-spacing:-1px}
+
+/* Features */
+.features-grid{grid-template-columns:1fr;direction:ltr}
+.feature-card{padding:24px}
+
+/* Big feature */
+.big-feature,.big-feature.reverse{grid-template-columns:1fr;direction:ltr;gap:32px}
+.big-feature.reverse>*{direction:ltr}
+
+/* Pricing */
+.pricing-grid{grid-template-columns:1fr;direction:ltr}
+.price-card{padding:24px}
+.price-amount{font-size:36px}
+
+/* Affiliate */
+.aff-grid{grid-template-columns:1fr;direction:ltr}
+.earn-calc{padding:20px}
+
+/* Footer */
+.footer-grid{grid-template-columns:1fr 1fr}
+.footer-bottom{flex-direction:column;gap:12px;text-align:center}
+footer{padding:48px 20px 32px}
+
+/* Lang grid */
+.lang-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
 <body>
+
+<!-- Referral discount bar — shown only when ?ref=CODE is in the URL -->
+<div id="ref-discount-bar">
+  <div class="rdb-inner">
+    <span class="rdb-badge">🎁 10% Off</span>
+    <span class="rdb-text">You were referred by a Spreakr affiliate — your first month is <strong>10% off</strong> automatically when you sign up.</span>
+    <span class="rdb-code" id="rdb-code-display"></span>
+    <button class="rdb-close" id="rdbClose" aria-label="Close">Got it 👍</button>
+  </div>
+</div>
 
 <nav>
   <div class="logo"><span class="spr">Spr</span><span class="eakr">eakr</span></div>
@@ -170,18 +279,90 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
 </nav>
 
 <section class="hero" style="padding-top:48px">
-  <!-- Language flags strip -->
+  <!-- Launch modal backdrop -->
+  <div id="launch-backdrop"></div>
+
+  <!-- Launch banner modal -->
+  <div class="launch-banner" id="launchBanner">
+    <button class="launch-close" id="launchClose" aria-label="Close banner">✕</button>
+    <div class="launch-bell">🔔</div>
+    <div class="launch-content">
+      <div class="launch-tag">Launch Alert</div>
+      <p class="launch-text"><strong>Spreakr set to launch in the next 2 weeks.</strong> Make sure to declare your interest for the affiliate program before the launch to ensure your registration for your country. You will be notified before launch to get ready and start earning!</p>
+      <form class="launch-form" id="affiliateInterestForm" novalidate>
+        <input type="text"  name="first_name"    placeholder="First name"     required autocomplete="given-name">
+        <input type="text"  name="last_name"     placeholder="Surname"        required autocomplete="family-name">
+        <input type="date"  name="date_of_birth" placeholder="Date of birth"  required title="Date of birth" style="color-scheme:dark">
+        <select name="country_code" required>
+          <option value="" disabled selected>Country of residence</option>
+          <option value="ZA">South Africa</option>
+          <option value="US">United States</option>
+          <option value="GB">United Kingdom</option>
+          <option value="AU">Australia</option>
+          <option value="CA">Canada</option>
+          <option value="IN">India</option>
+          <option value="NG">Nigeria</option>
+          <option value="KE">Kenya</option>
+          <option value="GH">Ghana</option>
+          <option value="DE">Germany</option>
+          <option value="FR">France</option>
+          <option value="NL">Netherlands</option>
+          <option value="BE">Belgium</option>
+          <option value="AE">UAE</option>
+          <option value="SA">Saudi Arabia</option>
+          <option value="EG">Egypt</option>
+          <option value="CN">China</option>
+          <option value="JP">Japan</option>
+          <option value="KR">South Korea</option>
+          <option value="SG">Singapore</option>
+          <option value="MY">Malaysia</option>
+          <option value="PH">Philippines</option>
+          <option value="ID">Indonesia</option>
+          <option value="TH">Thailand</option>
+          <option value="VN">Vietnam</option>
+          <option value="BR">Brazil</option>
+          <option value="MX">Mexico</option>
+          <option value="AR">Argentina</option>
+          <option value="CO">Colombia</option>
+          <option value="CL">Chile</option>
+          <option value="ZW">Zimbabwe</option>
+          <option value="ZM">Zambia</option>
+          <option value="TZ">Tanzania</option>
+          <option value="UG">Uganda</option>
+          <option value="ET">Ethiopia</option>
+          <option value="OTHER">Other</option>
+        </select>
+        <input type="email" name="email" class="launch-form-full" placeholder="Email address" required autocomplete="email">
+        <div class="launch-form-submit">
+          <button type="submit" class="launch-aff-btn" id="affiliateSubmitBtn">👉 Declare my interest</button>
+          <span class="launch-msg" id="affiliateMsg"></span>
+        </div>
+      </form>
+    </div>
+  </div>
   <div class="lang-top-row">
-    <div class="hero-wordmark"><span class="spr">Spr</span><span class="eakr">eakr</span></div>
-    <div class="lang-float" id="langFloat"></div>
+    <img class="hero-logo" src="/weblogo.jpg" onerror="this.onerror=null;this.style.display='none';" alt="Spreakr logo">
+    <div class="lang-float" id="langFloat">
+      <!-- Static fallback pills — JS replaces these with interactive versions -->
+      <button type="button" class="lang-pill" style="animation:none"><img class="site-flag-img" src="https://flagcdn.com/24x18/za.png" width="24" height="18" alt=""><span class="site-flag-fallback" aria-hidden="true">🇿🇦</span><span>Afrikaans</span></button>
+      <button type="button" class="lang-pill" style="animation:none"><img class="site-flag-img" src="https://flagcdn.com/24x18/sa.png" width="24" height="18" alt=""><span class="site-flag-fallback" aria-hidden="true">🇸🇦</span><span>العربية</span></button>
+
+      <button type="button" class="lang-pill" style="animation:none"><img class="site-flag-img" src="https://flagcdn.com/24x18/in.png" width="24" height="18" alt=""><span class="site-flag-fallback" aria-hidden="true">🇮🇳</span><span>हिंदी</span></button>
+      <button type="button" class="lang-pill" style="animation:none"><img class="site-flag-img" src="https://flagcdn.com/24x18/ng.png" width="24" height="18" alt=""><span class="site-flag-fallback" aria-hidden="true">🇳🇬</span><span>Yorùbá</span></button>
+      <button type="button" class="lang-pill" style="animation:none"><img class="site-flag-img" src="https://flagcdn.com/24x18/fr.png" width="24" height="18" alt=""><span class="site-flag-fallback" aria-hidden="true">🇫🇷</span><span>Français</span></button>
+      <button type="button" class="lang-pill" style="animation:none"><img class="site-flag-img" src="https://flagcdn.com/24x18/br.png" width="24" height="18" alt=""><span class="site-flag-fallback" aria-hidden="true">🇧🇷</span><span>Português</span></button>
+      <button type="button" class="lang-pill" style="animation:none"><img class="site-flag-img" src="https://flagcdn.com/24x18/de.png" width="24" height="18" alt=""><span class="site-flag-fallback" aria-hidden="true">🇩🇪</span><span>Deutsch</span></button>
+      <button type="button" class="lang-pill" style="animation:none"><img class="site-flag-img" src="https://flagcdn.com/24x18/ke.png" width="24" height="18" alt=""><span class="site-flag-fallback" aria-hidden="true">🇰🇪</span><span>Swahili</span></button>
+      <button type="button" class="lang-pill" style="animation:none"><img class="site-flag-img" src="https://flagcdn.com/24x18/gb.png" width="24" height="18" alt=""><span class="site-flag-fallback" aria-hidden="true">🇬🇧</span><span>English</span></button>
+      <button type="button" class="lang-pill" style="animation:none"><img class="site-flag-img" src="https://flagcdn.com/24x18/es.png" width="24" height="18" alt=""><span class="site-flag-fallback" aria-hidden="true">🇪🇸</span><span>Español</span></button>
+    </div>
   </div>
 
   <h1 style="margin-top:0;margin-bottom:16px"><em data-i18n="hero_h1_1">Speak freely in your language.</em><br><em data-i18n="hero_h1_2">Formulated professionally. Send in theirs.</em><br><em data-i18n="hero_h1_3">Send in any language.</em></h1>
-  <p class="hero-sub" data-i18n="hero_sub" style="margin-bottom:40px">The world's first multilingual, multi-platform unified intelligent email command centre — all your accounts in a single view, powered by the world's most powerful AI. Built for professionals who think and work globally.</p>
-  <p class="hero-sub" id="hero-keyboard-note" style="margin-top:-16px;margin-bottom:40px">No need to EVER touch your keyboard again when it comes to your emails</p>
+  <p class="hero-sub" data-i18n="hero_sub" style="margin-bottom:32px">The world's first multilingual, multi-platform unified intelligent email command centre — all your accounts in a single view, powered by the world's most powerful AI. Built for professionals who think and work globally.</p>
 
   <!-- Stanford fact banner -->
-  <div style="max-width:680px;margin:0 auto 16px;background:linear-gradient(135deg,#0F1A35,#0A1220);border:1px solid #2A3A5C;border-radius:12px;padding:18px 28px;display:flex;align-items:center;gap:16px">
+  <div style="max-width:680px;margin:0 auto 32px;background:linear-gradient(135deg,#0F1A35,#0A1220);border:1px solid #2A3A5C;border-radius:12px;padding:18px 28px;display:flex;align-items:center;gap:16px">
     <div style="font-size:28px;flex-shrink:0">🎓</div>
     <div>
       <div id="hero-stanford-kicker" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#6B8FC4;margin-bottom:5px">Stanford University · Published Research</div>
@@ -190,9 +371,20 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
     </div>
   </div>
 
+  <div class="hero-pills-row">
+    <span class="hero-pill">🗣️ Speak naturally</span>
+    <span class="hero-pill">✍️ Write professionally</span>
+    <span class="hero-pill">⚡ Reply faster</span>
+    <span class="hero-pill">🔔 Never miss a follow-up</span>
+    <span class="hero-pill">🌍 Communicate across languages with confidence</span>
+    <span class="hero-pill">🤝 Build better relationships</span>
+    <span class="hero-pill">⏱️ Save time every day</span>
+    <span class="hero-pill">💰 Save money every month</span>
+  </div>
+
   <div style="max-width:680px;margin:0 auto 52px;background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:36px 40px">
     <div id="hero-calc-title" style="font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:20px;text-align:center"><span style="color:var(--accent)">How much time</span> will you save with <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:20px">
       <div>
         <div style="display:flex;justify-content:space-between;margin-bottom:10px">
           <span id="hero-calc-emails-label" style="font-size:13px;color:var(--muted)">Emails per day</span>
@@ -208,7 +400,14 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
         <input type="range" id="h-teamSlider" min="1" max="100" value="1" style="width:100%;accent-color:var(--accent);height:5px;cursor:pointer">
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px">
+    <div style="margin-bottom:24px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+        <span id="hero-calc-rate-label" style="font-size:13px;color:var(--muted)">Hourly rate per employee</span>
+        <span id="h-rateDisplay" style="font-size:14px;font-weight:800;color:var(--amber)">$30/hr</span>
+      </div>
+      <input type="range" id="h-rateSlider" min="5" max="300" value="30" step="5" style="width:100%;accent-color:var(--amber);height:5px;cursor:pointer">
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px">
       <div style="background:var(--bg2);border-radius:8px;padding:16px;text-align:center">
         <div id="hero-calc-perday-label" style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Per day · per person</div>
         <div id="h-saveDay" style="font-size:24px;font-weight:800;color:var(--green);letter-spacing:-1px">75 min</div><div id="h-saveDaySub" style="font-size:10px;color:var(--muted);margin-top:3px;min-height:14px"></div>
@@ -221,6 +420,11 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
         <div id="hero-calc-teammonth-label" style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Whole team · per month</div>
         <div id="h-saveTeam" style="font-size:24px;font-weight:800;color:var(--accent);letter-spacing:-1px">27 hrs</div><div id="h-saveTeamSub" style="font-size:10px;color:var(--accent);opacity:0.7;margin-top:3px;min-height:14px"></div>
       </div>
+    </div>
+    <div style="background:linear-gradient(135deg,#0a1e0f,#0d2010);border:1px solid #2a6a3a;border-radius:8px;padding:16px;text-align:center;margin-bottom:24px">
+      <div id="hero-calc-costsaving-label" style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#4FFF9F;margin-bottom:6px">Monthly cost saving · whole team</div>
+      <div id="h-costSaving" style="font-size:28px;font-weight:800;color:#4FFF9F;letter-spacing:-1px">$810</div>
+      <div id="h-costSavingSub" style="font-size:11px;color:#4FFF9F;opacity:0.7;margin-top:3px">Based on time saved × hourly rate</div>
     </div>
     <div style="text-align:center;font-size:13px;color:var(--muted)">
       <span id="hero-calc-speaking-prefix">Speaking is</span> <strong style="color:var(--text)">3× faster</strong> <span id="hero-calc-speaking-suffix">than typing · Stanford HCI Research</span>
@@ -434,11 +638,27 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
 (function() {
   var es = document.getElementById("h-emailSlider");
   var ts = document.getElementById("h-teamSlider");
-  if (!es || !ts) return;
+  var rs = document.getElementById("h-rateSlider");
+  if (!es || !ts || !rs) return;
+
+  var CURRENCY = {
+    en: {sym:'$',  def:30,    max:300,   step:5,   fmt:function(v){return '$'+v.toLocaleString();}},
+    af: {sym:'R',  def:200,   max:2000,  step:50,  fmt:function(v){return 'R'+v.toLocaleString();}},
+    ar: {sym:'ر.س',def:50,max:500,step:10,fmt:function(v){return 'ر.س'+v.toLocaleString();}},
+    fa: {sym:'﷼',def:800,max:8000,step:100,fmt:function(v){return '﷼'+v.toLocaleString();}},
+    hi: {sym:'₹',def:400,max:4000,step:50,fmt:function(v){return '₹'+v.toLocaleString();}},
+    yo: {sym:'₦',def:3000,max:30000,step:500,fmt:function(v){return '₦'+v.toLocaleString();}},
+    fr: {sym:'€',def:25,max:250,step:5,fmt:function(v){return '€'+v.toLocaleString();}},
+    de: {sym:'€',def:30,max:300,step:5,fmt:function(v){return '€'+v.toLocaleString();}},
+    pt: {sym:'R$',def:60,max:600,step:10,fmt:function(v){return 'R$'+v.toLocaleString();}},
+    es: {sym:'$',def:200,max:2000,step:50,fmt:function(v){return '$'+v.toLocaleString();}},
+    sw: {sym:'KSh',def:600,max:6000,step:100,fmt:function(v){return 'KSh'+v.toLocaleString();}}
+  };
+  function getCurrency(lang){return CURRENCY[lang]||CURRENCY.en;}
 
   function setVal(id, subId, mins) {
     var lang = document.documentElement.getAttribute('lang') || 'en';
-    var i18n = (window.HERO_CALC_I18N && window.HERO_CALC_I18N[lang]) || (window.HERO_CALC_I18N && window.HERO_CALC_I18N.en) || {min:'min',hrs:'hrs',workdays:'workdays'};
+    var i18n = (window.HERO_CALC_I18N && window.HERO_CALC_I18N[lang]) || (window.HERO_CALC_I18N && window.HERO_CALC_I18N.en) || {min:'min',hrs:'hrs',workdays:'workdays',rateLabel:'Hourly rate per employee',costSaving:'Monthly cost saving · whole team'};
     var el = document.getElementById(id);
     var sub = document.getElementById(subId);
     if (!el) return;
@@ -462,17 +682,39 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
   function upd() {
     var lang = document.documentElement.getAttribute('lang') || 'en';
     var i18n = (window.HERO_CALC_I18N && window.HERO_CALC_I18N[lang]) || (window.HERO_CALC_I18N && window.HERO_CALC_I18N.en) || {person:'person',people:'people'};
+    var cur = getCurrency(lang);
     var e = +es.value, t = +ts.value;
+    var step = cur.step || 1;
+    var r = Math.round(+rs.value / step) * step;
+    rs.value = r;
     var day = e * 7.5, month = day * 22;
+    var teamHours = (month * t) / 60;
+    var saving = Math.round(teamHours * r);
     document.getElementById("h-emailCount").textContent = e;
     document.getElementById("h-teamCount").textContent = t === 1 ? ("1 " + i18n.person) : (t + " " + i18n.people);
+    document.getElementById("h-rateDisplay").textContent = cur.fmt(r) + "/hr";
     setVal("h-saveDay",   "h-saveDaySub",   day);
     setVal("h-saveMonth", "h-saveMonthSub", month);
     setVal("h-saveTeam",  "h-saveTeamSub",  month * t);
+    var costEl = document.getElementById("h-costSaving");
+    if (costEl) costEl.textContent = cur.fmt(saving);
   }
+
+  function applyRateCurrency(lang) {
+    var cur = getCurrency(lang);
+    var st = cur.step || 1;
+    rs.min = Math.round(cur.def / 6 / st) * st;
+    rs.max = cur.max;
+    rs.step = st;
+    rs.value = cur.def;
+    upd();
+  }
+
   es.addEventListener("input", upd);
   ts.addEventListener("input", upd);
+  rs.addEventListener("input", upd);
   window.refreshHeroCalc = upd;
+  window.applyRateCurrency = applyRateCurrency;
   upd();
 })();
 
@@ -512,14 +754,14 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
 <section class="section" id="features">
   <div class="container">
     <div class="section-label" data-i18n="features_label">Features</div>
-    <div class="section-title" data-i18n="features_title">Everything your inbox was missing.</div>
+    <div class="section-title" data-i18n="features_title">One inbox. Every language. Total intelligence.</div>
     <p class="section-sub" data-i18n="features_sub">Built for the multilingual professional. Every feature designed around voice, language, and intelligence.</p>
     <div class="features-grid">
       <div class="feature-card"><div class="feature-accent" style="background:var(--accent)"></div><div class="feature-icon">🎙</div><div class="feature-title" data-i18n="f1_title">Voice dictation in 20 languages — and counting</div><div class="feature-desc" data-i18n="f1_desc">Dictate emails naturally in your mother tongue. Spreakr transcribes, professionalises, and sends in the recipient's language automatically.</div><div class="feature-tag">20 now · More coming · ElevenLabs Scribe</div></div>
       <div class="feature-card"><div class="feature-accent" style="background:var(--red)"></div><div class="feature-icon">⚖️</div><div class="feature-title" data-i18n="f2_title">Deep forensic email search</div><div class="feature-desc" data-i18n="f2_desc">Ask any question in plain language. GPT-4.1 reads every email in full and returns exact evidence, quotes, and relevance scores.</div><div class="feature-tag">GPT-4.1 · 1M context</div></div>
       <div class="feature-card"><div class="feature-accent" style="background:var(--green)"></div><div class="feature-icon">⚡</div><div class="feature-title" data-i18n="f3_title">Thread Intelligence</div><div class="feature-desc" data-i18n="f3_desc">One click reveals a fully interactive intelligence briefing — animated timeline, live participant relationship graph, sentiment arc, commitment tracker, and a one-line verdict at the top. Visual. Instant. Actionable.</div><div class="feature-tag">Interactive · D3.js · Visual Intelligence</div></div>
       <div class="feature-card"><div class="feature-accent" style="background:var(--amber)"></div><div class="feature-icon">📧</div><div class="feature-title" data-i18n="f4_title">Outlook, Gmail, Yahoo, QQ Mail and more unified.</div><div class="feature-desc" data-i18n="f4_desc">One inbox, many accounts.</div><div class="feature-tag">OAuth · IMAP · No passwords stored</div></div>
-      <div class="feature-card"><div class="feature-accent" style="background:var(--accent)"></div><div class="feature-icon">🌐</div><div class="feature-title" data-i18n="f5_title">Full UI in your language</div><div class="feature-desc" data-i18n="f5_desc">Every button, label, and message renders in your chosen language. Arabic and Persian flip the entire layout to right-to-left automatically.</div><div class="feature-tag">20 languages now · Every language coming soon</div></div>
+      <div class="feature-card"><div class="feature-accent" style="background:var(--accent)"></div><div class="feature-icon">🌐</div><div class="feature-title" data-i18n="f5_title">Full UI in your language</div><div class="feature-desc" data-i18n="f5_desc">Every button, label, and message renders in your chosen language. Arabic flips the entire layout to right-to-left automatically.</div><div class="feature-tag">20 languages now · Every language coming soon</div></div>
       <div class="feature-card"><div class="feature-accent" style="background:var(--red)"></div><div class="feature-icon">📤</div><div class="feature-title" data-i18n="f6_title">Viral language bridge</div><div class="feature-desc" data-i18n="f6_desc">Every sent email includes a "Read in your language" link. Recipients see your email in their language — and discover Spreakr.</div><div class="feature-tag">Built-in growth engine</div></div>
     </div>
   </div>
@@ -530,7 +772,7 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
     <div class="big-feature">
       <div>
         <div class="section-label" data-i18n="ds_label">Deep Search</div>
-        <div class="section-title" data-i18n="ds_title">Find anything. Even what wasn't said.</div>
+        <div class="section-title" data-i18n="ds_title">Find anything. Ask in plain language. Get exact answers.</div>
         <p style="color:var(--muted);line-height:1.75;margin-bottom:28px;font-size:16px" data-i18n="ds_desc">Ask a question in plain language. GPT-4.1 reads every email in full. It finds explicit matches, implied meaning, tone shifts, admissions, and omissions. Built for attorneys doing discovery and executives in disputes.</p>
         <div style="display:flex;flex-direction:column;gap:12px">
           <div style="display:flex;align-items:center;gap:12px;font-size:15px"><span style="color:var(--green);font-size:18px">✓</span><span data-i18n="ds_p1">Natural language questions — no keywords needed</span></div>
@@ -555,10 +797,48 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
 
 
 
+<section class="convinced-section">
+  <div class="container" style="max-width:900px">
+    <div class="convinced-header">
+      <span class="convinced-eyebrow">Still not convinced…?</span>
+      <h2 class="convinced-title">Consider this.</h2>
+    </div>
+    <div class="convinced-grid">
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-1">Improves professionalism and business credibility</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-2">Saves time on drafting, rewriting, and replying</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-3">Reduces admin workload</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-4">Lowers communication costs</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-5">Prevents missed actions, follow-ups, and to-dos</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-6">Helps teams respond faster</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-7">Makes communication easier across languages</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-8">Lets users write in their own language with confidence</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-9">Improves clarity and reduces misunderstandings</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-10">Creates more polished and consistent emails</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-11">Helps build stronger client relationships</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-12">Makes global communication feel local and personal</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-13">Reduces the stress of writing difficult emails</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-14">Helps non-native speakers sound fluent and professional</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-15">Speeds up decision-making with summaries</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-16">Makes inboxes easier to manage</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-17">Improves productivity across multiple email accounts</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-18">Reduces the risk of overlooked important messages</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-19">Helps capture and organize key information quickly</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-20">Improves response quality, not just speed</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-21">Supports better customer service</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-22">Increases efficiency for small businesses and teams</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-23">Cuts down on back-and-forth caused by unclear emails</span></div>
+      <div class="convinced-item"><span class="convinced-check">✓</span><span id="convinced-24">Helps users stay on top of priorities</span></div>
+      <div class="convinced-item convinced-highlight"><span class="convinced-check">✓</span><span id="convinced-25">Pays for itself through time savings alone</span></div>
+      <div class="convinced-item convinced-highlight"><span class="convinced-check">✓</span><span id="convinced-26">Delivers value far above its cost, even on conservative estimates</span></div>
+    </div>
+  </div>
+</section>
+
 <section class="pricing" id="pricing">
   <div class="container" style="text-align:center">
     <div class="section-label" data-i18n="pricing_label">Pricing</div>
     <div class="section-title" data-i18n="pricing_title">Built for professionals.<br>Priced for the world.</div>
+    <p id="pricing-stepwise" style="display:none"></p>
     <p class="section-sub" style="margin:0 auto" data-i18n="pricing_sub">Pricing adapts to your location — professionals in Lagos, Dubai, Mumbai, and Cape Town all pay a fair local rate. Start free. No card required.</p>
 
     <!-- 3 tier cards -->
@@ -620,62 +900,65 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
           <li><span class="check">✓</span><span data-i18n="tier3_f6">Priority support</span></li>
           <li><span class="check">✓</span><span data-i18n="tier3_f7">Team settings</span></li>
         </ul>
-        <a href="mailto:chris@spreakr.com" class="price-btn" data-i18n="tier3_btn">Contact us</a>
+        <a href="/cdn-cgi/l/email-protection#f6959e849f85b685868493979d84d895999b" class="price-btn" data-i18n="tier3_btn">Contact us</a>
       </div>
     </div>
 
     <!-- Feature comparison table -->
-    <div style="max-width:800px;margin:0 auto;background:var(--bg3);border:1px solid var(--border);border-radius:12px;overflow:hidden">
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;background:var(--bg2);padding:14px 20px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)">
+    <div style="max-width:1000px;margin:0 auto;background:var(--bg3);border:1px solid var(--border);border-radius:14px;overflow:hidden">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;background:var(--bg2);padding:20px 32px;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700">
         <div style="text-align:left" data-i18n="features_label">Feature</div>
         <div data-i18n="tier1_name">Trial</div>
         <div style="color:var(--accent)" data-i18n="tier2_name">Pro</div>
         <div data-i18n="tier3_name">Executive</div>
       </div>
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center">
-        <div style="text-align:left;color:var(--muted)" data-i18n="tier1_f2">Native language dictation</div>
-        <div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:20px 32px;border-top:1px solid var(--border);font-size:17px;align-items:center">
+        <div style="text-align:left;color:var(--text)" data-i18n="tier1_f2">Native language dictation</div>
+        <div style="color:var(--green);font-size:20px">✓</div><div style="color:var(--green);font-size:20px">✓</div><div style="color:var(--green);font-size:20px">✓</div>
       </div>
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center;background:var(--bg2)">
-        <div style="text-align:left;color:var(--muted)" data-i18n="tier1_f3">AI draft reply</div>
-        <div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:20px 32px;border-top:1px solid var(--border);font-size:17px;align-items:center;background:var(--bg2)">
+        <div style="text-align:left;color:var(--text)" data-i18n="tier1_f3">AI draft reply</div>
+        <div style="color:var(--green);font-size:20px">✓</div><div style="color:var(--green);font-size:20px">✓</div><div style="color:var(--green);font-size:20px">✓</div>
       </div>
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center">
-        <div style="text-align:left;color:var(--muted)">Unlimited refinement for drafting</div>
-        <div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:20px 32px;border-top:1px solid var(--border);font-size:17px;align-items:center">
+        <div style="text-align:left;color:var(--text)">Unlimited refinement for drafting</div>
+        <div style="color:var(--green);font-size:20px">✓</div><div style="color:var(--green);font-size:20px">✓</div><div style="color:var(--green);font-size:20px">✓</div>
       </div>
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center">
-        <div style="text-align:left;color:var(--muted)">Summaries</div>
-        <div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:20px 32px;border-top:1px solid var(--border);font-size:17px;align-items:center;background:var(--bg2)">
+        <div style="text-align:left;color:var(--text)">Summaries</div>
+        <div style="color:var(--green);font-size:20px">✓</div><div style="color:var(--green);font-size:20px">✓</div><div style="color:var(--green);font-size:20px">✓</div>
       </div>
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center;background:var(--bg2)">
-        <div style="text-align:left;color:var(--muted)">Advanced search &amp; filter</div>
-        <div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:20px 32px;border-top:1px solid var(--border);font-size:17px;align-items:center">
+        <div style="text-align:left;color:var(--text)">Advanced search &amp; filter</div>
+        <div style="color:var(--green);font-size:20px">✓</div><div style="color:var(--green);font-size:20px">✓</div><div style="color:var(--green);font-size:20px">✓</div>
       </div>
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center">
-        <div style="text-align:left;color:var(--muted)" id="pricing-nl-ai-search">Natural language AI search</div>
-        <div style="color:var(--muted)">—</div><div style="color:var(--muted)">—</div><div style="color:var(--green)">✓</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:20px 32px;border-top:1px solid var(--border);font-size:17px;align-items:center;background:var(--bg2)">
+        <div style="text-align:left;color:var(--text)" id="pricing-nl-ai-search">Natural language AI search</div>
+        <div style="color:var(--muted);font-size:20px">—</div><div style="color:var(--muted);font-size:20px">—</div><div style="color:var(--green);font-size:20px">✓</div>
       </div>
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center;background:var(--bg2)">
-        <div style="text-align:left;color:var(--muted)" data-i18n="tier2_f2">Thread Intelligence</div>
-        <div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div><div style="color:var(--green)">✓</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:20px 32px;border-top:1px solid var(--border);font-size:17px;align-items:center">
+        <div style="text-align:left;color:var(--text)" data-i18n="tier2_f2">Thread Intelligence</div>
+        <div style="color:var(--green);font-size:20px">✓</div><div style="color:var(--green);font-size:20px">✓</div><div style="color:var(--green);font-size:20px">✓</div>
       </div>
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center">
-        <div style="text-align:left;color:var(--muted)" id="pricing-emails-provider">Emails loaded per provider</div>
-        <div style="color:var(--green)">500</div><div style="color:var(--green)">500</div><div style="color:var(--green)">5000+</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:20px 32px;border-top:1px solid var(--border);font-size:17px;align-items:center;background:var(--bg2)">
+        <div style="text-align:left;color:var(--text)" id="pricing-emails-provider">Emails loaded per provider</div>
+        <div style="color:var(--green);font-size:17px;font-weight:700">500</div><div style="color:var(--green);font-size:17px;font-weight:700">500</div><div style="color:var(--green);font-size:17px;font-weight:700">5000+</div>
       </div>
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center;background:var(--bg2)">
-        <div style="text-align:left;color:var(--muted)" data-i18n="nav_languages">Languages</div>
-        <div style="color:var(--green)">20+</div><div style="color:var(--green)">20+</div><div style="color:var(--green)">20+</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:20px 32px;border-top:1px solid var(--border);font-size:17px;align-items:center">
+        <div style="text-align:left;color:var(--text)" data-i18n="nav_languages">Languages</div>
+        <div style="color:var(--green);font-size:17px;font-weight:700">20+</div><div style="color:var(--green);font-size:17px;font-weight:700">20+</div><div style="color:var(--green);font-size:17px;font-weight:700">20+</div>
       </div>
-
-      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:12px 20px;border-top:1px solid var(--border);font-size:13px;align-items:center;background:var(--bg2)">
-        <div style="text-align:left;color:var(--muted)" id="pricing-loadall-row">Load All emails</div>
-        <div style="color:var(--muted)">—</div><div style="color:var(--muted)">—</div><div style="color:var(--green)">✓</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:20px 32px;border-top:1px solid var(--border);font-size:17px;align-items:center;background:var(--bg2)">
+        <div style="text-align:left;color:var(--text)" id="pricing-loadall-row">Load All emails</div>
+        <div style="color:var(--muted);font-size:20px">—</div><div style="color:var(--muted);font-size:20px">—</div><div style="color:var(--green);font-size:20px">✓</div>
       </div>
     </div>
 
     <p style="font-size:12px;color:var(--muted);margin-top:24px" id="pricing-annual-note">Annual plans available · Cancel anytime</p>
+    <div style="display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.3);border-radius:999px;padding:8px 20px">
+      <span style="font-size:16px">🎁</span>
+      <span style="font-size:14px;color:#86efac;font-weight:600">Have a referral code? You get <strong>10% off your first month</strong> automatically at sign-up.</span>
+    </div>
   </div>
 </section>
 
@@ -683,7 +966,15 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
   <div class="container" style="text-align:center">
     <div class="section-label" data-i18n="aff_label">Affiliate Program</div>
     <div class="section-title" style="max-width:700px;margin:0 auto 20px" data-i18n="aff_title">Share Spreakr your way.<br>Earn <span style="color:var(--accent)">30%</span> every month. Forever.</div>
-    <p class="section-sub" style="margin:0 auto 48px;font-size:17px" data-i18n="aff_sub">No rules. No quotas. No complicated structure. Just share Spreakr however you naturally connect with people — and earn 30% of every subscription, every single month, for as long as they stay.</p>
+    <p class="section-sub" style="margin:0 auto 24px;font-size:17px" data-i18n="aff_sub">No rules. No quotas. No complicated structure. Just share Spreakr however you naturally connect with people — and earn 30% of every subscription, every single month, for as long as they stay.</p>
+    <!-- Referral discount highlight -->
+    <div style="display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#0d2a14,#0a1f0e);border:1px solid #2d6a2d;border-radius:12px;padding:14px 24px;margin-bottom:44px;flex-wrap:wrap;justify-content:center">
+      <span style="font-size:24px">🎁</span>
+      <div style="text-align:left">
+        <div style="font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#22c55e;margin-bottom:3px">Bonus for your referrals</div>
+        <div style="font-size:15px;color:#d1fae5;line-height:1.5">Everyone who signs up through your link gets <strong style="color:#4ade80">10% off their first month</strong> — making it even easier for you to share.</div>
+      </div>
+    </div>
 
     <!-- How to share cards -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto 56px">
@@ -705,13 +996,13 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
     </div>
 
     <!-- Interactive earnings calculator -->
-    <div style="max-width:680px;margin:0 auto;background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:36px 40px">
-      <div id="aff-calc-title" style="font-size:20px;font-weight:800;letter-spacing:-0.5px;margin-bottom:28px">💰 What could <em style="color:var(--accent);font-style:normal">you</em> earn?</div>
+    <div style="max-width:900px;margin:0 auto;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:56px 64px">
+      <div id="aff-calc-title" style="font-size:32px;font-weight:800;letter-spacing:-1px;margin-bottom:40px">💰 What could <em style="color:var(--accent);font-style:normal">you</em> earn?</div>
 
       <!-- Country selector -->
-      <div style="margin-bottom:24px;text-align:left">
-        <label id="aff-country-label" style="font-size:13px;color:var(--muted);display:block;margin-bottom:8px">Your subscribers are mainly based in</label>
-        <select id="aff-country" style="width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:8px;font-size:14px;outline:none;cursor:pointer">
+      <div style="margin-bottom:36px;text-align:left">
+        <label id="aff-country-label" style="font-size:16px;color:var(--muted);display:block;margin-bottom:12px">Your subscribers are mainly based in</label>
+        <select id="aff-country" style="width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:14px 18px;border-radius:10px;font-size:17px;outline:none;cursor:pointer">
           <option value="349" data-currency="R" data-country="South Africa">🇿🇦 South Africa — R349/mo Pro</option>
           <option value="19" data-currency="" data-country="USA / Global">🌍 USA / Global — 19/mo Pro</option>
           <option value="16" data-currency="£" data-country="United Kingdom">🇬🇧 United Kingdom — £16/mo Pro</option>
@@ -727,47 +1018,47 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
       </div>
 
       <!-- Subscribers slider -->
-      <div style="margin-bottom:28px;text-align:left">
-        <div style="display:flex;justify-content:space-between;margin-bottom:10px">
-          <label id="aff-subs-label" style="font-size:13px;color:var(--muted)">Number of Pro subscribers you refer</label>
-          <span id="aff-sub-count" style="font-size:16px;font-weight:800;color:var(--accent)">25</span>
+      <div style="margin-bottom:40px;text-align:left">
+        <div style="display:flex;justify-content:space-between;margin-bottom:14px">
+          <label id="aff-subs-label" style="font-size:17px;color:var(--muted)">Number of Pro subscribers you refer</label>
+          <span id="aff-sub-count" style="font-size:26px;font-weight:800;color:var(--accent)">25</span>
         </div>
-        <input type="range" id="aff-slider" min="1" max="500" value="25" style="width:100%;accent-color:var(--accent);height:5px;cursor:pointer">
-        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:6px">
+        <input type="range" id="aff-slider" min="1" max="500" value="25" style="width:100%;accent-color:var(--accent);height:7px;cursor:pointer">
+        <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-top:10px">
           <span id="aff-min-subs">1 subscriber</span><span id="aff-max-subs">500 subscribers</span>
         </div>
       </div>
 
       <!-- Results -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
-        <div style="background:var(--bg2);border-radius:8px;padding:16px;text-align:center">
-          <div id="aff-per-month-label" style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Per month</div>
-          <div id="aff-month" style="font-size:22px;font-weight:800;color:var(--green);letter-spacing:-1px">R2,618</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px">
+        <div style="background:var(--bg2);border-radius:12px;padding:28px 20px;text-align:center">
+          <div id="aff-per-month-label" style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Per month</div>
+          <div id="aff-month" style="font-size:38px;font-weight:800;color:var(--green);letter-spacing:-1.5px">R2,618</div>
         </div>
-        <div style="background:var(--bg2);border-radius:8px;padding:16px;text-align:center">
-          <div id="aff-per-year-label" style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Per year</div>
-          <div id="aff-year" style="font-size:22px;font-weight:800;color:var(--green);letter-spacing:-1px">R31,410</div>
+        <div style="background:var(--bg2);border-radius:12px;padding:28px 20px;text-align:center">
+          <div id="aff-per-year-label" style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Per year</div>
+          <div id="aff-year" style="font-size:38px;font-weight:800;color:var(--green);letter-spacing:-1.5px">R31,410</div>
         </div>
-        <div style="background:#0A1628;border:1px solid var(--accent);border-radius:8px;padding:16px;text-align:center">
-          <div id="aff-per-subscriber-label" style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Per subscriber</div>
-          <div id="aff-per" style="font-size:22px;font-weight:800;color:var(--accent);letter-spacing:-1px">R104.70</div>
+        <div style="background:#0A1628;border:1px solid var(--accent);border-radius:12px;padding:28px 20px;text-align:center">
+          <div id="aff-per-subscriber-label" style="font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Per subscriber</div>
+          <div id="aff-per" style="font-size:38px;font-weight:800;color:var(--accent);letter-spacing:-1.5px">R104.70</div>
         </div>
       </div>
 
       <!-- Passive income note -->
-      <div id="aff-note" style="background:var(--bg2);border-radius:8px;padding:14px;font-size:13px;color:var(--muted);text-align:center;line-height:1.6">
+      <div id="aff-note" style="background:var(--bg2);border-radius:10px;padding:20px 24px;font-size:17px;color:var(--muted);text-align:center;line-height:1.7">
         25 people sign up once → you earn <strong style="color:var(--text)">R2,618 every month</strong> without doing anything more.
       </div>
 
-      <div style="margin-top:28px">
-        <a href="mailto:chris@spreakr.com?subject=Affiliate Program Application" class="btn-primary" style="width:100%;display:block;text-align:center;padding:14px" data-i18n="aff_btn">Apply to become an affiliate →</a>
-        <p id="aff-join-note" style="font-size:12px;color:var(--muted);margin-top:12px">Free to join · No minimum referrals · Paid monthly via PayPal · Available globally</p>
+      <div style="margin-top:36px">
+        <a href="/cdn-cgi/l/email-protection#dfbcb7adb6ac9facafadbabeb4adf1bcb0b2e0acaabdb5babcabe29eb9b9b6b3b6beabbaff8fadb0b8adbeb2ff9eafafb3b6bcbeabb6b0b1" class="btn-primary" style="width:100%;display:block;text-align:center;padding:18px;font-size:17px" data-i18n="aff_btn">Apply to become an affiliate →</a>
+        <p id="aff-join-note" style="font-size:15px;color:var(--muted);margin-top:14px">Free to join · No minimum referrals · Paid monthly via PayPal · Available globally</p>
       </div>
     </div>
   </div>
 </section>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Affiliate calculator
 (function() {
   var slider   = document.getElementById('aff-slider');
@@ -807,7 +1098,6 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
   update();
 })();
 </script>
-
 <section class="cta-section">
   <div class="container">
     <h2 data-i18n="cta_title">The inbox built for <span style="color:var(--accent)">everyone else.</span></h2>
@@ -860,15 +1150,13 @@ footer{background:var(--bg2);padding:60px 40px 40px;border-top:1px solid var(--b
 // TRANSLATIONS — all 20 languages embedded directly
 // ============================================================
 const LOCALES = {
-en:{dir:'ltr',name:'English',flag:'🇬🇧',nav_features:'Features',nav_languages:'Languages',nav_pricing:'Pricing',nav_earn:'Earn with us',nav_cta:'Start free trial',hero_badge:'🌍 Now supporting 20+ languages',hero_h1_1:'Email in your language.',hero_h1_2:'Send in theirs.',hero_sub:"The world's first multilingual AI email command centre. Dictate in Afrikaans, Yoruba, Farsi, Hindi — send professionally in any language.",hero_cta_primary:'Start free — 7 days',hero_cta_secondary:'See features →',stat_1:'Languages supported',stat_2:'Email providers unified',stat_3:'Forensic search · 300 emails',stat_4:'Full inbox AI analysis',stat_5:'Competitors who do this',features_label:'Features',features_title:'Everything your inbox was missing.',features_sub:'Built for the multilingual professional. Every feature designed around voice, language, and intelligence.',f1_title:'Voice dictation in 20+ languages',f1_desc:"Dictate emails naturally in your mother tongue. Spreakr transcribes, professionalises, and sends in the recipient's language automatically.",f2_title:'Deep forensic email search',f2_desc:'Ask any question in plain language. GPT-4.1 reads every email in full and returns exact evidence, quotes, and relevance scores.',f3_title:'Thread Intelligence',f3_desc:'One click reveals a full intelligence briefing on any email chain. Timeline, sentiment arc, commitment tracking, and a one-line verdict.',f4_title:'Gmail + Outlook unified',f4_desc:'One inbox. Both accounts. Colour flagging, folder management, and AI features work identically across Gmail and Outlook.',f5_title:'Full UI in your language',f5_desc:'Every button, label, and message renders in your chosen language. Arabic and Persian flip the entire layout to right-to-left automatically.',f6_title:'Viral language bridge',f6_desc:'Every sent email includes a "Read in your language" link. Recipients see your email in their language — and discover Spreakr.',ds_label:'Deep Search',ds_title:"Find anything. Even what wasn't said.",ds_desc:'Ask a question in plain language. GPT-4.1 reads every email in full. It finds explicit matches, implied meaning, tone shifts, admissions, and omissions.',ds_p1:'Natural language questions — no keywords needed',ds_p2:'Finds admissions, omissions, and tone shifts',ds_p3:'Exact evidence quotes with significance ratings',ds_p4:'Export full findings report as PDF',ds_p5:'R7.96 to analyse 300 emails in full',lang_label:'20+ Languages',lang_title:'The same three buttons. Every language on earth.',lang_sub:'Compose · Reply · Send — in every language your users speak. RTL layouts switch automatically for Arabic, Persian, and Urdu.',viral_label:'Growth Engine',viral_title:'Every email you send is a product demo.',viral_sub:'A subtle footer link lets recipients view your email in their own language — and discover Spreakr. Your users market for you automatically.',viral_cta:'Try Spreakr free →',viral_note:'100 users × 20 emails/day = 2,000 qualified impressions daily. Zero ad spend.',pricing_label:'Pricing',pricing_title:'Simple, transparent pricing.',pricing_sub:'AI search costs billed per use. Your plan includes a monthly credit.',tier1_name:'Trial',tier1_price:'Free',tier1_period:'7 days · no card required',tier1_f1:'Gmail + Outlook unified',tier1_f2:'Voice dictation',tier1_f3:'AI draft reply',tier1_f4:'R2 AI search credit',tier1_f5:'3 languages',tier1_btn:'Start free trial',tier2_name:'Pro',tier2_period:'~16 · billed monthly',tier2_f1:'Everything in Trial',tier2_f2:'Thread Intelligence',tier2_f3:'Deep Search',tier2_f4:'R20 AI search credit',tier2_f5:'20 languages',tier2_f6:'Move to folder',tier2_f7:'Viral footer link',tier2_btn:'Get started',tier3_name:'Executive',tier3_period:'~32 · billed monthly',tier3_f1:'Everything in Pro',tier3_f2:'R100 AI search credit',tier3_f3:'All languages (as released)',tier3_f4:'Legal terminology packs',tier3_f5:'PDF export reports',tier3_f6:'Priority support',tier3_f7:'Team settings',tier3_btn:'Contact us',aff_label:'Affiliate Program',aff_title:'Earn recurring income. Work from anywhere.',aff_sub:'Get a unique code. Share it with professionals in your network. Earn 30% of every subscription every month.',aff_s1:'Recurring monthly commission',aff_s2:'Earned per Pro subscriber per month',aff_s3:'No cap on referrals or earnings',aff_calc_title:'Example monthly earnings',aff_r1:'10 Pro subscribers',aff_r2:'25 Pro subscribers',aff_r3:'50 Pro subscribers',aff_r4:'100 Pro subscribers',aff_btn:'Apply to become an affiliate',aff_note:'Open to professionals globally · Paid monthly via PayPal · No experience required',cta_title:'The inbox built for everyone else.',cta_sub:'Other tools own English. With Spreakr, you own the world.',cta_btn1:'Start free — 7 days',cta_btn2:'Book a demo',cta_note:'No credit card required · Cancel anytime · POPIA compliant · Built in South Africa 🇿🇦',footer_tagline:"The world's first multilingual AI email command centre. Email in your language. Send in theirs.",footer_product:'Product',footer_company:'Company',footer_about:'About',footer_contact:'Contact',footer_affiliate:'Affiliate Program',footer_press:'Press',footer_legal:'Legal',footer_privacy:'Privacy Policy',footer_popia:'POPIA Compliance',footer_security:'Security',footer_terms:'Terms of Service'},
+en:{dir:'ltr',name:'English',flag:'🇬🇧',nav_features:'Features',nav_languages:'Languages',nav_pricing:'Pricing',nav_earn:'Earn with us',nav_cta:'Start free trial',hero_badge:'🌍 Now supporting 20+ languages',hero_h1_1:'Email in your language.',hero_h1_2:'Send in theirs.',hero_sub:"The world's first multilingual AI email command centre. Dictate in Afrikaans, Yoruba, Hindi — send professionally in any language.",hero_cta_primary:'Start free — 7 days',hero_cta_secondary:'See features →',stat_1:'Languages supported',stat_2:'Email providers unified',stat_3:'Forensic search · 300 emails',stat_4:'Full inbox AI analysis',stat_5:'Competitors who do this',features_label:'Features',features_title:'One inbox. Every language. Total intelligence.',features_sub:'Built for the multilingual professional. Every feature designed around voice, language, and intelligence.',f1_title:'Voice dictation in 20+ languages',f1_desc:"Dictate emails naturally in your mother tongue. Spreakr transcribes, professionalises, and sends in the recipient's language automatically.",f2_title:'Deep forensic email search',f2_desc:'Ask any question in plain language. GPT-4.1 reads every email in full and returns exact evidence, quotes, and relevance scores.',f3_title:'Thread Intelligence',f3_desc:'One click reveals a full intelligence briefing on any email chain. Timeline, sentiment arc, commitment tracking, and a one-line verdict.',f4_title:'Gmail + Outlook unified',f4_desc:'One inbox. Both accounts. Colour flagging, folder management, and AI features work identically across Gmail and Outlook.',f5_title:'Full UI in your language',f5_desc:'Every button, label, and message renders in your chosen language. Arabic flips the entire layout to right-to-left automatically.',f6_title:'Viral language bridge',f6_desc:'Every sent email includes a "Read in your language" link. Recipients see your email in their language — and discover Spreakr.',ds_label:'Deep Search',ds_title:'Find anything. Ask in plain language. Get exact answers.',ds_desc:'Ask a question in plain language. GPT-4.1 reads every email in full. It finds explicit matches, implied meaning, tone shifts, admissions, and omissions.',ds_p1:'Natural language questions — no keywords needed',ds_p2:'Finds admissions, omissions, and tone shifts',ds_p3:'Exact evidence quotes with significance ratings',ds_p4:'Export full findings report as PDF',ds_p5:'R7.96 to analyse 300 emails in full',lang_label:'20+ Languages',lang_title:'The same three buttons. Every language on earth.',lang_sub:'Compose · Reply · Send — in every language your users speak. RTL layouts switch automatically for Arabic and Urdu.',viral_label:'Growth Engine',viral_title:'Every email you send is a product demo.',viral_sub:'A subtle footer link lets recipients view your email in their own language — and discover Spreakr. Your users market for you automatically.',viral_cta:'Try Spreakr free →',viral_note:'100 users × 20 emails/day = 2,000 qualified impressions daily. Zero ad spend.',pricing_label:'Pricing',pricing_title:'Simple, transparent pricing.',pricing_sub:'AI search costs billed per use. Your plan includes a monthly credit.',tier1_name:'Trial',tier1_price:'Free',tier1_period:'7 days · no card required',tier1_f1:'Gmail + Outlook unified',tier1_f2:'Voice dictation',tier1_f3:'AI draft reply',tier1_f4:'R2 AI search credit',tier1_f5:'3 languages',tier1_btn:'Start free trial',tier2_name:'Pro',tier2_period:'~16 · billed monthly',tier2_f1:'Everything in Trial',tier2_f2:'Thread Intelligence',tier2_f3:'Deep Search',tier2_f4:'R20 AI search credit',tier2_f5:'20 languages',tier2_f6:'Move to folder',tier2_f7:'Viral footer link',tier2_btn:'Get started',tier3_name:'Executive',tier3_period:'~32 · billed monthly',tier3_f1:'Everything in Pro',tier3_f2:'R100 AI search credit',tier3_f3:'All languages (as released)',tier3_f4:'Legal terminology packs',tier3_f5:'PDF export reports',tier3_f6:'Priority support',tier3_f7:'Team settings',tier3_btn:'Contact us',aff_label:'Affiliate Program',aff_title:'Earn recurring income. Work from anywhere.',aff_sub:'Get a unique code. Share it with professionals in your network. Earn 30% of every subscription every month.',aff_s1:'Recurring monthly commission',aff_s2:'Earned per Pro subscriber per month',aff_s3:'No cap on referrals or earnings',aff_calc_title:'Example monthly earnings',aff_r1:'10 Pro subscribers',aff_r2:'25 Pro subscribers',aff_r3:'50 Pro subscribers',aff_r4:'100 Pro subscribers',aff_btn:'Apply to become an affiliate',aff_note:'Open to professionals globally · Paid monthly via PayPal · No experience required',cta_title:'The inbox built for everyone else.',cta_sub:'Other tools own English. With Spreakr, you own the world.',cta_btn1:'Start free — 7 days',cta_btn2:'Book a demo',cta_note:'No credit card required · Cancel anytime · POPIA compliant · Built in South Africa 🇿🇦',footer_tagline:"The world's first multilingual AI email command centre. Email in your language. Send in theirs.",footer_product:'Product',footer_company:'Company',footer_about:'About',footer_contact:'Contact',footer_affiliate:'Affiliate Program',footer_press:'Press',footer_legal:'Legal',footer_privacy:'Privacy Policy',footer_popia:'POPIA Compliance',footer_security:'Security',footer_terms:'Terms of Service'},
 
-af:{dir:'ltr',name:'Afrikaans',flag:'🇿🇦',nav_features:'Kenmerke',nav_languages:'Tale',nav_pricing:'Pryse',nav_earn:'Verdien saam',nav_cta:'Begin gratis proef',hero_badge:'🌍 Ondersteun nou 20+ tale',hero_h1_1:'E-pos in jou taal.',hero_h1_2:'Stuur in hulle s\'n.',hero_sub:'Die wêreld se eerste meertalige KI e-pos sentrum. Dikteer in Afrikaans, Yoruba, Farsi, Hindi — stuur professioneel in enige taal.',hero_cta_primary:'Begin gratis — 7 dae',hero_cta_secondary:'Sien kenmerke →',stat_1:'Tale ondersteun',stat_2:'E-pos verskaffers verenig',stat_3:'Forensiese soektog · 300 e-posse',stat_4:'Volledige KI-analise',stat_5:'Mededingers wat dit doen',features_label:'Kenmerke',features_title:'Alles wat jou inboks gemis het.',features_sub:'Gebou vir die meertalige professionele persoon.',f1_title:'Dikteer in 20+ tale',f1_desc:'Dikteer e-posse in jou moedertaal. Spreakr skryf oor en stuur in die ontvanger se taal.',f2_title:'Diep forensiese e-possoektog',f2_desc:'Vra enige vraag in gewone taal. GPT-4.1 lees elke e-pos volledig.',f3_title:'Draad-intelligensie',f3_desc:'Een klik onthul \'n volledige intelligensie-verslag oor enige e-posketting.',f4_title:'Gmail + Outlook verenig',f4_desc:'Een inkassie. Beide rekeninge.',f5_title:'Volledige koppelvlak in jou taal',f5_desc:'Elke knoppie en boodskap vertoon in jou gekose taal.',f6_title:'Virale taalbrug',f6_desc:'Elke gestuurde e-pos sluit \'n "Lees in jou taal"-skakel in.',ds_label:'Diep Soektog',ds_title:'Vind enigiets. Selfs wat nie gesê is nie.',ds_desc:'Vra \'n vraag in gewone taal. GPT-4.1 lees elke e-pos volledig.',ds_p1:'Natuurlike taalvrae — geen sleutelwoorde nodig',ds_p2:'Vind toelating, weglatings en toonverskuiwings',ds_p3:'Presiese bewyshale met betekenisgradering',ds_p4:'Voer volledige bevindingsverslag uit as PDF',ds_p5:'R7.96 om 300 e-posse volledig te ontleed',lang_label:'20+ Tale',lang_title:'Dieselfde drie knoppies. Elke taal op aarde.',lang_sub:'Stel op · Antwoord · Stuur — in elke taal.',viral_label:'Groeienjin',viral_title:'Elke e-pos wat jy stuur is \'n produkdemo.',viral_sub:'\'n Subtiele voetnotskakel laat ontvangers jou e-pos in hul eie taal sien.',viral_cta:'Probeer Spreakr gratis →',viral_note:'100 gebruikers × 20 e-posse/dag = 2,000 indrukke daagliks.',pricing_label:'Pryse',pricing_title:'Eenvoudige, deursigtige pryse.',pricing_sub:'KI-soektoggelde word per gebruik gehef.',tier1_name:'Proef',tier1_price:'Gratis',tier1_period:'7 dae · geen kaart nodig',tier1_f1:'Gmail + Outlook verenig',tier1_f2:'Dikteer',tier1_f3:'KI konsepantwoord',tier1_f4:'R2 KI soektoggeld',tier1_f5:'3 tale',tier1_btn:'Begin gratis proef',tier2_name:'Pro',tier2_period:'~16 · maandeliks',tier2_f1:'Alles in Proef',tier2_f2:'Draad-intelligensie',tier2_f3:'Diep Soektog',tier2_f4:'R20 KI soektoggeld',tier2_f5:'20 tale',tier2_f6:'Skuif na vouer',tier2_f7:'Virale voetnota skakel',tier2_btn:'Begin nou',tier3_name:'Uitvoerend',tier3_period:'~32 · maandeliks',tier3_f1:'Alles in Pro',tier3_f2:'R100 KI soektoggeld',tier3_f3:'Alle 20+ tale',tier3_f4:'Regsterminologiepakke',tier3_f5:'PDF uitvoerverslae',tier3_f6:'Prioriteit ondersteuning',tier3_f7:'Spaninstellings',tier3_btn:'Kontak ons',aff_label:'Filiaalprogram',aff_title:'Verdien herhalende inkomste. Werk van oral.',aff_sub:'Kry \'n unieke kode. Deel dit. Verdien 30% van elke intekening elke maand.',aff_s1:'Herhalende maandelikse kommissie',aff_s2:'Verdien per Pro-intekenaar per maand',aff_s3:'Geen maksimum op verwysings',aff_calc_title:'Voorbeeldmaandelikse verdienste',aff_r1:'10 Pro intekenare',aff_r2:'25 Pro intekenare',aff_r3:'50 Pro intekenare',aff_r4:'100 Pro intekenare',aff_btn:'Aansoek doen as filiaal',aff_note:'Oop vir professionele persone wêreldwyd · Betaal maandeliks via PayPal',cta_title:'Die inkassie gebou vir almal anders.',cta_sub:'Ander instrumente besit Engels. Met Spreakr besit jy die wêreld.',cta_btn1:'Begin gratis — 7 dae',cta_btn2:'Bespreek \'n demo',cta_note:'Geen kredietkaart nodig · Kanselleer enige tyd · POPIA-voldoen',footer_tagline:"Die wêreld se eerste meertalige KI e-pos sentrum.",footer_product:'Produk',footer_company:'Maatskappy',footer_about:'Oor ons',footer_contact:'Kontak',footer_affiliate:'Filiaalprogram',footer_press:'Pers',footer_legal:'Regs',footer_privacy:'Privaatheidsbeleid',footer_popia:'POPIA Nakoming',footer_security:'Sekuriteit',footer_terms:'Diensvoorwaardes'},
+af:{dir:'ltr',name:'Afrikaans',flag:'🇿🇦',nav_features:'Kenmerke',nav_languages:'Tale',nav_pricing:'Pryse',nav_earn:'Verdien saam',nav_cta:'Begin gratis proef',hero_badge:'🌍 Ondersteun nou 20+ tale',hero_h1_1:'E-pos in jou taal.',hero_h1_2:'Stuur in hulle s\'n.',hero_sub:'Die wêreld se eerste meertalige KI e-pos sentrum. Dikteer in Afrikaans, Yoruba, Hindi — stuur professioneel in enige taal.',hero_cta_primary:'Begin gratis — 7 dae',hero_cta_secondary:'Sien kenmerke →',stat_1:'Tale ondersteun',stat_2:'E-pos verskaffers verenig',stat_3:'Forensiese soektog · 300 e-posse',stat_4:'Volledige KI-analise',stat_5:'Mededingers wat dit doen',features_label:'Kenmerke',features_title:'Alles wat jou inboks gemis het.',features_sub:'Gebou vir die meertalige professionele persoon.',f1_title:'Dikteer in 20+ tale',f1_desc:'Dikteer e-posse in jou moedertaal. Spreakr skryf oor en stuur in die ontvanger se taal.',f2_title:'Diep forensiese e-possoektog',f2_desc:'Vra enige vraag in gewone taal. GPT-4.1 lees elke e-pos volledig.',f3_title:'Draad-intelligensie',f3_desc:'Een kliek onthul \'n volledige intelligensie-verslag oor enige e-posketting.',f4_title:'Gmail + Outlook verenig',f4_desc:'Een inboks. Beide rekeninge.',f5_title:'Volledige koppelvlak in jou taal',f5_desc:'Elke knoppie en boodskap vertoon in jou gekose taal.',f6_title:'Virale taalbrug',f6_desc:'Elke gestuurde e-pos sluit \'n "Lees in jou taal"-skakel in.',ds_label:'Diep Soektog',ds_title:'Vind enigiets. Met natuurlike taalvrae. Intelligent.',ds_desc:'Vra \'n vraag in gewone taal. GPT-4.1 lees elke e-pos volledig.',ds_p1:'Natuurlike taalvrae — geen sleutelwoorde nodig',ds_p2:'Vind toelating, weglatings en toonverskuiwings',ds_p3:'Presiese bewyshale met betekenisgradering',ds_p4:'Voer volledige bevindingsverslag uit as PDF',ds_p5:'R7.96 om 300 e-posse volledig te ontleed',lang_label:'20+ Tale',lang_title:'Dieselfde drie knoppies. Elke taal op aarde.',lang_sub:'Stel op · Antwoord · Stuur — in elke taal.',viral_label:'Groeienjin',viral_title:'Elke e-pos wat jy stuur is \'n produkdemo.',viral_sub:'\'n Subtiele voetnotskakel laat ontvangers jou e-pos in hul eie taal sien.',viral_cta:'Probeer Spreakr gratis →',viral_note:'100 gebruikers × 20 e-posse/dag = 2,000 indrukke daagliks.',pricing_label:'Pryse',pricing_title:'Eenvoudige, deursigtige pryse.',pricing_sub:'Soektoggelde word per gebruik gehef.',tier1_name:'Proef',tier1_price:'Gratis',tier1_period:'7 dae · geen kaart nodig',tier1_f1:'Gmail + Outlook verenig',tier1_f2:'Dikteer',tier1_f3:'KI konsepantwoord',tier1_f4:'R2 KI soektoggeld',tier1_f5:'3 tale',tier1_btn:'Begin gratis proef',tier2_name:'Pro',tier2_period:'~16 · maandeliks',tier2_f1:'Alles in Proef',tier2_f2:'Draad-intelligensie',tier2_f3:'Diep Soektog',tier2_f4:'R20 KI soektoggeld',tier2_f5:'20 tale',tier2_f6:'Skuif na vouer',tier2_f7:'Virale voetnota skakel',tier2_btn:'Begin nou',tier3_name:'Uitvoerend',tier3_period:'~32 · maandeliks',tier3_f1:'Alles in Pro',tier3_f2:'R100 KI soektoggeld',tier3_f3:'Alle 20+ tale',tier3_f4:'Regsterminologiepakke',tier3_f5:'PDF uitvoerverslae',tier3_f6:'Prioriteit ondersteuning',tier3_f7:'Spaninstellings',tier3_btn:'Kontak ons',aff_label:'Filiaalprogram',aff_title:'Verdien herhalende inkomste. Werk van oral.',aff_sub:'Kry \'n unieke kode. Deel dit. Verdien 30% van elke intekening elke maand.',aff_s1:'Herhalende maandelikse kommissie',aff_s2:'Verdien per Pro-intekenaar per maand',aff_s3:'Geen maksimum op verwysings',aff_calc_title:'Voorbeeldmaandelikse verdienste',aff_r1:'10 Pro intekenare',aff_r2:'25 Pro intekenare',aff_r3:'50 Pro intekenare',aff_r4:'100 Pro intekenare',aff_btn:'Aansoek doen as filiaal',aff_note:'Oop vir professionele persone wêreldwyd · Betaal maandeliks via PayPal',cta_title:'Die inboks gebou vir almal anders.',cta_sub:'Ander instrumente besit Engels. Met Spreakr besit jy die wêreld.',cta_btn1:'Begin gratis — 7 dae',cta_btn2:'Bespreek \'n demo',cta_note:'Geen kredietkaart nodig · Kanselleer enige tyd · POPIA-voldoen',footer_tagline:"Die wêreld se eerste meertalige KI e-pos sentrum.",footer_product:'Produk',footer_company:'Maatskappy',footer_about:'Oor ons',footer_contact:'Kontak',footer_affiliate:'Filiaalprogram',footer_press:'Pers',footer_legal:'Regs',footer_privacy:'Privaatheidsbeleid',footer_popia:'POPIA Nakoming',footer_security:'Sekuriteit',footer_terms:'Diensvoorwaardes'},
 
 ar:{dir:'rtl',name:'العربية',flag:'🇸🇦',nav_features:'الميزات',nav_languages:'اللغات',nav_pricing:'الأسعار',nav_earn:'اكسب معنا',nav_cta:'ابدأ تجربة مجانية',hero_badge:'🌍 يدعم الآن أكثر من 90 لغة',hero_h1_1:'البريد الإلكتروني بلغتك.',hero_h1_2:'أرسل بلغتهم.',hero_sub:'أول مركز بريد إلكتروني بالذكاء الاصطناعي متعدد اللغات في العالم.',hero_cta_primary:'ابدأ مجاناً — 7 أيام',hero_cta_secondary:'انظر الميزات →',stat_1:'لغة مدعومة',stat_2:'مزودي البريد الإلكتروني',stat_3:'بحث جنائي · 300 رسالة',stat_4:'تحليل صندوق البريد الكامل',stat_5:'منافسون يفعلون هذا',features_label:'الميزات',features_title:'كل ما افتقده صندوق بريدك.',features_sub:'مبني للمحترف متعدد اللغات.',f1_title:'إملاء صوتي بأكثر من 90 لغة',f1_desc:'أملي رسائل البريد الإلكتروني بلغتك الأم. يقوم Spreakr بالنسخ والإرسال باللغة المناسبة.',f2_title:'بحث جنائي عميق في البريد الإلكتروني',f2_desc:'اطرح أي سؤال بلغة عادية. يقرأ GPT-4.1 كل رسالة بريد إلكتروني بالكامل.',f3_title:'ذكاء المحادثة',f3_desc:'نقرة واحدة تكشف تقرير استخباراتي كامل عن أي سلسلة بريد إلكتروني.',f4_title:'Gmail + Outlook موحد',f4_desc:'صندوق بريد واحد. كلا الحسابين.',f5_title:'واجهة كاملة بلغتك',f5_desc:'كل زر ورسالة تظهر بلغتك المختارة. العربية والفارسية تقلب التخطيط تلقائياً.',f6_title:'جسر اللغة الفيروسي',f6_desc:'كل بريد إلكتروني مرسل يتضمن رابط "عرض بلغتك".',ds_label:'البحث العميق',ds_title:'ابحث عن أي شيء. حتى ما لم يُقَل.',ds_desc:'اطرح سؤالاً بلغة عادية. يقرأ GPT-4.1 كل رسالة بالكامل.',ds_p1:'أسئلة بلغة طبيعية — لا حاجة لكلمات مفتاحية',ds_p2:'يجد الاعترافات والإغفالات وتحولات النبرة',ds_p3:'اقتباسات أدلة دقيقة مع تقييمات الأهمية',ds_p4:'تصدير تقرير نتائج كامل كـ PDF',ds_p5:'R7.96 لتحليل 300 رسالة بريد إلكتروني',lang_label:'أكثر من 90 لغة',lang_title:'نفس الأزرار الثلاثة. كل لغات الأرض.',lang_sub:'إنشاء · رد · إرسال — بكل لغة.',viral_label:'محرك النمو',viral_title:'كل بريد إلكتروني ترسله هو عرض للمنتج.',viral_sub:'رابط في التذييل يتيح للمستلمين رؤية بريدك بلغتهم.',viral_cta:'جرب Spreakr مجاناً →',viral_note:'100 مستخدم × 20 بريد/يوم = 2,000 انطباع يومياً.',pricing_label:'الأسعار',pricing_title:'أسعار بسيطة وشفافة.',pricing_sub:'تكاليف البحث بالذكاء الاصطناعي تُحصَّل لكل استخدام.',tier1_name:'تجريبي',tier1_price:'مجاني',tier1_period:'7 أيام · لا بطاقة مطلوبة',tier1_f1:'Gmail + Outlook موحد',tier1_f2:'إملاء صوتي',tier1_f3:'مسودة رد بالذكاء الاصطناعي',tier1_f4:'رصيد بحث R2',tier1_f5:'3 لغات',tier1_btn:'ابدأ تجربة مجانية',tier2_name:'Pro',tier2_period:'~16 · شهرياً',tier2_f1:'كل شيء في التجريبي',tier2_f2:'ذكاء المحادثة',tier2_f3:'البحث العميق',tier2_f4:'رصيد بحث R20',tier2_f5:'20 لغة',tier2_f6:'نقل إلى مجلد',tier2_f7:'رابط تذييل فيروسي',tier2_btn:'ابدأ الآن',tier3_name:'تنفيذي',tier3_period:'~32 · شهرياً',tier3_f1:'كل شيء في Pro',tier3_f2:'رصيد بحث R100',tier3_f3:'جميع اللغات 20+',tier3_f4:'حزم مصطلحات قانونية',tier3_f5:'تصدير تقارير PDF',tier3_f6:'دعم أولوية',tier3_f7:'إعدادات الفريق',tier3_btn:'اتصل بنا',aff_label:'برنامج الشراكة',aff_title:'اكسب دخلاً متكرراً. اعمل من أي مكان.',aff_sub:'احصل على كود فريد. شاركه. اكسب 30% من كل اشتراك كل شهر.',aff_s1:'عمولة شهرية متكررة',aff_s2:'مكتسب لكل مشترك Pro شهرياً',aff_s3:'لا حد للإحالات أو الأرباح',aff_calc_title:'أمثلة على الأرباح الشهرية',aff_r1:'10 مشتركين Pro',aff_r2:'25 مشتركاً Pro',aff_r3:'50 مشتركاً Pro',aff_r4:'100 مشترك Pro',aff_btn:'تقدم لتصبح شريكاً',aff_note:'مفتوح للمحترفين عالمياً · يُدفع شهرياً عبر PayPal',cta_title:'صندوق البريد المبني لكل الآخرين.',cta_sub:'الأدوات الأخرى تمتلك الإنجليزية. مع Spreakr، أنت تمتلك العالم.',cta_btn1:'ابدأ مجاناً — 7 أيام',cta_btn2:'احجز عرضاً توضيحياً',cta_note:'لا بطاقة ائتمان مطلوبة · ألغِ في أي وقت · متوافق مع POPIA',footer_tagline:'أول مركز بريد إلكتروني بالذكاء الاصطناعي متعدد اللغات في العالم.',footer_product:'المنتج',footer_company:'الشركة',footer_about:'عن Spreakr',footer_contact:'اتصل بنا',footer_affiliate:'برنامج الشراكة',footer_press:'الصحافة',footer_legal:'قانوني',footer_privacy:'سياسة الخصوصية',footer_popia:'الامتثال لـ POPIA',footer_security:'الأمان',footer_terms:'شروط الخدمة'},
 
-fa:{dir:'rtl',name:'فارسی',flag:'🇮🇷',nav_features:'ویژگی‌ها',nav_languages:'زبان‌ها',nav_pricing:'قیمت‌ها',nav_earn:'با ما درآمد کسب کنید',nav_cta:'شروع آزمایش رایگان',hero_badge:'🌍 اکنون از بیش از ۹۰ زبان پشتیبانی می‌شود',hero_h1_1:'ایمیل به زبان شما.',hero_h1_2:'ارسال به زبان آن‌ها.',hero_sub:'اولین مرکز ایمیل هوش مصنوعی چندزبانه جهان.',hero_cta_primary:'شروع رایگان — ۷ روز',hero_cta_secondary:'مشاهده ویژگی‌ها →',stat_1:'زبان پشتیبانی شده',stat_2:'ارائه‌دهنده ایمیل یکپارچه',stat_3:'جستجوی قضایی · ۳۰۰ ایمیل',stat_4:'تحلیل کامل صندوق ورودی',stat_5:'رقبایی که این را انجام می‌دهند',features_label:'ویژگی‌ها',features_title:'همه چیزی که صندوق ورودی شما نداشت.',features_sub:'برای متخصص چندزبانه ساخته شده.',f1_title:'دیکته صوتی به بیش از ۹۰ زبان',f1_desc:'ایمیل‌ها را به زبان مادری خود دیکته کنید. Spreakr رونویسی کرده و به زبان گیرنده ارسال می‌کند.',f2_title:'جستجوی قضایی عمیق ایمیل',f2_desc:'هر سوالی را به زبان ساده بپرسید. GPT-4.1 هر ایمیل را کامل می‌خواند.',f3_title:'هوش موضوع',f3_desc:'با یک کلیک گزارش کامل اطلاعاتی از هر زنجیره ایمیل دریافت کنید.',f4_title:'Gmail + Outlook یکپارچه',f4_desc:'یک صندوق ورودی. هر دو حساب.',f5_title:'رابط کاربری کامل به زبان شما',f5_desc:'هر دکمه و پیام به زبان انتخابی شما نمایش داده می‌شود.',f6_title:'پل زبانی ویروسی',f6_desc:'هر ایمیل ارسالی شامل لینک "مشاهده به زبان شما" است.',ds_label:'جستجوی عمیق',ds_title:'هر چیزی را پیدا کنید. حتی آنچه گفته نشده.',ds_desc:'سوالی به زبان ساده بپرسید. GPT-4.1 هر ایمیل را کامل می‌خواند.',ds_p1:'سوالات به زبان طبیعی — نیازی به کلیدواژه نیست',ds_p2:'اعترافات، حذفیات و تغییر لحن را پیدا می‌کند',ds_p3:'نقل‌قول‌های دقیق با رتبه‌بندی اهمیت',ds_p4:'صدور گزارش کامل به صورت PDF',ds_p5:'R7.96 برای تحلیل ۳۰۰ ایمیل',lang_label:'بیش از ۹۰ زبان',lang_title:'همان سه دکمه. هر زبانی روی زمین.',lang_sub:'نوشتن · پاسخ · ارسال — به هر زبانی.',viral_label:'موتور رشد',viral_title:'هر ایمیلی که ارسال می‌کنید یک دمو محصول است.',viral_sub:'یک لینک در پاورقی به گیرندگان اجازه می‌دهد ایمیل شما را به زبان خودشان ببینند.',viral_cta:'Spreakr را رایگان امتحان کنید →',viral_note:'۱۰۰ کاربر × ۲۰ ایمیل/روز = ۲,۰۰۰ نمایش روزانه.',pricing_label:'قیمت‌ها',pricing_title:'قیمت‌گذاری ساده و شفاف.',pricing_sub:'هزینه‌های جستجوی هوش مصنوعی به ازای هر استفاده محاسبه می‌شود.',tier1_name:'آزمایشی',tier1_price:'رایگان',tier1_period:'۷ روز · بدون نیاز به کارت',tier1_f1:'Gmail + Outlook یکپارچه',tier1_f2:'دیکته صوتی',tier1_f3:'پاسخ پیش‌نویس هوش مصنوعی',tier1_f4:'اعتبار جستجو R2',tier1_f5:'۳ زبان',tier1_btn:'شروع آزمایش رایگان',tier2_name:'Pro',tier2_period:'~16 · ماهانه',tier2_f1:'همه چیز در آزمایشی',tier2_f2:'هوش موضوع',tier2_f3:'جستجوی عمیق',tier2_f4:'اعتبار جستجو R20',tier2_f5:'۲۰ زبان',tier2_f6:'انتقال به پوشه',tier2_f7:'لینک پاورقی ویروسی',tier2_btn:'شروع کنید',tier3_name:'اجرایی',tier3_period:'~32 · ماهانه',tier3_f1:'همه چیز در Pro',tier3_f2:'اعتبار جستجو R100',tier3_f3:'تمام ۹۰+ زبان',tier3_f4:'بسته‌های اصطلاحات حقوقی',tier3_f5:'صدور گزارش PDF',tier3_f6:'پشتیبانی اولویت‌دار',tier3_f7:'تنظیمات تیم',tier3_btn:'تماس با ما',aff_label:'برنامه همکاری در فروش',aff_title:'درآمد مکرر کسب کنید. از هر جایی کار کنید.',aff_sub:'یک کد منحصر به فرد دریافت کنید. آن را به اشتراک بگذارید. ماهانه ۳۰٪ از هر اشتراک کسب کنید.',aff_s1:'کمیسیون ماهانه مکرر',aff_s2:'درآمد به ازای هر مشترک Pro در ماه',aff_s3:'بدون محدودیت در معرفی‌ها',aff_calc_title:'نمونه درآمد ماهانه',aff_r1:'۱۰ مشترک Pro',aff_r2:'۲۵ مشترک Pro',aff_r3:'۵۰ مشترک Pro',aff_r4:'۱۰۰ مشترک Pro',aff_btn:'درخواست همکاری',aff_note:'برای متخصصان در سراسر جهان · پرداخت ماهانه از طریق PayPal',cta_title:'صندوق ورودی ساخته شده برای همه دیگران.',cta_sub:'ابزارهای دیگر انگلیسی را دارند. با Spreakr، شما دنیا را دارید.',cta_btn1:'رایگان شروع کنید — ۷ روز',cta_btn2:'رزرو دمو',cta_note:'بدون نیاز به کارت اعتباری · هر زمان لغو کنید',footer_tagline:'اولین مرکز ایمیل هوش مصنوعی چندزبانه جهان.',footer_product:'محصول',footer_company:'شرکت',footer_about:'درباره ما',footer_contact:'تماس',footer_affiliate:'برنامه همکاری',footer_press:'مطبوعات',footer_legal:'حقوقی',footer_privacy:'سیاست حریم خصوصی',footer_popia:'رعایت POPIA',footer_security:'امنیت',footer_terms:'شرایط خدمات'},
-
-fr:{dir:'ltr',name:'Français',flag:'🇫🇷',nav_features:'Fonctionnalités',nav_languages:'Langues',nav_pricing:'Tarifs',nav_earn:'Gagnez avec nous',nav_cta:'Essai gratuit',hero_badge:'🌍 Plus de 90 langues supportées',hero_h1_1:'Email dans votre langue.',hero_h1_2:'Envoyez dans la leur.',hero_sub:"Le premier centre d'email IA multilingue au monde. Dictez en afrikaans, yoruba, farsi, hindi — envoyez professionnellement dans n'importe quelle langue.",hero_cta_primary:'Commencer gratuitement — 7 jours',hero_cta_secondary:'Voir les fonctionnalités →',stat_1:'Langues supportées',stat_2:'Fournisseurs d\'email unifiés',stat_3:'Recherche légale · 300 emails',stat_4:'Analyse complète de la boîte de réception',stat_5:'Concurrents qui font cela',features_label:'Fonctionnalités',features_title:'Tout ce qui manquait à votre boîte de réception.',features_sub:'Conçu pour le professionnel multilingue.',f1_title:'Dictée vocale en 20+ langues',f1_desc:"Dictez des emails dans votre langue maternelle. Spreakr transcrit et envoie dans la langue du destinataire.",f2_title:'Recherche légale approfondie',f2_desc:'Posez n\'importe quelle question en langage naturel. GPT-4.1 lit chaque email en entier.',f3_title:'Intelligence de fil de discussion',f3_desc:'Un clic révèle un rapport complet sur n\'importe quelle chaîne d\'emails.',f4_title:'Gmail + Outlook unifiés',f4_desc:'Une boîte de réception. Les deux comptes.',f5_title:'Interface complète dans votre langue',f5_desc:'Chaque bouton et message s\'affiche dans votre langue choisie.',f6_title:'Pont linguistique viral',f6_desc:'Chaque email envoyé inclut un lien "Voir dans votre langue".',ds_label:'Recherche Approfondie',ds_title:"Trouvez n'importe quoi. Même ce qui n'a pas été dit.",ds_desc:'Posez une question en langage naturel. GPT-4.1 lit chaque email en entier.',ds_p1:'Questions en langage naturel — pas de mots-clés nécessaires',ds_p2:'Trouve aveux, omissions et changements de ton',ds_p3:'Citations exactes avec évaluations de signification',ds_p4:'Exporter le rapport complet en PDF',ds_p5:'R7.96 pour analyser 300 emails',lang_label:'20+ Langues',lang_title:'Les mêmes trois boutons. Toutes les langues du monde.',lang_sub:'Composer · Répondre · Envoyer — dans chaque langue.',viral_label:'Moteur de Croissance',viral_title:'Chaque email que vous envoyez est une démo du produit.',viral_sub:'Un lien en pied de page permet aux destinataires de voir votre email dans leur langue.',viral_cta:'Essayer Spreakr gratuitement →',viral_note:'100 utilisateurs × 20 emails/jour = 2 000 impressions quotidiennes.',pricing_label:'Tarifs',pricing_title:'Tarification simple et transparente.',pricing_sub:'Les coûts de recherche IA sont facturés à l\'utilisation.',tier1_name:'Essai',tier1_price:'Gratuit',tier1_period:'7 jours · sans carte',tier1_f1:'Gmail + Outlook unifiés',tier1_f2:'Dictée vocale',tier1_f3:'Brouillon IA',tier1_f4:'Crédit de recherche R2',tier1_f5:'3 langues',tier1_btn:'Commencer l\'essai gratuit',tier2_name:'Pro',tier2_period:'~16 · mensuel',tier2_f1:'Tout dans Essai',tier2_f2:'Intelligence de fil',tier2_f3:'Recherche approfondie',tier2_f4:'Crédit de recherche R20',tier2_f5:'20 langues',tier2_f6:'Déplacer vers dossier',tier2_f7:'Lien pied de page viral',tier2_btn:'Commencer',tier3_name:'Exécutif',tier3_period:'~32 · mensuel',tier3_f1:'Tout dans Pro',tier3_f2:'Crédit de recherche R100',tier3_f3:'Toutes les 20+ langues',tier3_f4:'Packs terminologie juridique',tier3_f5:'Rapports PDF',tier3_f6:'Support prioritaire',tier3_f7:'Paramètres d\'équipe',tier3_btn:'Nous contacter',aff_label:'Programme d\'Affiliation',aff_title:'Gagnez des revenus récurrents. Travaillez de partout.',aff_sub:'Obtenez un code unique. Partagez-le. Gagnez 30% de chaque abonnement chaque mois.',aff_s1:'Commission mensuelle récurrente',aff_s2:'Gagné par abonné Pro par mois',aff_s3:'Aucune limite sur les références',aff_calc_title:'Exemples de revenus mensuels',aff_r1:'10 abonnés Pro',aff_r2:'25 abonnés Pro',aff_r3:'50 abonnés Pro',aff_r4:'100 abonnés Pro',aff_btn:'Devenir affilié',aff_note:'Ouvert aux professionnels mondiaux · Payé mensuellement via PayPal',cta_title:'La boîte de réception pour tous les autres.',cta_sub:'Superhuman possède l\'anglais. Vous possédez le monde.',cta_btn1:'Commencer gratuitement — 7 jours',cta_btn2:'Réserver une démo',cta_note:'Aucune carte de crédit requise · Annulez à tout moment',footer_tagline:"Le premier centre d'email IA multilingue au monde.",footer_product:'Produit',footer_company:'Entreprise',footer_about:'À propos',footer_contact:'Contact',footer_affiliate:'Programme d\'affiliation',footer_press:'Presse',footer_legal:'Légal',footer_privacy:'Politique de confidentialité',footer_popia:'Conformité POPIA',footer_security:'Sécurité',footer_terms:'Conditions d\'utilisation'},
+fr:{dir:'ltr',name:'Français',flag:'🇫🇷',nav_features:'Fonctionnalités',nav_languages:'Langues',nav_pricing:'Tarifs',nav_earn:'Gagnez avec nous',nav_cta:'Essai gratuit',hero_badge:'🌍 Plus de 90 langues supportées',hero_h1_1:'Email dans votre langue.',hero_h1_2:'Envoyez dans la leur.',hero_sub:"Le premier centre d'email IA multilingue au monde. Dictez en afrikaans, yoruba, hindi — envoyez professionnellement dans n'importe quelle langue.",hero_cta_primary:'Commencer gratuitement — 7 jours',hero_cta_secondary:'Voir les fonctionnalités →',stat_1:'Langues supportées',stat_2:'Fournisseurs d\'email unifiés',stat_3:'Recherche légale · 300 emails',stat_4:'Analyse complète de la boîte de réception',stat_5:'Concurrents qui font cela',features_label:'Fonctionnalités',features_title:'Tout ce qui manquait à votre boîte de réception.',features_sub:'Conçu pour le professionnel multilingue.',f1_title:'Dictée vocale en 20+ langues',f1_desc:"Dictez des emails dans votre langue maternelle. Spreakr transcrit et envoie dans la langue du destinataire.",f2_title:'Recherche légale approfondie',f2_desc:'Posez n\'importe quelle question en langage naturel. GPT-4.1 lit chaque email en entier.',f3_title:'Intelligence de fil de discussion',f3_desc:'Un clic révèle un rapport complet sur n\'importe quelle chaîne d\'emails.',f4_title:'Gmail + Outlook unifiés',f4_desc:'Une boîte de réception. Les deux comptes.',f5_title:'Interface complète dans votre langue',f5_desc:'Chaque bouton et message s\'affiche dans votre langue choisie.',f6_title:'Pont linguistique viral',f6_desc:'Chaque email envoyé inclut un lien "Voir dans votre langue".',ds_label:'Recherche Approfondie',ds_title:"Trouvez n'importe quoi. Même ce qui n'a pas été dit.",ds_desc:'Posez une question en langage naturel. GPT-4.1 lit chaque email en entier.',ds_p1:'Questions en langage naturel — pas de mots-clés nécessaires',ds_p2:'Trouve aveux, omissions et changements de ton',ds_p3:'Citations exactes avec évaluations de signification',ds_p4:'Exporter le rapport complet en PDF',ds_p5:'R7.96 pour analyser 300 emails',lang_label:'20+ Langues',lang_title:'Les mêmes trois boutons. Toutes les langues du monde.',lang_sub:'Composer · Répondre · Envoyer — dans chaque langue.',viral_label:'Moteur de Croissance',viral_title:'Chaque email que vous envoyez est une démo du produit.',viral_sub:'Un lien en pied de page permet aux destinataires de voir votre email dans leur langue.',viral_cta:'Essayer Spreakr gratuitement →',viral_note:'100 utilisateurs × 20 emails/jour = 2 000 impressions quotidiennes.',pricing_label:'Tarifs',pricing_title:'Tarification simple et transparente.',pricing_sub:'Les coûts de recherche IA sont facturés à l\'utilisation.',tier1_name:'Essai',tier1_price:'Gratuit',tier1_period:'7 jours · sans carte',tier1_f1:'Gmail + Outlook unifiés',tier1_f2:'Dictée vocale',tier1_f3:'Brouillon IA',tier1_f4:'Crédit de recherche R2',tier1_f5:'3 langues',tier1_btn:'Commencer l\'essai gratuit',tier2_name:'Pro',tier2_period:'~16 · mensuel',tier2_f1:'Tout dans Essai',tier2_f2:'Intelligence de fil',tier2_f3:'Recherche approfondie',tier2_f4:'Crédit de recherche R20',tier2_f5:'20 langues',tier2_f6:'Déplacer vers dossier',tier2_f7:'Lien pied de page viral',tier2_btn:'Commencer',tier3_name:'Exécutif',tier3_period:'~32 · mensuel',tier3_f1:'Tout dans Pro',tier3_f2:'Crédit de recherche R100',tier3_f3:'Toutes les 20+ langues',tier3_f4:'Packs terminologie juridique',tier3_f5:'Rapports PDF',tier3_f6:'Support prioritaire',tier3_f7:'Paramètres d\'équipe',tier3_btn:'Nous contacter',aff_label:'Programme d\'Affiliation',aff_title:'Gagnez des revenus récurrents. Travaillez de partout.',aff_sub:'Obtenez un code unique. Partagez-le. Gagnez 30% de chaque abonnement chaque mois.',aff_s1:'Commission mensuelle récurrente',aff_s2:'Gagné par abonné Pro par mois',aff_s3:'Aucune limite sur les références',aff_calc_title:'Exemples de revenus mensuels',aff_r1:'10 abonnés Pro',aff_r2:'25 abonnés Pro',aff_r3:'50 abonnés Pro',aff_r4:'100 abonnés Pro',aff_btn:'Devenir affilié',aff_note:'Ouvert aux professionnels mondiaux · Payé mensuellement via PayPal',cta_title:'La boîte de réception pour tous les autres.',cta_sub:'Superhuman possède l\'anglais. Vous possédez le monde.',cta_btn1:'Commencer gratuitement — 7 jours',cta_btn2:'Réserver une démo',cta_note:'Aucune carte de crédit requise · Annulez à tout moment',footer_tagline:"Le premier centre d'email IA multilingue au monde.",footer_product:'Produit',footer_company:'Entreprise',footer_about:'À propos',footer_contact:'Contact',footer_affiliate:'Programme d\'affiliation',footer_press:'Presse',footer_legal:'Légal',footer_privacy:'Politique de confidentialité',footer_popia:'Conformité POPIA',footer_security:'Sécurité',footer_terms:'Conditions d\'utilisation'},
 
 hi:{dir:'ltr',name:'हिंदी',flag:'🇮🇳',nav_features:'विशेषताएं',nav_languages:'भाषाएं',nav_pricing:'मूल्य निर्धारण',nav_earn:'हमारे साथ कमाएं',nav_cta:'मुफ्त परीक्षण शुरू करें',hero_badge:'🌍 अब 20+ भाषाओं का समर्थन',hero_h1_1:'अपनी भाषा में ईमेल।',hero_h1_2:'उनकी भाषा में भेजें।',hero_sub:'दुनिया का पहला बहुभाषी AI ईमेल केंद्र।',hero_cta_primary:'मुफ्त शुरू करें — 7 दिन',hero_cta_secondary:'विशेषताएं देखें →',stat_1:'भाषाएं समर्थित',stat_2:'ईमेल प्रदाता एकीकृत',stat_3:'फोरेंसिक खोज · 300 ईमेल',stat_4:'पूर्ण इनबॉक्स AI विश्लेषण',stat_5:'प्रतिस्पर्धी जो यह करते हैं',features_label:'विशेषताएं',features_title:'वह सब कुछ जो आपके इनबॉक्स में नहीं था।',features_sub:'बहुभाषी पेशेवर के लिए बनाया गया।',f1_title:'20+ भाषाओं में वॉइस डिक्टेशन',f1_desc:'अपनी मातृभाषा में ईमेल डिक्टेट करें। Spreakr ट्रांस्क्राइब करता है और प्राप्तकर्ता की भाषा में भेजता है।',f2_title:'गहरी फोरेंसिक ईमेल खोज',f2_desc:'सामान्य भाषा में कोई भी प्रश्न पूछें। GPT-4.1 हर ईमेल पूरी तरह पढ़ता है।',f3_title:'थ्रेड इंटेलिजेंस',f3_desc:'एक क्लिक में किसी भी ईमेल चेन का पूरा इंटेलिजेंस रिपोर्ट।',f4_title:'Gmail + Outlook एकीकृत',f4_desc:'एक इनबॉक्स। दोनों खाते।',f5_title:'आपकी भाषा में पूर्ण UI',f5_desc:'हर बटन और संदेश आपकी चुनी हुई भाषा में प्रदर्शित होता है।',f6_title:'वायरल भाषा पुल',f6_desc:'हर भेजे गए ईमेल में "अपनी भाषा में देखें" लिंक शामिल है।',ds_label:'गहरी खोज',ds_title:'कुछ भी खोजें। जो नहीं कहा गया वह भी।',ds_desc:'सामान्य भाषा में प्रश्न पूछें। GPT-4.1 हर ईमेल पूरी तरह पढ़ता है।',ds_p1:'प्राकृतिक भाषा प्रश्न — कोई कीवर्ड नहीं चाहिए',ds_p2:'स्वीकारोक्ति, चूक और टोन बदलाव खोजता है',ds_p3:'महत्व रेटिंग के साथ सटीक साक्ष्य उद्धरण',ds_p4:'पूर्ण निष्कर्ष रिपोर्ट PDF के रूप में निर्यात करें',ds_p5:'300 ईमेल का विश्लेषण R7.96 में',lang_label:'20+ भाषाएं',lang_title:'वही तीन बटन। पृथ्वी की हर भाषा।',lang_sub:'लिखें · उत्तर दें · भेजें — हर भाषा में।',viral_label:'विकास इंजन',viral_title:'आपका हर भेजा ईमेल एक उत्पाद प्रदर्शन है।',viral_sub:'एक सूक्ष्म फुटर लिंक प्राप्तकर्ताओं को उनकी भाषा में आपका ईमेल देखने देता है।',viral_cta:'Spreakr मुफ्त आज़माएं →',viral_note:'100 उपयोगकर्ता × 20 ईमेल/दिन = 2,000 दैनिक इंप्रेशन।',pricing_label:'मूल्य निर्धारण',pricing_title:'सरल, पारदर्शी मूल्य निर्धारण।',pricing_sub:'AI खोज लागत प्रति उपयोग बिल की जाती है।',tier1_name:'परीक्षण',tier1_price:'मुफ्त',tier1_period:'7 दिन · कोई कार्ड नहीं',tier1_f1:'Gmail + Outlook एकीकृत',tier1_f2:'वॉइस डिक्टेशन',tier1_f3:'AI ड्राफ्ट उत्तर',tier1_f4:'R2 AI खोज क्रेडिट',tier1_f5:'3 भाषाएं',tier1_btn:'मुफ्त परीक्षण शुरू करें',tier2_name:'Pro',tier2_period:'~16 · मासिक',tier2_f1:'परीक्षण में सब कुछ',tier2_f2:'थ्रेड इंटेलिजेंस',tier2_f3:'गहरी खोज',tier2_f4:'R20 AI खोज क्रेडिट',tier2_f5:'20 भाषाएं',tier2_f6:'फोल्डर में ले जाएं',tier2_f7:'वायरल फुटर लिंक',tier2_btn:'शुरू करें',tier3_name:'कार्यकारी',tier3_period:'~32 · मासिक',tier3_f1:'Pro में सब कुछ',tier3_f2:'R100 AI खोज क्रेडिट',tier3_f3:'सभी 20+ भाषाएं',tier3_f4:'कानूनी शब्दावली पैक',tier3_f5:'PDF निर्यात रिपोर्ट',tier3_f6:'प्राथमिकता समर्थन',tier3_f7:'टीम सेटिंग्स',tier3_btn:'हमसे संपर्क करें',aff_label:'संबद्ध कार्यक्रम',aff_title:'आवर्ती आय अर्जित करें। कहीं से भी काम करें।',aff_sub:'एक अनूठा कोड प्राप्त करें। इसे साझा करें। हर महीने हर सदस्यता का 30% कमाएं।',aff_s1:'आवर्ती मासिक कमीशन',aff_s2:'प्रति Pro सदस्य प्रति माह अर्जित',aff_s3:'रेफरल या कमाई पर कोई सीमा नहीं',aff_calc_title:'मासिक कमाई के उदाहरण',aff_r1:'10 Pro सदस्य',aff_r2:'25 Pro सदस्य',aff_r3:'50 Pro सदस्य',aff_r4:'100 Pro सदस्य',aff_btn:'संबद्ध बनने के लिए आवेदन करें',aff_note:'विश्व स्तर पर पेशेवरों के लिए खुला · PayPal के माध्यम से मासिक भुगतान',cta_title:'सभी दूसरों के लिए बना इनबॉक्स।',cta_sub:'अन्य टूल्स के पास अंग्रेजी है। Spreakr के साथ, आपके पास दुनिया है।',cta_btn1:'मुफ्त शुरू करें — 7 दिन',cta_btn2:'डेमो बुक करें',cta_note:'कोई क्रेडिट कार्ड आवश्यक नहीं · कभी भी रद्द करें',footer_tagline:'दुनिया का पहला बहुभाषी AI ईमेल केंद्र।',footer_product:'उत्पाद',footer_company:'कंपनी',footer_about:'हमारे बारे में',footer_contact:'संपर्क',footer_affiliate:'संबद्ध कार्यक्रम',footer_press:'प्रेस',footer_legal:'कानूनी',footer_privacy:'गोपनीयता नीति',footer_popia:'POPIA अनुपालन',footer_security:'सुरक्षा',footer_terms:'सेवा की शर्तें'},
 
@@ -888,7 +1176,6 @@ const LANG_LIST = [
   {code:'en',flag:'🇬🇧',name:'English'},
   {code:'af',flag:'🇿🇦',name:'Afrikaans'},
   {code:'ar',flag:'🇸🇦',name:'العربية'},
-  {code:'fa',flag:'🇮🇷',name:'فارسی'},
   {code:'hi',flag:'🇮🇳',name:'हिंदी'},
   {code:'yo',flag:'🇳🇬',name:'Yorùbá'},
   {code:'fr',flag:'🇫🇷',name:'Français'},
@@ -1019,7 +1306,7 @@ const FLAG_CC = {
   en:'gb',af:'za',ar:'sa',fa:'ir',hi:'in',yo:'ng',fr:'fr',de:'de',pt:'br',es:'es',sw:'ke'
 };
 const FLAG_EMOJI = {
-  en:'🇬🇧',af:'🇿🇦',ar:'🇸🇦',fa:'🇮🇷',hi:'🇮🇳',yo:'🇳🇬',fr:'🇫🇷',de:'🇩🇪',pt:'🇧🇷',es:'🇪🇸',sw:'🇰🇪'
+  en:'🇬🇧',af:'🇿🇦',ar:'🇸🇦',hi:'🇮🇳',yo:'🇳🇬',fr:'🇫🇷',de:'🇩🇪',pt:'🇧🇷',es:'🇪🇸',sw:'🇰🇪'
 };
 function flagMarkup(code){
   var cc = FLAG_CC[code] || 'un';
@@ -1029,7 +1316,6 @@ function flagMarkup(code){
 const PILLS = [
   {name:'Afrikaans',code:'af',d:0},
   {name:'العربية',code:'ar',d:100},
-  {name:'فارسی',code:'fa',d:200},
   {name:'हिंदी',code:'hi',d:300},
   {name:'Yorùbá',code:'yo',d:400},
   {name:'Français',code:'fr',d:600},
@@ -1039,30 +1325,33 @@ const PILLS = [
   {name:'English',code:'en',d:1100},
   {name:'Español',code:'es',d:1200}
 ];
-const c = document.getElementById('langFloat');
-PILLS.forEach(l => {
-  const el = document.createElement('button');
-  el.type = 'button';
-  el.className = 'lang-pill';
-  el.style.animationDelay = l.d + 'ms';
-  el.style.cursor = LOCALES[l.code] ? 'pointer' : 'default';
-  el.innerHTML = flagMarkup(l.code) + '<span>' + l.name + '</span>';
-  if (LOCALES[l.code]) {
-    el.title = 'View site in ' + l.name;
-    el.addEventListener('click', () => {
-      applyTranslations(l.code);
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    });
-    el.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Enter' || ev.key === ' ') {
-        ev.preventDefault();
+try {
+  const c = document.getElementById('langFloat');
+  c.innerHTML = ''; // clear static fallback pills
+  PILLS.forEach(l => {
+    const el = document.createElement('button');
+    el.type = 'button';
+    el.className = 'lang-pill';
+    el.style.animationDelay = l.d + 'ms';
+    el.style.cursor = LOCALES[l.code] ? 'pointer' : 'default';
+    el.innerHTML = flagMarkup(l.code) + '<span>' + l.name + '</span>';
+    if (LOCALES[l.code]) {
+      el.title = 'View site in ' + l.name;
+      el.addEventListener('click', () => {
         applyTranslations(l.code);
         window.scrollTo({top: 0, behavior: 'smooth'});
-      }
-    });
-  }
-  c.appendChild(el);
-});
+      });
+      el.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') {
+          ev.preventDefault();
+          applyTranslations(l.code);
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+      });
+    }
+    c.appendChild(el);
+  });
+} catch(e) { console.error('Pills init error:', e); }
 
 document.getElementById('langBtnLabel').innerHTML = flagMarkup('en') + '<span>EN</span>';
 const oldApply = applyTranslations;
@@ -1077,17 +1366,17 @@ applyTranslations = function(lang) {
 };
 
 const PRICING_EXTRA_I18N = {
-  en:{popular:'Most Popular',emailsProvider:'Emails loaded per provider',loadAll:'Load All emails',annual:'Annual plans available · Cancel anytime',mo:'/mo',tier2Amount:'R349',tier3Amount:'R549'},
-  af:{popular:'Gewildste',emailsProvider:'E-posse gelaai per verskaffer',loadAll:'Laai alle e-posse',annual:'Jaarplanne beskikbaar · Kanselleer enige tyd',mo:'/mnd',tier2Amount:'R349',tier3Amount:'R549'},
-  ar:{popular:'الأكثر شعبية',emailsProvider:'الرسائل المحمّلة لكل مزوّد',loadAll:'تحميل كل الرسائل',annual:'خطط سنوية متاحة · إلغاء في أي وقت',mo:'/شهر',tier2Amount:'R349',tier3Amount:'R549'},
-  fa:{popular:'محبوب‌ترین',emailsProvider:'ایمیل‌های بارگذاری‌شده برای هر سرویس',loadAll:'بارگذاری همه ایمیل‌ها',annual:'پلن سالانه موجود است · لغو در هر زمان',mo:'/ماه',tier2Amount:'R349',tier3Amount:'R549'},
-  hi:{popular:'सबसे लोकप्रिय',emailsProvider:'प्रति प्रदाता लोड किए गए ईमेल',loadAll:'सभी ईमेल लोड करें',annual:'वार्षिक प्लान उपलब्ध · कभी भी रद्द करें',mo:'/माह',tier2Amount:'₹199',tier3Amount:'₹299'},
-  yo:{popular:'Tí ó gbajúgbajà jù',emailsProvider:'Ìmèlì tí a kó sórí olùpèsè kọọkan',loadAll:'Kó gbogbo ìmèlì',annual:'Àwọn ètò ọdún wà · Fagilé nígbàkúgbà',mo:'/osu',tier2Amount:'R349',tier3Amount:'R549'},
-  fr:{popular:'Le plus populaire',emailsProvider:'Emails chargés par fournisseur',loadAll:'Charger tous les emails',annual:'Forfaits annuels disponibles · Annulez à tout moment',mo:'/mois',tier2Amount:'R349',tier3Amount:'R549'},
-  de:{popular:'Am beliebtesten',emailsProvider:'Geladene E-Mails pro Anbieter',loadAll:'Alle E-Mails laden',annual:'Jahrespläne verfügbar · Jederzeit kündbar',mo:'/Monat',tier2Amount:'R349',tier3Amount:'R549'},
-  pt:{popular:'Mais popular',emailsProvider:'Emails carregados por provedor',loadAll:'Carregar todos os emails',annual:'Planos anuais disponíveis · Cancele quando quiser',mo:'/mês',tier2Amount:'R349',tier3Amount:'R549'},
-  es:{popular:'Más popular',emailsProvider:'Emails cargados por proveedor',loadAll:'Cargar todos los emails',annual:'Planes anuales disponibles · Cancela cuando quieras',mo:'/mes',tier2Amount:'R349',tier3Amount:'R549'},
-  sw:{popular:'Maarufu zaidi',emailsProvider:'Barua pepe zilizopakiwa kwa kila mtoa huduma',loadAll:'Pakia barua pepe zote',annual:'Mipango ya mwaka inapatikana · Ghairi wakati wowote',mo:'/mwezi',tier2Amount:'R349',tier3Amount:'R549'}
+  en:{popular:'Most Popular',emailsProvider:'Emails loaded per provider',loadAll:'Load All emails',annual:'Annual plans available · Cancel anytime',mo:'/mo',tier2Amount:'R349',tier3Amount:'R549',stepwise:''},
+  af:{popular:'Gewildste',emailsProvider:'E-posse gelaai per verskaffer',loadAll:'Laai alle e-posse',annual:'Jaarplanne beskikbaar · Kanselleer enige tyd',mo:'/mnd',tier2Amount:'R349',tier3Amount:'R549',stepwise:'Trapgewyse prysstruktuur afhangend van jou besigheidsgrootte.'},
+  ar:{popular:'الأكثر شعبية',emailsProvider:'الرسائل المحمّلة لكل مزوّد',loadAll:'تحميل كل الرسائل',annual:'خطط سنوية متاحة · إلغاء في أي وقت',mo:'/شهر',tier2Amount:'R349',tier3Amount:'R549',stepwise:'هيكل تسعير تدريجي حسب حجم عملك.'},
+  fa:{popular:'محبوب‌ترین',emailsProvider:'ایمیل‌های بارگذاری‌شده برای هر سرویس',loadAll:'بارگذاری همه ایمیل‌ها',annual:'پلن سالانه موجود است · لغو در هر زمان',mo:'/ماه',tier2Amount:'R349',tier3Amount:'R549',stepwise:'ساختار قیمت‌گذاری پله‌ای بر اساس اندازه کسب‌وکار شما.'},
+  hi:{popular:'सबसे लोकप्रिय',emailsProvider:'प्रति प्रदाता लोड किए गए ईमेल',loadAll:'सभी ईमेल लोड करें',annual:'वार्षिक प्लान उपलब्ध · कभी भी रद्द करें',mo:'/माह',tier2Amount:'₹199',tier3Amount:'₹299',stepwise:'आपके व्यवसाय के आकार के अनुसार चरण-वार मूल्य संरचना।'},
+  yo:{popular:'Tí ó gbajúgbajà jù',emailsProvider:'Ìmèlì tí a kó sórí olùpèsè kọọkan',loadAll:'Kó gbogbo ìmèlì',annual:'Àwọn ètò ọdún wà · Fagilé nígbàkúgbà',mo:'/osu',tier2Amount:'R349',tier3Amount:'R549',stepwise:'Ètò idiyele ìgbésókè gẹ́gẹ́ bí ìwọ̀n iṣẹ́ rẹ.'},
+  fr:{popular:'Le plus populaire',emailsProvider:'Emails chargés par fournisseur',loadAll:'Charger tous les emails',annual:'Forfaits annuels disponibles · Annulez à tout moment',mo:'/mois',tier2Amount:'R349',tier3Amount:'R549',stepwise:'Tarification progressive selon la taille de votre entreprise.'},
+  de:{popular:'Am beliebtesten',emailsProvider:'Geladene E-Mails pro Anbieter',loadAll:'Alle E-Mails laden',annual:'Jahrespläne verfügbar · Jederzeit kündbar',mo:'/Monat',tier2Amount:'R349',tier3Amount:'R549',stepwise:'Stufenweise Preisstruktur je nach Unternehmensgröße.'},
+  pt:{popular:'Mais popular',emailsProvider:'Emails carregados por provedor',loadAll:'Carregar todos os emails',annual:'Planos anuais disponíveis · Cancele quando quiser',mo:'/mês',tier2Amount:'R349',tier3Amount:'R549',stepwise:'Estrutura de preços escalonada de acordo com o tamanho do seu negócio.'},
+  es:{popular:'Más popular',emailsProvider:'Emails cargados por proveedor',loadAll:'Cargar todos los emails',annual:'Planes anuales disponibles · Cancela cuando quieras',mo:'/mes',tier2Amount:'R349',tier3Amount:'R549',stepwise:'Estructura de precios escalonada según el tamaño de tu empresa.'},
+  sw:{popular:'Maarufu zaidi',emailsProvider:'Barua pepe zilizopakiwa kwa kila mtoa huduma',loadAll:'Pakia barua pepe zote',annual:'Mipango ya mwaka inapatikana · Ghairi wakati wowote',mo:'/mwezi',tier2Amount:'R349',tier3Amount:'R549',stepwise:'Muundo wa bei unaopanda kulingana na ukubwa wa biashara yako.'}
 };
 function applyPricingExtras(lang){
   var t = PRICING_EXTRA_I18N[lang] || PRICING_EXTRA_I18N.en;
@@ -1105,6 +1394,8 @@ function applyPricingExtras(lang){
   if (l1) l1.textContent = t.loadAll;
   if (lr) lr.textContent = t.loadAll;
   if (an) an.textContent = t.annual;
+  var sw = document.getElementById('pricing-stepwise');
+  if (sw) sw.textContent = t.stepwise || 'Step-wise pricing structure depending on your business size.';
   if (m2) m2.textContent = t.mo || '/mo';
   if (m3) m3.textContent = t.mo || '/mo';
   if (a2) a2.textContent = t.tier2Amount || 'R349';
@@ -1132,23 +1423,21 @@ window.AFFILIATE_EXTRA_I18N = {
 };
 window.HERO_CALC_I18N = {
   en:{stanfordKicker:'Stanford University · Published Research',stanfordQuote:'"Speech recognition is <strong style="color:var(--accent)">3× faster than typing</strong> — and 20% more accurate. We were quite surprised to find it was almost three times faster." — Prof. James Landay, Stanford CS',stanfordLink:'Read the actual Stanford research paper →',title:'<span style="color:var(--accent)">How much time</span> will you save with <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?',emails:'Emails per day',team:'Team size',perDay:'Per day · per person',perMonth:'Per month · per person',teamMonth:'Whole team · per month',speakPrefix:'Speaking is',speakSuffix:'than typing · Stanford HCI Research ·',breakdown:'See full breakdown ↓',person:'person',people:'people',min:'min',hrs:'hrs',workdays:'workdays'},
-  af:{stanfordKicker:'Stanford Universiteit · Gepubliseerde navorsing',stanfordQuote:'"Spraakherkenning is <strong style="color:var(--accent)">3× vinniger as tik</strong> — en 20% meer akkuraat. Ons was verbaas om te sien dit is amper drie keer vinniger." — Prof. James Landay, Stanford CS',stanfordLink:'Lees die werklike Stanford-navorsingsartikel →',title:'<span style="color:var(--accent)">Hoeveel tyd</span> sal jy met <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span> spaar?',emails:'E-posse per dag',team:'Spangrootte',perDay:'Per dag · per persoon',perMonth:'Per maand · per persoon',teamMonth:'Hele span · per maand',speakPrefix:'Praat is',speakSuffix:'vinniger as tik · Stanford HCI-navorsing ·',breakdown:'Sien volledige uiteensetting ↓',person:'persoon',people:'mense',min:'min',hrs:'ure',workdays:'werksdae'},
-  ar:{title:'<span style="color:var(--accent)">كم من الوقت</span> ستوفّر مع <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>؟',emails:'رسائل يوميًا',team:'حجم الفريق',perDay:'يوميًا · لكل شخص',perMonth:'شهريًا · لكل شخص',teamMonth:'الفريق بالكامل · شهريًا',speakPrefix:'التحدث أسرع',speakSuffix:'من الكتابة · أبحاث ستانفورد HCI ·',breakdown:'شاهد التفاصيل الكاملة ↓',person:'شخص',people:'أشخاص',min:'د',hrs:'س',workdays:'أيام عمل'},
-  fa:{title:'<span style="color:var(--accent)">چقدر زمان</span> با <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span> ذخیره می‌کنی؟',emails:'ایمیل در روز',team:'اندازه تیم',perDay:'در روز · برای هر نفر',perMonth:'در ماه · برای هر نفر',teamMonth:'کل تیم · در ماه',speakPrefix:'صحبت کردن',speakSuffix:'از تایپ سریع‌تر است · پژوهش Stanford HCI ·',breakdown:'مشاهده جزئیات کامل ↓',person:'نفر',people:'نفر',min:'دقیقه',hrs:'ساعت',workdays:'روز کاری'},
-  hi:{title:'<span style="color:var(--accent)">कितना समय</span> आप <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span> से बचाएंगे?',emails:'प्रति दिन ईमेल',team:'टीम आकार',perDay:'प्रति दिन · प्रति व्यक्ति',perMonth:'प्रति माह · प्रति व्यक्ति',teamMonth:'पूरी टीम · प्रति माह',speakPrefix:'बोलना',speakSuffix:'टाइपिंग से तेज है · Stanford HCI रिसर्च ·',breakdown:'पूरा विवरण देखें ↓',person:'व्यक्ति',people:'लोग',min:'मिनट',hrs:'घंटे',workdays:'कार्यदिवस'},
-  yo:{title:'<span style="color:var(--accent)">Àkókò mélòó</span> ni o máa fi pamọ́ pẹ̀lú <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?',emails:'Ìmèlì lojoojúmọ́',team:'Iwọn ẹgbẹ́',perDay:'Lójoojúmọ́ · fún ènìyàn kan',perMonth:'Lóṣooṣù · fún ènìyàn kan',teamMonth:'Gbogbo ẹgbẹ́ · lóṣooṣù',speakPrefix:'Sísọ',speakSuffix:'yára ju títẹ lọ · Ìwádìí Stanford HCI ·',breakdown:'Wo ìtúpalẹ̀ kíkún ↓',person:'ẹni',people:'awọn eniyan',min:'ìṣẹ́jú',hrs:'wákàtí',workdays:'ọjọ́ iṣẹ́'},
-  fr:{title:'<span style="color:var(--accent)">Combien de temps</span> allez-vous gagner avec <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span> ?',emails:'Emails par jour',team:'Taille d’équipe',perDay:'Par jour · par personne',perMonth:'Par mois · par personne',teamMonth:'Équipe entière · par mois',speakPrefix:'Parler est',speakSuffix:'plus rapide que taper · Recherche Stanford HCI ·',breakdown:'Voir le détail complet ↓',person:'personne',people:'personnes',min:'min',hrs:'h',workdays:'jours ouvrés'},
-  de:{title:'<span style="color:var(--accent)">Wie viel Zeit</span> sparen Sie mit <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?',emails:'E-Mails pro Tag',team:'Teamgröße',perDay:'Pro Tag · pro Person',perMonth:'Pro Monat · pro Person',teamMonth:'Gesamtes Team · pro Monat',speakPrefix:'Sprechen ist',speakSuffix:'schneller als Tippen · Stanford HCI Forschung ·',breakdown:'Vollständige Aufschlüsselung ↓',person:'Person',people:'Personen',min:'Min',hrs:'Std',workdays:'Arbeitstage'},
-  pt:{title:'<span style="color:var(--accent)">Quanto tempo</span> você vai economizar com <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?',emails:'Emails por dia',team:'Tamanho da equipe',perDay:'Por dia · por pessoa',perMonth:'Por mês · por pessoa',teamMonth:'Equipe inteira · por mês',speakPrefix:'Falar é',speakSuffix:'mais rápido que digitar · Pesquisa Stanford HCI ·',breakdown:'Ver análise completa ↓',person:'pessoa',people:'pessoas',min:'min',hrs:'h',workdays:'dias úteis'},
-  es:{title:'<span style="color:var(--accent)">Cuánto tiempo</span> ahorrarás con <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?',emails:'Emails por día',team:'Tamaño del equipo',perDay:'Por día · por persona',perMonth:'Por mes · por persona',teamMonth:'Equipo completo · por mes',speakPrefix:'Hablar es',speakSuffix:'más rápido que escribir · Investigación Stanford HCI ·',breakdown:'Ver desglose completo ↓',person:'persona',people:'personas',min:'min',hrs:'h',workdays:'días laborables'},
-  sw:{title:'<span style="color:var(--accent)">Utaokoa muda</span> kiasi gani kwa <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?',emails:'Barua pepe kwa siku',team:'Ukubwa wa timu',perDay:'Kwa siku · kwa mtu',perMonth:'Kwa mwezi · kwa mtu',teamMonth:'Timu nzima · kwa mwezi',speakPrefix:'Kuongea ni',speakSuffix:'haraka kuliko kuandika · Utafiti wa Stanford HCI ·',breakdown:'Tazama uchambuzi kamili ↓',person:'mtu',people:'watu',min:'dak',hrs:'saa',workdays:'siku za kazi'}
+  af:{stanfordKicker:'Stanford Universiteit · Gepubliseerde navorsing',stanfordQuote:'"Spraakherkenning is <strong style="color:var(--accent)">3× vinniger as tik</strong> — en 20% meer akkuraat. Ons was verbaas om te sien dit is amper drie keer vinniger." — Prof. James Landay, Stanford CS',stanfordLink:'Lees die werklieke Stanford-navorsingsartikel →',title:'<span style="color:var(--accent)">Hoeveel tyd</span> sal jy met <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span> spaar?',emails:'E-posse per dag',team:'Spangrootte',perDay:'Per dag · per persoon',perMonth:'Per maand · per persoon',teamMonth:'Hele span · per maand',speakPrefix:'Praat is',speakSuffix:'vinniger as tik · Stanford HCI-navorsing ·',breakdown:'Sien volledige uiteensetting ↓',person:'persoon',people:'mense',min:'min',hrs:'ure',workdays:'werksdae',rateLabel:'Uurlikse koers per werknemer',costSaving:'Maandelikse kostebesparing · hele span'},
+  ar:{title:'<span style="color:var(--accent)">كم من الوقت</span> ستوفّر مع <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>؟',emails:'رسائل يوميًا',team:'حجم الفريق',perDay:'يوميًا · لكل شخص',perMonth:'شهريًا · لكل شخص',teamMonth:'الفريق بالكامل · شهريًا',speakPrefix:'التحدث أسرع',speakSuffix:'من الكتابة · أبحاث ستانفورد HCI ·',breakdown:'شاهد التفاصيل الكاملة ↓',person:'شخص',people:'أشخاص',min:'د',hrs:'س',workdays:'أيام عمل',rateLabel:'السعر بالساعة لكل موظف',costSaving:'التوفير الشهري · الفريق بأكمله'},
+  fa:{title:'<span style="color:var(--accent)">چقدر زمان</span> با <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span> ذخیره می‌کنی؟',emails:'ایمیل در روز',team:'اندازه تیم',perDay:'در روز · برای هر نفر',perMonth:'در ماه · برای هر نفر',teamMonth:'کل تیم · در ماه',speakPrefix:'صحبت کردن',speakSuffix:'از تایپ سریع‌تر است · پژوهش Stanford HCI ·',breakdown:'مشاهده جزئیات کامل ↓',person:'نفر',people:'نفر',min:'دقیقه',hrs:'ساعت',workdays:'روز کاری',rateLabel:'نرخ ساعتی هر کارمند',costSaving:'صرفه‌جویی ماهانه · کل تیم'},
+  hi:{title:'<span style="color:var(--accent)">कितना समय</span> आप <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span> से बचाएंगे?',emails:'प्रति दिन ईमेल',team:'टीम आकार',perDay:'प्रति दिन · प्रति व्यक्ति',perMonth:'प्रति माह · प्रति व्यक्ति',teamMonth:'पूरी टीम · प्रति माह',speakPrefix:'बोलना',speakSuffix:'टाइपिंग से तेज है · Stanford HCI रिसर्च ·',breakdown:'पूरा विवरण देखें ↓',person:'व्यक्ति',people:'लोग',min:'मिनट',hrs:'घंटे',workdays:'कार्यदिवस',rateLabel:'प्रति कर्मचारी प्रति घंटा दर',costSaving:'मासिक लागत बचत · पूरी टीम'},
+  yo:{title:'<span style="color:var(--accent)">Àkókò mélòó</span> ni o máa fi pamọ́ pẹ̀lú <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?',emails:'Ìmèlì lojoojúmọ́',team:'Iwọn ẹgbẹ́',perDay:'Lójoojúmọ́ · fún ènìyàn kan',perMonth:'Lóṣooṣù · fún ènìyàn kan',teamMonth:'Gbogbo ẹgbẹ́ · lóṣooṣù',speakPrefix:'Sísọ',speakSuffix:'yára ju títẹ lọ · Ìwádìí Stanford HCI ·',breakdown:'Wo ìtúpalẹ̀ kíkún ↓',person:'ẹni',people:'awọn eniyan',min:'ìṣẹ́jú',hrs:'wákàtí',workdays:'ọjọ́ iṣẹ́',rateLabel:'Iye ọjọ́ iṣẹ́ fun oṣiṣẹ̀ kɔɔkan',costSaving:'Ànfàní owó oṣù · gbogbo ẹgbẹ́'},
+  fr:{title:'<span style="color:var(--accent)">Combien de temps</span> allez-vous gagner avec <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span> ?',emails:'Emails par jour',team:'Taille d’équipe',perDay:'Par jour · par personne',perMonth:'Par mois · par personne',teamMonth:'Équipe entière · par mois',speakPrefix:'Parler est',speakSuffix:'plus rapide que taper · Recherche Stanford HCI ·',breakdown:'Voir le détail complet ↓',person:'personne',people:'personnes',min:'min',hrs:'h',workdays:'jours ouvrés',rateLabel:'Taux horaire par employé',costSaving:"Économie mensuelle · toute l'équipe"},
+  de:{title:'<span style="color:var(--accent)">Wie viel Zeit</span> sparen Sie mit <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?',emails:'E-Mails pro Tag',team:'Teamgröße',perDay:'Pro Tag · pro Person',perMonth:'Pro Monat · pro Person',teamMonth:'Gesamtes Team · pro Monat',speakPrefix:'Sprechen ist',speakSuffix:'schneller als Tippen · Stanford HCI Forschung ·',breakdown:'Vollständige Aufschlüsselung ↓',person:'Person',people:'Personen',min:'Min',hrs:'Std',workdays:'Arbeitstage',rateLabel:'Stundensatz pro Mitarbeiter',costSaving:'Monatliche Kostenersparnis · ganzes Team'},
+  pt:{title:'<span style="color:var(--accent)">Quanto tempo</span> você vai economizar com <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?',emails:'Emails por dia',team:'Tamanho da equipe',perDay:'Por dia · por pessoa',perMonth:'Por mês · por pessoa',teamMonth:'Equipe inteira · por mês',speakPrefix:'Falar é',speakSuffix:'mais rápido que digitar · Pesquisa Stanford HCI ·',breakdown:'Ver análise completa ↓',person:'pessoa',people:'pessoas',min:'min',hrs:'h',workdays:'dias úteis',rateLabel:'Taxa horária por funcionário',costSaving:'Economia mensal · equipe inteira'},
+  es:{title:'<span style="color:var(--accent)">Cuánto tiempo</span> ahorrarás con <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?',emails:'Emails por día',team:'Tamaño del equipo',perDay:'Por día · por persona',perMonth:'Por mes · por persona',teamMonth:'Equipo completo · por mes',speakPrefix:'Hablar es',speakSuffix:'más rápido que escribir · Investigación Stanford HCI ·',breakdown:'Ver desglose completo ↓',person:'persona',people:'personas',min:'min',hrs:'h',workdays:'días laborables',rateLabel:'Tarifa por hora por empleado',costSaving:'Ahorro mensual · equipo completo'},
+  sw:{title:'<span style="color:var(--accent)">Utaokoa muda</span> kiasi gani kwa <span style="color:var(--accent)">Spr</span><span style="color:#fff">eakr</span>?',emails:'Barua pepe kwa siku',team:'Ukubwa wa timu',perDay:'Kwa siku · kwa mtu',perMonth:'Kwa mwezi · kwa mtu',teamMonth:'Timu nzima · kwa mwezi',speakPrefix:'Kuongea ni',speakSuffix:'haraka kuliko kuandika · Utafiti wa Stanford HCI ·',breakdown:'Tazama uchambuzi kamili ↓',person:'mtu',people:'watu',min:'dak',hrs:'saa',workdays:'siku za kazi',rateLabel:'Kiwango cha saa kwa mfanyakazi',costSaving:'Akiba ya kila mwezi · timu nzima'}
 };
 const HERO_MESSAGE_LINES = {
-  en:{l1:'Speak in English.',l2:'Automatically intelligent and professionally formulated.',l3:'Send in any language.',sub:'Every language. Every inbox. One intelligent command centre. Speak naturally. Write professionally. Translate instantly. Summarize in seconds. Search intelligently. Manage every email account and every language from one powerful platform.',note:'No need to EVER touch your keyboard again when it comes to your emails'},
-  af:{l1:'Praat in Afrikaans.',l2:'Outomaties intelligent en professioneel geformuleer.',l3:'Stuur in enige taal.',sub:'Elke taal. Elke inkassie. Een intelligente bevelsentrum. Praat natuurlik. Skryf professioneel. Vertaal onmiddellik. Som in sekondes op. Soek intelligent. Bestuur elke e-posrekening en elke taal vanaf een kragtige platform.',note:'Jy hoef NOOIT weer aan jou sleutelbord te raak wanneer dit by jou e-posse kom nie'},
-  ar:{l1:'تحدث بالعربية.',l2:'مصاغ تلقائيا بذكاء وبأسلوب احترافي.',l3:'أرسل بأي لغة.',sub:'كل لغة. كل صندوق بريد. مركز أوامر ذكي واحد. تحدث بطبيعية. اكتب باحترافية. ترجم فورا. لخّص خلال ثوان. ابحث بذكاء. أدر كل حساب بريد وكل لغة من منصة واحدة قوية.',note:'لا حاجة أبدا للمس لوحة المفاتيح مرة أخرى عندما يتعلق الأمر برسائلك الإلكترونية'},
-  fa:{l1:'به فارسی صحبت کنید.',l2:'به صورت خودکار هوشمند و حرفه‌ای تنظیم می‌شود.',l3:'به هر زبانی ارسال کنید.',sub:'هر زبان. هر صندوق ورودی. یک مرکز فرمان هوشمند. طبیعی صحبت کنید. حرفه‌ای بنویسید. فوری ترجمه کنید. در چند ثانیه خلاصه کنید. هوشمندانه جستجو کنید. همه حساب‌های ایمیل و همه زبان‌ها را از یک پلتفرم قدرتمند مدیریت کنید.',note:'دیگر هرگز نیازی نیست برای ایمیل‌هایتان به صفحه‌کلید دست بزنید'},
-  hi:{l1:'हिंदी में बोलें।',l2:'स्वचालित रूप से बुद्धिमान और पेशेवर रूप से तैयार।',l3:'किसी भी भाषा में भेजें।',sub:'हर भाषा। हर इनबॉक्स। एक इंटेलिजेंट कमांड सेंटर। स्वाभाविक बोलें। पेशेवर लिखें। तुरंत अनुवाद करें। सेकंडों में सारांश बनाएं। समझदारी से खोजें। एक शक्तिशाली प्लेटफ़ॉर्म से हर ईमेल अकाउंट और हर भाषा को मैनेज करें।',note:'आपको अपने ईमेल के लिए फिर कभी कीबोर्ड छूने की जरूरत नहीं'},
+  en:{l1:'Speak in English.',l2:'Spreakr automatically composes, translates and delivers your message in any of 20 languages — intelligently formatted and professionally written, every time.',l3:'Send in any language.',sub:'Every language. Every inbox. One intelligent command centre. Speak naturally. Write professionally. Translate instantly. Summarize in seconds. Search intelligently. Manage every email account and every language from one powerful platform.',note:'No need to EVER touch your keyboard again when it comes to your emails'},
+  af:{l1:'Praat in Afrikaans.',l2:'Outomaties intelligent en professioneel geformuleer.',l3:'Stuur in enige taal.',sub:'Elke taal. Elke inboks. Een intelligente bevelsentrum. Praat natuurlik. Skryf professioneel. Vertaal onmiddellik. Som in sekondes op. Soek intelligent. Bestuur elke e-posrekening en elke taal vanaf een kragtige platform.',note:'Jy hoef NOOIT weer aan jou sleutelbord te raak wanneer dit by jou e-posse kom nie'},
+  ar:{l1:'تحدث بالعربية.',l2:'مصاغ تلقائيا بذكاء وبأسلوب احترافي.',l3:'أرسل بأي لغة.',sub:'كل لغة. كل صندوق بريد. مركز أوامر ذكي واحد. تحدث بطبيعية. اكتب باحترافية. ترجم فورا. لخّص خلال ثوان. ابحث بذكاء. أدر كل حساب بريد وكل لغة من منصة واحدة قوية.',note:'لا حاجة أبدا للمس لوحة المفاتيح مرة أخرى عندما يتعلق الأمر برسائلك الإلكترونية'},  hi:{l1:'हिंदी में बोलें।',l2:'स्वचालित रूप से बुद्धिमान और पेशेवर रूप से तैयार।',l3:'किसी भी भाषा में भेजें।',sub:'हर भाषा। हर इनबॉक्स। एक इंटेलिजेंट कमांड सेंटर। स्वाभाविक बोलें। पेशेवर लिखें। तुरंत अनुवाद करें। सेकंडों में सारांश बनाएं। समझदारी से खोजें। एक शक्तिशाली प्लेटफ़ॉर्म से हर ईमेल अकाउंट और हर भाषा को मैनेज करें।',note:'आपको अपने ईमेल के लिए फिर कभी कीबोर्ड छूने की जरूरत नहीं'},
   yo:{l1:'Soro ni Yorùbá.',l2:'Lọ́na aifọwọyi, ọlọ́gbọn ati ti a ṣe ní ọ̀nà amọja.',l3:'Fi ranṣẹ ní èdè kankan.',sub:'Gbogbo ede. Gbogbo inbox. Ile-aṣẹ ọlọgbọn kan. Sọ nipa ti ara. Kọ ni ọna amọja. Túmọ lẹsẹkẹsẹ. Ṣoki ni aaya. Wa ni ọlọgbọn. Ṣakoso gbogbo iroyin imeeli ati gbogbo ede lati ori pẹpẹ alagbara kan.',note:'Ko si iwulo lati fi ọwọ kan keyboard rẹ laelae mọ nigbati o ba de awọn imeeli rẹ'},
   fr:{l1:'Parlez en français.',l2:'Formulé automatiquement avec intelligence et professionnalisme.',l3:'Envoyez dans toute langue.',sub:'Chaque langue. Chaque boîte de réception. Un seul centre de commande intelligent. Parlez naturellement. Écrivez professionnellement. Traduisez instantanément. Résumez en quelques secondes. Recherchez intelligemment. Gérez chaque compte email et chaque langue depuis une plateforme puissante.',note:'Plus besoin de toucher votre clavier quand il s agit de vos emails'},
   de:{l1:'Sprechen Sie auf Deutsch.',l2:'Automatisch intelligent und professionell formuliert.',l3:'In jeder Sprache senden.',sub:'Jede Sprache. Jeder Posteingang. Ein intelligentes Kommandozentrum. Sprechen Sie natürlich. Schreiben Sie professionell. Übersetzen Sie sofort. Fassen Sie in Sekunden zusammen. Suchen Sie intelligent. Verwalten Sie jedes E-Mail-Konto und jede Sprache über eine leistungsstarke Plattform.',note:'Sie muessen Ihre Tastatur fuer Ihre E-Mails nie wieder anfassen'},
@@ -1162,12 +1451,10 @@ function applyHeroMessageLines(lang){
   var l2 = document.querySelector('[data-i18n=\"hero_h1_2\"]');
   var l3 = document.querySelector('[data-i18n=\"hero_h1_3\"]');
   var sub = document.querySelector('[data-i18n=\"hero_sub\"]');
-  var note = document.getElementById('hero-keyboard-note');
   if (l1) l1.textContent = t.l1;
   if (l2) l2.textContent = t.l2;
   if (l3) l3.textContent = t.l3;
   if (sub) sub.textContent = t.sub || HERO_MESSAGE_LINES.en.sub;
-  if (note) note.textContent = t.note || HERO_MESSAGE_LINES.en.note;
 }
 function applyAffiliateExtras(lang){
   var t = window.AFFILIATE_EXTRA_I18N[lang] || window.AFFILIATE_EXTRA_I18N.en;
@@ -1194,9 +1481,11 @@ function applyHeroCalcExtras(lang){
   var map = {
     'hero-calc-emails-label': t.emails || e.emails,
     'hero-calc-team-label': t.team || e.team,
+    'hero-calc-rate-label': t.rateLabel || e.rateLabel,
     'hero-calc-perday-label': t.perDay || e.perDay,
     'hero-calc-permonth-label': t.perMonth || e.perMonth,
     'hero-calc-teammonth-label': t.teamMonth || e.teamMonth,
+    'hero-calc-costsaving-label': t.costSaving || e.costSaving,
     'hero-calc-speaking-prefix': t.speakPrefix || e.speakPrefix,
     'hero-calc-speaking-suffix': t.speakSuffix || e.speakSuffix,
     'hero-calc-breakdown-link': t.breakdown || e.breakdown
@@ -1213,11 +1502,169 @@ function applyHeroCalcExtras(lang){
     var el = document.getElementById(id);
     if (el) el.textContent = map[id];
   });
-  if (window.refreshHeroCalc) window.refreshHeroCalc();
+  if (window.applyRateCurrency) window.applyRateCurrency(lang);
+  else if (window.refreshHeroCalc) window.refreshHeroCalc();
 }
 
 buildDropdown();
 applyTranslations(detectLanguage());
 </script>
-</body>
-</html>
+
+<script>
+window.CONVINCED_I18N = {
+  en:["Improves professionalism and business credibility","Saves time on drafting, rewriting, and replying","Reduces admin workload","Lowers communication costs","Prevents missed actions, follow-ups, and to-dos","Helps teams respond faster","Makes communication easier across languages","Lets users write in their own language with confidence","Improves clarity and reduces misunderstandings","Creates more polished and consistent emails","Helps build stronger client relationships","Makes global communication feel local and personal","Reduces the stress of writing difficult emails","Helps non-native speakers sound fluent and professional","Speeds up decision-making with summaries","Makes inboxes easier to manage","Improves productivity across multiple email accounts","Reduces the risk of overlooked important messages","Helps capture and organize key information quickly","Improves response quality, not just speed","Supports better customer service","Increases efficiency for small businesses and teams","Cuts down on back-and-forth caused by unclear emails","Helps users stay on top of priorities","Pays for itself through time savings alone","Delivers value far above its cost, even on conservative estimates"],
+  af:["Verbeter professionalisme en besigheidgeloofwaardigheid","Bespaar tyd op opstel, herskryf en beantwoord","Verminder administratiewe werklading","Verlaag kommunikasiekoste","Voorkom gemiste aksies, opvolgings en take","Help spanne vinniger reageer","Maak kommunikasie oor tale heen maklieker","Laat gebruikers in hul eie taal skryf met selfvertroue","Verbeter duidelikheid en verminder misverstande","Skep meer gepoleerde en konsekwente e-posse","Help sterker kliënteverhoudings bou","Laat globale kommunikasie plaaslik en persoonlik voel","Verminder die stres van moeilike e-posse skryf","Help nie-moedertaalsprekers vloeiend en professioneel klink","Versnel besluitneming met opsommings","Maak inbokss maklieker om te bestuur","Verbeter produktiwiteit oor verskeie e-posrekeninge","Verminder die risiko van oor die hoof gesiene boodskappe","Help sleutelinligting vinnig vasleg en organiseer","Verbeter responsgehalte, nie net spoed nie","Ondersteun beter kliëntediens","Verhoog doeltreffendheid vir klein besighede en spanne","Verminder oor-en-weer boodskappe weens onduidelike e-posse","Help gebruikers bo-op prioriteite bly","Betaal vir homself deur tydbesparings alleen","Lewer waarde ver bo sy koste, selfs op konserwatiewe skattings"],
+  ar:["تحسين الاحترافية ومصداقية العمل","توفير الوقت في صياغة الرسائل وإعادة كتابتها والرد عليها","تقليل عبء العمل الإداري","خفض تكاليف التواصل","منع فوات المهام والمتابعات","مساعدة الفرق على الاستجابة بشكل أسرع","تسهيل التواصل عبر اللغات","تمكين المستخدمين من الكتابة بلغتهم بثقة","تحسين الوضوح وتقليل سوء الفهم","إنشاء رسائل بريد إلكتروني أكثر احترافية","بناء علاقات أقوى مع العملاء","جعل التواصل العالمي يبدو محليًا وشخصيًا","تقليل ضغط كتابة الرسائل الصعبة","مساعدة غير الناطقين باللغة الأم للتحدث بطلاقة","تسريع اتخاذ القرارات بالملخصات","تسهيل إدارة صناديق البريد","تحسين الإنتاجية عبر حسابات بريد متعددة","تقليل مخاطر إغفال الرسائل المهمة","التقاط المعلومات الرئيسية وتنظيمها بسرعة","تحسين جودة الردود، ليس فقط سرعتها","دعم خدمة عملاء أفضل","زيادة كفاءة الشركات والفرق الصغيرة","تقليل التبادل الناجم عن رسائل غير واضحة","مساعدة المستخدمين على متابعة الأولويات","يعوض تكلفته من خلال توفير الوقت وحده","يقدم قيمة تتجاوز تكلفته بكثير حتى بتقديرات محافظة"],
+  fa:["بهبود حرفه‌ای بودن و اعتبار کسب‌وکار","صرفه‌جویی در نوشتن، ویرایش و پاسخ به ایمیل‌ها","کاهش حجم کارهای اداری","کاهش هزینه‌های ارتباطی","جلوگیری از فراموشی وظایف و پیگیری‌ها","کمک به تیم‌ها برای پاسخ سریع‌تر","تسهیل ارتباط در زبان‌های مختلف","نوشتن به زبان خود با اطمینان","بهبود وضوح و کاهش سوءتفاهم","ایمیل‌های حرفه‌ای‌تر و یکنواختر","ایجاد روابط قوی‌تر با مشتریان","احساس محلی بودن در ارتباط جهانی","کاهش استرس نوشتن ایمیل‌های دشوار","کمک به غیربومی‌زبانان برای صحبت حرفه‌ای","تسریع تصمیم‌گیری با خلاصه‌ها","مدیریت آسان‌تر صندوق ورودی","بهبود بهره‌وری در حساب‌های مختلف","کاهش خطر نادیده ماندن پیام‌های مهم","ثبت سریع اطلاعات کلیدی","بهبود کیفیت پاسخ، نه فقط سرعت","پشتیبانی از خدمات بهتر به مشتری","افزایش کارایی کسب‌وکارهای کوچک","کاهش رفت‌و‌برگشت‌ها ناشی از ایمیل‌های نامفهوم","مدیریت اولویت‌های کاری","هزینه‌اش را صرفاً با صرفه‌جویی در وقت توجیه می‌کند","ارزشی بسیار بالاتر از هزینه‌اش ارائه می‌دهد"],
+  hi:["व्यावसायिकता और विश्वसनीयता बढ़ाता है","ड्राफ्टिंग, संशोधन और जवाब देने में समय बचाता है","प्रशासनिक कार्यभार घटाता है","संचार लागत कम करता है","छूटे कार्यों और फ़ॉलो-अप को रोकता है","टीमों को तेज़ी से प्रतिक्रिया देने में सहायता करता है","भाषाओं में संचार आसान बनाता है","उपयोगकर्ताओं को अपनी भाषा में आत्मविश्वास से लिखने देता है","स्पष्टता बढ़ाता है और गलतफहमी घटाता है","अधिक प्रावीण और सुसंगत ईमेल बनाता है","ग्राहकों से मज़बूत संबंध बनाने में मदद करता है","वैश्विक संचार को स्थानीय और व्यक्तिगत अनुभव देता है","कठिन ईमेल लिखने का तनाव घटाता है","गैर-मातृभाषी वक्ताओं को प्रवाहित आवाज़ देता है","सारांशों से निर्णय तेज़ करता है","इनबॉक्स प्रबंधन आसान बनाता है","अनेक ईमेल खातों में उत्पादकता बढ़ाता है","महत्वपूर्ण संदेशों को नज़रअंदाज़ करने का जोख़िम घटाता है","मुख्य जानकारी तेज़ी से रिकॉर्ड करने में सहायता करता है","प्रतिक्रिया की गुणवत्ता बढ़ाता है, सिर्फ़ गति नहीं","बेहतर ग्राहक सेवा का समर्थन करता है","छोटे व्यवसायों और टीमों की दक्षता बढ़ाता है","अस्पष्ट ईमेल से होने वाले आदान-प्रदान कड़े करता है","उपयोगकर्ताओं को प्राथमिकताओं पर ध्यान देने में मदद करता है","समय बचत से अपनी लागत खुद वसूल करता है","अपनी लागत से कहीं अधिक मूल्य देता है"],
+  fr:["Améliore le professionnalisme et la crédibilité","Fait gagner du temps sur la rédaction et les réponses","Réduit la charge administrative","Diminue les coûts de communication","Évite les actions manquées et les suivis oubliés","Aide les équipes à répondre plus vite","Facilite la communication entre les langues","Permet d'écrire dans sa propre langue avec confiance","Améliore la clarté et réduit les malentendus","Crée des emails plus soignés et cohérents","Aide à construire de meilleures relations clients","Rend la communication mondiale plus locale et personnelle","Réduit le stress de la rédaction d'emails difficiles","Aide les non-natifs à écrire couramment et professionnellement","Accélère la prise de décision grâce aux résumés","Facilite la gestion de la boîte de réception","Augmente la productivité sur plusieurs comptes email","Réduit le risque de messages importants négligés","Aide à capturer et organiser rapidement les informations clés","Améliore la qualité des réponses, pas seulement la vitesse","Soutient un meilleur service client","Augmente l'efficacité des petites entreprises et équipes","Réduit les échanges inutiles causés par des emails flous","Aide les utilisateurs à rester au top de leurs priorités","Se rentabilise grâce aux seules économies de temps","Délivre une valeur bien supérieure à son coût"],
+  de:["Verbessert Professionalität und Glaubwürdigkeit","Spart Zeit beim Verfassen, Überarbeiten und Antworten","Reduziert den Verwaltungsaufwand","Senkt Kommunikationskosten","Verhindert verpasste Aufgaben und Nachverfolgungen","Hilft Teams schneller zu antworten","Erleichtert die sprachenunabhängige Kommunikation","Ermöglicht das Schreiben in der eigenen Sprache mit Zuversicht","Verbessert Klarheit und reduziert Missverständnisse","Erstellt professionellere und konsistentere E-Mails","Hilft stärkere Kundenbeziehungen aufzubauen","Lässt globale Kommunikation lokal und persönlich wirken","Reduziert den Stress beim Schreiben schwieriger E-Mails","Hilft Nicht-Muttersprachlern flüssig und professionell zu klingen","Beschleunigt Entscheidungsfindung mit Zusammenfassungen","Erleichtert die Verwaltung des Posteingangs","Steigert Produktivität über mehrere E-Mail-Konten","Reduziert das Risiko übersehener wichtiger Nachrichten","Hilft wichtige Informationen schnell zu erfassen und zu organisieren","Verbessert die Antwortqualität, nicht nur die Geschwindigkeit","Unterstützt besseren Kundenservice","Steigert die Effizienz für kleine Unternehmen und Teams","Reduziert unnötige Rückfragen durch unklare E-Mails","Hilft Nutzern den Überblick über Prioritäten zu behalten","Amortisiert sich allein durch Zeiteinsparungen","Liefert einen Wert weit über seinen Kosten"],
+  pt:["Melhora o profissionalismo e a credibilidade","Economiza tempo na redação, revisão e respostas","Reduz a carga administrativa","Diminui os custos de comunicação","Evita tarefas e acompanhamentos perdidos","Ajuda equipes a responder mais rápido","Facilita a comunicação entre idiomas","Permite escrever no próprio idioma com confiança","Melhora a clareza e reduz mal-entendidos","Cria emails mais polídos e consistentes","Ajuda a construir relacionamentos mais fortes com clientes","Faz a comunicação global parecer local e pessoal","Reduz o estresse de escrever emails difíceis","Ajuda não-nativos a soarem fluentes e profissionais","Acelera a tomada de decisões com resumos","Facilita o gerenciamento da caixa de entrada","Aumenta a produtividade em várias contas de email","Reduz o risco de mensagens importantes ignoradas","Ajuda a capturar e organizar informações chave rapidamente","Melhora a qualidade das respostas, não apenas a velocidade","Apoia um melhor atendimento ao cliente","Aumenta a eficiência para pequenas empresas e equipes","Reduz idas e vindas causadas por emails pouco claros","Ajuda usuários a manterem o controle das prioridades","Paga-se sozinho apenas com as economias de tempo","Entrega valor muito acima do seu custo"],
+  es:["Mejora el profesionalismo y la credibilidad","Ahorra tiempo en redacción, revisión y respuestas","Reduce la carga administrativa","Disminuye los costos de comunicación","Evita tareas y seguimientos perdidos","Ayuda a los equipos a responder más rápido","Facilita la comunicación entre idiomas","Permite escribir en el propio idioma con confianza","Mejora la claridad y reduce malentendidos","Crea emails más pulidos y consistentes","Ayuda a construir relaciones más sólidas con clientes","Hace que la comunicación global se sienta local y personal","Reduce el estrés de escribir emails difíciles","Ayuda a no nativos a sonar fluidos y profesionales","Acelera la toma de decisiones con resúmenes","Facilita la gestión de la bandeja de entrada","Aumenta la productividad en varias cuentas de email","Reduce el riesgo de mensajes importantes ignorados","Ayuda a capturar y organizar información clave rápidamente","Mejora la calidad de las respuestas, no solo la velocidad","Apoya un mejor servicio al cliente","Aumenta la eficiencia para pequeñas empresas y equipos","Reduce el intercambio innecesario causado por emails poco claros","Ayuda a los usuarios a mantener el control de las prioridades","Se paga solo con el ahorro de tiempo","Entrega un valor muy superior a su costo"],
+  yo:["Mú ìmora ojumọ ɔjọ àti iyẹ́mi gbédùgbé","Gbà àkókò à mɔ́lori kíkana, atún-kó, àti àdáhùn","Díu àịru iṣé àkó̀séjà","Díu àwọ àláfá àrópɔ̀","Díu àwọ àyanú, ọ̀nà-ìlàn, àti àwọ níkan tó kò","Ràn àwọ ɔjọ-ìrún lọ́wọ láti dàhùn yára","Mú ìpàdààrọ àrópɔ̀ àwọ èdè àrópoéṣẹ̀","Àwọ olùáàárá làti kó nía èdè tírẹ̀ pààlú","Mu iwóye pọ̀ àti díu ìmɔ̀̀ ìfóhùn","Àwọ ìmîlii àrà- mọ́ƣ̀ àti êtópọ̀","Ràn lọ́wọ láti mú ìbáṣẹpọ̀ olùéwà chọ́","Mú àrópɔ̀ àgààyé jọ láàárá àti tírẹ̀","Díu ìmútú wíwà ìmîlii àṣà","Ràn àwọ olùícànú-èdè láti sọ̀rọ̀","Mú ìpinú pààlú péṣà pọ̀lọ̀ àkópinú","Mu ọ̀mọ pỏ̀pỏ̀ ìpàdààrọ rọ́lọ́","Mú ìwòrà lọ́wọ àwọ àkóùntú ìmîlii ìpò","Díu ìwọ̀sío iṣé ìmîlii ìlọ̀lọ̀","Ràn lọ́wọ láti gba àti tò ọ̀rọ̀ ìmọ̀lè dà yára","Mú àrícó àdáhùn nọló, ìpelú àyára","Ràn àwọ olùéjọ lọ́wọ tó ṣá","Mú àkó̀jú àwọ owo àti ìpinú ìdíà ọ̀tá","Díu àkó̀-àkó̀ ìmîlii tó dàrú","Ràn àwọ olùáàárá láti mọ́ ìpinú ìlọ̀lọ̀","Àwọ kùún ti ìmúdà nípàsẹ̀ pọ̀kòn àkókò","Fún àìye tó óju lóri àwọ àláfá rẹ̀"],
+  sw:["Inaboresha utaalamu na uaminifu wa biashara","Inaokoa muda katika kuandika, kuhariri na kujibu","Inapunguza mzigo wa kazi za utawala","Inapunguza gharama za mawasiliano","Inazuia kukosa vitendo na ufuatiliaji","Inasaidia timu kujibu kwa haraka","Inafanya mawasiliano kuwa rahisi kati ya lugha","Inaruhusu watumiaji kuandika kwa lugha yao kwa ujasiri","Inaboresha uwazi na kupunguza kutoelewana","Inatengeneza barua pepe zilizo na heshima zaidi","Inasaidia kujenga uhusiano imara na wateja","Inafanya mawasiliano ya kimataifa yahisi ya karibu","Inapunguza msongo wa kuandika barua pepe ngumu","Inasaidia wasio na lugha ya mama kusikika kitaalamu","Inaharakisha kufanya maamuzi kwa muhtasari","Inafanya sanduku la barua kuwa rahisi zaidi kusimamia","Inaboresha tija katika akaunti nyingi za barua pepe","Inapunguza hatari ya kupuuza ujumbe muhimu","Inasaidia kunasa na kupanga habari muhimu haraka","Inaboresha ubora wa majibu, si kasi tu","Inaunga mkono huduma bora kwa wateja","Inaongeza ufanisi kwa biashara ndogo na timu","Inapunguza mawasiliano ya ziada yanayosababishwa na barua pepe zisizo wazi","Inasaidia watumiaji kuendelea kujua vipaumbele","Inalipa yenyewe kupitia muda uliookolewa peke yake","Inatoa thamani kubwa zaidi kuliko gharama yake"],
+};
+
+(function(){
+  function applyConvinced(lang){
+    var items = window.CONVINCED_I18N;
+    if (!items) return;
+    var texts = items[lang] || items['en'];
+    if (!texts) return;
+    for (var i = 1; i <= texts.length; i++){
+      var el = document.getElementById('convinced-' + i);
+      if (el) el.textContent = texts[i-1];
+    }
+  }
+  var orig = window.applyTranslations || function(){};
+  window.applyTranslations = function(lang){
+    orig(lang);
+    applyConvinced(lang);
+  };
+  // Apply on load using the detected language
+  document.addEventListener('DOMContentLoaded', function(){
+    var lang = document.documentElement.getAttribute('lang') || 'en';
+    applyConvinced(lang);
+  });
+})();
+
+</script>
+
+<script>
+// ── Launch banner modal popup
+(function(){
+  var banner   = document.getElementById('launchBanner');
+  var btn      = document.getElementById('launchClose');
+  var backdrop = document.getElementById('launch-backdrop');
+  if (!banner || !btn) return;
+
+  function closeBanner() {
+    banner.classList.remove('launch-visible');
+    banner.style.opacity = '0';
+    if (backdrop) backdrop.style.opacity = '0';
+    setTimeout(function(){
+      banner.style.display = 'none';
+      if (backdrop) backdrop.style.display = 'none';
+    }, 400);
+    sessionStorage.setItem('launchDismissed', '1');
+  }
+
+  // Don't show again if dismissed this session
+  if (sessionStorage.getItem('launchDismissed')) return;
+
+  // Show modal 1 second after page load
+  setTimeout(function(){
+    banner.style.display = 'flex';
+    if (backdrop) backdrop.style.display = 'block';
+
+    // Animate in on next paint
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        banner.classList.add('launch-visible');
+        if (backdrop) backdrop.style.opacity = '1';
+
+        // Only attach backdrop click AFTER animation completes (prevent accidental dismiss)
+        setTimeout(function(){
+          if (backdrop) backdrop.addEventListener('click', closeBanner);
+        }, 500);
+      });
+    });
+  }, 1000);
+
+  // Close button always works immediately
+  btn.addEventListener('click', closeBanner);
+})();
+
+// ── Referral discount bar — show when ?ref=CODE is in URL
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var ref    = (params.get('ref') || '').trim().toUpperCase();
+  if (!ref) return;
+
+  // Store the ref code for use at OAuth signup
+  sessionStorage.setItem('spreakr_ref', ref);
+
+  var bar  = document.getElementById('ref-discount-bar');
+  var code = document.getElementById('rdb-code-display');
+  var cls  = document.getElementById('rdbClose');
+  if (!bar) return;
+
+  if (code) code.textContent = ref;
+  bar.style.display = 'block';
+
+  if (cls) {
+    cls.addEventListener('click', function(){
+      bar.style.transition = 'opacity .2s';
+      bar.style.opacity = '0';
+      setTimeout(function(){ bar.style.display = 'none'; }, 220);
+    });
+  }
+
+  // Verify the code with the server and confirm it's valid
+  fetch('/api/affiliate/verify/' + encodeURIComponent(ref))
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (!d.valid && bar) {
+        bar.style.display = 'none'; // hide bar if code is invalid
+        sessionStorage.removeItem('spreakr_ref');
+      }
+    })
+    .catch(function(){});
+})();
+
+// ── Affiliate interest form
+(function(){
+  var form = document.getElementById('affiliateInterestForm');
+  if (!form) return;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var btn = document.getElementById('affiliateSubmitBtn');
+    var msg = document.getElementById('affiliateMsg');
+    var data = Object.fromEntries(new FormData(form));
+    if (!data.first_name || !data.last_name || !data.date_of_birth || !data.country_code || !data.email) {
+      msg.className = 'launch-msg error';
+      msg.textContent = 'Please fill in all fields.';
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+    msg.className = 'launch-msg';
+    msg.textContent = '';
+    try {
+      var res = await fetch('/api/affiliate/interest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      var json = await res.json();
+      if (res.ok) {
+        form.innerHTML = '<p class="launch-msg success" style="display:block;margin:0">✅ ' +
+          (json.message || 'You\'re registered! We\'ll notify you before launch.') + '</p>';
+      } else {
+        msg.className = 'launch-msg error';
+        msg.textContent = json.error || 'Something went wrong. Please try again.';
+        btn.disabled = false;
+        btn.textContent = '👉 Declare my interest';
+      }
+    } catch(err) {
+      ms
