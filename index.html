@@ -46,7 +46,7 @@ nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;di
 #ref-discount-bar .rdb-close{background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.35);color:#86efac;font-size:12px;font-weight:700;letter-spacing:0.4px;cursor:pointer;margin-left:12px;padding:5px 14px;border-radius:999px;transition:background .2s,color .2s}
 #ref-discount-bar .rdb-close:hover{background:rgba(34,197,94,0.28);color:#fff}
 93%{transform:rotate(-12deg)}96%{transform:rotate(12deg)}99%{transform:rotate(-6deg)}}
-.lang-top-row{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;max-width:900px;margin:0 auto 32px}
+.lang-top-row{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;max-width:900px;margin:0 auto 32pxmargin-top:24px;}
 .hero-logo{width:320px;height:auto;object-fit:contain;display:block;margin:0 auto;flex:0 0 auto;border:2px solid rgba(220,225,235,0.55);border-radius:18px;padding:6px;background:rgba(255,255,255,0.04)}
 .hero-wordmark{font-size:30px;font-weight:800;letter-spacing:-0.5px;line-height:1;display:flex;align-items:center;white-space:nowrap}
 .btn-primary{background:var(--accent);color:#fff;padding:16px 36px;border-radius:8px;font-size:17px;font-weight:700;cursor:pointer;border:none;transition:background 0.2s;display:inline-block}
@@ -171,7 +171,7 @@ nav{padding:0 20px;height:56px}
 .hero{padding:60px 20px 64px}
 .hero h1{font-size:clamp(26px,7vw,38px);letter-spacing:-0.5px;line-height:1.15}
 .hero-sub{font-size:16px;max-width:100%}
-.lang-top-row{gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.lang-top-row{gap:8px;flex-wrap:wrap;margin-bottom:18pxmargin-top:24px;}
 .hero-logo{width:200px;height:auto}
 .lang-float{gap:8px;justify-content:center}
 .lang-pill{padding:8px 13px;font-size:13px}
@@ -579,7 +579,7 @@ footer{padding:48px 20px 32px}
   if (!es || !ts || !rs) return;
 
   var CURRENCY = {
-    en: {sym:'$',  def:30,    max:300,   step:5,   fmt:function(v){return '$'+v.toLocaleString();}},
+    en: {sym:'$',  def:30,    max:300,   step:5,   fmt:function(v){return '$'+v.toLocaleString();margin-top:24px;}},
     af: {sym:'R',  def:200,   max:2000,  step:50,  fmt:function(v){return 'R'+v.toLocaleString();}},
     ar: {sym:'ر.س',def:50,max:500,step:10,fmt:function(v){return 'ر.س'+v.toLocaleString();}},
     fa: {sym:'﷼',def:800,max:8000,step:100,fmt:function(v){return '﷼'+v.toLocaleString();}},
@@ -1806,3 +1806,4 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLe
 </script>
 </body>
 </html>
+
