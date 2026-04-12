@@ -5,7 +5,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Spreakr — Email in your language. Send in theirs.</title>
-<meta name="description" content="The world's first multilingual AI email command centre.">
+<meta name="description" content="The world's first multilingual AI email command centre. Dictate in your language, send professionally in theirs.">
+<link rel="canonical" href="https://spreakr.com">
+<meta property="og:title" content="Spreakr — Email in your language. Send in theirs.">
+<meta property="og:description" content="The world's first multilingual AI email command centre. Dictate in Afrikaans, Hindi, Arabic — send professionally in any language.">
+<meta property="og:image" content="https://spreakr.com/weblogo1.png">
+<meta property="og:url" content="https://spreakr.com">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Spreakr">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Spreakr — Email in your language. Send in theirs.">
+<meta name="twitter:description" content="The world's first multilingual AI email command centre.">
+<meta name="twitter:image" content="https://spreakr.com/weblogo1.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230D0F14'/%3E%3Ctext x='32' y='42' font-size='34' text-anchor='middle' fill='%234F7FFF' font-family='Arial,sans-serif'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -45,8 +56,8 @@ nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;di
 #ref-discount-bar .rdb-code{background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);color:#86efac;font-family:monospace;font-size:13px;padding:2px 10px;border-radius:6px}
 #ref-discount-bar .rdb-close{background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.35);color:#86efac;font-size:12px;font-weight:700;letter-spacing:0.4px;cursor:pointer;margin-left:12px;padding:5px 14px;border-radius:999px;transition:background .2s,color .2s}
 #ref-discount-bar .rdb-close:hover{background:rgba(34,197,94,0.28);color:#fff}
-93%{transform:rotate(-12deg)}96%{transform:rotate(12deg)}99%{transform:rotate(-6deg)}}
-.lang-top-row{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;max-width:900px;margin:0 auto 32pxmargin-top:24px;}
+
+.lang-top-row{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;max-width:900px;margin:0 auto 32px;margin-top:24px;}
 .hero-logo{width:320px;height:auto;object-fit:contain;display:block;margin:0 auto;flex:0 0 auto;}
 .hero-wordmark{font-size:30px;font-weight:800;letter-spacing:-0.5px;line-height:1;display:flex;align-items:center;white-space:nowrap}
 .btn-primary{background:var(--accent);color:#fff;padding:16px 36px;border-radius:8px;font-size:17px;font-weight:700;cursor:pointer;border:none;transition:background 0.2s;display:inline-block}
@@ -171,7 +182,7 @@ nav{padding:0 20px;height:56px}
 .hero{padding:60px 20px 64px}
 .hero h1{font-size:clamp(26px,7vw,38px);letter-spacing:-0.5px;line-height:1.15}
 .hero-sub{font-size:16px;max-width:100%}
-.lang-top-row{gap:8px;flex-wrap:wrap;margin-bottom:18pxmargin-top:24px;}
+.lang-top-row{gap:8px;flex-wrap:wrap;margin-bottom:18px;margin-top:24px;}
 .hero-logo{width:280px;height:auto;margin-bottom:24px}
 .lang-float{gap:8px;justify-content:center}
 .lang-pill{padding:8px 13px;font-size:13px}
@@ -220,6 +231,14 @@ footer{padding:48px 20px 32px}
 /* Lang grid */
 .lang-grid{grid-template-columns:repeat(2,1fr)}
 }
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin-left:8px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);padding:16px 24px;z-index:99;flex-direction:column;gap:0}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:14px 0;font-size:16px;color:var(--muted);border-bottom:1px solid var(--border);text-decoration:none}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu-cta{margin-top:8px;background:var(--accent);color:#fff!important;padding:13px;border-radius:6px;text-align:center;font-weight:700}
+@media(max-width:768px){.nav-links{display:none}.nav-hamburger{display:flex}}
 </style>
 </head>
 <body>
@@ -248,8 +267,18 @@ footer{padding:48px 20px 32px}
       <div class="lang-dropdown" id="langDropdown"></div>
     </div>
     <a href="https://app.spreakr.com" class="nav-cta" data-i18n="nav_cta">Get started</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#features" data-i18n="nav_features">Features</a>
+  <a href="#languages" data-i18n="nav_languages">Languages</a>
+  <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+  <a href="#affiliate" data-i18n="nav_earn">Earn with us</a>
+  <a href="https://app.spreakr.com" class="mobile-menu-cta" data-i18n="nav_cta">Get started</a>
+</div>
 
 <section class="hero" style="padding-top:64px">
   <div class="lang-top-row">
@@ -988,14 +1017,14 @@ footer{padding:48px 20px 32px}
       </div>
 
       <div style="margin-top:36px">
-        <a href="/cdn-cgi/l/email-protection#6102091308122112111304000a134f020e0c5e1214030b0402155c200707080d080015044131130e0613000c412011110d08020015080e0f" class="btn-primary" style="width:100%;display:block;text-align:center;padding:18px;font-size:17px" data-i18n="aff_btn">Apply to become an affiliate →</a>
-        <p id="aff-join-note" style="font-size:15px;color:var(--muted);margin-top:14px">Free to join · No minimum referrals · Paid monthly via PayPal · Available globally</p>
+        <button onclick="openAffModal()" class="btn-primary" style="width:100%;display:block;text-align:center;padding:18px;font-size:17px;border:none;cursor:pointer">Register to become an affiliate →</button>
+        <p id="aff-join-note" style="font-size:15px;color:var(--muted);margin-top:14px">Free to join · Paid monthly · Available globally</p>
       </div>
     </div>
   </div>
 </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Affiliate calculator
 (function() {
   var slider   = document.getElementById('aff-slider');
@@ -1588,6 +1617,147 @@ window.CONVINCED_I18N = {
 })();
 </script>
 
+<!-- ══ AFFILIATE REGISTRATION MODAL ══════════════════════════ -->
+<style>
+.aff-modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9980;backdrop-filter:blur(4px);align-items:center;justify-content:center}
+.aff-modal-backdrop.open{display:flex}
+.aff-modal{background:#0D1117;border:1px solid #2A3750;border-radius:14px;width:min(560px,calc(100vw - 32px));max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,0.7)}
+.aff-modal-header{padding:24px 28px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.aff-modal-header h2{font-size:22px;font-weight:800;color:#fff;margin:0 0 4px}
+.aff-modal-header p{font-size:13px;color:#8B95A1;margin:0}
+.aff-modal-close{background:none;border:1px solid #1E2330;color:#8B95A1;width:32px;height:32px;border-radius:6px;cursor:pointer;font-size:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.aff-modal-close:hover{background:#1E2330;color:#fff}
+.aff-modal-body{padding:24px 28px 28px}
+.aff-form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.aff-form-group{margin-bottom:14px}
+.aff-form-group label{display:block;font-size:11px;font-weight:700;color:#8B95A1;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:6px}
+.aff-form-group input,.aff-form-group select,.aff-form-group textarea{width:100%;background:#0F1420;border:1px solid #2A3750;color:#E8EAF0;padding:11px 14px;border-radius:8px;font-size:14px;font-family:inherit;outline:none;box-sizing:border-box;transition:border-color 0.15s}
+.aff-form-group input:focus,.aff-form-group select:focus,.aff-form-group textarea:focus{border-color:#4F7FFF}
+.aff-form-group textarea{resize:vertical;min-height:80px}
+.aff-form-group select option{background:#0F1420}
+.aff-submit{width:100%;background:#4F7FFF;color:#fff;border:none;padding:14px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px;transition:background 0.15s;font-family:inherit}
+.aff-submit:hover{background:#3d6ae8}
+.aff-submit:disabled{opacity:0.6;cursor:not-allowed}
+.aff-success{display:none;text-align:center;padding:20px 0}
+.aff-success-icon{font-size:48px;margin-bottom:12px}
+.aff-success h3{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.aff-success p{font-size:14px;color:#8B95A1;line-height:1.6}
+@media(max-width:480px){.aff-form-row{grid-template-columns:1fr}}
+</style>
+
+<div class="aff-modal-backdrop" id="affModalBackdrop" onclick="if(event.target===this)closeAffModal()">
+  <div class="aff-modal">
+    <div class="aff-modal-header">
+      <div>
+        <h2>Become an Affiliate</h2>
+        <p>Earn 30% recurring commission every month</p>
+      </div>
+      <button class="aff-modal-close" onclick="closeAffModal()">✕</button>
+    </div>
+    <div class="aff-modal-body">
+      <div id="aff-form-wrap">
+        <div class="aff-form-row">
+          <div class="aff-form-group">
+            <label>First name *</label>
+            <input type="text" id="aff-first" placeholder="Jane" autocomplete="given-name">
+          </div>
+          <div class="aff-form-group">
+            <label>Last name *</label>
+            <input type="text" id="aff-last" placeholder="Smith" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="aff-form-group">
+          <label>Email address *</label>
+          <input type="email" id="aff-email" placeholder="jane@example.com" autocomplete="email">
+        </div>
+        <div class="aff-form-row">
+          <div class="aff-form-group">
+            <label>Country *</label>
+            <select id="aff-reg-country">
+              <option value="">Select your country</option>
+              <option>South Africa</option><option>United States</option><option>United Kingdom</option>
+              <option>Australia</option><option>Canada</option><option>India</option>
+              <option>Nigeria</option><option>Kenya</option><option>Ghana</option>
+              <option>Germany</option><option>France</option><option>Netherlands</option>
+              <option>UAE</option><option>Saudi Arabia</option><option>Brazil</option>
+              <option>Mexico</option><option>Singapore</option><option>Other</option>
+            </select>
+          </div>
+          <div class="aff-form-group">
+            <label>Phone number</label>
+            <input type="tel" id="aff-phone" placeholder="+27 82 000 0000" autocomplete="tel">
+          </div>
+        </div>
+        <div class="aff-form-group">
+          <label>How do you plan to promote Spreakr? *</label>
+          <select id="aff-channel">
+            <option value="">Select your main channel</option>
+            <option>Social media (LinkedIn, TikTok, Instagram)</option>
+            <option>YouTube channel</option>
+            <option>Blog or newsletter</option>
+            <option>Podcast</option>
+            <option>Personal/professional network</option>
+            <option>WhatsApp groups or communities</option>
+            <option>Website or SEO</option>
+            <option>Email marketing</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="aff-form-group">
+          <label>Tell us a bit more (optional)</label>
+          <textarea id="aff-bio" placeholder="e.g. I run a LinkedIn newsletter for HR professionals in SA with 3,000 subscribers..."></textarea>
+        </div>
+        <div id="aff-reg-error" style="display:none;color:#FF4F6B;font-size:13px;margin-bottom:12px"></div>
+        <button class="aff-submit" id="aff-reg-submit" onclick="submitAffReg()">Submit Application →</button>
+        <p style="font-size:12px;color:#8B95A1;text-align:center;margin-top:12px">We review all applications within 2 business days</p>
+      </div>
+      <div class="aff-success" id="aff-reg-success">
+        <div class="aff-success-icon">🎉</div>
+        <h3>Application received!</h3>
+        <p>We'll review your application and be in touch within 2 business days with your unique affiliate code and onboarding details.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openAffModal(){document.getElementById('affModalBackdrop').classList.add('open');document.body.style.overflow='hidden';}
+function closeAffModal(){document.getElementById('affModalBackdrop').classList.remove('open');document.body.style.overflow='';}
+function submitAffReg(){
+  var first=document.getElementById('aff-first').value.trim();
+  var last=document.getElementById('aff-last').value.trim();
+  var email=document.getElementById('aff-email').value.trim();
+  var country=document.getElementById('aff-reg-country').value;
+  var channel=document.getElementById('aff-channel').value;
+  var phone=document.getElementById('aff-phone').value.trim();
+  var bio=document.getElementById('aff-bio').value.trim();
+  var err=document.getElementById('aff-reg-error');
+  if(!first||!last||!email||!country||!channel){err.style.display='block';err.textContent='Please fill in all required fields.';return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.style.display='block';err.textContent='Please enter a valid email address.';return;}
+  err.style.display='none';
+  var btn=document.getElementById('aff-reg-submit');
+  btn.disabled=true;btn.textContent='Submitting...';
+  fetch('https://app.spreakr.com/api/affiliate/interest',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:first+' '+last,email:email,country:country,phone:phone,channel:channel,bio:bio})
+  }).then(function(){
+    document.getElementById('aff-form-wrap').style.display='none';
+    document.getElementById('aff-reg-success').style.display='block';
+  }).catch(function(){
+    document.getElementById('aff-form-wrap').style.display='none';
+    document.getElementById('aff-reg-success').style.display='block';
+  });
+}
+// Hamburger menu
+(function(){
+  var btn=document.getElementById('navHamburger');
+  var menu=document.getElementById('mobileMenu');
+  if(!btn||!menu)return;
+  btn.addEventListener('click',function(){var o=menu.classList.toggle('open');btn.setAttribute('aria-expanded',o);});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false');});});
+})();
+</script>
+
 <!-- ══ LEGAL MODALS ══════════════════════════════════════════ -->
 <style>
 .legal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9980;backdrop-filter:blur(4px);opacity:0;transition:opacity .25s}
@@ -1642,7 +1812,7 @@ window.CONVINCED_I18N = {
     The Service relies on the following third-party providers to deliver its functionality. You acknowledge that your use of these features is also subject to the respective provider's terms and privacy policies: OpenAI (GPT-4.1 and related models for AI features — Spreakr has applied a zero data retention agreement, meaning OpenAI does not store or use your data for training); Google LLC (Gmail OAuth 2.0 authentication, Google Text-to-Speech API); Microsoft Corporation (Microsoft Outlook and Microsoft 365 OAuth 2.0 authentication); ElevenLabs Inc. (voice transcription and speech synthesis); Render Inc. (cloud hosting infrastructure); Supabase Inc. (database and authentication infrastructure); DPO Pay (African payment processing); Paddle.com Market Limited (international payment processing). Spreakr is not responsible for the availability, performance, security, or actions of these third-party services. Interruptions or changes to these services may affect Spreakr's functionality and do not constitute grounds for a refund beyond our stated refund policy.
 
     <strong>8. User Accounts and Credentials</strong>
-    You are solely responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to notify us immediately at legal@spreakr.com upon becoming aware of any unauthorised access to or use of your account. Spreakr is not liable for any loss or damage arising from your failure to maintain adequate account security. You may not share, sell, or transfer your account to any other person.
+    You are solely responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to notify us immediately at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8ce0e9ebede0ccfffcfee9ede7fea2efe3e1">[email&#160;protected]</a> upon becoming aware of any unauthorised access to or use of your account. Spreakr is not liable for any loss or damage arising from your failure to maintain adequate account security. You may not share, sell, or transfer your account to any other person.
 
     <strong>9. Acceptable Use Policy</strong>
     You agree to use Spreakr only for lawful purposes and in a manner that does not infringe the rights of any third party. You specifically agree not to: use Spreakr to send unsolicited bulk email (spam) or engage in any form of phishing, fraud, or impersonation; transmit malicious code, viruses, or any software designed to interfere with or disrupt the Service; attempt to gain unauthorised access to any part of the Service or any other user's account; use the Service to process, store, or transmit material that is illegal, defamatory, obscene, threatening, or that violates the intellectual property rights of others; reverse engineer, decompile, or attempt to extract the source code of any part of the Service; circumvent any technical restrictions, rate limits, or access controls; resell, sublicense, or commercially exploit the Service without express written authorisation from Spreakr. Spreakr reserves the right to suspend or permanently terminate accounts that violate this policy, without notice and without refund in cases of deliberate abuse.
@@ -1678,7 +1848,7 @@ window.CONVINCED_I18N = {
     These Terms, together with the Privacy Policy and Refund Policy, constitute the entire agreement between you and Spreakr (Pty) Ltd with respect to the Service and supersede all prior or contemporaneous agreements, representations, warranties, and understandings, whether written or oral.
 
     <strong>20. Contact</strong>
-    Spreakr (Pty) Ltd · South Africa · legal@spreakr.com · spreakr.com
+    Spreakr (Pty) Ltd · South Africa · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6dad3d1d7daf6c5c6c4d3d7ddc498d5d9db">[email&#160;protected]</a> · spreakr.com
   </div>
   <div class="legal-modal-footer"><button onclick="closeLegal()">Close</button></div>
 </div>
@@ -1694,7 +1864,7 @@ window.CONVINCED_I18N = {
   </div>
   <div class="legal-modal-body">
     <strong>1. Introduction and Identity of the Responsible Party</strong>
-    This Privacy Policy explains how Spreakr (Pty) Ltd ("Spreakr", "we", "us", or "our"), a company incorporated in the Republic of South Africa, collects, processes, stores, and protects your personal information when you use the Spreakr platform at spreakr.com and related subdomains ("the Service"). This policy is issued in compliance with the Protection of Personal Information Act 4 of 2013 ("POPIA") and, where applicable, the General Data Protection Regulation (EU) 2016/679 ("GDPR") and the UK GDPR. The Information Officer responsible for processing decisions at Spreakr is contactable at legal@spreakr.com.
+    This Privacy Policy explains how Spreakr (Pty) Ltd ("Spreakr", "we", "us", or "our"), a company incorporated in the Republic of South Africa, collects, processes, stores, and protects your personal information when you use the Spreakr platform at spreakr.com and related subdomains ("the Service"). This policy is issued in compliance with the Protection of Personal Information Act 4 of 2013 ("POPIA") and, where applicable, the General Data Protection Regulation (EU) 2016/679 ("GDPR") and the UK GDPR. The Information Officer responsible for processing decisions at Spreakr is contactable at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1478717375785467646671757f663a777b79">[email&#160;protected]</a>.
 
     <strong>2. Information We Collect</strong>
     We collect two categories of personal information. The first is information you provide directly: your name and email address when you create an account; payment information (processed securely by our payment partners — Spreakr never stores your card details); your language and regional preferences; support or correspondence you send us; and if you join our affiliate programme, your PayPal address for commission payments. The second is information collected automatically: technical logs including IP addresses, browser type, device information, and session timestamps; feature usage data (which features you use and how often, without logging the content of your emails); authentication tokens from Google and Microsoft OAuth (stored encrypted using AES-256-GCM); and subscription and payment status information from our payment processors.
@@ -1721,19 +1891,19 @@ window.CONVINCED_I18N = {
     We use the following local storage mechanisms: session cookies for authentication (these are essential for the Service to function and cannot be disabled); and browser localStorage to remember your language preference and interface settings. We do not use third-party tracking cookies, advertising cookies, or any cross-site tracking technologies. We do not use Google Analytics, Facebook Pixel, or similar analytics or advertising trackers.
 
     <strong>10. Your Rights Under POPIA and GDPR</strong>
-    Depending on your jurisdiction, you have the following rights regarding your personal information. Under POPIA (applicable to South African residents): the right to be notified that your information is being collected; the right to access the personal information we hold about you; the right to request correction of inaccurate information; the right to request deletion of your information; the right to object to processing on grounds of legitimate interest; the right to lodge a complaint with the Information Regulator of South Africa (inforegulator.org.za). Under GDPR (applicable to EU/EEA residents) and UK GDPR (applicable to UK residents), you additionally have: the right to data portability (receive your data in a machine-readable format); the right to restriction of processing; the right to lodge a complaint with your national data protection authority. To exercise any of these rights, contact us at legal@spreakr.com. We will respond to all requests within 30 days. In complex cases, we may extend this by a further 30 days, but we will notify you. We will not charge a fee for reasonable requests.
+    Depending on your jurisdiction, you have the following rights regarding your personal information. Under POPIA (applicable to South African residents): the right to be notified that your information is being collected; the right to access the personal information we hold about you; the right to request correction of inaccurate information; the right to request deletion of your information; the right to object to processing on grounds of legitimate interest; the right to lodge a complaint with the Information Regulator of South Africa (inforegulator.org.za). Under GDPR (applicable to EU/EEA residents) and UK GDPR (applicable to UK residents), you additionally have: the right to data portability (receive your data in a machine-readable format); the right to restriction of processing; the right to lodge a complaint with your national data protection authority. To exercise any of these rights, contact us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="18747d7f7974586b686a7d79736a367b7775">[email&#160;protected]</a>. We will respond to all requests within 30 days. In complex cases, we may extend this by a further 30 days, but we will notify you. We will not charge a fee for reasonable requests.
 
     <strong>11. Data Retention</strong>
     We retain different categories of data for different periods. Account data (name, email address, preferences) is retained for as long as your account remains active. Upon account deletion, account data is deleted within 30 days, except where we are required by law to retain it longer. Billing records and transaction data are retained for 7 years from the date of the transaction in compliance with South African tax and accounting laws. Technical logs (IP addresses, access logs) are retained for 90 days for security and debugging purposes. Backup copies of data may persist for up to 30 days after scheduled deletion. If you have been involved in a dispute or complaint, relevant records may be retained until the matter is fully resolved.
 
     <strong>12. Children's Privacy</strong>
-    Spreakr is not directed at children under the age of 18, and we do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a person under 18, please contact us at legal@spreakr.com and we will delete it promptly.
+    Spreakr is not directed at children under the age of 18, and we do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a person under 18, please contact us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="224e4745434e62515250474349500c414d4f">[email&#160;protected]</a> and we will delete it promptly.
 
     <strong>13. Changes to This Policy</strong>
     We may update this Privacy Policy from time to time to reflect changes in the law, our data practices, or the features of the Service. When we make material changes, we will notify you by email (if you are an active subscriber) and update the effective date. Your continued use of the Service after the effective date constitutes acceptance of the updated policy.
 
     <strong>14. Contact and Complaints</strong>
-    For any privacy-related queries, access requests, or complaints: Email: legal@spreakr.com · Spreakr (Pty) Ltd · South Africa. If you are a South African resident and are not satisfied with our response, you have the right to lodge a complaint with the Information Regulator: inforegulator.org.za · complaints.IR@justice.gov.za. If you are an EU/EEA resident, you may contact your national supervisory authority.
+    For any privacy-related queries, access requests, or complaints: Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="335f5654525f73404341565258411d505c5e">[email&#160;protected]</a> · Spreakr (Pty) Ltd · South Africa. If you are a South African resident and are not satisfied with our response, you have the right to lodge a complaint with the Information Regulator: inforegulator.org.za · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7615191b061a171f180205583f24361c0305021f151358111900580c17">[email&#160;protected]</a>. If you are an EU/EEA resident, you may contact your national supervisory authority.
   </div>
   <div class="legal-modal-footer"><button onclick="closeLegal()">Close</button></div>
 </div>
@@ -1755,10 +1925,10 @@ window.CONVINCED_I18N = {
     If you are not fully satisfied with your first paid subscription to a Pro or Executive plan, you may request a full refund within 7 calendar days of your initial payment date. This guarantee applies only to first-time subscribers making their first purchase on a given plan. It cannot be applied to subscription renewals, plan upgrades, or repeat purchases of the same plan. To qualify for this guarantee, your request must be submitted within 7 calendar days of the initial payment being processed — not 7 days from the start of your trial or from any other date. If you subscribed during a free trial period, the 7-day window begins from the date your first paid charge was processed.
 
     <strong>How to Request a Refund — International Customers (Paddle)</strong>
-    If you are an international customer whose payment was processed by Paddle.com Market Limited (Paddle), your refund request should be directed as follows. You may contact Spreakr at billing@spreakr.com with your account email address and your Paddle order reference number (found in your payment receipt). Spreakr will initiate the refund on your behalf through Paddle. Alternatively, you may contact Paddle directly through their customer support portal at paddle.com. Since Paddle is the Merchant of Record for your transaction, the refund will appear on your statement as a reversal from Paddle, not from Spreakr. International refunds are typically processed within 5–10 business days of approval, subject to your card issuer or payment method processing times.
+    If you are an international customer whose payment was processed by Paddle.com Market Limited (Paddle), your refund request should be directed as follows. You may contact Spreakr at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d5f54515154535a7d4e4d4f585c564f135e5250">[email&#160;protected]</a> with your account email address and your Paddle order reference number (found in your payment receipt). Spreakr will initiate the refund on your behalf through Paddle. Alternatively, you may contact Paddle directly through their customer support portal at paddle.com. Since Paddle is the Merchant of Record for your transaction, the refund will appear on your statement as a reversal from Paddle, not from Spreakr. International refunds are typically processed within 5–10 business days of approval, subject to your card issuer or payment method processing times.
 
     <strong>How to Request a Refund — African Customers (DPO Pay)</strong>
-    If you are a customer in South Africa or another African market whose payment was processed by DPO Pay, your refund request should be submitted directly to Spreakr at billing@spreakr.com. Include your account email address, your transaction reference number (found in your payment confirmation email), and a brief reason for your request. Spreakr will process eligible refunds through DPO Pay within 5–10 business days of approval. Refund processing times to your bank account may vary depending on your financial institution and country.
+    If you are a customer in South Africa or another African market whose payment was processed by DPO Pay, your refund request should be submitted directly to Spreakr at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6002090c0c090e072013101205010b124e030f0d">[email&#160;protected]</a>. Include your account email address, your transaction reference number (found in your payment confirmation email), and a brief reason for your request. Spreakr will process eligible refunds through DPO Pay within 5–10 business days of approval. Refund processing times to your bank account may vary depending on your financial institution and country.
 
     <strong>Subscription Renewals</strong>
     Monthly subscription renewals are non-refundable once they have been successfully processed. You may cancel your subscription at any time through your account settings. Cancellation takes effect at the end of your current billing period and you will retain full access to all features of your plan until that date. We strongly recommend cancelling before your next renewal date if you do not wish to be charged for the following month. Spreakr does not provide partial or pro-rated refunds for unused days within a billing period.
@@ -1773,41 +1943,10 @@ window.CONVINCED_I18N = {
     If you are a consumer resident in the European Union, European Economic Area, or United Kingdom, you may have a statutory right of withdrawal of 14 days from the date of your subscription purchase under the EU Consumer Rights Directive (2011/83/EU) or the UK Consumer Contracts Regulations 2013. However, by using the Service immediately upon subscription (i.e., by accessing AI features, connecting email accounts, or otherwise using any part of the paid Service before the 14-day withdrawal period has elapsed), you expressly acknowledge that you are requesting immediate performance of the digital service and that you waive your right of withdrawal to the extent permitted by applicable law. Our 7-day money-back guarantee for first-time subscribers provides a comparable consumer protection in this context.
 
     <strong>Service Outages and Technical Failures</strong>
-    If the Service is unavailable for an extended period (exceeding 72 consecutive hours) due to an error or outage attributable to Spreakr (excluding outages caused by third-party providers such as OpenAI, Google, Microsoft, ElevenLabs, Paddle, Render, or Supabase), you may contact billing@spreakr.com to request a pro-rated account credit for the affected period. Such credits are at Spreakr's discretion and do not entitle you to a cash refund. Spreakr is not responsible for service interruptions caused by third-party dependencies.
+    If the Service is unavailable for an extended period (exceeding 72 consecutive hours) due to an error or outage attributable to Spreakr (excluding outages caused by third-party providers such as OpenAI, Google, Microsoft, ElevenLabs, Paddle, Render, or Supabase), you may contact <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="690b00050500070e291a191b0c08021b470a0604">[email&#160;protected]</a> to request a pro-rated account credit for the affected period. Such credits are at Spreakr's discretion and do not entitle you to a cash refund. Spreakr is not responsible for service interruptions caused by third-party dependencies.
 
     <strong>Refund Eligibility Exclusions</strong>
     Refunds will not be issued in the following circumstances: the 7-day money-back window has elapsed; the request relates to a subscription renewal rather than an initial purchase; the request relates to a credit top-up pack; there is evidence of abuse of the refund policy (e.g., multiple refund requests across different accounts); your account has been suspended or terminated for Terms of Service violations; the payment was made as part of a promotional or discounted offer that explicitly excluded refund eligibility.
 
     <strong>Chargebacks</strong>
-    Initiating a chargeback or payment dispute with your bank or card issuer without first contacting Spreakr (or Paddle, for international customers) to seek resolution is a breach of these Terms. Spreakr reserves the right to suspend or terminate accounts associated with fraudulent or unjustified chargebacks and to seek recovery of amounts wrongfully reversed. We encourage all customers to contact us first — we are committed to resolving billing issues fairly and promptly.
-
-    <strong>Contact</strong>
-    Billing and refund queries: billing@spreakr.com · General legal: legal@spreakr.com · Spreakr (Pty) Ltd · South Africa · spreakr.com
-  </div>
-  <div class="legal-modal-footer"><button onclick="closeLegal()">Close</button></div>
-</div>
-
-<script>
-function openLegal(which) {
-  document.querySelectorAll('.legal-modal').forEach(function(m){ m.classList.remove('open'); });
-  var modal = document.getElementById('modal-' + which);
-  var backdrop = document.getElementById('legalBackdrop');
-  if (!modal) return;
-  backdrop.classList.add('open');
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLegal() {
-  document.querySelectorAll('.legal-modal').forEach(function(m){ m.classList.remove('open'); });
-  document.getElementById('legalBackdrop').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLegal(); });
-</script>
-</body>
-</html>
-
-
-
-
-
+    Initiating a chargeback or payment dispute with your bank or card issuer without first contacting Spreakr (or Paddle, for international customers) to seek resolution is a breach of these Terms. Spreakr reserves the right to suspend or terminate accounts associated with fra
