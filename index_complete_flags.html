@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- UI: MARKETING SITE — do not apply app changes here -->
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
@@ -20,8 +21,8 @@ nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;di
 .nav-links{display:flex;gap:36px;font-size:14px;color:var(--muted)}
 .nav-links a:hover{color:#fff;transition:color 0.2s}
 .nav-right{display:flex;align-items:center;gap:12px}
-.nav-cta{background:var(--accent);color:#fff;padding:10px 24px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:background 0.2s;display:inline-block}
-.nav-cta:hover{background:var(--accent2)}
+.nav-cta{background:#2a52cc;color:#fff;padding:10px 24px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:background 0.2s;display:inline-block}
+.nav-cta:hover{background:#1a3fa8}
 .lang-switcher{position:relative}
 .lang-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);padding:8px 14px;border-radius:6px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s}
 .lang-btn:hover{border-color:var(--accent);color:#fff}
@@ -45,14 +46,14 @@ nav{background:var(--bg);border-bottom:1px solid var(--border);padding:0 40px;di
 #ref-discount-bar .rdb-close{background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.35);color:#86efac;font-size:12px;font-weight:700;letter-spacing:0.4px;cursor:pointer;margin-left:12px;padding:5px 14px;border-radius:999px;transition:background .2s,color .2s}
 #ref-discount-bar .rdb-close:hover{background:rgba(34,197,94,0.28);color:#fff}
 93%{transform:rotate(-12deg)}96%{transform:rotate(12deg)}99%{transform:rotate(-6deg)}}
-.lang-top-row{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;max-width:900px;margin:0 auto 26px}
-.hero-logo{width:340px;height:auto;object-fit:contain;display:block;flex:0 0 auto;border:2px solid rgba(220,225,235,0.55);border-radius:18px;padding:6px;background:rgba(255,255,255,0.04)}
+.lang-top-row{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;max-width:900px;margin:0 auto 32px}
+.hero-logo{width:320px;height:auto;object-fit:contain;display:block;margin:0 auto;flex:0 0 auto;border:2px solid rgba(220,225,235,0.55);border-radius:18px;padding:6px;background:rgba(255,255,255,0.04)}
 .hero-wordmark{font-size:30px;font-weight:800;letter-spacing:-0.5px;line-height:1;display:flex;align-items:center;white-space:nowrap}
 .btn-primary{background:var(--accent);color:#fff;padding:16px 36px;border-radius:8px;font-size:17px;font-weight:700;cursor:pointer;border:none;transition:background 0.2s;display:inline-block}
 .btn-primary:hover{background:var(--accent2)}
 .btn-secondary{background:transparent;color:var(--text);padding:16px 36px;border-radius:8px;font-size:17px;font-weight:600;cursor:pointer;border:1px solid var(--border);transition:all 0.2s;display:inline-block}
 .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
-.lang-float{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:10px;max-width:760px;margin:0;position:relative;z-index:5;pointer-events:auto}
+.lang-float{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:800px;margin:0 auto;position:relative;z-index:5;pointer-events:auto}
 .site-flag-img{display:inline-block;vertical-align:middle;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.12);object-fit:cover}
 .site-flag-fallback{display:none;align-items:center;justify-content:center;min-width:24px;font-size:14px;line-height:1}
 .lang-pill{background:#11192A;border:1px solid #2A3750;border-radius:20px;padding:10px 18px;font-size:14px;font-weight:600;color:#DCE5F6;display:flex;align-items:center;gap:8px;opacity:1;animation:floatIn 0.5s ease forwards;position:relative;z-index:6;pointer-events:auto;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.25)}
@@ -249,10 +250,11 @@ footer{padding:48px 20px 32px}
     <a href="https://app.spreakr.com" class="nav-cta" data-i18n="nav_cta">Get started</a>
   </div>
 </nav>
+<main>
 
-<section class="hero" style="padding-top:48px">
+<section class="hero" style="padding-top:64px">
   <div class="lang-top-row">
-    <img class="hero-logo" src="/weblogo1.png" onerror="this.onerror=null;this.style.display='none';" alt="Spreakr logo">
+    <img class="hero-logo" src="/shared/weblogo1.png" onerror="this.onerror=null;this.style.display='none';" alt="Spreakr logo">
     <div class="lang-float" id="langFloat">
       <!-- Static fallback pills — JS replaces these with interactive versions -->
       <button type="button" class="lang-pill" style="animation:none"><img class="site-flag-img" src="https://flagcdn.com/24x18/za.png" width="24" height="18" alt=""><span class="site-flag-fallback" aria-hidden="true">🇿🇦</span><span>Afrikaans</span></button>
@@ -326,14 +328,14 @@ footer{padding:48px 20px 32px}
           <span id="hero-calc-emails-label" style="font-size:13px;color:var(--muted)">Emails per day</span>
           <span id="h-emailCount" style="font-size:14px;font-weight:800;color:var(--accent)">10</span>
         </div>
-        <input type="range" id="h-emailSlider" min="2" max="50" value="10" style="width:100%;accent-color:var(--accent);height:5px;cursor:pointer">
+        <input type="range" id="h-emailSlider" min="2" max="50" value="10" aria-label="Emails per day" style="width:100%;accent-color:var(--accent);height:5px;cursor:pointer">
       </div>
       <div>
         <div style="display:flex;justify-content:space-between;margin-bottom:10px">
           <span id="hero-calc-team-label" style="font-size:13px;color:var(--muted)">Team size</span>
           <span id="h-teamCount" style="font-size:14px;font-weight:800;color:var(--accent)">1 person</span>
         </div>
-        <input type="range" id="h-teamSlider" min="1" max="100" value="1" style="width:100%;accent-color:var(--accent);height:5px;cursor:pointer">
+        <input type="range" id="h-teamSlider" min="1" max="100" value="1" aria-label="Team size" style="width:100%;accent-color:var(--accent);height:5px;cursor:pointer">
       </div>
     </div>
     <div style="margin-bottom:24px">
@@ -341,7 +343,7 @@ footer{padding:48px 20px 32px}
         <span id="hero-calc-rate-label" style="font-size:13px;color:var(--muted)">Hourly rate per employee</span>
         <span id="h-rateDisplay" style="font-size:14px;font-weight:800;color:var(--amber)">$30/hr</span>
       </div>
-      <input type="range" id="h-rateSlider" min="5" max="300" value="30" step="5" style="width:100%;accent-color:var(--amber);height:5px;cursor:pointer">
+      <input type="range" id="h-rateSlider" min="5" max="300" value="30" step="5" aria-label="Hourly rate per employee" style="width:100%;accent-color:var(--amber);height:5px;cursor:pointer">
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px">
       <div style="background:var(--bg2);border-radius:8px;padding:16px;text-align:center">
@@ -354,13 +356,13 @@ footer{padding:48px 20px 32px}
       </div>
       <div style="background:#0A1628;border:1px solid var(--accent);border-radius:8px;padding:16px;text-align:center">
         <div id="hero-calc-teammonth-label" style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Whole team · per month</div>
-        <div id="h-saveTeam" style="font-size:24px;font-weight:800;color:var(--accent);letter-spacing:-1px">27 hrs</div><div id="h-saveTeamSub" style="font-size:10px;color:var(--accent);opacity:0.7;margin-top:3px;min-height:14px"></div>
+        <div id="h-saveTeam" style="font-size:24px;font-weight:800;color:var(--accent);letter-spacing:-1px">27 hrs</div><div id="h-saveTeamSub" style="font-size:10px;color:#7b9fff;margin-top:3px;min-height:14px"></div>
       </div>
     </div>
     <div style="background:linear-gradient(135deg,#0a1e0f,#0d2010);border:1px solid #2a6a3a;border-radius:8px;padding:16px;text-align:center;margin-bottom:24px">
       <div id="hero-calc-costsaving-label" style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#4FFF9F;margin-bottom:6px">Monthly cost saving · whole team</div>
       <div id="h-costSaving" style="font-size:28px;font-weight:800;color:#4FFF9F;letter-spacing:-1px">$810</div>
-      <div id="h-costSavingSub" style="font-size:11px;color:#4FFF9F;opacity:0.7;margin-top:3px">Based on time saved × hourly rate</div>
+      <div id="h-costSavingSub" style="font-size:11px;color:#4FFF9F;margin-top:3px">Based on time saved × hourly rate</div>
     </div>
     <div style="text-align:center;font-size:13px;color:var(--muted)">
       <span id="hero-calc-speaking-prefix">Speaking is</span> <strong style="color:var(--text)">3× faster</strong> <span id="hero-calc-speaking-suffix">than typing · Stanford HCI Research</span>
@@ -411,7 +413,7 @@ footer{padding:48px 20px 32px}
       <!-- MIDDLE: EMAIL LIST -->
       <div style="border-right:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column">
         <div style="padding:10px 12px;border-bottom:1px solid var(--border);background:var(--bg2)">
-          <input readonly value="Quick keyword search" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:12px;color:var(--muted);outline:none">
+          <input readonly aria-label="Search preview" value="Quick keyword search" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:12px;color:var(--muted);outline:none">
         </div>
         <div style="padding:6px 8px;border-bottom:1px solid var(--border);background:var(--bg2);display:flex;gap:4px;align-items:center;flex-wrap:wrap">
           <span style="font-size:10px;color:var(--muted)">📬 6 emails · ✉ 4 unread</span>
@@ -703,7 +705,7 @@ footer{padding:48px 20px 32px}
   </div>
 </section>
 
-<section class="section" style="background:var(--bg2)">
+<section class="section" id="languages" style="background:var(--bg2)">
   <div class="container">
     <div class="big-feature">
       <div>
@@ -938,7 +940,7 @@ footer{padding:48px 20px 32px}
       <!-- Country selector -->
       <div style="margin-bottom:36px;text-align:left">
         <label id="aff-country-label" style="font-size:16px;color:var(--muted);display:block;margin-bottom:12px">Your subscribers are mainly based in</label>
-        <select id="aff-country" style="width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:14px 18px;border-radius:10px;font-size:17px;outline:none;cursor:pointer">
+        <select id="aff-country" aria-labelledby="aff-country-label" style="width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:14px 18px;border-radius:10px;font-size:17px;outline:none;cursor:pointer">
           <option value="349" data-currency="R" data-country="South Africa">🇿🇦 South Africa — R349/mo Pro</option>
           <option value="19" data-currency="" data-country="USA / Global">🌍 USA / Global — 19/mo Pro</option>
           <option value="16" data-currency="£" data-country="United Kingdom">🇬🇧 United Kingdom — £16/mo Pro</option>
@@ -959,7 +961,7 @@ footer{padding:48px 20px 32px}
           <label id="aff-subs-label" style="font-size:17px;color:var(--muted)">Number of Pro subscribers you refer</label>
           <span id="aff-sub-count" style="font-size:26px;font-weight:800;color:var(--accent)">25</span>
         </div>
-        <input type="range" id="aff-slider" min="1" max="500" value="25" style="width:100%;accent-color:var(--accent);height:7px;cursor:pointer">
+        <input type="range" id="aff-slider" min="1" max="500" value="25" aria-label="Number of subscribers" style="width:100%;accent-color:var(--accent);height:7px;cursor:pointer">
         <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-top:10px">
           <span id="aff-min-subs">1 subscriber</span><span id="aff-max-subs">500 subscribers</span>
         </div>
@@ -994,7 +996,7 @@ footer{padding:48px 20px 32px}
   </div>
 </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Affiliate calculator
 (function() {
   var slider   = document.getElementById('aff-slider');
@@ -1101,13 +1103,13 @@ footer{padding:48px 20px 32px}
     <h2 data-i18n="cta_title">The inbox built for <span style="color:var(--accent)">everyone else.</span></h2>
     <p data-i18n="cta_sub">Other tools own English. With Spreakr, you own the world.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a href="https://app.spreakr.com" class="btn-primary" style="font-size:18px;padding:18px 40px" data-i18n="cta_btn1">Start free</a>
-      <a href="/cdn-cgi/l/email-protection#7f1c170d160c3f0c0f0d1a1e140d511c1012400c0a1d151a1c0b423b1a12105f2d1a0e0a1a0c0b" class="btn-secondary" style="font-size:18px;padding:18px 40px" data-i18n="cta_btn2">Book a demo</a>
+      <a href="https://app.spreakr.com" class="btn-primary" style="font-size:18px;padding:18px 48px;display:inline-block" data-i18n="cta_btn1">Start free</a>
     </div>
     <p style="font-size:13px;color:var(--muted);margin-top:24px" data-i18n="cta_note">No credit card required · Cancel anytime · POPIA compliant · Built in South Africa 🇿🇦</p>
   </div>
 </section>
 
+</main>
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -1115,27 +1117,21 @@ footer{padding:48px 20px 32px}
       <p data-i18n="footer_tagline">The world's first multilingual AI email command centre. Email in your language. Send in theirs.</p>
     </div>
     <div class="footer-col">
-      <h4 data-i18n="footer_product">Product</h4>
+      <p style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:16px" data-i18n="footer_product">Product</p>
       <a href="#features" data-i18n="nav_features">Features</a>
       <a href="#features">Deep Search</a>
       <a href="#features">Thread Intelligence</a>
       <a href="#languages" data-i18n="nav_languages">Languages</a>
       <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
     </div>
+    <!-- COMPANY COLUMN PARKED — restore when About/Contact/Press pages exist -->
     <div class="footer-col">
-      <h4 data-i18n="footer_company">Company</h4>
-      <a href="/cdn-cgi/l/email-protection#95f6fde7fce6d5e6e5e7f0f4fee7bbf6faf8" data-i18n="footer_about">About</a>
-      <a href="/cdn-cgi/l/email-protection#a5c6cdd7ccd6e5d6d5d7c0c4ced78bc6cac8" data-i18n="footer_contact">Contact</a>
-      <a href="#affiliate" data-i18n="footer_affiliate">Affiliate Program</a>
-      <a href="/cdn-cgi/l/email-protection#c9aaa1bba0ba89bab9bbaca8a2bbe7aaa6a4" data-i18n="footer_press">Press</a>
-    </div>
-    <div class="footer-col">
-      <h4 data-i18n="footer_legal">Legal</h4>
-      <a href="#privacy" data-i18n="footer_privacy">Privacy Policy</a>
-      <a href="#privacy" data-i18n="footer_popia">POPIA Compliance</a>
-      <a href="#privacy" data-i18n="footer_security">Security</a>
-      <a href="#terms" data-i18n="footer_terms">Terms of Service</a>
-      <a href="#refund">Refund Policy</a>
+      <p style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:16px" data-i18n="footer_legal">Legal</p>
+      <a href="#" onclick="openLegal('privacy');return false;" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="#" onclick="openLegal('privacy');return false;" data-i18n="footer_popia" style="display:none">POPIA Compliance</a>
+      <a href="#" onclick="openLegal('privacy');return false;" data-i18n="footer_security" style="display:none">Security</a>
+      <a href="#" onclick="openLegal('terms');return false;" data-i18n="footer_terms">Terms of Service</a>
+      <a href="#" onclick="openLegal('refund');return false;">Refund Policy</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1594,62 +1590,195 @@ window.CONVINCED_I18N = {
 })();
 </script>
 
+<!-- ══ LEGAL MODALS ══════════════════════════════════════════ -->
+<style>
+.legal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9980;backdrop-filter:blur(4px);opacity:0;transition:opacity .25s}
+.legal-backdrop.open{display:block;opacity:1}
+.legal-modal{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-52%);width:min(760px,calc(100vw - 40px));max-height:82vh;background:#0D1117;border:1px solid #2A3750;border-radius:14px;box-shadow:0 24px 80px rgba(0,0,0,0.7);z-index:9981;flex-direction:column;opacity:0;transition:opacity .25s,transform .25s}
+.legal-modal.open{display:flex;opacity:1;transform:translate(-50%,-50%)}
+.legal-modal-header{padding:22px 28px;border-bottom:1px solid #1E2330;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.legal-modal-header h2{font-size:18px;font-weight:800;color:#fff;margin:0}
+.legal-modal-header .lm-sub{font-size:11px;color:#8B95A1;margin-top:3px}
+.legal-modal-close{background:none;border:1px solid #1E2330;color:#8B95A1;width:32px;height:32px;border-radius:6px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.legal-modal-close:hover{background:#1E2330;color:#fff}
+.legal-modal-body{padding:28px;overflow-y:auto;flex:1;font-size:13px;color:#8B95A1;line-height:1.9}
+.legal-modal-body strong{color:#C8D0DC;display:block;margin-bottom:4px;margin-top:20px}
+.legal-modal-body strong:first-child{margin-top:0}
+.legal-modal-body a{color:#4F7FFF}
+.legal-modal-footer{padding:16px 28px;border-top:1px solid #1E2330;display:flex;justify-content:flex-end;flex-shrink:0}
+.legal-modal-footer button{background:#4F7FFF;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer}
+</style>
 
-<!-- LEGAL PAGES -->
-<section id="terms" style="background:#080B10;padding:80px 40px;border-top:1px solid var(--border)">
-  <div style="max-width:860px;margin:0 auto">
-    <h2 style="font-size:28px;font-weight:800;color:#fff;margin-bottom:8px">Terms of Service</h2>
-    <p style="font-size:12px;color:var(--muted);margin-bottom:36px">Effective date: 1 April 2026 · Spreakr (Pty) Ltd · spreakr.com</p>
+<!-- Backdrop -->
+<div class="legal-backdrop" id="legalBackdrop" onclick="closeLegal()"></div>
 
-    <div style="font-size:13px;color:#8B95A1;line-height:1.9;display:flex;flex-direction:column;gap:24px">
-      <div><strong style="color:#C8D0DC">1. Acceptance</strong><br>By accessing or using Spreakr you agree to be bound by these Terms. If you do not agree, do not use the service.</div>
-      <div><strong style="color:#C8D0DC">2. Service Description</strong><br>Spreakr is an AI-powered multilingual email management platform that connects to your existing email accounts (Gmail, Microsoft Outlook, Yahoo Mail, Zoho Mail and others via OAuth or IMAP). Spreakr does not store your emails on our servers — all email data is retrieved directly from your email provider in real time.</div>
-      <div><strong style="color:#C8D0DC">3. Third-Party Services</strong><br>Spreakr relies on the following third-party services to deliver its functionality: OpenAI (AI text generation and email analysis — zero data retention policy applied); Google (Gmail OAuth, Text-to-Speech); Microsoft (Outlook OAuth); ElevenLabs (voice transcription); DPO Pay (African payment processing); Paddle (international payment processing). Your use of Spreakr is subject to the terms and privacy policies of these providers. Spreakr is not responsible for the actions, policies or availability of third-party services.</div>
-      <div><strong style="color:#C8D0DC">4. User Accounts</strong><br>You are responsible for maintaining the confidentiality of your login credentials and for all activity that occurs under your account. You must notify us immediately of any unauthorised access.</div>
-      <div><strong style="color:#C8D0DC">5. Acceptable Use</strong><br>You agree not to use Spreakr to send spam, engage in illegal activity, transmit malicious code, violate the rights of others, or circumvent any security measures. Spreakr reserves the right to suspend accounts that violate this policy without notice.</div>
-      <div><strong style="color:#C8D0DC">6. Intellectual Property</strong><br>All content, trademarks, software and design elements of Spreakr are owned by or licensed to Spreakr (Pty) Ltd. You retain ownership of all content you create using the service.</div>
-      <div><strong style="color:#C8D0DC">7. Limitation of Liability</strong><br>To the maximum extent permitted by applicable law, Spreakr and its directors, employees, affiliates and suppliers shall not be liable for any indirect, incidental, special, consequential or punitive damages arising from your use of the service, including but not limited to loss of data, loss of revenue, loss of profits or business interruption, even if advised of the possibility of such damages. Our total liability in any matter arising out of these Terms is limited to the amount you paid us in the 12 months preceding the event giving rise to the claim.</div>
-      <div><strong style="color:#C8D0DC">8. Disclaimer of Warranties</strong><br>Spreakr is provided "as is" and "as available" without warranty of any kind. We do not warrant that the service will be uninterrupted, error-free or free of harmful components.</div>
-      <div><strong style="color:#C8D0DC">9. Governing Law</strong><br>These Terms are governed by the laws of the Republic of South Africa. Any disputes shall be subject to the jurisdiction of the South African courts.</div>
-      <div><strong style="color:#C8D0DC">10. Changes to Terms</strong><br>We may update these Terms at any time. Continued use of Spreakr after changes constitutes acceptance of the revised Terms. We will notify active subscribers by email of material changes.</div>
-      <div><strong style="color:#C8D0DC">11. Contact</strong><br>Questions about these Terms: <a href="mailto:legal@spreakr.com" style="color:var(--accent)">legal@spreakr.com</a></div>
+<!-- Terms Modal -->
+<div class="legal-modal" id="modal-terms">
+  <div class="legal-modal-header">
+    <div>
+      <h2>Terms of Service</h2>
+      <div class="lm-sub">Effective 1 April 2026 · Spreakr · spreakr.com</div>
     </div>
+    <button class="legal-modal-close" onclick="closeLegal()">✕</button>
   </div>
-</section>
+  <div class="legal-modal-body">
+    <strong>1. Acceptance of Terms</strong>
+    By creating an account, accessing, or using Spreakr in any way, you confirm that you have read, understood, and agree to be legally bound by these Terms of Service ("Terms"), our Privacy Policy, and our Refund Policy. If you do not agree to these Terms in their entirety, you must not use the service. These Terms constitute a binding legal agreement between you and Spreakr (Pty) Ltd. You must be at least 18 years of age to use Spreakr.
 
-<section id="privacy" style="background:#080B10;padding:80px 40px;border-top:1px solid var(--border)">
-  <div style="max-width:860px;margin:0 auto">
-    <h2 style="font-size:28px;font-weight:800;color:#fff;margin-bottom:8px">Privacy Policy</h2>
-    <p style="font-size:12px;color:var(--muted);margin-bottom:36px">Effective date: 1 April 2026 · POPIA compliant · GDPR aware</p>
+    <strong>2. Service Description</strong>
+    Spreakr is an AI-powered multilingual email management platform ("the Service") that connects to your existing email provider accounts — including Gmail, Microsoft Outlook, Yahoo Mail, Zoho Mail, and others — via industry-standard OAuth 2.0 authentication or IMAP/SMTP protocols. Spreakr provides features including unified inbox management, AI-powered email drafting, voice dictation and transcription, natural language deep search, thread intelligence analysis, and multilingual communication tools. Spreakr does not store your email content on our servers. All email data is retrieved directly from your email provider in real time, processed in memory to deliver the requested feature, and is not persisted beyond the duration of the relevant operation.
 
-    <div style="font-size:13px;color:#8B95A1;line-height:1.9;display:flex;flex-direction:column;gap:24px">
-      <div><strong style="color:#C8D0DC">1. Information We Collect</strong><br>We collect information you provide directly (name, email address, payment details) and information generated through your use of the service (usage logs, subscription status, language preferences). We do not store the content of your emails — email data is fetched live from your provider and processed in memory only.</div>
-      <div><strong style="color:#C8D0DC">2. How We Use Your Information</strong><br>To provide and improve the service; to process payments; to send transactional emails (receipts, account notifications); to respond to support requests; to comply with legal obligations. We do not sell your personal information to third parties. We do not use your data for advertising.</div>
-      <div><strong style="color:#C8D0DC">3. AI Processing &amp; OpenAI</strong><br>When you use AI features (email summarisation, draft replies, Deep Search), the relevant email content is sent to OpenAI for processing. We have configured OpenAI with a zero data retention policy — OpenAI does not store or train on your data. See OpenAI's privacy policy at openai.com/privacy.</div>
-      <div><strong style="color:#C8D0DC">4. Data Storage &amp; Security</strong><br>Account data is stored in Supabase (PostgreSQL) with encryption at rest and in transit. We implement industry-standard security measures. No system is perfectly secure — we cannot guarantee absolute security.</div>
-      <div><strong style="color:#C8D0DC">5. Your Rights (POPIA &amp; GDPR)</strong><br>You have the right to access, correct or delete your personal information; to withdraw consent; to object to processing; to data portability. To exercise these rights contact <a href="mailto:privacy@spreakr.com" style="color:var(--accent)">privacy@spreakr.com</a>. We will respond within 30 days.</div>
-      <div><strong style="color:#C8D0DC">6. Cookies</strong><br>We use session cookies for authentication and localStorage for user preferences (language, settings). We do not use third-party tracking or advertising cookies.</div>
-      <div><strong style="color:#C8D0DC">7. Data Retention</strong><br>We retain account data for as long as your account is active and for 12 months after deletion, except where longer retention is required by law.</div>
-      <div><strong style="color:#C8D0DC">8. Contact</strong><br>Privacy queries: <a href="mailto:privacy@spreakr.com" style="color:var(--accent)">privacy@spreakr.com</a> · Spreakr (Pty) Ltd · South Africa</div>
+    <strong>3. Subscriptions and Billing</strong>
+    Spreakr offers a 7-day free Trial plan and paid subscription plans (Pro and Executive), billed on a monthly recurring basis. Subscription fees are charged in advance at the start of each billing period. Your subscription renews automatically each month unless you cancel before the renewal date. You may cancel at any time through your account settings. Cancellation takes effect at the end of your current billing period and you retain full access until that date. We reserve the right to change pricing with 30 days' notice to active subscribers. Your continued use after a price change constitutes acceptance.
+
+    <strong>4. Payment Processing and Merchant of Record</strong>
+    Spreakr uses two separate payment processors depending on your location. For customers in South Africa and other African markets, payments are processed by DPO Pay, a licensed payment service provider operating under applicable African financial regulations. For all other international customers (including but not limited to customers in the United Kingdom, European Union, United States, India, and other regions outside Africa), payments are processed by Paddle.com Market Limited ("Paddle"), incorporated in England and Wales (Company No. 08320638), registered address 15 West Yard, Camden Lock, London, NW1 8AF. For international customers, Paddle acts as the Merchant of Record and is the seller of record on your invoice. When purchasing via Paddle: (a) your contract for the purchase of a Spreakr subscription is between you and Paddle, not Spreakr; (b) Paddle is responsible for collecting and remitting applicable taxes including VAT, GST, and sales tax in your jurisdiction; (c) your payment and billing data is governed by Paddle's Privacy Policy available at paddle.com/privacy; (d) any payment disputes or chargebacks must be raised with Paddle directly. Paddle's terms of service are available at paddle.com/legal/terms. Spreakr remains responsible for delivering the software service to you regardless of which payment processor handles your transaction.
+
+    <strong>5. AI Search Credits and Top-Up Packs</strong>
+    Each subscription plan includes a monthly AI search credit allowance. Deep Search and AI analysis features consume credits per use. When your monthly credit allowance is exhausted, you may purchase additional credit top-up packs through the in-app store. Top-up packs are processed by the same payment processor as your subscription (Paddle for international customers; DPO Pay for African customers). Credit top-up packs are added to your account immediately upon successful payment. Unused credits from your monthly allowance expire at the end of your billing period and do not roll over. Purchased top-up pack credits remain valid for 12 months from the date of purchase. Credits have no cash value and cannot be transferred, sold, or exchanged.
+
+    <strong>6. Affiliate Program</strong>
+    Spreakr operates a referral affiliate programme. Affiliates earn a 30% recurring commission on the monthly subscription value of each paying subscriber they refer, for as long as that subscriber remains active. Commissions are calculated on net revenue received by Spreakr after payment processor fees and applicable taxes. Affiliate commissions are paid monthly via PayPal, subject to a minimum payout threshold of R100 (or currency equivalent). Spreakr reserves the right to modify commission rates with 30 days' notice. Commissions earned prior to any rate change will be honoured at the rate applicable at the time they were earned. Fraudulent referrals, self-referrals, or abuse of the affiliate programme will result in immediate disqualification and forfeiture of unpaid commissions. Spreakr reserves the right to terminate the affiliate programme at any time.
+
+    <strong>7. Third-Party Services and Dependencies</strong>
+    The Service relies on the following third-party providers to deliver its functionality. You acknowledge that your use of these features is also subject to the respective provider's terms and privacy policies: OpenAI (GPT-4.1 and related models for AI features — Spreakr has applied a zero data retention agreement, meaning OpenAI does not store or use your data for training); Google LLC (Gmail OAuth 2.0 authentication, Google Text-to-Speech API); Microsoft Corporation (Microsoft Outlook and Microsoft 365 OAuth 2.0 authentication); ElevenLabs Inc. (voice transcription and speech synthesis); Render Inc. (cloud hosting infrastructure); Supabase Inc. (database and authentication infrastructure); DPO Pay (African payment processing); Paddle.com Market Limited (international payment processing). Spreakr is not responsible for the availability, performance, security, or actions of these third-party services. Interruptions or changes to these services may affect Spreakr's functionality and do not constitute grounds for a refund beyond our stated refund policy.
+
+    <strong>8. User Accounts and Credentials</strong>
+    You are solely responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to notify us immediately at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6b070e0c0a072b181b190e0a001945080406">[email&#160;protected]</a> upon becoming aware of any unauthorised access to or use of your account. Spreakr is not liable for any loss or damage arising from your failure to maintain adequate account security. You may not share, sell, or transfer your account to any other person.
+
+    <strong>9. Acceptable Use Policy</strong>
+    You agree to use Spreakr only for lawful purposes and in a manner that does not infringe the rights of any third party. You specifically agree not to: use Spreakr to send unsolicited bulk email (spam) or engage in any form of phishing, fraud, or impersonation; transmit malicious code, viruses, or any software designed to interfere with or disrupt the Service; attempt to gain unauthorised access to any part of the Service or any other user's account; use the Service to process, store, or transmit material that is illegal, defamatory, obscene, threatening, or that violates the intellectual property rights of others; reverse engineer, decompile, or attempt to extract the source code of any part of the Service; circumvent any technical restrictions, rate limits, or access controls; resell, sublicense, or commercially exploit the Service without express written authorisation from Spreakr. Spreakr reserves the right to suspend or permanently terminate accounts that violate this policy, without notice and without refund in cases of deliberate abuse.
+
+    <strong>10. Intellectual Property</strong>
+    All content, software, trademarks, trade names, logos, design elements, and other intellectual property forming part of the Spreakr platform are owned by or licensed to Spreakr (Pty) Ltd and are protected under South African and applicable international intellectual property laws. The Spreakr name and logo may not be used without prior written consent. Nothing in these Terms grants you any rights in or to the Service beyond the limited right to use it in accordance with these Terms. You retain full ownership of all content you create, send, or receive through your email accounts. By using AI features, you grant Spreakr a limited, temporary licence to process that content solely to deliver the requested AI output. This licence terminates immediately upon completion of the relevant AI processing operation.
+
+    <strong>11. Limitation of Liability</strong>
+    To the maximum extent permitted by applicable law, Spreakr (Pty) Ltd, its directors, employees, contractors, and service providers shall not be liable for any indirect, incidental, special, consequential, punitive, or exemplary damages of any kind arising out of or related to your use of or inability to use the Service, including without limitation: loss of revenue, profits, or business opportunities; loss or corruption of data; loss of goodwill; cost of substitute services; or any third-party claims. This exclusion applies regardless of the legal theory under which such damages are claimed, whether in contract, delict, strict liability, or otherwise, and even if Spreakr has been advised of the possibility of such damages. In jurisdictions where the exclusion or limitation of liability for consequential or incidental damages is not permitted, Spreakr's liability shall be limited to the maximum extent permitted by law. In all other cases, Spreakr's total aggregate liability to you for all claims arising out of or relating to these Terms or the Service shall not exceed the total amount paid by you to Spreakr in the twelve (12) months immediately preceding the event giving rise to the claim.
+
+    <strong>12. Disclaimer of Warranties</strong>
+    The Service is provided strictly on an "as is" and "as available" basis, without any warranty of any kind, whether express, implied, statutory, or otherwise. To the fullest extent permitted by law, Spreakr expressly disclaims all warranties, including but not limited to: implied warranties of merchantability and fitness for a particular purpose; warranties that the Service will meet your specific requirements; warranties that the Service will be uninterrupted, timely, secure, or error-free; warranties as to the accuracy, reliability, or completeness of any AI-generated output. AI-generated content (including email drafts, summaries, and search results) is produced by large language models and may contain errors, omissions, or inaccuracies. You are solely responsible for reviewing and verifying any AI-generated content before relying on it or sending it.
+
+    <strong>13. Indemnification</strong>
+    You agree to defend, indemnify, and hold harmless Spreakr (Pty) Ltd and its directors, employees, contractors, affiliates, and service providers from and against any claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or in connection with: your use of the Service; your breach of these Terms; your violation of any applicable law or regulation; your violation of the rights of any third party; or any content transmitted or processed through your account.
+
+    <strong>14. Suspension and Termination</strong>
+    Spreakr may suspend or terminate your account immediately, without prior notice or liability, for any reason, including if you breach these Terms, if your payment fails and cannot be recovered within 7 days, or if Spreakr determines in its sole discretion that continued access poses a risk to the Service or other users. Upon termination, your right to use the Service ceases immediately. You may delete your account at any time through account settings. Upon account deletion, your personal data will be handled in accordance with our Privacy Policy.
+
+    <strong>15. Governing Law and Dispute Resolution</strong>
+    These Terms are governed by and construed in accordance with the laws of the Republic of South Africa, without regard to its conflict of law provisions. You agree that any dispute, controversy, or claim arising out of or relating to these Terms or the Service shall be subject to the non-exclusive jurisdiction of the courts of the Republic of South Africa. For disputes relating to payments processed by Paddle, additional terms and jurisdiction provisions from Paddle's terms of service may apply to you as an international customer.
+
+    <strong>16. Consumer Protection</strong>
+    Nothing in these Terms limits or excludes rights that you may have under applicable mandatory consumer protection laws in your jurisdiction that cannot be waived by contract. In South Africa, this includes rights under the Consumer Protection Act 68 of 2008 and the Electronic Communications and Transactions Act 25 of 2002. In the European Union and United Kingdom, statutory consumer rights and applicable distance selling regulations apply. In India, the Consumer Protection Act 2019 and Information Technology Act 2000 apply.
+
+    <strong>17. Changes to These Terms</strong>
+    We reserve the right to update or modify these Terms at any time. When we make material changes, we will notify active subscribers by email at least 14 days before the changes take effect and update the effective date below. Your continued use of the Service after the effective date of any changes constitutes your acceptance of the revised Terms. If you do not agree to the revised Terms, you must stop using the Service and cancel your subscription before the changes take effect.
+
+    <strong>18. Severability</strong>
+    If any provision of these Terms is held to be invalid, illegal, or unenforceable under applicable law, the remaining provisions shall continue in full force and effect. The invalid provision shall be modified to the minimum extent necessary to make it enforceable.
+
+    <strong>19. Entire Agreement</strong>
+    These Terms, together with the Privacy Policy and Refund Policy, constitute the entire agreement between you and Spreakr (Pty) Ltd with respect to the Service and supersede all prior or contemporaneous agreements, representations, warranties, and understandings, whether written or oral.
+
+    <strong>20. Contact</strong>
+    Spreakr (Pty) Ltd · South Africa · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="472b2220262b0734373522262c356924282a">[email&#160;protected]</a> · spreakr.com
+  </div>
+  <div class="legal-modal-footer"><button onclick="closeLegal()">Close</button></div>
+</div>
+
+<!-- Privacy Modal -->
+<div class="legal-modal" id="modal-privacy">
+  <div class="legal-modal-header">
+    <div>
+      <h2>Privacy Policy</h2>
+      <div class="lm-sub">Effective 1 April 2026 · POPIA compliant · GDPR aware</div>
     </div>
+    <button class="legal-modal-close" onclick="closeLegal()">✕</button>
   </div>
-</section>
+  <div class="legal-modal-body">
+    <strong>1. Introduction and Identity of the Responsible Party</strong>
+    This Privacy Policy explains how Spreakr (Pty) Ltd ("Spreakr", "we", "us", or "our"), a company incorporated in the Republic of South Africa, collects, processes, stores, and protects your personal information when you use the Spreakr platform at spreakr.com and related subdomains ("the Service"). This policy is issued in compliance with the Protection of Personal Information Act 4 of 2013 ("POPIA") and, where applicable, the General Data Protection Regulation (EU) 2016/679 ("GDPR") and the UK GDPR. The Information Officer responsible for processing decisions at Spreakr is contactable at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="630f0604020f23101311060208114d000c0e">[email&#160;protected]</a>.
 
-<section id="refund" style="background:#080B10;padding:80px 40px;border-top:1px solid var(--border)">
-  <div style="max-width:860px;margin:0 auto">
-    <h2 style="font-size:28px;font-weight:800;color:#fff;margin-bottom:8px">Refund Policy</h2>
-    <p style="font-size:12px;color:var(--muted);margin-bottom:36px">Effective date: 1 April 2026</p>
+    <strong>2. Information We Collect</strong>
+    We collect two categories of personal information. The first is information you provide directly: your name and email address when you create an account; payment information (processed securely by our payment partners — Spreakr never stores your card details); your language and regional preferences; support or correspondence you send us; and if you join our affiliate programme, your PayPal address for commission payments. The second is information collected automatically: technical logs including IP addresses, browser type, device information, and session timestamps; feature usage data (which features you use and how often, without logging the content of your emails); authentication tokens from Google and Microsoft OAuth (stored encrypted using AES-256-GCM); and subscription and payment status information from our payment processors.
 
-    <div style="font-size:13px;color:#8B95A1;line-height:1.9;display:flex;flex-direction:column;gap:24px">
-      <div><strong style="color:#C8D0DC">7-Day Money-Back Guarantee</strong><br>If you are not satisfied with your first paid subscription (Pro or Executive), you may request a full refund within 7 days of your initial payment. This guarantee applies to first-time subscribers only and cannot be applied to renewals or repeat purchases.</div>
-      <div><strong style="color:#C8D0DC">How to Request a Refund</strong><br>Email <a href="mailto:billing@spreakr.com" style="color:var(--accent)">billing@spreakr.com</a> within 7 days of your payment with your account email and order reference. We will process your refund within 5–10 business days.</div>
-      <div><strong style="color:#C8D0DC">Subscriptions After the Trial Period</strong><br>Monthly subscription renewals are non-refundable once processed. You may cancel your subscription at any time — cancellation takes effect at the end of your current billing period and you retain access until then.</div>
-      <div><strong style="color:#C8D0DC">AI Search Credits &amp; Top-Up Packs</strong><br>Credit top-up packs are non-refundable once purchased. Unused credits at the time of account cancellation are forfeited.</div>
-      <div><strong style="color:#C8D0DC">Exceptions</strong><br>We reserve the right to deny refund requests where there is evidence of abuse of the refund policy, or where the account has violated our Terms of Service.</div>
-      <div><strong style="color:#C8D0DC">Contact</strong><br>Billing queries: <a href="mailto:billing@spreakr.com" style="color:var(--accent)">billing@spreakr.com</a></div>
+    <strong>3. Email Content — What We Do and Do Not Store</strong>
+    This is critically important: Spreakr does not store, copy, or retain the content of your emails on our servers. When you use features that require email data — such as Deep Search, Thread Intelligence, or AI draft reply — the relevant email content is retrieved live from your email provider (Gmail or Outlook), processed in memory to deliver the result, and then discarded. The only exception is when you explicitly instruct the Service to perform an action (such as saving a draft or composing an email), in which case that action is transmitted to your email provider's servers on your behalf. We do not index your emails, build email databases, or retain any email content after the completion of a processing operation.
+
+    <strong>4. How We Use Your Information</strong>
+    We process your personal information for the following purposes and on the following legal bases: to create and manage your account (contractual necessity — POPIA Section 11(1)(b) / GDPR Article 6(1)(b)); to deliver the Service features you request (contractual necessity); to process subscription payments and maintain billing records (contractual necessity and legal obligation); to send transactional emails including receipts, renewal notices, and service updates (legitimate interest / contractual necessity); to respond to your support requests and enquiries (legitimate interest); to detect fraud, security threats, and Terms of Service violations (legitimate interest); to comply with applicable legal obligations including tax regulations and law enforcement requests (legal obligation — POPIA Section 11(1)(c) / GDPR Article 6(1)(c)); and with your explicit consent, to send you product updates, new feature announcements, or other marketing communications (consent — you may withdraw this at any time). We do not sell your personal information to any third party. We do not use your personal information for advertising or share it with advertising networks.
+
+    <strong>5. AI Processing and OpenAI</strong>
+    When you use AI-powered features (Deep Search, Thread Intelligence, AI draft reply, voice dictation, email polishing), relevant content is transmitted to OpenAI's API for processing. Spreakr has entered into a zero data retention agreement with OpenAI, which means: OpenAI processes your data in real time to produce the output, OpenAI does not store your inputs or outputs beyond the duration of the API call, and OpenAI does not use your data to train its models. You can review OpenAI's enterprise privacy commitments at openai.com/enterprise-privacy. All communication with OpenAI's API is transmitted over encrypted HTTPS connections.
+
+    <strong>6. Third-Party Data Processors</strong>
+    We engage the following third-party processors who may have access to personal information in the course of providing services to us: Supabase Inc. (database hosting — account data, subscription records, usage logs; servers located in the United States with SOC 2 Type II certification); Render Inc. (application hosting — processing occurs on Render infrastructure; SOC 2 compliant); Google LLC (OAuth authentication for Gmail users; Google Text-to-Speech API — see Google's Privacy Policy at policies.google.com/privacy); Microsoft Corporation (OAuth authentication for Outlook/Microsoft 365 users — see Microsoft's Privacy Policy at privacy.microsoft.com); ElevenLabs Inc. (voice transcription of audio you record — see ElevenLabs' Privacy Policy at elevenlabs.io/privacy); Paddle.com Market Limited (payment processing for international customers — see Paddle's Privacy Policy at paddle.com/privacy); DPO Pay (payment processing for African customers). Each of these processors is engaged under data processing agreements or equivalent contractual protections. We require all processors to implement appropriate technical and organisational security measures.
+
+    <strong>7. International Data Transfers</strong>
+    Spreakr is a South African company. Some of our third-party processors operate servers outside South Africa, including in the United States and the United Kingdom. When your personal information is transferred to a jurisdiction that does not offer equivalent data protection to South Africa, we ensure appropriate safeguards are in place. For transfers to the United States, we rely on Standard Contractual Clauses (SCCs) or equivalent mechanisms where applicable. For EU/EEA users, transfers are governed by GDPR Chapter V safeguards. By using the Service, you acknowledge that your information may be processed outside your country of residence.
+
+    <strong>8. Data Security</strong>
+    We implement industry-standard security measures to protect your personal information against unauthorised access, disclosure, alteration, or destruction. These include: AES-256-GCM encryption for OAuth tokens stored in our database; TLS/HTTPS encryption for all data transmitted between your browser and our servers; access controls ensuring only authorised personnel can access personal data; and regular security assessments of our infrastructure and code. You should be aware that no method of transmission over the internet or method of electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee its absolute security.
+
+    <strong>9. Cookies and Local Storage</strong>
+    We use the following local storage mechanisms: session cookies for authentication (these are essential for the Service to function and cannot be disabled); and browser localStorage to remember your language preference and interface settings. We do not use third-party tracking cookies, advertising cookies, or any cross-site tracking technologies. We do not use Google Analytics, Facebook Pixel, or similar analytics or advertising trackers.
+
+    <strong>10. Your Rights Under POPIA and GDPR</strong>
+    Depending on your jurisdiction, you have the following rights regarding your personal information. Under POPIA (applicable to South African residents): the right to be notified that your information is being collected; the right to access the personal information we hold about you; the right to request correction of inaccurate information; the right to request deletion of your information; the right to object to processing on grounds of legitimate interest; the right to lodge a complaint with the Information Regulator of South Africa (inforegulator.org.za). Under GDPR (applicable to EU/EEA residents) and UK GDPR (applicable to UK residents), you additionally have: the right to data portability (receive your data in a machine-readable format); the right to restriction of processing; the right to lodge a complaint with your national data protection authority. To exercise any of these rights, contact us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="93fff6f4f2ffd3e0e3e1f6f2f8e1bdf0fcfe">[email&#160;protected]</a>. We will respond to all requests within 30 days. In complex cases, we may extend this by a further 30 days, but we will notify you. We will not charge a fee for reasonable requests.
+
+    <strong>11. Data Retention</strong>
+    We retain different categories of data for different periods. Account data (name, email address, preferences) is retained for as long as your account remains active. Upon account deletion, account data is deleted within 30 days, except where we are required by law to retain it longer. Billing records and transaction data are retained for 7 years from the date of the transaction in compliance with South African tax and accounting laws. Technical logs (IP addresses, access logs) are retained for 90 days for security and debugging purposes. Backup copies of data may persist for up to 30 days after scheduled deletion. If you have been involved in a dispute or complaint, relevant records may be retained until the matter is fully resolved.
+
+    <strong>12. Children's Privacy</strong>
+    Spreakr is not directed at children under the age of 18, and we do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a person under 18, please contact us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2f434a484e436f5c5f5d4a4e445d014c4042">[email&#160;protected]</a> and we will delete it promptly.
+
+    <strong>13. Changes to This Policy</strong>
+    We may update this Privacy Policy from time to time to reflect changes in the law, our data practices, or the features of the Service. When we make material changes, we will notify you by email (if you are an active subscriber) and update the effective date. Your continued use of the Service after the effective date constitutes acceptance of the updated policy.
+
+    <strong>14. Contact and Complaints</strong>
+    For any privacy-related queries, access requests, or complaints: Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d0bcb5b7b1bc90a3a0a2b5b1bba2feb3bfbd">[email&#160;protected]</a> · Spreakr (Pty) Ltd · South Africa. If you are a South African resident and are not satisfied with our response, you have the right to lodge a complaint with the Information Regulator: inforegulator.org.za · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="02616d6f726e636b6c76712c4b5042687771766b61672c656d742c7863">[email&#160;protected]</a>. If you are an EU/EEA resident, you may contact your national supervisory authority.
+  </div>
+  <div class="legal-modal-footer"><button onclick="closeLegal()">Close</button></div>
+</div>
+
+<!-- Refund Modal -->
+<div class="legal-modal" id="modal-refund">
+  <div class="legal-modal-header">
+    <div>
+      <h2>Refund Policy</h2>
+      <div class="lm-sub">Effective 1 April 2026</div>
     </div>
+    <button class="legal-modal-close" onclick="closeLegal()">✕</button>
   </div>
-</section>
+  <div class="legal-modal-body">
+    <strong>Overview</strong>
+    This Refund Policy applies to all paid subscriptions and credit purchases made through Spreakr at spreakr.com. Please read this policy carefully before making a purchase. Different terms apply depending on your payment processor, as detailed below. Nothing in this policy limits or excludes statutory consumer rights that apply in your jurisdiction and cannot be waived by contract.
 
-</body>
-</html>
+    <strong>7-Day Money-Back Guarantee — First-Time Subscribers</strong>
+    If you are not fully satisfied with your first paid subscription to a Pro or Executive plan, you may request a full refund within 7 calendar days of your initial payment date. This guarantee applies only to first-time subscribers making their first purchase on a given plan. It cannot be applied to subscription renewals, plan upgrades, or repeat purchases of the same plan. To qualify for this guarantee, your request must be submitted within 7 calendar days of the initial payment being processed — not 7 days from the start of your trial or from any other date. If you subscribed during a free trial period, the 7-day window begins from the date your first paid charge was processed.
+
+    <strong>How to Request a Refund — International Customers (Paddle)</strong>
+    If you are an international customer whose payment was processed by Paddle.com Market Limited (Paddle), your refund request should be directed as follows. You may contact Spreakr at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8be9e2e7e7e2e5eccbf8fbf9eeeae0f9a5e8e4e6">[email&#160;protected]</a> with your account email address and your Paddle order reference number (found in your payment receipt). Spreakr will initiate the refund on your behalf through Paddle. Alternatively, you may contact Paddle directly through their customer support portal at paddle.com. Since Paddle is the Merchant of Record for your transaction, the refund will appear on your statement as a reversal from Paddle, not from Spreakr. International refunds are typically processed within 5–10 business days of approval, subject to your card issuer or payment method processing times.
+
+    <strong>How to Request a Refund — African Customers (DPO Pay)</strong>
+    If you are a customer in South Africa or another African market whose payment was processed by DPO Pay, your refund request should be submitted directly to Spreakr at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="caa8a3a6a6a3a4ad8ab9bab8afaba1b8e4a9a5a7">[email&#160;protected]</a>. Include your account email address, your transaction reference number (found in your payment confirmation email), and a brief reason for your request. Spreakr will process eligible refunds through DPO Pay within 5–10 business days of approval. Refund processing times to your bank account may vary depending on your financial institution and country.
+
+    <strong>Subscription Renewals</strong>
+    Monthly subscription renewals are non-refundable once they have been successfully processed. You may cancel your subscription at any time through your account settings. Cancellation takes effect at the end of your current billing period and you will retain full access to all features of your plan until that date. We strongly recommend cancelling before your next renewal date if you do not wish to be charged for the following month. Spreakr does not provide partial or pro-rated refunds for unused days within a billing period.
+
+    <strong>Cancellation Process</strong>
+    To cancel your subscription, log into your Spreakr account and navigate to Account Settings → Subscription → Cancel Plan. Your cancellation will be processed immediately and will take effect at the end of your current paid billing period. You will receive a confirmation email. After cancellation, your account will be downgraded to the free Trial tier (subject to Trial limitations) at the end of your billing period. If you are an international customer and are unable to cancel through the in-app settings, you may also cancel your Paddle subscription directly through Paddle's customer portal using the link provided in your original payment confirmation email.
+
+    <strong>AI Search Credits and Top-Up Packs</strong>
+    AI search credit top-up packs are non-refundable once purchased, as credits are made available to your account immediately upon successful payment. Monthly subscription credit allowances are not refundable and do not carry over to the next billing period. Purchased top-up pack credits (as distinct from monthly allowance credits) remain valid for 12 months from the date of purchase. Credits have no cash value. Upon account cancellation or termination, any unused subscription credit allowances are forfeited immediately. Unused purchased top-up credits are also forfeited upon account deletion, unless you contact us within 30 days of deletion to request account reinstatement.
+
+    <strong>EU, EEA and UK Customers — Statutory Right of Withdrawal</strong>
+    If you are a consumer resident in the European Union, European Economic Area, or United Kingdom, you may have a statutory right of withdrawal of 14 days from the date of your subscription purchase under the EU Consumer Rights Directive (2011/83/EU) or the UK Consumer Contracts Regulations 2013. However, by using the Service immediately upon subscription (i.e., by accessing AI features, connecting email accounts, or otherwise using any part of the paid Service before the 14-day withdrawal period has elapsed), you expressly acknowledge that you are requesting immediate performance of the digital service and that you waive your right of withdrawal to the extent permitted by applicable law. Our 7-day money-back guarantee for first-time subscribers provides a comparable consumer protection in this context.
+
+    <strong>Service Outages and Technical Failures</strong>
+    If the Service is unavailable for an extended period (exceeding 72 consecutive hours) due to an error or outage attributable to Spreakr (excluding outages caused by third-party providers such as OpenAI, Google, Microsoft, ElevenLabs, Paddle, Render, or Supabase), you may contact <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="36545f5a5a5f58517645464453575d441855595b">[email&#160;protected]</a> to request a pro-rated account credit for the affected period. Such credits are at Spreakr's discretion and do not entitle you to a cash refund. Spreakr is not responsible for service interruptions caused by third-party dependencies.
+
+    <strong>Refund Eligibility Exclusions</strong>
+    Refunds will not be issued in the following circumstances: the 7-day money-back window has elapsed; the request relates to a subscription renewal rather than an initial purchase; the request relates to a credit top-up pack; there is evidence of abuse of the refund policy (e.g., multiple refund requests across different accounts); your account has been suspended or terminated for Terms of Service violations; the payment was made as part of a promotional or discounted offer that explicitly excluded refund eligibility.
+
+    <strong>Chargebacks</strong>
+    Initiating a chargeback or payment dispute with your bank or card issuer without first contacting Spreakr (or Paddle, for international customers) to seek resolution is a breach of these Terms. Spreakr reserves the right to suspend or terminate accounts associa
