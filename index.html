@@ -1328,8 +1328,8 @@ try {
 } catch(e) { console.error('Pills init error:', e); }
 
 document.getElementById('langBtnLabel').innerHTML = flagMarkup('en') + '<span>EN</span>';
-const oldApply = applyTranslations;
-applyTranslations = function(lang) {
+var oldApply = window.applyTranslations || function(){};
+window.applyTranslations = function(lang) {
   oldApply(lang);
   var label = document.getElementById('langBtnLabel');
   if (label) label.innerHTML = flagMarkup(lang) + '<span>' + lang.toUpperCase() + '</span>';
@@ -1421,6 +1421,58 @@ const HERO_MESSAGE_LINES = {
   es:{l1:'Habla tu idioma.',l2:'Formulado automáticamente con inteligencia y profesionalismo.',l3:'Ahorra horas cada semana.',sub:'Cada idioma. Cada bandeja de entrada. Un centro de comando inteligente. Habla de forma natural. Escribe de forma profesional. Traduce al instante. Resume en segundos. Busca inteligentemente. Gestiona cada cuenta de email y cada idioma desde una sola plataforma potente.',note:'No necesitas volver a tocar el teclado cuando se trata de tus emails'},
   sw:{l1:'Ongea lugha yako.',l2:'Imeandaliwa kiotomatiki kwa akili na weledi.',l3:'Okoa masaa kila wiki.',sub:'Kila lugha. Kila kisanduku pokezi. Kituo kimoja cha amri chenye akili. Ongea kwa kawaida. Andika kitaalamu. Tafsiri papo hapo. Fupisha ndani ya sekunde. Tafuta kwa akili. Dhibiti kila akaunti ya barua pepe na kila lugha kutoka jukwaa moja lenye nguvu.',note:'Huhitaji tena kugusa kibodi yako linapokuja suala la barua pepe zako'}
 };
+// ── Core i18n engine ─────────────────────────────────────────
+function detectLanguage(){
+  try {
+    var urlLang = new URLSearchParams(window.location.search).get('lang');
+    if (urlLang && LOCALES[urlLang]) return urlLang;
+    var stored = localStorage.getItem('spreakr-lang');
+    if (stored && LOCALES[stored]) return stored;
+  } catch(e){}
+  var nav = (navigator.language || navigator.userLanguage || 'en').split('-')[0].toLowerCase();
+  return LOCALES[nav] ? nav : 'en';
+}
+
+function applyTranslations(lang){
+  var locale = LOCALES[lang] || LOCALES.en;
+  lang = LOCALES[lang] ? lang : 'en';
+  try { localStorage.setItem('spreakr-lang', lang); } catch(e){}
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', locale.dir || 'ltr');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    var val = locale[key] !== undefined ? locale[key] : (LOCALES.en[key] !== undefined ? LOCALES.en[key] : null);
+    if (val !== null) el.textContent = val;
+  });
+}
+window.applyTranslations = applyTranslations;
+
+function buildDropdown(){
+  var dd = document.getElementById('langDropdown');
+  var btn = document.getElementById('langBtn');
+  if (!dd || !btn) return;
+  // Populate options
+  Object.keys(LOCALES).forEach(function(code){
+    var l = LOCALES[code];
+    var opt = document.createElement('div');
+    opt.className = 'lang-option';
+    opt.innerHTML = flagMarkup(code) + '<span>' + l.name + '</span>';
+    opt.addEventListener('click', function(){
+      window.applyTranslations(code);
+      try { localStorage.setItem('spreakr-lang', code); } catch(e){}
+      dd.classList.remove('open');
+    });
+    dd.appendChild(opt);
+  });
+  // Toggle dropdown
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    dd.classList.toggle('open');
+  });
+  document.addEventListener('click', function(){ dd.classList.remove('open'); });
+}
+// ─────────────────────────────────────────────────────────────
+
 function applyHeroMessageLines(lang){
   var t = HERO_MESSAGE_LINES[lang] || HERO_MESSAGE_LINES.en;
   var l1 = document.querySelector('[data-i18n=\"hero_h1_1\"]');
@@ -1483,7 +1535,7 @@ function applyHeroCalcExtras(lang){
 }
 
 buildDropdown();
-applyTranslations(detectLanguage());
+window.applyTranslations(detectLanguage());
 </script>
 
 <script>
@@ -1608,21 +1660,96 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLe
     <button class="legal-modal-close" onclick="closeLegal()">✕</button>
   </div>
   <div class="legal-modal-body">
-    <strong>Last updated: April 2026</strong><p>These Terms of Service govern your use of Spreakr. By accessing or using Spreakr, you agree to be bound by these Terms.</p>
-    <h3>Use of Service</h3>
-    <p>Spreakr provides an AI-powered multilingual email command centre. You may use the service for lawful business and personal communication purposes only. You must not use Spreakr to send spam, illegal content, or content that infringes third-party rights.</p>
-    <h3>Account Responsibility</h3>
-    <p>You are responsible for maintaining the security of your account credentials. Spreakr is not liable for losses resulting from unauthorised access due to your failure to secure your account.</p>
-    <h3>Intellectual Property</h3>
-    <p>Spreakr and its underlying technology are owned by Spreakr (Pty) Ltd. You retain ownership of content you create using the service.</p>
-    <h3>Limitation of Liability</h3>
-    <p>Spreakr relies on third-party services including OpenAI, Google, Microsoft, ElevenLabs, DPO Pay, Paddle, and Zoho. Spreakr is not liable for service interruptions caused by these providers. To the maximum extent permitted by law, Spreakr's total liability is limited to the amount you paid in the three months preceding any claim.</p>
-    <h3>Termination</h3>
-    <p>We may suspend or terminate accounts that violate these Terms. You may cancel your subscription at any time.</p>
-    <h3>Governing Law</h3>
-    <p>These Terms are governed by the laws of the Republic of South Africa.</p>
+    <strong>Last Updated: April 2026</strong>
+    <p style="margin-top:10px">These Terms of Service ("Terms") form a binding agreement between Spreakr (Pty) Ltd, trading as Spreakr, with its principal place of business in South Africa ("Company," "we," "us," or "our"), and the person or entity accessing or using our website, software, applications, and related services (collectively, the "Services") ("you" or "your").</p>
+    <p style="margin-top:10px">By accessing or using the Services, clicking to accept these Terms, creating an account, or placing an order, you agree to be bound by these Terms. If you are entering into these Terms on behalf of an organization, you represent that you have authority to bind that organization, and "you" includes that organization.</p>
+
+    <h3>1. Eligibility</h3>
+    <p>You must be at least the age of majority in your place of residence and legally capable of entering into contracts to use the Services. If you use the Services on behalf of a business or other entity, you represent that you have authority to bind that entity.</p>
+
+    <h3>2. The Services</h3>
+    <p>We provide software and related services designed to assist users with multilingual email drafting, translation, summarization, writing assistance, account integration, and workflow automation. We may update, improve, change, suspend, or discontinue any part of the Services from time to time. We do not guarantee that any specific feature or integration will remain available indefinitely.</p>
+
+    <h3>3. Accounts</h3>
+    <p>You may need to create an account to use some or all of the Services. You agree to provide accurate, complete, and current information and to keep it updated. You are responsible for: safeguarding your login credentials; all activity that occurs under your account; and maintaining the security of devices and third-party accounts you connect to the Services. You must notify us promptly at support@spreakr.com if you suspect unauthorized use of your account.</p>
+
+    <h3>4. Permitted Use and Restrictions</h3>
+    <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, non-sublicensable, revocable right to access and use the Services for your internal personal or business use during the applicable subscription term.</p>
+    <p style="margin-top:8px">You must not, and must not permit others to: copy, modify, distribute, sell, lease, reverse engineer, decompile, or create derivative works from the Services except as permitted by law; use the Services to infringe intellectual property, privacy, publicity, confidentiality, or other rights; upload, submit, or transmit unlawful, defamatory, deceptive, abusive, infringing, or malicious material; use the Services to transmit malware, spam, or harmful code; probe, scan, or test the vulnerability of the Services; use the Services in a way that could damage, disable, overburden, or impair the Services; use automated means to scrape or harvest data from the Services except where expressly authorized; or use the Services in violation of applicable law, sanctions, export rules, or third-party terms.</p>
+
+    <h3>5. Your Content and Inputs</h3>
+    <p>You may submit text, prompts, data, files, communications, account content, and other materials to the Services ("Inputs"). You may receive responses, drafts, summaries, translations, suggestions, or other results ("Outputs"). You retain ownership of your Inputs. As between you and us, and subject to applicable law and third-party rights, you own your Outputs to the extent ownership can vest in them.</p>
+    <p style="margin-top:8px">You grant us a worldwide, non-exclusive, royalty-free license to host, store, reproduce, process, transmit, display, and use Inputs and Outputs solely: to provide, maintain, secure, and improve the Services; to troubleshoot, prevent abuse, and enforce these Terms; to comply with law and lawful requests; and as otherwise permitted by our Privacy Policy. You represent and warrant that you have all rights necessary to submit your Inputs.</p>
+
+    <h3>6. AI and Automated Features</h3>
+    <p>The Services may use artificial intelligence, machine learning, and automated systems. Outputs may contain errors, omissions, mistranslations, biased language, or outdated information and may not be unique. You are solely responsible for reviewing and validating Outputs before relying on them. You must not rely on the Services as a substitute for professional legal, medical, accounting, compliance, tax, or other regulated advice.</p>
+
+    <h3>7. Third-Party Services and Integrations</h3>
+    <p>The Services interoperate with third-party products, APIs, email providers, identity providers, payment processors, hosting services, and analytics providers — including OpenAI, Google, Microsoft, ElevenLabs, DPO Pay, Paddle, and Zoho. The availability and functionality of the Services depend in part on these third parties. We are not responsible for third-party services, their availability, security, content, or practices. Your use of third-party services is governed by those third parties' own terms and privacy policies.</p>
+    <p style="margin-top:8px">If you connect a third-party account, you authorize us to access and process the data made available through that connection as necessary to provide the Services.</p>
+
+    <h3>8. Orders, Pricing, Billing, and Taxes</h3>
+    <p>Pricing, plan features, usage limits, and billing intervals are described on our website or within the Services. By placing an order, you agree to pay all fees, taxes, and charges associated with your selected plan. Unless otherwise stated: fees are quoted in the currency shown at checkout; charges are non-refundable except as stated in our Refund Policy or required by law; taxes may be added where applicable; and usage-based fees or overages may apply if disclosed before purchase. We may change pricing prospectively with reasonable advance notice.</p>
+
+    <h3>9. Payment Processing and Merchant of Record</h3>
+    <p>Some purchases may be processed by Paddle, which may act as merchant of record for checkout, billing, tax handling, and certain customer payment support functions. If Paddle processes your transaction, your purchase may also be subject to Paddle's buyer-facing checkout terms, billing policies, and refund handling processes. Where Paddle is the merchant of record, the charge on your statement may reference Paddle, and billing, cancellation, or refund support may be handled through Paddle channels as well as our support team.</p>
+
+    <h3>10. Subscriptions, Trials, and Auto-Renewal</h3>
+    <p>If you purchase a subscription: it begins on the date stated at checkout; it renews automatically for successive billing periods unless canceled before renewal; and you authorize recurring charges to your selected payment method until canceled. If you receive a free trial, you must cancel before the trial ends to avoid being charged. Unless expressly stated otherwise, partial billing periods are not prorated.</p>
+
+    <h3>11. Cancellation</h3>
+    <p>You may cancel your subscription at any time through your account settings, the billing management link in your purchase or renewal emails, or by contacting support@spreakr.com. If Paddle processed your purchase, you may also be directed to Paddle's self-service cancellation tools. Unless required by law or stated otherwise in our Refund Policy, cancellation stops future renewals only and does not retroactively cancel charges already incurred for the current billing period.</p>
+
+    <h3>12. Consumer Rights and Digital Content Waiver</h3>
+    <p>If you are a consumer, mandatory laws in your jurisdiction may give you rights that cannot be excluded by these Terms. If you buy digital content or digital services that begin immediately after purchase, you expressly request immediate performance and acknowledge that, where applicable law permits, you may lose any statutory withdrawal or cooling-off right once delivery or performance has begun. Where local law gives you a non-waivable right to cancel, withdraw, or receive a refund, we will honor that law.</p>
+
+    <h3>13. Feedback</h3>
+    <p>If you give us suggestions, ideas, enhancement requests, or feedback, we may use them without restriction or compensation to you, and you assign to us any rights necessary for that use.</p>
+
+    <h3>14. Intellectual Property</h3>
+    <p>The Services, including all software, code, models, interfaces, content, branding, logos, text, graphics, designs, and documentation, are owned by us or our licensors and are protected by intellectual property and other laws. Except for the limited rights expressly granted in these Terms, no rights are granted to you.</p>
+
+    <h3>15. Confidentiality</h3>
+    <p>If you receive non-public information from us that is identified as confidential or would reasonably be understood as confidential, you will protect it using reasonable care and use it only as necessary to exercise your rights under these Terms. This section does not apply to information that: is or becomes public without breach; was already lawfully known to you; is lawfully obtained from a third party without restriction; or is independently developed without use of confidential information.</p>
+
+    <h3>16. Privacy</h3>
+    <p>Our collection and use of personal data are described in our Privacy Policy, which forms part of these Terms.</p>
+
+    <h3>17. Availability and Support</h3>
+    <p>We will use commercially reasonable efforts to provide the Services, but we do not guarantee uninterrupted availability, error-free operation, or compatibility with every device, browser, platform, or integration. Support is provided as described on our website or within your plan. Response times are targets, not guarantees, unless a separate written service-level agreement applies.</p>
+
+    <h3>18. Beta Features</h3>
+    <p>We may offer beta, preview, early access, or experimental features. These may be incomplete, unstable, or changed without notice and are provided "as is" and "as available."</p>
+
+    <h3>19. Suspension and Termination</h3>
+    <p>We may suspend or terminate your access immediately if: you breach these Terms; you fail to pay amounts due; we suspect fraud, abuse, unlawful conduct, or security risk; required by law, court order, sanctions, or a government authority; or a third-party service essential to the Services becomes unavailable on commercially reasonable terms. You may stop using the Services at any time. Termination does not relieve either party of obligations accrued before termination.</p>
+
+    <h3>20. Effect of Termination</h3>
+    <p>Upon termination or expiration: your right to access the Services ends; we may delete or de-identify data in accordance with our Privacy Policy and retention practices; and sections that by their nature should survive will survive, including payment obligations, intellectual property, disclaimers, liability limits, indemnity, dispute provisions, and confidentiality.</p>
+
+    <h3>21. Disclaimers</h3>
+    <p>To the maximum extent permitted by law, the Services are provided "as is" and "as available." We disclaim all warranties, whether express, implied, statutory, or otherwise, including implied warranties of merchantability, fitness for a particular purpose, title, non-infringement, availability, accuracy, and quiet enjoyment. We do not warrant that the Services will meet your requirements, that Outputs will be accurate or suitable for your intended use, or that the Services will be uninterrupted, secure, or error-free. Nothing in these Terms excludes rights that cannot lawfully be excluded.</p>
+
+    <h3>22. Limitation of Liability</h3>
+    <p>To the fullest extent permitted by law: we will not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for loss of profits, revenue, goodwill, data, business opportunities, or anticipated savings; and our total aggregate liability arising out of or related to the Services or these Terms will not exceed the greater of: (a) the amounts you paid to us for the Services during the twelve months preceding the event giving rise to the claim; or (b) USD 100. These limitations apply regardless of the theory of liability and even if a remedy fails of its essential purpose, except to the extent prohibited by law.</p>
+
+    <h3>23. Indemnity</h3>
+    <p>You will defend, indemnify, and hold harmless us, our affiliates, officers, directors, employees, and agents from and against claims, liabilities, damages, judgments, losses, costs, and expenses, including reasonable legal fees, arising from: your Inputs; your use of the Services; your violation of these Terms or applicable law; or your infringement or violation of any third-party right.</p>
+
+    <h3>24. Export, Sanctions, and Compliance</h3>
+    <p>You represent that you are not located in, ordinarily resident in, or using the Services from a restricted territory where the provision or use of the Services is prohibited by applicable sanctions or export control laws, and that you will not use the Services in violation of such laws.</p>
+
+    <h3>25. Changes to These Terms</h3>
+    <p>We may update these Terms from time to time. If we make a material change, we will provide reasonable notice by posting the updated Terms, emailing you, notifying you in-app, or by other appropriate means. If you continue using the Services after the updated Terms' effective date, you accept the updated Terms.</p>
+
+    <h3>26. Governing Law and Dispute Resolution</h3>
+    <p>These Terms are governed by the laws of the Republic of South Africa, excluding conflict of laws principles. Any dispute arising out of or relating to these Terms or the Services will be submitted to the exclusive jurisdiction of the courts of South Africa, unless applicable consumer law gives you the right to bring a claim elsewhere.</p>
+
+    <h3>27. General</h3>
+    <p>If any provision of these Terms is held invalid or unenforceable, the remaining provisions remain in effect. Our failure to enforce a provision is not a waiver. You may not assign these Terms without our prior written consent. We may assign these Terms as part of a merger, acquisition, corporate reorganization, or sale of assets. These Terms, together with our Privacy Policy, Refund Policy, and any plan-specific terms, are the entire agreement between you and us regarding the Services.</p>
+
     <h3>Contact</h3>
-    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6b070e0c0a072b181b190e0a001945080406">[email&#160;protected]</a> · Spreakr (Pty) Ltd · South Africa · spreakr.com</p>
+    <p>support@spreakr.com · Spreakr (Pty) Ltd · South Africa · spreakr.com</p>
   </div>
   <div class="legal-modal-footer"><button onclick="closeLegal()">Close</button></div>
 </div>
@@ -1633,19 +1760,70 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLe
     <button class="legal-modal-close" onclick="closeLegal()">✕</button>
   </div>
   <div class="legal-modal-body">
-    <strong>Last updated: April 2026</strong>
-    <h3>What We Collect</h3>
-    <p>We collect your name, email address, OAuth tokens for Gmail and Outlook, usage data, and email metadata (subject lines, sender addresses, timestamps) required to operate the service. We do not store the full body of your emails on our servers beyond what is necessary for real-time AI processing.</p>
-    <h3>How We Use Your Data</h3>
-    <p>Your data is used to provide and improve the Spreakr service, to process AI-assisted email drafting and search, and to communicate with you about your account. We do not sell your data to third parties.</p>
-    <h3>Third-Party Services</h3>
-    <p>Spreakr uses OpenAI for AI features, Google and Microsoft APIs for email access, ElevenLabs for voice transcription, DPO Pay and Paddle for payment processing, and Zoho for system email delivery. Each provider operates under their own privacy policy.</p>
-    <h3>POPIA Compliance</h3>
-    <p>We comply with the Protection of Personal Information Act (POPIA). You have the right to access, correct, or delete your personal information. Contact us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a6a68736c7b79635a696a687f7b716834797577">[email&#160;protected]</a> to exercise these rights.</p>
-    <h3>Data Retention</h3>
-    <p>We retain your account data for as long as your account is active. You may request deletion at any time.</p>
+    <strong>Last Updated: April 2026</strong>
+    <p style="margin-top:10px">This Privacy Policy explains how Spreakr (Pty) Ltd, trading as Spreakr ("Company," "we," "us," or "our"), collects, uses, discloses, stores, and otherwise processes personal data when you visit our websites, use our applications, create an account, purchase our services, contact us, or otherwise interact with us.</p>
+
+    <h3>1. Scope</h3>
+    <p>This Privacy Policy applies to our public websites; our software, apps, and hosted services; our support, sales, marketing, and onboarding communications; personal data we receive through integrations you enable; and any other interaction where we link or refer to this Privacy Policy. It does not apply to third-party websites, products, or services we do not control, even if linked to or integrated with our Services.</p>
+
+    <h3>2. Who We Are</h3>
+    <p>Spreakr (Pty) Ltd · South Africa · billing@spreakr.com · spreakr.com</p>
+
+    <h3>3. Personal Data We Collect</h3>
+    <p><strong>Information you provide directly:</strong> name, email address, phone number, company name, job title, billing address, account login credentials, support requests and attachments, survey responses and feedback, and any content you submit including prompts, files, text, translation content, drafts, and instructions.</p>
+    <p style="margin-top:8px"><strong>Information collected automatically:</strong> IP address, browser type and version, operating system, device identifiers, referral URLs, pages viewed and session activity, timestamps, logs, diagnostics and performance data, approximate location inferred from IP address, and cookie and similar technology data.</p>
+    <p style="margin-top:8px"><strong>Information from purchases and billing:</strong> order identifiers, subscription status, plan type, billing interval, transaction metadata, tax information, and refund or cancellation status. We do not store full payment card numbers. Payment processing is handled by third-party providers including Paddle where applicable.</p>
+    <p style="margin-top:8px"><strong>Information from integrations:</strong> if you connect third-party services such as Gmail or Outlook, we may receive account identifiers, profile information, message content and metadata, folders, subject lines, attachments, and related data. We only process integration data to provide the features you enable.</p>
+    <p style="margin-top:8px"><strong>Information from other sources:</strong> analytics providers, fraud prevention providers, customer relationship and support tools, business partners, affiliates, referral sources, and publicly available sources.</p>
+
+    <h3>4. How We Use Personal Data</h3>
+    <p>We use personal data to: provide the Services and operate integrations; process purchases, billing, invoicing, taxes, renewals, cancellations, and refunds; personalize and improve the Services; communicate with you via transactional emails, security notices, support replies, onboarding, service updates, and permitted marketing; detect fraud, abuse, spam, unauthorized access, and security incidents; comply with legal obligations including tax, accounting, consumer protection, sanctions, and data protection requirements; and establish, exercise, or defend legal rights.</p>
+
+    <h3>5. Lawful Bases for Processing</h3>
+    <p>Where GDPR, UK GDPR, or similar laws apply, we rely on: Contract (processing necessary to provide the Services); Legitimate Interests (operating, securing, analyzing, improving, and marketing our business where not overridden by your rights); Consent (where required, such as for certain cookies or marketing communications); Legal Obligation (compliance with applicable law); and Legal Claims (establishing, exercising, or defending legal rights).</p>
+
+    <h3>6. Cookies and Similar Technologies</h3>
+    <p>We may use cookies, SDKs, local storage, pixels, and similar technologies for essential site and app functionality, authentication and security, analytics and performance measurement, remembering preferences, and marketing and attribution where permitted. Where required by law, we will request consent before placing non-essential cookies. You can manage cookie choices through our cookie banner, settings, or your browser settings.</p>
+
+    <h3>7. Marketing Communications</h3>
+    <p>We may send service-related communications without separate consent where allowed by law. We may send promotional communications where we have a lawful basis to do so. You can opt out of marketing emails at any time using the unsubscribe link in any marketing email or by contacting billing@spreakr.com.</p>
+
+    <h3>8. How We Share Personal Data</h3>
+    <p>We may disclose personal data to: service providers that help us host, secure, maintain, support, analyze, and deliver the Services; payment processors and merchant-of-record providers including Paddle; infrastructure, cloud, storage, and database providers; analytics, attribution, and communications providers; professional advisers such as lawyers, auditors, insurers, and accountants; authorities, regulators, courts, and law enforcement where legally required; and transaction counterparties in connection with a merger, acquisition, or sale of assets.</p>
+    <p style="margin-top:8px">We do not sell personal data for money.</p>
+
+    <h3>9. International Transfers</h3>
+    <p>We may process and store personal data in countries other than the country where you live. Where required by law, we use appropriate safeguards for international transfers such as adequacy decisions, standard contractual clauses, or comparable contractual protections. You may request more information about the safeguards we use by contacting billing@spreakr.com.</p>
+
+    <h3>10. Retention</h3>
+    <p>We retain personal data only for as long as reasonably necessary for the purposes described in this Policy, including to provide the Services, meet legal, tax, accounting, audit, and regulatory obligations, resolve disputes, enforce agreements, and protect against fraud and security incidents. Account and transaction records are typically retained for up to 7 years for tax and legal compliance. Logs and diagnostics are typically retained for 30 to 180 days unless needed for security or investigations. When we no longer need personal data, we delete it, anonymize it, or securely isolate it as required by law.</p>
+
+    <h3>11. Security</h3>
+    <p>We implement reasonable and appropriate technical, organizational, and administrative safeguards designed to protect personal data against unauthorized access, loss, misuse, alteration, and disclosure. However, no internet transmission or storage system is completely secure, and we cannot guarantee absolute security.</p>
+
+    <h3>12. Your Privacy Rights</h3>
+    <p>Depending on where you live, you may have the right to: access personal data; correct inaccurate personal data; delete personal data; restrict processing; object to processing; withdraw consent; receive a portable copy of certain personal data; opt out of certain targeted advertising, sale, or sharing practices; and appeal a decision on a privacy request where required by law.</p>
+    <p style="margin-top:8px">To exercise your rights, contact us at billing@spreakr.com. We may need to verify your identity before acting on a request. We will not discriminate against you for exercising applicable privacy rights.</p>
+
+    <h3>13. POPIA Compliance</h3>
+    <p>We comply with the Protection of Personal Information Act (POPIA). South African data subjects have the right to access, correct, or delete their personal information, to object to processing, and to lodge complaints with the Information Regulator. Contact us at billing@spreakr.com to exercise these rights.</p>
+
+    <h3>14. Region-Specific Disclosures</h3>
+    <p><strong>EEA/UK:</strong> You may have rights to access, rectification, erasure, restriction, objection, and portability, and may lodge a complaint with your local supervisory authority.</p>
+    <p style="margin-top:8px"><strong>California:</strong> California residents may have rights including the right to know categories and specific pieces of personal information collected, the right to delete, the right to correct, the right to opt out of sale or sharing, and the right to non-discrimination.</p>
+    <p style="margin-top:8px"><strong>Other U.S. states and jurisdictions:</strong> We will honor rights requests as required by applicable law.</p>
+
+    <h3>15. Automated Decision-Making</h3>
+    <p>We may use automated systems to detect abuse, spam, or fraud; improve product performance; personalize certain experiences; and generate outputs or recommendations requested by you. We do not use solely automated decision-making that produces legal or similarly significant effects on individuals unless lawfully permitted and appropriately disclosed.</p>
+
+    <h3>16. Children's Privacy</h3>
+    <p>Our Services are intended for business users and adults and are not directed to children under 18. We do not knowingly collect personal data from children in violation of applicable law. If you believe a child has provided us with personal data unlawfully, contact us and we will take appropriate steps.</p>
+
+    <h3>17. Changes to This Privacy Policy</h3>
+    <p>We may update this Privacy Policy from time to time. If we make material changes, we will post the updated version and may also notify you by email, in-app notice, or other appropriate means. The "Last Updated" date at the top shows when this Policy was last revised.</p>
+
     <h3>Contact</h3>
-    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e696948f9087859fa695969483878d94c885898b">[email&#160;protected]</a> · Spreakr (Pty) Ltd · South Africa · spreakr.com</p>
+    <p>billing@spreakr.com · Spreakr (Pty) Ltd · South Africa · spreakr.com</p>
   </div>
   <div class="legal-modal-footer"><button onclick="closeLegal()">Close</button></div>
 </div>
@@ -1658,18 +1836,15 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLe
   <div class="legal-modal-body">
     <strong>Last updated: April 2026</strong>
     <h3>7-Day Money-Back Guarantee</h3>
-    <p>If you are not satisfied with Spreakr within 7 days of your first paid subscription, contact us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3d1dadfdfdaddd4f3c0c3c1d6d2d8c19dd0dcde">[email&#160;protected]</a> and we will issue a full refund, no questions asked. This guarantee applies to your first subscription period only.</p>
+    <p>If you are not satisfied with Spreakr within 7 days of your first paid subscription, contact us at billing@spreakr.com and we will issue a full refund, no questions asked. This guarantee applies to your first subscription period only.</p>
     <h3>Subscription Cancellations</h3>
     <p>You may cancel your subscription at any time. Cancellation takes effect at the end of your current billing period. No partial refunds are issued for unused time within a billing period, except within the 7-day guarantee window.</p>
     <h3>Refund Eligibility Exclusions</h3>
     <p>Refunds will not be issued in the following circumstances: the 7-day money-back window has elapsed; the request relates to a subscription renewal; the request relates to a credit top-up pack; there is evidence of abuse of the refund policy; your account has been suspended for Terms of Service violations; the payment was made as part of a promotional offer that explicitly excluded refund eligibility.</p>
     <h3>Chargebacks</h3>
-    <p>Initiating a chargeba
+    <p>Initiating a chargeback or payment dispute without first contacting us may result in immediate account suspension. We strongly encourage you to contact billing@spreakr.com before disputing a charge — we resolve legitimate issues quickly and without requiring a formal dispute process.</p>
     <h3>Contact</h3>
     <p>billing@spreakr.com · Spreakr (Pty) Ltd · South Africa · spreakr.com</p>
   </div>
   <div class="legal-modal-footer"><button onclick="closeLegal()">Close</button></div>
-</div>
-
-</body>
-</html>
+</div><
